@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import org.w3c.dom.Text;
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
@@ -20,6 +21,9 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
  * Text UI of the application.
  */
 public class TextUi {
+
+    /** Offset required to convert between 1-indexing and 0-indexing.  */
+    public static final int DISPLAYED_INDEX_OFFSET = 1;
 
     /** A decorative prefix added to the beginning of lines printed by AddressBook */
     private static final String LINE_PREFIX = "|| ";
@@ -29,12 +33,6 @@ public class TextUi {
 
     private static final String DIVIDER = "===================================================";
 
-    /** Format of indexed list item */
-    private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
-
-
-    /** Offset required to convert between 1-indexing and 0-indexing.  */
-    public static final int DISPLAYED_INDEX_OFFSET = 1;
 
     /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
     private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
@@ -42,13 +40,16 @@ public class TextUi {
     private final Scanner in;
     private final PrintStream out;
 
+    private final Formatter formatter;
+
     public TextUi() {
-        this(System.in, System.out);
+        this(System.in, System.out, new Formatter());
     }
 
-    public TextUi(InputStream in, PrintStream out) {
+    public TextUi(InputStream in, PrintStream out, Formatter formatter) {
         this.in = new Scanner(in);
         this.out = out;
+        this.formatter = formatter;
     }
 
     /**
@@ -146,13 +147,24 @@ public class TextUi {
 
     /** Shows a list of strings to the user, formatted as an indexed list. */
     private void showToUserAsIndexedList(List<String> list) {
-        showToUser(getIndexedListForViewing(list));
+        showToUser(formatter.getIndexedListForViewing(list));
     }
 
+
+
+}
+
+class Formatter {
+
+    /** Format of indexed list item */
+    private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
+
+
+
     /** Formats a list of strings as a viewable indexed list. */
-    private static String getIndexedListForViewing(List<String> listItems) {
+    public String getIndexedListForViewing(List<String> listItems) {
         final StringBuilder formatted = new StringBuilder();
-        int displayIndex = 0 + DISPLAYED_INDEX_OFFSET;
+        int displayIndex = 0 + TextUi.DISPLAYED_INDEX_OFFSET;
         for (String listItem : listItems) {
             formatted.append(getIndexedListItem(displayIndex, listItem)).append("\n");
             displayIndex++;
@@ -165,8 +177,7 @@ public class TextUi {
      *
      * @param visibleIndex visible index for this listing
      */
-    private static String getIndexedListItem(int visibleIndex, String listItem) {
+    public String getIndexedListItem(int visibleIndex, String listItem) {
         return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
     }
-
 }
