@@ -10,6 +10,16 @@ import org.junit.Test;
 
 public class UtilsTest {
 
+    @Test
+    public void isAnyNull() {
+        // only one item
+        assertTrue(Utils.isAnyNull((Object) null));
+        assertFalse(Utils.isAnyNull("abc"));
+
+        // multiple items
+        assertTrue(Utils.isAnyNull("abc", null, "ab"));
+        assertFalse(Utils.isAnyNull(1,2));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
