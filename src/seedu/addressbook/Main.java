@@ -25,7 +25,6 @@ import seedu.addressbook.ui.TextUi;
 //  TODO (Joseph): [LO-Exceptions]
 //  TODO (Joseph): [LO-Inheritance]
 //  TODO (Joseph): [LO-ISP]
-//  TODO (Joseph): [LO-ClassLevel]
 //  TODO (Joseph): [LO-Composition]
 //  TODO (Joseph): [LO-AssociationClass]
 //  TODO (Joseph): [LO-JUnit]
