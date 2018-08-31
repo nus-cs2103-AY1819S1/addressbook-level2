@@ -9,12 +9,13 @@ import seedu.addressbook.data.tag.Tag;
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyPerson {
-
+    
     Name getName();
     Phone getPhone();
     Email getEmail();
     Address getAddress();
-
+    int getSeqNum();
+    
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
      * changes on the returned set will not affect the person's internal tags.

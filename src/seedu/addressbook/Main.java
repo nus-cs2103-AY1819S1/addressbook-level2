@@ -20,6 +20,16 @@ import seedu.addressbook.ui.TextUi;
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
  */
+//  TODO (Joseph): [LO-ImplementClass]
+//  TODO (Joseph): [LO-SRP]
+//  TODO (Joseph): [LO-Exceptions]
+//  TODO (Joseph): [LO-Inheritance]
+//  TODO (Joseph): [LO-ISP]
+//  TODO (Joseph): [LO-Composition]
+//  TODO (Joseph): [LO-AssociationClass]
+//  TODO (Joseph): [LO-TDD]
+//  TODO (Joseph): [LO-2KLoC]: Sort
+//  TODO (Joseph): [LO-2KLoC]: List all after add or delete
 public class Main {
 
     /** Version info of the program. */
@@ -83,7 +93,7 @@ public class Main {
         Command command;
         do {
             String userCommandText = ui.getUserCommand();
-            command = new Parser().parseCommand(userCommandText);
+            command = Parser.parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
             recordResult(result);
             ui.showResultToUser(result);
