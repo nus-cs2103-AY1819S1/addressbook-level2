@@ -34,6 +34,19 @@ public class UtilsTest {
         assertNotUnique(null, 1, Integer.valueOf(1));
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
+
+
+    }
+
+
+    @Test
+    public void elementsAreNull() throws Exception {
+        // some null objects
+        assertTrue(Utils.isAnyNull("abc", null));
+
+        // no null objects
+        assertFalse(Utils.isAnyNull("abc", "abc"));
+
     }
 
     private void assertAreUnique(Object... objects) {
