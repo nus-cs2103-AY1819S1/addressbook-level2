@@ -17,12 +17,16 @@ public class Person implements ReadOnlyPerson {
     private Email email;
     private Address address;
 
+    private int seqNum;
+    private static int NEXT_SEQ_NUM;
+    
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Assumption: Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Person(int seqNum, Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+        this.seqNum = seqNum;
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -34,7 +38,7 @@ public class Person implements ReadOnlyPerson {
      * Copy constructor.
      */
     public Person(ReadOnlyPerson source) {
-        this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getTags());
+        this(source.getSeqNum(), source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getTags());
     }
 
     @Override
@@ -57,6 +61,11 @@ public class Person implements ReadOnlyPerson {
         return address;
     }
 
+    @Override
+    public int getSeqNum() {
+        return seqNum;
+    }
+    
     @Override
     public Set<Tag> getTags() {
         return new HashSet<>(tags);

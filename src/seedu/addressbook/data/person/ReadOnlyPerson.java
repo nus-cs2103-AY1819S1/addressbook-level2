@@ -9,12 +9,13 @@ import seedu.addressbook.data.tag.Tag;
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyPerson {
-
+    
     Name getName();
     Phone getPhone();
     Email getEmail();
     Address getAddress();
-
+    int getSeqNum();
+    
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
      * changes on the returned set will not affect the person's internal tags.
@@ -38,6 +39,7 @@ public interface ReadOnlyPerson {
     default boolean hasSameData(ReadOnlyPerson other) {
         return other == this // short circuit if same object
                 || (other != null // this is first to avoid NPE below
+                    && other.getSeqNum() == this.getSeqNum()
                     && other.getName().equals(this.getName()) // state checks here onwards
                     && other.getPhone().equals(this.getPhone())
                     && other.getEmail().equals(this.getEmail())
