@@ -20,6 +20,19 @@ import seedu.addressbook.ui.TextUi;
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
  */
+//  TODO (Joseph): [LO-Encapsulation]
+//  TODO (Joseph): [LO-ImplementClass]
+//  TODO (Joseph): [LO-SRP]
+//  TODO (Joseph): [LO-Exceptions]
+//  TODO (Joseph): [LO-Inheritance]
+//  TODO (Joseph): [LO-ISP]
+//  TODO (Joseph): [LO-ClassLevel]
+//  TODO (Joseph): [LO-Composition]
+//  TODO (Joseph): [LO-AssociationClass]
+//  TODO (Joseph): [LO-JUnit]
+//  TODO (Joseph): [LO-TDD]
+//  TODO (Joseph): [LO-2KLoC]: Sort
+//  TODO (Joseph): [LO-2KLoC]: List all after add or delete
 public class Main {
 
     /** Version info of the program. */
