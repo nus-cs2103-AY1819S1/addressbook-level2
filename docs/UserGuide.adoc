@@ -73,7 +73,7 @@ Format: `list`
 
 == Sort all persons inside the address book : `sort`
 
-Sorts all person and shows a list of all persons in the address book. +
+Sorts all persons in the address book and shows a sorted list. +
 Format: `sort`
 
 == Finding all persons containing any keyword in their name: `find`
