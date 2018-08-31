@@ -43,7 +43,7 @@ public class Command {
      * @return summary message for address book sorted.
      */
     public static String getMessageForAddressBookSortedSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
-        return String.format("%s%s", Messages.MESSAGE_PERSONS_SORTED_OVERVIEW,
+        return String.format("%s %s", Messages.MESSAGE_PERSONS_SORTED_OVERVIEW,
             getMessageForPersonListShownSummary(personsDisplayed));
     }
 
