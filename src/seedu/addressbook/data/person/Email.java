@@ -6,7 +6,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
  * Represents a Person's email in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
  */
-public class Email {
+public class Email extends Contact {
 
     public static final String EXAMPLE = "valid@e.mail";
     public static final String MESSAGE_EMAIL_CONSTRAINTS =
@@ -14,20 +14,32 @@ public class Email {
     public static final String EMAIL_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
 
     public final String value;
-    private boolean isPrivate;
 
     /**
-     * Validates given email.
+     * Constructor with email address and private access.
      *
-     * @throws IllegalValueException if given email address string is invalid.
+     * @param email Given email address .
+     * @param isPrivate Person email address is private.
+     * * @throws IllegalValueException if given email address string is invalid.
      */
     public Email(String email, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+        super(isPrivate);
+        this.value = validateEmail(email);
+    }
+
+    /**
+     * Validate email address.
+     *
+     * @param email Email Address of the person.
+     * @return The trimmed email address.
+     * @throws IllegalValueException if given email string is invalid.
+     */
+    private String validateEmail(String email) throws IllegalValueException {
         String trimmedEmail = email.trim();
         if (!isValidEmail(trimmedEmail)) {
             throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);
         }
-        this.value = trimmedEmail;
+        return trimmedEmail;
     }
 
     /**
@@ -54,8 +66,4 @@ public class Email {
         return value.hashCode();
     }
 
-
-    public boolean isPrivate() {
-        return isPrivate;
-    }
 }
