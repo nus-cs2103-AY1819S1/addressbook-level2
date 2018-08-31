@@ -8,6 +8,11 @@ public class IncorrectCommand extends Command {
 
     public final String feedbackToUser;
 
+    /**
+     * Constructor to keep feedback message to user.
+     *
+     * @param feedbackToUser Feedback message to user.
+     */
     public IncorrectCommand(String feedbackToUser) {
         this.feedbackToUser = feedbackToUser;
     }

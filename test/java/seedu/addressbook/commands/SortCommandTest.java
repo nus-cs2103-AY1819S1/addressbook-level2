@@ -40,7 +40,7 @@ public class SortCommandTest {
      * Executes the test command for the given addressbook data.
      * Checks that SortCommand exhibits the correct command behavior, namely:
      * 1. The feedback message of the CommandResult it returns matches expectedMessage.
-     * 3. The original addressbook data is not modified after executing SortCommand.
+     * 2. The original addressbook data is not modified after executing SortCommand.
      */
     private static void assertViewBehavior(Command viewCommand, AddressBook addressBook,
         List<ReadOnlyPerson> relevantPersons) {

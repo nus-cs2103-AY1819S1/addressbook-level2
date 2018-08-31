@@ -33,7 +33,8 @@ public class DeleteCommandTest {
     @Before
     public void setUp() throws Exception {
         Person johnDoe = new Person(new Name("John Doe"), new Phone("61234567", false),
-                new Email("john@doe.com", false), new Address("395C Ben Road", false), Collections.emptySet());
+                new Email("john@doe.com", false), new Address("395C Ben Road", false),
+                Collections.emptySet());
         Person janeDoe = new Person(new Name("Jane Doe"), new Phone("91234567", false),
                 new Email("jane@doe.com", false), new Address("33G Ohm Road", false), Collections.emptySet());
         Person samDoe = new Person(new Name("Sam Doe"), new Phone("63345566", false),
@@ -65,7 +66,8 @@ public class DeleteCommandTest {
     public void execute_targetPersonNotInAddressBook_returnsPersonNotFoundMessage()
             throws IllegalValueException {
         Person notInAddressBookPerson = new Person(new Name("Not In Book"), new Phone("63331444", false),
-                new Email("notin@book.com", false), new Address("156D Grant Road", false), Collections.emptySet());
+                new Email("notin@book.com", false), new Address("156D Grant Road", false),
+                Collections.emptySet());
         List<ReadOnlyPerson> listWithPersonNotInAddressBook = TestUtil.createList(notInAddressBookPerson);
 
         assertDeletionFailsDueToNoSuchPerson(1, addressBook, listWithPersonNotInAddressBook);
@@ -93,7 +95,7 @@ public class DeleteCommandTest {
      * @param targetVisibleIndex of the person that we want to delete
      */
     private DeleteCommand createDeleteCommand(int targetVisibleIndex, AddressBook addressBook,
-                                                                      List<ReadOnlyPerson> displayList) {
+            List<ReadOnlyPerson> displayList) {
 
         DeleteCommand command = new DeleteCommand(targetVisibleIndex);
         command.setData(addressBook, displayList);
@@ -105,7 +107,7 @@ public class DeleteCommandTest {
      * Executes the command, and checks that the execution was what we had expected.
      */
     private void assertCommandBehaviour(DeleteCommand deleteCommand, String expectedMessage,
-                                        AddressBook expectedAddressBook, AddressBook actualAddressBook) {
+            AddressBook expectedAddressBook, AddressBook actualAddressBook) {
 
         CommandResult result = deleteCommand.execute();
 
@@ -117,7 +119,7 @@ public class DeleteCommandTest {
      * Asserts that the index is not valid for the given display list.
      */
     private void assertDeletionFailsDueToInvalidIndex(int invalidVisibleIndex, AddressBook addressBook,
-                                                                        List<ReadOnlyPerson> displayList) {
+            List<ReadOnlyPerson> displayList) {
 
         String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
@@ -126,11 +128,11 @@ public class DeleteCommandTest {
     }
 
     /**
-     * Asserts that the person at the specified index cannot be deleted, because that person
-     * is not in the address book.
+     * Asserts that the person at the specified index cannot be deleted, because that person is not in the
+     * address book.
      */
     private void assertDeletionFailsDueToNoSuchPerson(int visibleIndex, AddressBook addressBook,
-                                                                        List<ReadOnlyPerson> displayList) {
+            List<ReadOnlyPerson> displayList) {
 
         String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
 
@@ -146,7 +148,7 @@ public class DeleteCommandTest {
      * @throws PersonNotFoundException if the selected person is not in the address book
      */
     private void assertDeletionSuccessful(int targetVisibleIndex, AddressBook addressBook,
-                                          List<ReadOnlyPerson> displayList) throws PersonNotFoundException {
+            List<ReadOnlyPerson> displayList) throws PersonNotFoundException {
 
         ReadOnlyPerson targetPerson = displayList.get(targetVisibleIndex - TextUi.DISPLAYED_INDEX_OFFSET);
 

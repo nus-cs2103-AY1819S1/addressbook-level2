@@ -16,6 +16,12 @@ public class ExitCommand extends Command {
         return new CommandResult(MESSAGE_EXIT_ACKNOWEDGEMENT);
     }
 
+    /**
+     * Check if this command is ExitCommand.
+     *
+     * @param command Command for this exit command.
+     * @return true if command is ExitCommand.
+     */
     public static boolean isExit(Command command) {
         return command instanceof ExitCommand; // instanceof returns false if it is null
     }

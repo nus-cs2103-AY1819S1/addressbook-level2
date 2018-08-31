@@ -55,9 +55,11 @@ public class Parser {
     /**
      * Used for initial separation of command word and args.
      */
-    public static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    public static final Pattern BASIC_COMMAND_FORMAT = Pattern
+            .compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
-    public Parser() {}
+    public Parser() {
+    }
 
     /**
      * Parses user input into command for execution.
@@ -68,7 +70,8 @@ public class Parser {
     public static Command parseCommand(String userInput) {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
         final String commandWord = matcher.group("commandWord");
@@ -93,7 +96,7 @@ public class Parser {
 
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
-            
+
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
 
@@ -102,8 +105,7 @@ public class Parser {
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
-        
-            
+
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
             return new HelpCommand();
@@ -120,7 +122,8 @@ public class Parser {
         final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
         // Validate arg string format
         if (!matcher.matches()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
         try {
             return new AddCommand(
@@ -143,23 +146,26 @@ public class Parser {
     }
 
     /**
-     * Returns true if the private prefix is present for a contact detail in the add command's arguments string.
+     * Returns true if the private prefix is present for a contact detail in the add command's arguments
+     * string.
      */
     private static boolean isPrivatePrefixPresent(String matchedPrefix) {
         return matchedPrefix.equals("p");
     }
 
     /**
-     * Extracts the new person's tags from the add command's tag arguments string.
-     * Merges duplicate tag strings.
+     * Extracts the new person's tags from the add command's tag arguments string. Merges duplicate tag
+     * strings.
      */
     private static Set<String> getTagsFromArgs(String tagArguments) throws IllegalValueException {
+        
         // no tags
         if (tagArguments.isEmpty()) {
             return Collections.emptySet();
         }
         // replace first delimiter prefix, then split
-        final Collection<String> tagStrings = Arrays.asList(tagArguments.replaceFirst(" t/", "").split(" t/"));
+        final Collection<String> tagStrings = Arrays
+                .asList(tagArguments.replaceFirst(" t/", "").split(" t/"));
         return new HashSet<>(tagStrings);
     }
 
@@ -175,7 +181,8 @@ public class Parser {
             final int targetIndex = parseArgsAsDisplayedIndex(args);
             return new DeleteCommand(targetIndex);
         } catch (ParseException pe) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
@@ -188,7 +195,6 @@ public class Parser {
      * @return the prepared command
      */
     private static Command prepareView(String args) {
-
         try {
             final int targetIndex = parseArgsAsDisplayedIndex(args);
             return new ViewCommand(targetIndex);
@@ -207,7 +213,6 @@ public class Parser {
      * @return the prepared command
      */
     private static Command prepareViewAll(String args) {
-
         try {
             final int targetIndex = parseArgsAsDisplayedIndex(args);
             return new ViewAllCommand(targetIndex);

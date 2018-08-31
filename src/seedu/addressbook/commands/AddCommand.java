@@ -29,6 +29,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
+    /** Person to be added to the address book */
     private final Person toAdd;
 
     /**
@@ -37,10 +38,10 @@ public class AddCommand extends Command {
      * @throws IllegalValueException if any of the raw values are invalid
      */
     public AddCommand(String name,
-                      String phone, boolean isPhonePrivate,
-                      String email, boolean isEmailPrivate,
-                      String address, boolean isAddressPrivate,
-                      Set<String> tags) throws IllegalValueException {
+            String phone, boolean isPhonePrivate,
+            String email, boolean isEmailPrivate,
+            String address, boolean isAddressPrivate,
+            Set<String> tags) throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -54,10 +55,18 @@ public class AddCommand extends Command {
         );
     }
 
+    /**
+     * Constructor to add a person to the address book.
+     *
+     * @param toAdd Person to be added.
+     */
     public AddCommand(Person toAdd) {
         this.toAdd = toAdd;
     }
 
+    /**
+     * Returns the added person.
+     */
     public ReadOnlyPerson getPerson() {
         return toAdd;
     }

@@ -7,8 +7,8 @@ import java.util.Set;
 import seedu.addressbook.data.tag.Tag;
 
 /**
- * Represents a Person in the address book.
- * Guarantees: details are present and not null, field values are validated.
+ * Represents a Person in the address book. Guarantees: details are present and not null, field values are
+ * validated.
  */
 public class Person implements ReadOnlyPerson {
 
@@ -19,7 +19,7 @@ public class Person implements ReadOnlyPerson {
 
     private int seqNum;
     private static int NEXT_SEQ_NUM = 1;
-    
+
     private final Set<Tag> tags = new HashSet<>();
 
     /**

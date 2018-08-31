@@ -15,7 +15,9 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class StorageFile {
 
-    /** Default file path used if the user doesn't provide the file name. */
+    /**
+     * Default file path used if the user doesn't provide the file name.
+     */
     public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
 
     /* Note: Note the use of nested classes below.
@@ -61,8 +63,8 @@ public class StorageFile {
     }
 
     /**
-     * Returns true if the given path is acceptable as a storage file.
-     * The file path is considered acceptable if it ends with '.txt'
+     * Returns true if the given path is acceptable as a storage file. The file path is considered acceptable
+     * if it ends with '.txt'
      */
     private static boolean isValidPath(Path filePath) {
         return filePath.toString().endsWith(".txt");
@@ -83,13 +85,12 @@ public class StorageFile {
     }
 
     /**
-     * Loads the {@code AddressBook} data from this storage file, and then returns it.
-     * Returns an empty {@code AddressBook} if the file does not exist, or is not a regular file.
+     * Loads the {@code AddressBook} data from this storage file, and then returns it. Returns an empty {@code
+     * AddressBook} if the file does not exist, or is not a regular file.
      *
      * @throws StorageOperationException if there were errors reading and/or converting data from file.
      */
     public AddressBook load() throws StorageOperationException {
-
         if (!Files.exists(path) || !Files.isRegularFile(path)) {
             return new AddressBook();
         }
@@ -98,11 +99,12 @@ public class StorageFile {
             return AddressBookDecoder.decodeAddressBook(Files.readAllLines(path));
         } catch (FileNotFoundException fnfe) {
             throw new AssertionError("A non-existent file scenario is already handled earlier.");
-        // other errors
+            // other errors
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
         } catch (IllegalValueException ive) {
-            throw new StorageOperationException("File contains illegal data values; data type constraints not met");
+            throw new StorageOperationException(
+                    "File contains illegal data values; data type constraints not met");
         }
     }
 

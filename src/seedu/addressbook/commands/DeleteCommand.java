@@ -19,11 +19,14 @@ public class DeleteCommand extends Command {
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
-
+    /**
+     * Constructor to keep the last target visible index.
+     *
+     * @param targetVisibleIndex Last target visible index.
+     */
     public DeleteCommand(int targetVisibleIndex) {
         super(targetVisibleIndex);
     }
-
 
     @Override
     public CommandResult execute() {
@@ -31,7 +34,6 @@ public class DeleteCommand extends Command {
             final ReadOnlyPerson target = getTargetPerson();
             addressBook.removePerson(target);
             return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
-
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         } catch (PersonNotFoundException pnfe) {
