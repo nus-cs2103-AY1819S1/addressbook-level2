@@ -1,7 +1,5 @@
 package seedu.addressbook.data.person;
 
-import seedu.addressbook.data.exception.IllegalValueException;
-
 /**
  * Represents a Person's contact in the address book.
  */
