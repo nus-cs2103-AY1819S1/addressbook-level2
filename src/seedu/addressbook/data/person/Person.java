@@ -32,7 +32,7 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        NEXT_SEQ_NUM += 1;
+        NEXT_SEQ_NUM++;
     }
 
     /**
@@ -62,11 +62,6 @@ public class Person implements ReadOnlyPerson {
         return address;
     }
 
-    @Override
-    public int getSeqNum() {
-        return seqNum;
-    }
-    
     @Override
     public Set<Tag> getTags() {
         return new HashSet<>(tags);

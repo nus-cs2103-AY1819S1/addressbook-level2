@@ -21,7 +21,7 @@ import seedu.addressbook.ui.TextUi;
  * Initializes the application and starts the interaction with the user.
  */
 //  TODO (Joseph): [LO-ImplementClass]
-//  TODO (Joseph): [LO-SRP]
+//  TODO (Joseph): [LO-SRP] 
 //  TODO (Joseph): [LO-Exceptions]
 //  TODO (Joseph): [LO-Inheritance]
 //  TODO (Joseph): [LO-ISP]
