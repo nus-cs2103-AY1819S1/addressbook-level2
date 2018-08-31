@@ -27,7 +27,6 @@ import seedu.addressbook.ui.TextUi;
 //  TODO (Joseph): [LO-ISP]
 //  TODO (Joseph): [LO-Composition]
 //  TODO (Joseph): [LO-AssociationClass]
-//  TODO (Joseph): [LO-JUnit]
 //  TODO (Joseph): [LO-TDD]
 //  TODO (Joseph): [LO-2KLoC]: Sort
 //  TODO (Joseph): [LO-2KLoC]: List all after add or delete
