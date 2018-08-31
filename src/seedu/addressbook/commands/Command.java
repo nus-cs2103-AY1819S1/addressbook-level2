@@ -37,6 +37,15 @@ public class Command {
     }
 
     /**
+     * Constructs a feedback message to summarise an operation that sort the address book.
+     * 
+     * @return summary message for address book sorted.
+     */
+    public static String getMessageForAddressBookSortedSummary() {
+        return Messages.MESSAGE_PERSONS_SORTED_OVERVIEW;
+    }
+
+    /**
      * Executes the command and returns the result.
      */
     public CommandResult execute(){
