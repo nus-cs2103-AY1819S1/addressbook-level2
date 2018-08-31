@@ -39,10 +39,12 @@ public class Command {
     /**
      * Constructs a feedback message to summarise an operation that sort the address book.
      * 
+     * @param personsDisplayed used to generate summary
      * @return summary message for address book sorted.
      */
-    public static String getMessageForAddressBookSortedSummary() {
-        return Messages.MESSAGE_PERSONS_SORTED_OVERVIEW;
+    public static String getMessageForAddressBookSortedSummary(List<? extends ReadOnlyPerson> personsDisplayed) {
+        return String.format("%s%s", Messages.MESSAGE_PERSONS_SORTED_OVERVIEW,
+            getMessageForPersonListShownSummary(personsDisplayed));
     }
 
     /**
