@@ -20,7 +20,6 @@ import seedu.addressbook.ui.TextUi;
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
  */
-//  TODO (Joseph): [LO-Encapsulation]
 //  TODO (Joseph): [LO-ImplementClass]
 //  TODO (Joseph): [LO-SRP]
 //  TODO (Joseph): [LO-Exceptions]
@@ -96,7 +95,7 @@ public class Main {
         Command command;
         do {
             String userCommandText = ui.getUserCommand();
-            command = new Parser().parseCommand(userCommandText);
+            command = Parser.parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
             recordResult(result);
             ui.showResultToUser(result);

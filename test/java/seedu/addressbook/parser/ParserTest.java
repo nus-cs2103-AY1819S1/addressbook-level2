@@ -33,14 +33,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
 
 public class ParserTest {
-
-    private Parser parser;
-
-    @Before
-    public void setUp() {
-        parser = new Parser();
-    }
-
+    
     /*
      * Note how the names of the test methods does not follow the normal naming convention.
      * That is because our coding standard allows a different naming convention for test methods.
@@ -316,7 +309,7 @@ public class ParserTest {
      * @return the parsed command object
      */
     private <T extends Command> T parseAndAssertCommandType(String input, Class<T> expectedCommandClass) {
-        final Command result = parser.parseCommand(input);
+        final Command result = Parser.parseCommand(input);
         assertTrue(result.getClass().isAssignableFrom(expectedCommandClass));
         return (T) result;
     }
