@@ -2,7 +2,7 @@ package seedu.addressbook.common;
 
 public class TextUtils {
 
-    private static final double SIMILARITY = 0.9;
+    private static final double SIMILARITY = 0.75;
 
     /**
      * Calculates the hamming distance between 2 strings, s1 and s2.
@@ -17,7 +17,7 @@ public class TextUtils {
         int hammingDist = 0;
 
         if (str1.length != str2.length) {
-            return Math.max(str1.length, str1.length);
+            return 0;
         }
 
         for (int i = 0; i < str1.length; i++) {
@@ -34,9 +34,11 @@ public class TextUtils {
      * @param s2
      * @return
      */
-    private static int getSimilarity(String s1, String s2) {
-        int hamming = getHammingDistance(s1, s2);
-        return (hamming / Math.max(s1.length(), s2.length()));
+    private static double getSimilarity(String s1, String s2) {
+        double hamming = getHammingDistance(s1, s2);
+        double total = Math.max(s1.length(), s2.length());
+        double similarity = hamming / total;
+        return similarity;
     }
 
     /**
