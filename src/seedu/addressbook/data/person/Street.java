@@ -8,7 +8,7 @@ public class Street {
     private final String street;
 
     public Street(String street) {
-        this.street = street;
+        this.street = street.trim();
     }
 
     public String getStreet() {

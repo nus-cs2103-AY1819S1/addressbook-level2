@@ -7,7 +7,7 @@ public class Unit {
     private final String unit;
 
     public Unit(String unit) {
-        this.unit = unit;
+        this.unit = unit.trim();
     }
 
     public String getUnit() {
