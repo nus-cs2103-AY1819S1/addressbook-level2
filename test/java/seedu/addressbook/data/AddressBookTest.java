@@ -31,6 +31,7 @@ public class AddressBookTest {
     private Person charlieDouglas;
     private Person davidElliot;
     private Person maryJames;
+    private Person maryJomes;
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
@@ -69,6 +70,12 @@ public class AddressBookTest {
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
 
         maryJames = new Person(new Name("Mary James"),
+                new Phone("98751360", false),
+                new Email("maryj@nusgdg.org", false),
+                new Address(new Block(123), new Street("Clementi Ave 3"), new Unit("#12-34"), new PostalCode(231534), false),
+                Collections.singleton(tagScientist));
+
+        maryJomes  = new Person(new Name("Mary Jomes"),
                 new Phone("98751360", false),
                 new Email("maryj@nusgdg.org", false),
                 new Address(new Block(123), new Street("Clementi Ave 3"), new Unit("#12-34"), new PostalCode(231534), false),
@@ -144,5 +151,12 @@ public class AddressBookTest {
     public void addToSampleAddressBook() throws DuplicatePersonException {
         sampleAddressBook.addPerson(maryJames);
         assertTrue(sampleAddressBook.containsPerson(maryJames));
+    }
+
+    @Test
+    public void testSimilarity() {
+        assertFalse(maryJames.getName().isSimilar(aliceBetsy.getName()));
+        assertTrue(maryJames.getName().isSimilar(maryJomes.getName()));
+        assertTrue(maryJames.getName().isSimilar(maryJames.getName()));
     }
 }
