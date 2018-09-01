@@ -1,15 +1,22 @@
 package seedu.addressbook.common;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Test;
-
 public class UtilsTest {
 
+    @Test
+    public void isAnyNullTest() {
+        Utils testing = new Utils();
+        assertEquals(testing.isAnyNull("Hello"),false);
+        //assertEquals(testing.isAnyNull(null),true);
+
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
