@@ -11,6 +11,11 @@ import org.junit.Test;
 
 public class UtilsTest {
 
+    @Test
+    public void testStringSimilarity() {
+        assertTrue(TextUtils.isSimilar("Drink", "Brink"));
+        assertFalse(TextUtils.isSimilar("Andy Malone", "Corene Macy"));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
