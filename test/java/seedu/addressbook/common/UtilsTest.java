@@ -38,7 +38,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void isAnyNull() {
+    public void isAnyNull() throws Exception {
         Object[] containsNull = { new Object(), null };
         Object[] noNull = { new Object(), new Object() };
 
