@@ -30,13 +30,13 @@ public class AddressBookEncoder {
         encodedPersonBuilder.append(person.getName());
 
         encodedPersonBuilder.append(person.getPhone().isPrivate() ? " p" : " ");
-        encodedPersonBuilder.append("p/").append(person.getPhone().value);
+        encodedPersonBuilder.append("p/").append(person.getPhone().getValue());
 
         encodedPersonBuilder.append(person.getEmail().isPrivate() ? " p" : " ");
-        encodedPersonBuilder.append("e/").append(person.getEmail().value);
+        encodedPersonBuilder.append("e/").append(person.getEmail().getValue());
 
         encodedPersonBuilder.append(person.getAddress().isPrivate() ? " p" : " ");
-        encodedPersonBuilder.append("a/").append(person.getAddress().value);
+        encodedPersonBuilder.append("a/").append(person.getAddress().getValue());
 
         person.getTags().forEach(tag -> encodedPersonBuilder.append(" t/").append(tag.tagName));
 
