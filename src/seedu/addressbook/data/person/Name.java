@@ -1,5 +1,6 @@
 package seedu.addressbook.data.person;
 
+import seedu.addressbook.common.TextUtils;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
@@ -41,6 +42,14 @@ public class Name {
      */
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.split("\\s+"));
+    }
+
+    /**
+     * Returns true if the other name is very similar to this name.
+     * Two names are considered similar if ...
+     */
+    public boolean isSimilar(Name other) {
+        return TextUtils.isSimilar(fullName, other.fullName);
     }
 
     @Override
