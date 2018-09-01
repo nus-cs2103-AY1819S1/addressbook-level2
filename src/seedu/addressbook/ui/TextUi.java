@@ -19,24 +19,23 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 /**
  * Text UI of the application.
  */
-public class TextUi {
+public class TextUi extends Formatter {
 
-    /** A decorative prefix added to the beginning of lines printed by AddressBook */
+    /**
+     * A decorative prefix added to the beginning of lines printed by AddressBook
+     */
     private static final String LINE_PREFIX = "|| ";
 
-    /** A platform independent line separator. */
+    /**
+     * A platform independent line separator.
+     */
     private static final String LS = System.lineSeparator();
 
     private static final String DIVIDER = "===================================================";
 
-    /** Format of indexed list item */
-    private static final String MESSAGE_INDEXED_LIST_ITEM = "\t%1$d. %2$s";
-
-
-    /** Offset required to convert between 1-indexing and 0-indexing.  */
-    public static final int DISPLAYED_INDEX_OFFSET = 1;
-
-    /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
+    /**
+     * Format of a comment input line. Comment lines are silently consumed when reading user input.
+     */
     private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
 
     private final Scanner in;
@@ -52,8 +51,8 @@ public class TextUi {
     }
 
     /**
-     * Returns true if the user input line should be ignored.
-     * Input should be ignored if it is parsed as a comment, is only whitespace, or is empty.
+     * Returns true if the user input line should be ignored. Input should be ignored if it is
+     * parsed as a comment, is only whitespace, or is empty.
      *
      * @param rawInputLine full raw user input line.
      * @return true if the entire user input line should be ignored.
@@ -73,9 +72,9 @@ public class TextUi {
     }
 
     /**
-     * Prompts for the command and reads the text entered by the user.
-     * Ignores empty, pure whitespace, and comment lines.
-     * Echos the command back to the user.
+     * Prompts for the command and reads the text entered by the user. Ignores empty, pure
+     * whitespace, and comment lines. Echos the command back to the user.
+     *
      * @return command (full line) entered by the user
      */
     public String getUserCommand() {
@@ -113,7 +112,9 @@ public class TextUi {
         showToUser(MESSAGE_INIT_FAILED, DIVIDER, DIVIDER);
     }
 
-    /** Shows message(s) to the user */
+    /**
+     * Shows message(s) to the user
+     */
     public void showToUser(String... message) {
         for (String m : message) {
             out.println(LINE_PREFIX + m.replace("\n", LS + LINE_PREFIX));
@@ -121,8 +122,8 @@ public class TextUi {
     }
 
     /**
-     * Shows the result of a command execution to the user. Includes additional formatting to demarcate different
-     * command execution segments.
+     * Shows the result of a command execution to the user. Includes additional formatting to
+     * demarcate different command execution segments.
      */
     public void showResultToUser(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> resultPersons = result.getRelevantPersons();
@@ -133,8 +134,8 @@ public class TextUi {
     }
 
     /**
-     * Shows a list of persons to the user, formatted as an indexed list.
-     * Private contact details are hidden.
+     * Shows a list of persons to the user, formatted as an indexed list. Private contact details
+     * are hidden.
      */
     private void showPersonListView(List<? extends ReadOnlyPerson> persons) {
         final List<String> formattedPersons = new ArrayList<>();
@@ -144,29 +145,10 @@ public class TextUi {
         showToUserAsIndexedList(formattedPersons);
     }
 
-    /** Shows a list of strings to the user, formatted as an indexed list. */
+    /**
+     * Shows a list of strings to the user, formatted as an indexed list.
+     */
     private void showToUserAsIndexedList(List<String> list) {
         showToUser(getIndexedListForViewing(list));
     }
-
-    /** Formats a list of strings as a viewable indexed list. */
-    private static String getIndexedListForViewing(List<String> listItems) {
-        final StringBuilder formatted = new StringBuilder();
-        int displayIndex = 0 + DISPLAYED_INDEX_OFFSET;
-        for (String listItem : listItems) {
-            formatted.append(getIndexedListItem(displayIndex, listItem)).append("\n");
-            displayIndex++;
-        }
-        return formatted.toString();
-    }
-
-    /**
-     * Formats a string as a viewable indexed list item.
-     *
-     * @param visibleIndex visible index for this listing
-     */
-    private static String getIndexedListItem(int visibleIndex, String listItem) {
-        return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
-    }
-
 }
