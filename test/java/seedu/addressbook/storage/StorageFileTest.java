@@ -23,7 +23,7 @@ import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 
 public class StorageFileTest {
-    private static final String TEST_DATA_FOLDER = "data/StorageFileTest";
+    private static final String TEST_DATA_FOLDER = "test/data/StorageFileTest";
     private static final String NON_EXISTANT_FILE_NAME = "ThisFileDoesNotExist.txt";
 
     @Rule
