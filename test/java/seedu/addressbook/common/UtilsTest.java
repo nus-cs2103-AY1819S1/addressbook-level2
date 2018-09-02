@@ -36,11 +36,38 @@ public class UtilsTest {
         assertNotUnique(null, "a", "b", null);
     }
 
+    @Test
+    public void isAnyNull() throws Exception {
+        // empty
+        assertIsNotNull();
+
+        // only one object
+        assertIsNull((Object) null);
+        assertIsNotNull(1);
+        assertIsNotNull("");
+        assertIsNotNull("abc");
+
+        // multiple objects are null
+        assertIsNull(null, null, null);
+
+        // multiple objects with 1 null
+        assertIsNull("1", "a", null, "abx");
+        assertIsNull(1, "a", null, "abx");
+    }
+
     private void assertAreUnique(Object... objects) {
         assertTrue(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
 
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
+    }
+
+    private void assertIsNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+
+    private void assertIsNotNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 }
