@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.junit.Test;
+import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
@@ -129,5 +131,11 @@ public class TestUtil {
      */
     public static void assertFileDoesNotExist(String filePath) {
         assertTrue(Files.notExists(Paths.get(filePath)));
+    }
+
+    @Test
+    public void testIsAnyNull() {
+        boolean expectedOutput = false;
+        assertEquals(expectedOutput, Utils.isAnyNull("", "\n \n", " "));
     }
 }
