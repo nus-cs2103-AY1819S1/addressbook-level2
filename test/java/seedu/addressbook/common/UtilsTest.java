@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import static seedu.addressbook.common.Utils.isAnyNull;
+
 public class UtilsTest {
 
 
@@ -34,6 +36,15 @@ public class UtilsTest {
         assertNotUnique(null, 1, Integer.valueOf(1));
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
+    }
+
+    @Test
+    public void testIsAnyNull() {
+        // try with null objects
+        assertTrue(isAnyNull(1, 2, null, 3));
+        assertTrue(isAnyNull(1, 2, null, 3, null, null, 4, 5));
+        // try without null objects
+        assertFalse(isAnyNull(1, "hello", 3, "null", 4));
     }
 
     private void assertAreUnique(Object... objects) {
