@@ -87,6 +87,8 @@ public class ParserTest {
         parseAndAssertCommandType(input, ExitCommand.class);
     }
 
+
+
     /*
      * Tests for single index argument commands ===============================================================
      */
