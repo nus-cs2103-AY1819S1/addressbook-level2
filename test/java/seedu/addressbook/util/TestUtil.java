@@ -1,9 +1,5 @@
 package seedu.addressbook.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -14,6 +10,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.junit.Test;
+import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
@@ -24,7 +22,31 @@ import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 public class TestUtil {
+    
+    @Test
+    public void isAnyNull() {
+        final Object nullObj = null;
+        final Object testObj = "test";
+        
+        // Test with one null Object
+        assertTrue(Utils.isAnyNull(nullObj));
+        
+        // Test with list of Objects including null object
+        assertTrue(Utils.isAnyNull(testObj, nullObj));
+        
+        // Test with non-null Object
+        assertFalse(Utils.isAnyNull(testObj));
+        
+        // Test with no input to method
+        assertFalse(Utils.isAnyNull());
+    }
+    
     /**
      * Creates an address book containing the given persons.
      */
