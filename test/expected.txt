@@ -31,7 +31,7 @@
 || Example: exit
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
-|| The person index provided is invalid
+|| Index 1: The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  view 1]
 || The person index provided is invalid
@@ -43,7 +43,7 @@
 || Address book has been cleared!
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 
+||
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add wrong args wrong args]
@@ -90,7 +90,7 @@
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
-|| 
+||
 || 1 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive]
@@ -99,7 +99,7 @@
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
-|| 
+||
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school]
@@ -109,7 +109,7 @@
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 
+||
 || 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends]
@@ -120,7 +120,7 @@
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 
+||
 || 4 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
@@ -132,7 +132,7 @@
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
-|| 
+||
 || 5 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
@@ -205,32 +205,32 @@
 || Example: find alice bob charlie
 || ===================================================
 || Enter command: || [Command entered:  find bet]
-|| 
+||
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find 23912039120]
-|| 
+||
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find betsy]
-|| 
+||
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Betsy]
 || 	1. Betsy Choo Tags: [secretive]
-|| 
+||
 || 1 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Dickson]
 || 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 
+||
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Charlie Betsy]
 || 	1. Betsy Choo Tags: [secretive]
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 
+||
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete]
@@ -243,19 +243,19 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete -1]
-|| The person index provided is invalid
+|| Index -1: The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 0]
-|| The person index provided is invalid
+|| Index 0: The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 3]
-|| The person index provided is invalid
+|| Index 3: The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
 || Deleted Person: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
-|| Person could not be found in address book
+|| Index 2: Person could not be found in address book
 || ===================================================
 || Enter command: || [Command entered:  view 2]
 || Person could not be found in address book
@@ -268,7 +268,7 @@
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 	4. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
-|| 
+||
 || 4 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 4]
@@ -278,7 +278,7 @@
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 
+||
 || 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
@@ -287,14 +287,52 @@
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo Tags: [secretive]
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 
+||
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add test multipledeletea p/1234 e/testmd1@gmail.com a/John street, block 123, #01-01]
+|| New person added: test multipledeletea Phone: 1234 Email: testmd1@gmail.com Address: John street, block 123, #01-01 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add test multipledeleteb p/1235 e/testmd2@gmail.com a/John street, block 123, #01-02]
+|| New person added: test multipledeleteb Phone: 1235 Email: testmd2@gmail.com Address: John street, block 123, #01-02 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add test multipledeletec p/1236 e/testmd3@gmail.com a/John street, block 123, #01-03]
+|| New person added: test multipledeletec Phone: 1236 Email: testmd3@gmail.com Address: John street, block 123, #01-03 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	3. test multipledeletea Phone: 1234 Email: testmd1@gmail.com Address: John street, block 123, #01-01 Tags: 
+|| 	4. test multipledeleteb Phone: 1235 Email: testmd2@gmail.com Address: John street, block 123, #01-02 Tags: 
+|| 	5. test multipledeletec Phone: 1236 Email: testmd3@gmail.com Address: John street, block 123, #01-03 Tags: 
+||
+|| 5 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 2 4]
+|| Deleted Person: Dickson Ee Phone: 444444 Email: (private) dickson@nus.edu.sg Address: 444, delta street Tags: [friends]
+|| Deleted Person: test multipledeleteb Phone: 1235 Email: testmd2@gmail.com Address: John street, block 123, #01-02 Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  delete 1 2 4]
+|| Deleted Person: Betsy Choo Phone: (private) 222222 Email: (private) benchoo@nus.edu.sg Address: (private) 222, beta street Tags: [secretive]
+|| Index 2: Person could not be found in address book
+|| Index 4: Person could not be found in address book
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. test multipledeletea Phone: 1234 Email: testmd1@gmail.com Address: John street, block 123, #01-01 Tags: 
+|| 	2. test multipledeletec Phone: 1236 Email: testmd3@gmail.com Address: John street, block 123, #01-03 Tags: 
+||
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 100 20 1]
+|| Deleted Person: test multipledeletea Phone: 1234 Email: testmd1@gmail.com Address: John street, block 123, #01-01 Tags: 
+|| Index 100: The person index provided is invalid
+|| Index 20: The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 
+||
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  exit]

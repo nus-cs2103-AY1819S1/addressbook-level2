@@ -139,6 +139,22 @@
   # listing indexes get updated on next request
   delete 1
   list
+  
+  # add contacts to test for multiple delete functionality
+  add test multipledeletea p/1234 e/testmd1@gmail.com a/John street, block 123, #01-01
+  add test multipledeleteb p/1235 e/testmd2@gmail.com a/John street, block 123, #01-02
+  add test multipledeletec p/1236 e/testmd3@gmail.com a/John street, block 123, #01-03
+  list
+    
+  # should delete multiple contacts
+  delete 2 4
+    
+  # should catch attempt to delete something that is deleted
+  delete 1 2 4
+  list
+    
+  # should catch invalid index
+  delete 100 20 1
 
 ##########################################################
 # test clear command

@@ -32,7 +32,7 @@ public class Formatter {
         for (String m : message) {
             result.append(LINE_PREFIX + m.replace("\n", LS + LINE_PREFIX)).append("\n");
         }
-        return result.toString();
+        return result.toString().trim();
     }
     
     /**
