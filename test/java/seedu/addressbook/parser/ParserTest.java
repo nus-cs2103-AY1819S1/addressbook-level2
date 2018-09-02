@@ -90,29 +90,7 @@ public class ParserTest {
     /*
      * Tests for single index argument commands ===============================================================
      */
-
-    @Test
-    public void parse_deleteCommandNoArgs_errorMessage() {
-        final String[] inputs = { "delete", "delete " };
-        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
-        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
-    }
-
-    @Test
-    public void parse_deleteCommandArgsIsNotSingleNumber_errorMessage() {
-        final String[] inputs = { "delete notAnumber ", "delete 8*wh12", "delete 1 2 3 4 5" };
-        final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
-        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
-    }
-
-    @Test
-    public void parse_deleteCommandNumericArg_indexParsedCorrectly() {
-        final int testIndex = 1;
-        final String input = "delete " + testIndex;
-        final DeleteCommand result = parseAndAssertCommandType(input, DeleteCommand.class);
-        assertEquals(result.getTargetIndex(), testIndex);
-    }
-
+    
     @Test
     public void viewCommandNoArgs_errorMessage() {
         final String[] inputs = { "view", "view " };
@@ -157,6 +135,41 @@ public class ParserTest {
         final ViewAllCommand result = parseAndAssertCommandType(input, ViewAllCommand.class);
         assertEquals(result.getTargetIndex(), testIndex);
     }
+    
+    /*
+     * Test for multiple index commands (Currently only delete command supports it) ========================
+     */
+
+    @Test
+    public void parse_deleteCommandNoArgs_errorMessage() {
+        final String[] inputs = { "delete", "delete " };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_deleteCommandArgsIsNotNumber_errorMessage() {
+        final String[] inputs = { "delete notAnumber ", "delete 8*wh12" };
+        final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_deleteCommandNumericArg_indexParsedCorrectly() {
+        final int testIndex = 1;
+        final String input = "delete " + testIndex;
+        final DeleteCommand result = parseAndAssertCommandType(input, DeleteCommand.class);
+        assertEquals(result.getTargetIndex(), testIndex);
+    }
+    
+    @Test
+    public void parse_deleteMultipleNumericArg_indexParsedCorrectly() {
+        final String input = "delete 1 2 3";
+        final Set<Integer> expectedSet = new HashSet<>(Arrays.asList(1, 2, 3));
+        final DeleteCommand result = parseAndAssertCommandType(input, DeleteCommand.class);
+        assertTrue(result.getTargetIndexes().equals(expectedSet));
+    }
+    
 
     /*
      * Tests for find persons by keyword in name command ===================================================

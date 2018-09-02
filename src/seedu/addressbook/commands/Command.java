@@ -4,7 +4,10 @@ import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
 
@@ -14,13 +17,17 @@ import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
 public class Command {
     protected AddressBook addressBook;
     protected List<? extends ReadOnlyPerson> relevantPersons;
-    private int targetIndex = -1;
+//    private int[] targetIndexes;
+    private Set<Integer> targetIndexes;
 
     /**
-     * @param targetIndex last visible listing index of the target person
+     * @param _targetIndexes last visible listing indexes of the target persons
      */
-    public Command(int targetIndex) {
-        this.setTargetIndex(targetIndex);
+    public Command(int... _targetIndexes) {
+        targetIndexes = new HashSet<>();
+        for (int i = 0; i < _targetIndexes.length; i++) {
+            targetIndexes.add(_targetIndexes[i]);
+        }
     }
 
     protected Command() {
@@ -60,11 +67,15 @@ public class Command {
         return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
     }
 
-    public int getTargetIndex() {
-        return targetIndex;
+    protected ReadOnlyPerson getTargetPerson(int targetIndex) throws IndexOutOfBoundsException {
+        return relevantPersons.get(targetIndex - DISPLAYED_INDEX_OFFSET);
+    }
+    
+    public Set<Integer> getTargetIndexes() {
+        return targetIndexes;
     }
 
-    public void setTargetIndex(int targetIndex) {
-        this.targetIndex = targetIndex;
+    public int getTargetIndex() {
+        return (int) targetIndexes.toArray()[0];
     }
 }

@@ -59,6 +59,14 @@ public class Formatter {
         }
         return formatted.toString();
     }
+    
+    public static String formatConcatResultMsg(String existingMsg, String msgToAdd) {
+        if (existingMsg.equals("")) {
+            return msgToAdd;
+        } else {
+            return existingMsg + "\n" + msgToAdd;
+        }
+    }
 
     /**
      * Formats a string as a viewable indexed list item.
