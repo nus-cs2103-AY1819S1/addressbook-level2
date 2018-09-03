@@ -41,6 +41,15 @@ public class StorageFile {
         }
     }
 
+    /**
+     * Signals that some error has occured while trying to write data to the storage file.
+     */
+    public static class ReadOnlyException extends Exception {
+        public ReadOnlyException(String message) {
+            super(message);
+        }
+    }
+
     public final Path path;
 
     /**
@@ -73,12 +82,12 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
+    public void save(AddressBook addressBook) throws ReadOnlyException {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
-            throw new StorageOperationException("Error writing to file: " + path);
+            throw new ReadOnlyException("Error writing to file: " + path);
         }
     }
 
