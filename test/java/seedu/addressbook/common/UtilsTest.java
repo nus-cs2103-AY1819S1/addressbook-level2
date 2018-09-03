@@ -12,6 +12,9 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() {
+        // no item
+        assertFalse(Utils.isAnyNull());
+
         // only one item
         assertTrue(Utils.isAnyNull((Object) null));
         assertFalse(Utils.isAnyNull("abc"));
