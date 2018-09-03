@@ -26,17 +26,19 @@ public class Address {
      *
      * @throws IllegalValueException if given address string is invalid.
      */
-    public Address(String[] addressDetails, boolean isPrivate) throws IllegalValueException {
-        if (!isValidAddress(addressDetails)) {
-            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
-        }
-        this.block = new Block(addressDetails[0]);
-        this.street = new Street(addressDetails[1]);
-        this.unit = new Unit(addressDetails[2]);
-        this.postalCode = new PostalCode(addressDetails[3]);
+    public Address(String address, boolean isPrivate) throws IllegalValueException {
+        String[] addressDetails = address.split(", ");
+//        if (!isValidAddress(addressDetails)) {
+//            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
+//        }
+//        this.block = new Block(addressDetails[0]);
+//        this.street = new Street(addressDetails[1]);
+//        this.unit = new Unit(addressDetails[2]);
+//        this.postalCode = new PostalCode(addressDetails[3]);
 
         this.isPrivate = isPrivate;
-        this.value = constructAddress();
+        //this.value = constructAddress();
+        this.value = address;
     }
 
     /**
