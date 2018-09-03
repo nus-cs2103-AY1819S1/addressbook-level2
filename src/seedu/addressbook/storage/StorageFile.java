@@ -87,6 +87,10 @@ public class StorageFile {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
+            if (!path.toFile().canWrite()) {
+                throw new StorageReadOnlyException("File has READ ONlY permission: " + path);
+            }
+            
             throw new StorageOperationException("Error writing to file: " + path);
         }
     }
