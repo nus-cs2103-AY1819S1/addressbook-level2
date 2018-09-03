@@ -47,7 +47,7 @@ public class UtilsTest {
     @Test
     public void isAnyNull() throws Exception{
         // no null
-	    assertNoNull(); // void
+        assertNoNull(); // void
         assertNoNull(1);
         assertNoNull("");
         assertNoNull("abc");
