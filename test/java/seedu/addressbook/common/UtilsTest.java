@@ -1,6 +1,7 @@
 package seedu.addressbook.common;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -42,5 +43,34 @@ public class UtilsTest {
 
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
+    }
+
+    @Test
+    public void isAnyNull() throws Exception {
+        //Empty list
+        assertNoneNull();
+
+        //Only one non-null
+        assertNoneNull(1);
+
+        //Only one null
+        assertSomeNull(null);
+
+        //Many, non-null
+        assertNoneNull(1, 2, 3, 4);
+
+        //Many, some null
+        assertSomeNull(1, null, 3, null, 5);
+
+        //Many, all null
+        assertSomeNull(null, null, null);
+    }
+
+    private void assertNoneNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
+    }
+
+    private void assertSomeNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
     }
 }
