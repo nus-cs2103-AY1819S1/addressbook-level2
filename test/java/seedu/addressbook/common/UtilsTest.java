@@ -36,11 +36,37 @@ public class UtilsTest {
         assertNotUnique(null, "a", "b", null);
     }
 
+    @Test
+    public void isAnyNull() {
+        // empty argument
+        assertIsNotNull();
+
+        // Null in one of the argument
+        assertIsNull("abc", null, "def");
+        assertIsNull('a', 1, null, 2.1);
+        assertIsNull(null, Integer.valueOf(1), 1);
+        assertIsNull(1, 2.1, 'a', null);
+        assertIsNull(null, null, null);
+
+        // No null supplied
+        assertIsNotNull("abc", "def");
+        assertIsNotNull('a', "abc", 1, 2.1);
+        assertIsNotNull(Double.valueOf(1), Integer.valueOf(2));
+    }
+
     private void assertAreUnique(Object... objects) {
         assertTrue(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
 
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
+    }
+
+    private void assertIsNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+
+    private void assertIsNotNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 }
