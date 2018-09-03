@@ -111,6 +111,9 @@ public class Main {
             CommandResult result = command.execute();
             storage.save(addressBook);
             return result;
+        } catch (StorageOperationException e) {
+            ui.showToUser("File is read-only: " + e.getMessage());
+            throw new RuntimeException(e);
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
