@@ -10,7 +10,7 @@ import seedu.addressbook.data.tag.Tag;
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated.
  */
-public class Person implements ReadOnlyPerson, Comparable<Person> {
+public class Person implements ReadOnlyPerson {
 
     private Name name;
     private Phone phone;
@@ -86,11 +86,6 @@ public class Person implements ReadOnlyPerson, Comparable<Person> {
     @Override
     public String toString() {
         return getAsTextShowAll();
-    }
-
-    @Override
-    public int compareTo(Person p) {
-        return this.name.compareTo(p.name);
     }
 
 }
