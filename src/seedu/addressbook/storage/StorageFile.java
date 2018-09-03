@@ -90,7 +90,7 @@ public class StorageFile {
             if (!path.toFile().canWrite()) {
                 throw new StorageReadOnlyException("File has READ ONlY permission: " + path);
             }
-            
+
             throw new StorageOperationException("Error writing to file: " + path);
         }
     }
