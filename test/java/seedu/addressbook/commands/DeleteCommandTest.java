@@ -1,7 +1,5 @@
 package seedu.addressbook.commands;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -20,6 +18,8 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.ui.TextUi;
 import seedu.addressbook.util.TestUtil;
+
+import static org.junit.Assert.assertEquals;
 
 public class DeleteCommandTest {
 
@@ -109,7 +109,7 @@ public class DeleteCommandTest {
 
         CommandResult result = deleteCommand.execute();
 
-        assertEquals(expectedMessage, result.feedbackToUser);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedAddressBook.getAllPersons(), actualAddressBook.getAllPersons());
     }
 

@@ -1,10 +1,5 @@
 package seedu.addressbook.commands;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -23,6 +18,8 @@ import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.util.TestUtil;
+
+import static org.junit.Assert.*;
 
 public class AddCommandTest {
     private static final List<ReadOnlyPerson> EMPTY_PERSON_LIST = Collections.emptyList();
@@ -126,7 +123,7 @@ public class AddCommandTest {
         assertTrue(people.contains(p));
         assertEquals(1, people.immutableListView().size());
         assertFalse(result.getRelevantPersons().isPresent());
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, p), result.feedbackToUser);
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, p), result.getFeedbackToUser());
     }
 
     @Test
@@ -139,7 +136,7 @@ public class AddCommandTest {
         CommandResult result = command.execute();
 
         assertFalse(result.getRelevantPersons().isPresent());
-        assertEquals(AddCommand.MESSAGE_DUPLICATE_PERSON, result.feedbackToUser);
+        assertEquals(AddCommand.MESSAGE_DUPLICATE_PERSON, result.getFeedbackToUser());
         UniquePersonList people = book.getAllPersons();
         assertTrue(people.contains(p));
         assertEquals(1, people.immutableListView().size());

@@ -1,7 +1,5 @@
 package seedu.addressbook.commands;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,6 +18,8 @@ import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.util.TestUtil;
 import seedu.addressbook.util.TypicalPersons;
+
+import static org.junit.Assert.assertEquals;
 
 public class ViewCommandTest {
     private TypicalPersons td = new TypicalPersons();
@@ -143,7 +143,7 @@ public class ViewCommandTest {
         CommandResult result = viewCommand.execute();
 
         // feedback message is as expected and there are no relevant persons returned.
-        assertEquals(expectedMessage, result.feedbackToUser);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(Optional.empty(), result.getRelevantPersons());
 
         // addressbook was not modified.
