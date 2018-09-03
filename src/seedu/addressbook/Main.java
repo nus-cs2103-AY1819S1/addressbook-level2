@@ -1,5 +1,7 @@
 package seedu.addressbook;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +37,15 @@ public class Main {
 
     public static void main(String... launchArgs) {
         new Main().run(launchArgs);
+    }
+
+    /**
+     * Signals that storage file has been changed to read-only.
+     */
+    public static class FileReadOnlyException extends Exception{
+        public FileReadOnlyException(String message) {
+            super(message);
+        }
     }
 
     /** Runs the program until termination.  */
@@ -79,14 +90,19 @@ public class Main {
     }
 
     /** Reads the user command and executes it, until the user issues the exit command.  */
-    private void runCommandLoopUntilExitCommand() {
+    private void runCommandLoopUntilExitCommand(){
         Command command;
         do {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
-            CommandResult result = executeCommand(command);
-            recordResult(result);
-            ui.showResultToUser(result);
+            try {
+                CommandResult result = executeCommand(command);
+                recordResult(result);
+                ui.showResultToUser(result);
+            } catch (FileReadOnlyException e) {
+                System.err.println(e.getMessage());
+            }
+
 
         } while (!ExitCommand.isExit(command));
     }
@@ -105,12 +121,14 @@ public class Main {
      * @param command user command
      * @return result of the command
      */
-    private CommandResult executeCommand(Command command)  {
+    private CommandResult executeCommand(Command command) throws FileReadOnlyException {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();
             storage.save(addressBook);
             return result;
+        } catch (StorageOperationException e) {
+            throw new FileReadOnlyException("AddressBook.txt is in read-only");
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
