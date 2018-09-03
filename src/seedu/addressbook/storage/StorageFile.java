@@ -41,6 +41,15 @@ public class StorageFile {
         }
     }
 
+    /**
+     * Signals that some error has occured while trying to write to file
+     */
+    public static class StorageReadOnlyException extends Exception {
+        public StorageReadOnlyException(String message) {
+            super(message);
+        }
+    }
+
     public final Path path;
 
     /**
@@ -73,11 +82,15 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
+    public void save(AddressBook addressBook) throws StorageOperationException, StorageReadOnlyException {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
+            if (!path.toFile().canWrite()) {
+                throw new StorageReadOnlyException("File has READ ONlY permission: " + path);
+            }
+
             throw new StorageOperationException("Error writing to file: " + path);
         }
     }
