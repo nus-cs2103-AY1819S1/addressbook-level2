@@ -44,7 +44,7 @@ public class AddCommand extends Command {
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
-                new Address(address.split(", "), isAddressPrivate),
+                new Address(address, isAddressPrivate),
                 tagSet
         );
     }
