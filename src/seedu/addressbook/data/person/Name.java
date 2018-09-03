@@ -60,4 +60,21 @@ public class Name {
         return fullName.hashCode();
     }
 
+    public boolean isSimilar(Name other) {
+        String[] ownName = this.fullName.trim().split("\\s");
+        String[] otherName = other.fullName.trim().split("\\s");
+
+        boolean isMatch = false;
+
+        for (String word: otherName) {
+            for (String key: ownName) {
+                if (word.matches("(?i:" + key + ")")) {
+                    isMatch = true;
+                    break;
+                }
+            }
+            if (!isMatch) { return false; }
+        }
+        return true;
+    }
 }
