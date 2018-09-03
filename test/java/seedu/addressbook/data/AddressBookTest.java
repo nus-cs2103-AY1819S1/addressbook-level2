@@ -1,6 +1,7 @@
 package seedu.addressbook.data;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.addressbook.util.TestUtil.getSize;
 import static seedu.addressbook.util.TestUtil.isEmpty;
@@ -77,6 +78,11 @@ public class AddressBookTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void addressBook_nonNull_returnsTrue() {
+        assertNotNull(defaultAddressBook);
+    }
 
     @Test
     public void addPerson_personAlreadyInList_throwsDuplicatePersonException() throws Exception {
