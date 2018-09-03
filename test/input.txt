@@ -141,6 +141,23 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+   # add more people
+   add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+   add Charlie Black p/123456 e/charlie@gmail.com a/678, theta street
+
+   # before sorting
+   list
+
+   # run sort
+   sort
+
+   # after sorting
+   list
+
+##########################################################
 # test clear command
 ##########################################################
 
