@@ -1,9 +1,5 @@
 package seedu.addressbook.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -25,6 +21,8 @@ import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
+
+import static org.junit.Assert.*;
 
 public class TestUtil {
     /**
@@ -135,7 +133,16 @@ public class TestUtil {
 
     @Test
     public void testIsAnyNull() {
-        boolean expectedOutput = false;
-        assertEquals(expectedOutput, Utils.isAnyNull("", "\n \n", " "));
+        //the expected output should be true
+        assertTrue(Utils.isAnyNull((Object)null));
+        assertTrue(Utils.isAnyNull("abc", null));
+        assertTrue(Utils.isAnyNull(1, "abc", null));
+        assertTrue(Utils.isAnyNull(new Object(), null, 1, null));
+
+        //the expected output should be false
+        assertFalse(Utils.isAnyNull(""));
+        assertFalse(Utils.isAnyNull(1, 2));
+        assertFalse(Utils.isAnyNull("abc", 1, 'a'));
+        assertFalse(Utils.isAnyNull(new Object()));
     }
 }
