@@ -48,10 +48,29 @@ public class Name {
      * Two names are considered similar if ...
      */
     public boolean isSimilar(Name other) {
-        if(this.equals(other)) { // deals with null cases and case sensitivity
+        if (other == null) {
+            return false;
+        }
+        if (this.equals(other)) { // deals with null cases and case sensitivity
             return true;
         }
-
+        if (this.fullName.equalsIgnoreCase(other.fullName)) { // handles different case
+            return true;
+        }
+        if (this.fullName.contains(other.fullName)) {
+            return true;
+        }
+        List<String> wordsInOthersName = other.getWordsInName();
+        List<String> wordsInThisName = this.getWordsInName();
+        for(String wordOthers : wordsInOthersName) {
+            for(String wordThis : wordsInThisName) {
+                if(wordOthers.equals(wordThis)) {
+                    return true;
+                } else if (wordOthers.equalsIgnoreCase((wordThis))) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
