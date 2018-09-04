@@ -39,6 +39,15 @@ public class AddressBook {
     }
 
     /**
+     * Edits a person in the address book.
+     *
+     * @throws DuplicatePersonException if an equivalent person already exists.
+     */
+    public void editPerson(String index, Person toAdd) throws DuplicatePersonException {
+        allPersons.edit(index, toAdd);
+    }
+
+    /**
      * Returns true if an equivalent person exists in the address book.
      */
     public boolean containsPerson(ReadOnlyPerson key) {

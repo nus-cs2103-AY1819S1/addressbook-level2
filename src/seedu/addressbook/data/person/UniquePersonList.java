@@ -111,6 +111,17 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Edits person in list based on index.
+     *
+     */
+    public void edit(String index, Person toEdit) throws DuplicatePersonException {
+        if (contains(toEdit)) {
+            throw new DuplicatePersonException();
+        }
+        internalList.set(Integer.parseInt(index)-1, toEdit);
+    }
+
+    /**
      * Removes the equivalent person from the list.
      *
      * @throws PersonNotFoundException if no such person could be found in the list.
