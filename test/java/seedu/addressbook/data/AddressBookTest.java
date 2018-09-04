@@ -140,6 +140,8 @@ public class AddressBookTest {
     public void isSimilar() throws Exception {
         Name john = new Name("john");
         assertTrue(john.isSimilar(john)); // same self
-        assertFalse(john.isSimilar(null));
+       assertFalse(john.isSimilar(null));
+
+        assertTrue(john.isSimilar(new Name("JOHN")));
     }
 }
