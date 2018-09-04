@@ -57,9 +57,6 @@ public class Name {
         if (this.fullName.equalsIgnoreCase(other.fullName)) { // handles different case
             return true;
         }
-        if (this.fullName.contains(other.fullName)) {
-            return true;
-        }
         List<String> wordsInOthersName = other.getWordsInName();
         List<String> wordsInThisName = this.getWordsInName();
         for(String wordOthers : wordsInOthersName) {
