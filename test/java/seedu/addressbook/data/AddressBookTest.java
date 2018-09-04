@@ -141,4 +141,12 @@ public class AddressBookTest {
         assertTrue(aliceBetsy.getEmail().getPrintableString().equals("Email: " + aliceBetsy.getEmail().toString()));
         assertTrue(aliceBetsy.getAddress().getPrintableString().equals("Address: " + aliceBetsy.getAddress().toString()));
     }
+
+    @Test
+    public void getSequenceNumber() throws Exception {
+        assertTrue(aliceBetsy.sequenceNumber == 1);
+        assertTrue(bobChaplin.sequenceNumber == 2);
+        assertTrue(charlieDouglas.sequenceNumber == 3);
+        assertTrue(davidElliot.sequenceNumber == 4);
+    }
 }
