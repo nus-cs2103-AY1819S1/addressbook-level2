@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.ReadOnlyFileSystemException;
 import java.util.List;
 
 import seedu.addressbook.data.AddressBook;
@@ -103,6 +104,8 @@ public class StorageFile {
             throw new StorageOperationException("Error writing to file: " + path);
         } catch (IllegalValueException ive) {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
+        } catch (ReadOnlyFileSystemException roe) {
+            throw new StorageOperationException("File has ReadOnly access.");
         }
     }
 
