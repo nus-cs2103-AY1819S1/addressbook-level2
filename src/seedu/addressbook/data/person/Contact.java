@@ -1,6 +1,7 @@
 package seedu.addressbook.data.person;
+import seedu.addressbook.common.Printable;
 
-public class Contact {
+public abstract class Contact implements Printable {
     public String value;
     protected boolean isPrivate;
 
