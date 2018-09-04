@@ -1,11 +1,5 @@
 package seedu.addressbook.data;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static seedu.addressbook.util.TestUtil.getSize;
-import static seedu.addressbook.util.TestUtil.isEmpty;
-import static seedu.addressbook.util.TestUtil.isIdentical;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,6 +18,10 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.data.tag.Tag;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static seedu.addressbook.util.TestUtil.*;
 
 public class AddressBookTest {
     private Tag tagPrizeWinner;
@@ -134,5 +132,13 @@ public class AddressBookTest {
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void getPrintableString() throws Exception {
+        assertTrue(aliceBetsy.getName().getPrintableString().equals("Name: " + aliceBetsy.getName().toString()));
+        assertTrue(aliceBetsy.getPhone().getPrintableString().equals("Phone: " + aliceBetsy.getPhone().toString()));
+        assertTrue(aliceBetsy.getEmail().getPrintableString().equals("Email: " + aliceBetsy.getEmail().toString()));
+        assertTrue(aliceBetsy.getAddress().getPrintableString().equals("Address: " + aliceBetsy.getAddress().toString()));
     }
 }
