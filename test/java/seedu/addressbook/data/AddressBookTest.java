@@ -33,6 +33,7 @@ public class AddressBookTest {
     private Person bobChaplin;
     private Person charlieDouglas;
     private Person davidElliot;
+    private Person johnSmith;
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
@@ -63,11 +64,19 @@ public class AddressBookTest {
                                     new Address("10 Science Drive", false),
                                     Collections.singleton(tagScientist));
 
-        davidElliot    = new Person(new Name("David Elliot"),
+        davidElliot = new Person(new Name("David Elliot"),
                                     new Phone("84512575", false),
                                     new Email("douglas@nuscomputing.com", false),
                                     new Address("11 Arts Link", false),
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
+
+        johnSmith = new Person(
+                new Name("John K Smith"),
+                new Phone("91234567", false),
+                new Email("johnsmith@example.org", false),
+                new Address("11 Arts Link", false),
+                new HashSet<>(Arrays.asList(tagScientist, tagPrizeWinner))
+        );
 
         emptyAddressBook = new AddressBook();
         defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
@@ -140,5 +149,20 @@ public class AddressBookTest {
         assertTrue(aliceBetsy.getPhone().getPrintableString().equals("Phone: " + aliceBetsy.getPhone().toString()));
         assertTrue(aliceBetsy.getEmail().getPrintableString().equals("Email: " + aliceBetsy.getEmail().toString()));
         assertTrue(aliceBetsy.getAddress().getPrintableString().equals("Address: " + aliceBetsy.getAddress().toString()));
+    }
+
+    @Test
+    public void isSimilar() throws Exception {
+        Name johnSmithName = johnSmith.getName();
+        assertFalse(johnSmithName.isSimilar(null));
+        assertTrue(johnSmithName.isSimilar(new Name("John K Smith")));
+        assertTrue(johnSmithName.isSimilar(new Name("John K SMITh")));
+        assertTrue(johnSmithName.isSimilar(new Name("John Smith")));
+        assertTrue(johnSmithName.isSimilar(new Name("Smith")));
+        assertTrue(johnSmithName.isSimilar(new Name("John K")));
+        assertFalse(johnSmithName.isSimilar(new Name("Damith C Rajapakse")));
+        assertFalse(johnSmithName.isSimilar(new Name("Damith Rajapakse")));
+        assertFalse(johnSmithName.isSimilar(new Name("Damith")));
+        assertFalse(johnSmithName.isSimilar(new Name("Da Myth")));
     }
 }

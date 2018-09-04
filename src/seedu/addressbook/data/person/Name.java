@@ -50,6 +50,25 @@ public class Name implements Printable {
     }
 
     /**
+     * Returns whether a name is relatively similar to fullName
+     */
+    public boolean isSimilar(Name other) {
+        if (!(other instanceof Name)) {
+            return false;
+        }
+        String[] splittedOther = other.fullName.split("\\s+");
+        String[] splittedThis = this.fullName.split("\\s+");
+        for (String o : splittedOther) {
+            for (String t : splittedThis) {
+                if (o.equals(t)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Returns a printable string representation of name.
      */
     @Override
