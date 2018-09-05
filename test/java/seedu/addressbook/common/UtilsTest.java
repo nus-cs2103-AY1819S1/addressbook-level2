@@ -68,5 +68,9 @@ public class UtilsTest {
         // One string
         assertIsNull("abc", null);
         assertIsNull(null, "abc");
+
+        // Two string
+        assertIsNull("abc", null, "def");
+        assertIsNull(null, "abc", "def");
     }
 }
