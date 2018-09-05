@@ -8,23 +8,21 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import seedu.addressbook.commands.ClearCommand;
 
 public class UtilsTest {
 
-    @Test (expected = NullPointerException.class)
-    public void testAnyObjectNull() {
-        // 1 null
-        assertTrue(Utils.isAnyNull(null));
+    @Test //(expected = NullPointerException.class)
+    public void isAnyNull() {
+        // empty
+        assertFalse(Utils.isAnyNull());
         // multiple null
         assertTrue(Utils.isAnyNull(null, null, null));
-
         // 1 object
-        assertFalse(Utils.isAnyNull(new Object()));
+        assertFalse(Utils.isAnyNull("123"));
         // multiple objects
-        assertFalse(Utils.isAnyNull(new Object(), new Object(), new Object()));
+        assertFalse(Utils.isAnyNull("123", 123));
         // mixed null and objects
-        assertTrue(Utils.isAnyNull(null, new Object(), new Object()));
+        assertTrue(Utils.isAnyNull(null, 123, "abc"));
     }
 
     @Test
