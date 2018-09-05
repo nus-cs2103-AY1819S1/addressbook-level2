@@ -65,12 +65,16 @@ public class UtilsTest {
         // No string
         assertIsNull((Object) null);
 
-        // One string
+        // Two string
         assertIsNull("abc", null);
         assertIsNull(null, "abc");
 
-        // Two string
+        // Three string
         assertIsNull("abc", null, "def");
         assertIsNull(null, "abc", "def");
+
+        // Four string
+        assertIsNull("abc", null, "def", "ghi");
+        assertIsNull(null, "abc", "def", "ghi");
     }
 }
