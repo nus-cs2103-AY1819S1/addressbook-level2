@@ -21,10 +21,14 @@ public class UtilsTest {
         assertAreUnique(1);
         assertAreUnique("");
         assertAreUnique("abc");
+        assertAreUnique(2.0);
 
         // all objects unique
         assertAreUnique("abc", "ab", "a");
         assertAreUnique(1, 2);
+        assertAreUnique(1, 2, null);
+        assertAreUnique("a", "b", null);
+        assertAreUnique("", null);
 
         // some identical objects
         assertNotUnique("abc", "abc");
@@ -34,6 +38,7 @@ public class UtilsTest {
         assertNotUnique(null, 1, Integer.valueOf(1));
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
+        assertNotUnique("", "", null);
     }
 
     private void assertAreUnique(Object... objects) {
