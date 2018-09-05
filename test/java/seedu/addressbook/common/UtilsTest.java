@@ -24,7 +24,6 @@ public class UtilsTest {
         assertIsNotNull("qwerty", 123, "hello", "hi");
 
         // all null or mix of null with objects
-        assertIsNull(null);
         assertIsNull((Object) null);
         assertIsNull(null, null);
         assertIsNull("test", null);
