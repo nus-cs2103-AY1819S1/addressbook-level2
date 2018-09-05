@@ -44,7 +44,7 @@ public class UtilsTest {
         assertIsNotNull(Integer.valueOf(1));
 
         // objects with one null
-        assertIsNull(null);
+        assertIsNull((Object) null);
         assertIsNull(1, null);
         assertIsNull("abc", null);
         assertIsNull(Integer.valueOf(1), null);
