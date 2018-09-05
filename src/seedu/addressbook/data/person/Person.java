@@ -17,6 +17,9 @@ public class Person implements ReadOnlyPerson {
     private Email email;
     private Address address;
 
+    public static int nextSequenceNumber = 1;
+    public int sequenceNumber;
+
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -28,6 +31,8 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.sequenceNumber = Person.nextSequenceNumber;
+        Person.nextSequenceNumber++;
     }
 
     /**
