@@ -14,10 +14,9 @@ import seedu.addressbook.storage.StorageFile;
 import seedu.addressbook.storage.StorageFile.InvalidStorageFilePathException;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import seedu.addressbook.ui.TextUi;
-
 // Added Comment 2
 
-// Another feature
+// New feature no. 2
 
 /**
  * Entry point of the Address Book application.
