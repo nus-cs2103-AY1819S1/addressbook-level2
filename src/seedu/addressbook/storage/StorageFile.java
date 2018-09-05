@@ -23,6 +23,13 @@ public class StorageFile {
      */
 
     /**
+     * Signals that storage file made read-only while program is running
+     */
+    public static class ReadOnlyStorageFileException {
+        
+    }
+
+    /**
      * Signals that the given file path does not fulfill the storage filepath constraints.
      */
     public static class InvalidStorageFilePathException extends IllegalValueException {
