@@ -15,6 +15,7 @@ import seedu.addressbook.storage.StorageFile.InvalidStorageFilePathException;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import seedu.addressbook.ui.TextUi;
 
+// Comment
 
 /**
  * Entry point of the Address Book application.
