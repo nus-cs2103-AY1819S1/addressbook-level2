@@ -21,7 +21,6 @@ import seedu.addressbook.ui.TextUi;
 
 // Another feature
 
-
 /**
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
