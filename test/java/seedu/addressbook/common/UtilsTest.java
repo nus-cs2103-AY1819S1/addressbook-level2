@@ -1,15 +1,27 @@
 package seedu.addressbook.common;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class UtilsTest {
 
+    @Test
+    public void isAnyNull() {
+        //Solution below adapted from the current file, UtilsTest.java (line 32-35) and from
+        //https://stackoverflow.com/questions/7123555/assertnull-should-be-used-or-assertnotnull
+
+        // check null
+        assertNull(null);
+
+        // check not null
+        assertNotNull(2);
+        assertNotNull("");
+        assertNotNull("def");
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
