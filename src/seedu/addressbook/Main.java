@@ -16,6 +16,8 @@ import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import seedu.addressbook.ui.TextUi;
 // Added Comment 2
 
+// New feature no. 2
+
 /**
  * Entry point of the Address Book application.
  * Initializes the application and starts the interaction with the user.
