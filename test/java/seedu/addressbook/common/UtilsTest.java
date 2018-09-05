@@ -15,17 +15,19 @@ public class UtilsTest {
     public void elementsAreUnique() throws Exception {
         // empty list
         assertAreUnique();
+        assertIsAnyNull();
 
         // only one object
         assertAreUnique((Object) null);
         assertAreUnique(1);
         assertAreUnique("");
         assertAreUnique("abc");
+        assertIsAnyNull(1);
 
         // all objects unique
         assertAreUnique("abc", "ab", "a");
         assertAreUnique(1, 2);
-
+        assertIsAnyNull( 1, 2);
         // some identical objects
         assertNotUnique("abc", "abc");
         assertNotUnique("abc", "", "abc", "ABC");
@@ -43,4 +45,6 @@ public class UtilsTest {
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
+
+    private void assertIsAnyNull(Object... objects) { assertFalse(Utils.isAnyNull(Arrays.asList(objects))); }
 }
