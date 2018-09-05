@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * Class to test for Utils error
+ */
 public class UtilsTest {
 
 
