@@ -1,5 +1,6 @@
 package seedu.addressbook.common;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -10,6 +11,19 @@ import org.junit.Test;
 
 public class UtilsTest {
 
+    @Test //(expected = NullPointerException.class)
+    public void isAnyNull() {
+        // empty
+        assertFalse(Utils.isAnyNull());
+        // multiple null
+        assertTrue(Utils.isAnyNull(null, null, null));
+        // 1 object
+        assertFalse(Utils.isAnyNull("123"));
+        // multiple objects
+        assertFalse(Utils.isAnyNull("123", 123));
+        // mixed null and objects
+        assertTrue(Utils.isAnyNull(null, 123, "abc"));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
