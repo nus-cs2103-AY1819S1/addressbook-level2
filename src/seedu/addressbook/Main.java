@@ -17,6 +17,7 @@ import seedu.addressbook.ui.TextUi;
 // Added Comment 2
 
 // New feature no. 2
+// retarded
 
 /**
  * Entry point of the Address Book application.
