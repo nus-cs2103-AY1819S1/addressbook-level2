@@ -19,7 +19,10 @@ import seedu.addressbook.ui.TextUi;
 // New feature no. 2
 // retarded
 
-// Add master country
+// Add country 1
+// Add country 2
+// Add country 3
+
 
 /**
  * Entry point of the Address Book application.
