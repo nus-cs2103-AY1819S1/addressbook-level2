@@ -45,7 +45,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void elementsAreUnique() throws Exception {
+    public void elementsAreNull() throws Exception {
         // empty list
         assertNotNull();
 
