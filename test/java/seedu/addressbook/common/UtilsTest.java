@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class UtilsTest {
 
     @Test
-    public void isAnyNull() {
+    public void isAnyNull() throws Exception {
         //Solution below adapted from the current file, UtilsTest.java (line 32-35) and from
         //https://stackoverflow.com/questions/7123555/assertnull-should-be-used-or-assertnotnull
 
