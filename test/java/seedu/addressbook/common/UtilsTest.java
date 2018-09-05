@@ -48,13 +48,22 @@ public class UtilsTest {
     @Test
     public void isAnyNull() {
 
-        // empty arguments
-        assertAnyNull();
-
+        // test single null value
         assertAnyNull((Object)null);
-
         assertAnyNull(null, 3, "Hello");
 
+        // test multiple null values
+        assertAnyNull(null, null, null);
+        assertAnyNull(3, null, true, null, "Hello", null);
+
+        // test single non null value
+        assertAnyNotNull("I am not null!");
+        assertAnyNotNull(5);
+        assertAnyNotNull(true);
+
+        // test multiple non null values
+        assertAnyNotNull(false, true);
+        assertAnyNotNull(3, 4, false, 0.123123, "Non null");
 
     }
 
