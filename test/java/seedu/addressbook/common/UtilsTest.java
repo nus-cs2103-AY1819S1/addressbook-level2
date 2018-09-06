@@ -42,6 +42,9 @@ public class UtilsTest {
         assertTrue(Utils.isAnyNull(1, 2, null, null, 13));
         assertTrue(Utils.isAnyNull(null, 1, 2, 3, 5));
         assertTrue(Utils.isAnyNull(1, 2, 3, null));
+        assertTrue(Utils.isAnyNull((Object) null));
+        assertFalse(Utils.isAnyNull());
+        assertFalse(Utils.isAnyNull(new Object[]{}));
         assertFalse(Utils.isAnyNull(1, 2, 3, 4, 5));
     }
 
