@@ -4,6 +4,8 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * Represents a Person's name in the address book.
@@ -48,27 +50,35 @@ public class Name {
      * Two names are considered similar if ...
      */
     public boolean isSimilar(Name other) {
-        if (other == null) {
+        if(other == null) {
             return false;
         }
-        if (this.equals(other)) { // deals with null cases and case sensitivity
-            return true;
-        }
-        if (this.fullName.equalsIgnoreCase(other.fullName)) { // handles different case
-            return true;
-        }
-        List<String> wordsInOthersName = other.getWordsInName();
-        List<String> wordsInThisName = this.getWordsInName();
-        for(String wordOthers : wordsInOthersName) {
-            for(String wordThis : wordsInThisName) {
-                if(wordOthers.equals(wordThis)) {
-                    return true;
-                } else if (wordOthers.equalsIgnoreCase((wordThis))) {
-                    return true;
+        List<String> wordsInOtherName = other.getWordsInName().stream()
+                .map(word -> word.toLowerCase())
+                .collect(Collectors.toList());
+        List<String> wordsInThisName = this.getWordsInName().stream()
+                .map(word -> word.toLowerCase())
+                .collect(Collectors.toList());
+
+        for (String wordOther : wordsInOtherName) {
+            for (String wordThis : wordsInThisName) {
+                if(wordThis.length() <= wordOther.length()) {
+                    if (wordOther.contains(wordThis)) {
+                        return true;
+                    }
+                } else { // wordOther is shorter
+                    if (wordThis.contains(wordOther)) {
+                        return true;
+                    }
                 }
             }
         }
         return false;
+
+        // put list to lower case first, takes care of case sensitivity
+        // take short one then long.contains(short), checks if shorter one is a substring
+        // take the words out and check if any words between short and long are similar
+
     }
 
     @Override
