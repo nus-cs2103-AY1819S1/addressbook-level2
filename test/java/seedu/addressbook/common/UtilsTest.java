@@ -46,7 +46,24 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() throws Exception {
+        //empty list
+        assertDoNotHaveNull();
 
+        // one element( has null)
+        assertHasNull( (Object) null); //one null object
+
+        // one element (no null)
+        assertDoNotHaveNull( 1);
+        assertDoNotHaveNull( "a");
+        assertDoNotHaveNull( "");
+
+        // 2 elements one null object + one number
+        assertDoNotHaveNull( "a",1);
+        assertDoNotHaveNull( "",1);
+        assertHasNull( (Object) null, 1);
+        assertHasNull( (Object) null, "a");
+        assertHasNull( (Object) null, "");
+       
     }
 
     private void assertHasNull(Object... objects) {
