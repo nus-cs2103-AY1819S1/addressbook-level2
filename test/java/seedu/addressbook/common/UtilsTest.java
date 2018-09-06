@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class UtilsTest {
-
+    private static List<Object> objectList = Arrays.asList(1, "", "abc", "ABC", Integer.valueOf(1));
 
     @Test
     public void elementsAreUnique() throws Exception {
@@ -59,7 +59,8 @@ public class UtilsTest {
         // there are no null objects
         assertHasNoNull("abc", "ab", "a");
         assertHasNoNull(1, 2);
-        
+        assertHasNoNull(objectList);
+
         // some null objects
         assertHasNoNull("abc", "abc");
         assertHasNoNull("abc", "", "abc", "ABC");
