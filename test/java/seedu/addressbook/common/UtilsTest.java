@@ -13,10 +13,13 @@ public class UtilsTest {
     @Test
     public void isAnyNull() throws Exception {
 
+        // empty list
+        assertNoNull();
+
         // all objects are not null
         assertNoNull("abc", 1, 2);
         assertNoNull("", "");
-
+        
     }
 
     private void assertHasNull(Object... objects) {
