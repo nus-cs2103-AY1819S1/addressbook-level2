@@ -46,7 +46,14 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() throws Exception {
-    
+
+    }
+
+    private void assertHasNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+    private void assertDoNotHaveNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 
 
