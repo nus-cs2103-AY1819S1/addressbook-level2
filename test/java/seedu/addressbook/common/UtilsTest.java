@@ -3,6 +3,7 @@ package seedu.addressbook.common;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,6 +11,17 @@ import org.junit.Test;
 
 public class UtilsTest {
 
+    @Test
+    public void testIsAnyNull() {
+        assertTrue(Utils.isAnyNull((Object) null));
+        assertTrue(Utils.isAnyNull((Integer) null));
+        assertTrue(Utils.isAnyNull( null, Integer.valueOf(5), "abc"));
+
+        assertFalse(Utils.isAnyNull(Integer.valueOf(5)));
+        assertFalse(Utils.isAnyNull(new ArrayList()));
+        assertFalse(Utils.isAnyNull((Arrays.asList(new int[100]))));
+        assertFalse(Utils.isAnyNull( 5, Integer.valueOf(5), "abc"));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
