@@ -68,6 +68,10 @@ public class Command {
         return targetIndex;
     }
 
+    /**
+     * Set target index.
+     * @param targetIndex
+     */
     public void setTargetIndex(int targetIndex) {
         this.targetIndex = targetIndex;
     }
