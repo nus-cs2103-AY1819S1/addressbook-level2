@@ -9,7 +9,35 @@ import java.util.List;
 import org.junit.Test;
 
 public class UtilsTest {
+    @Test
+    public void isAnyNull() throws Exception {
+        // only one null
+        assertSomeNull((Object) null);
 
+        // only one non null
+        assertNoNull(1);
+        assertNoNull("");
+        assertNoNull("abc");
+
+        // multi, no null
+        assertNoNull("abc", "abc");
+        assertNoNull("abc", "", "abc", "ABC");
+        assertNoNull("", "abc", "a", "abc");
+        assertNoNull(1, Integer.valueOf(1));
+
+        // multi, some null
+        assertSomeNull(null, 1, Integer.valueOf(1));
+        assertSomeNull(null, null);
+        assertSomeNull(null, "a", "b", null);
+    }
+
+    private void assertNoNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
+    }
+
+    private void assertSomeNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
