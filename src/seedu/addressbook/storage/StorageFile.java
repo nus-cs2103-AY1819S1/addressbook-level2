@@ -87,8 +87,8 @@ public class StorageFile {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
-            System.out.print("Error writing to file: " + path);
-//            throw new ReadOnlyStorageFileException("Errorasdnasd writing to file: " + path);
+//            System.out.print("Error: File " + path + " is read only.");
+            throw new ReadOnlyStorageFileException("Error: File " + path + " is read only.");
         }
     }
 
