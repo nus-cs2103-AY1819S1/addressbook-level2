@@ -11,9 +11,6 @@ import org.junit.Test;
 public class UtilsTest {
     @Test
     public void isAnyNull() throws Exception {
-        // empty list
-        assertNoNull();
-
         // only one null
         assertSomeNull((Object) null);
         assertSomeNull(null);
@@ -36,11 +33,11 @@ public class UtilsTest {
     }
 
     private void assertNoNull(Object... objects) {
-        assertFalse(Utils.isAnyNull(Arrays.asList(objects)));
+        assertFalse(Utils.isAnyNull(objects));
     }
 
     private void assertSomeNull(Object... objects) {
-        assertTrue(Utils.isAnyNull(Arrays.asList(objects)));
+        assertTrue(Utils.isAnyNull(objects));
     }
 
     @Test
