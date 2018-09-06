@@ -20,6 +20,11 @@ public class UtilsTest {
         assertNoNull("abc", 1, 2);
         assertNoNull("", "");
 
+        assertHasNull((Object) null);
+        assertHasNull(null, null);
+        assertHasNull(null, 1);
+        assertHasNull("abc", null);
+
     }
 
     private void assertHasNull(Object... objects) {
