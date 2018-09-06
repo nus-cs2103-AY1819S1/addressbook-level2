@@ -19,15 +19,15 @@ public class UtilsTest {
         // all objects are not null
         assertNoNull("abc", 1, 2);
         assertNoNull("", "");
-        
+
     }
 
     private void assertHasNull(Object... objects) {
-        assertTrue(Utils.isAnyNull(Arrays.asList(objects)));
+        assertTrue(Utils.isAnyNull(objects));
     }
 
     private void assertNoNull(Object... objects) {
-        assertFalse(Utils.isAnyNull(Arrays.asList(objects)));
+        assertFalse(Utils.isAnyNull(objects));
     }
 
     @Test
