@@ -15,10 +15,12 @@ public class UtilsTest {
     public void testIsAnyNull() {
         assertTrue(Utils.isAnyNull((Object) null));
         assertTrue(Utils.isAnyNull((Integer) null));
+        assertTrue(Utils.isAnyNull( null, Integer.valueOf(5), "abc"));
 
         assertFalse(Utils.isAnyNull(Integer.valueOf(5)));
         assertFalse(Utils.isAnyNull(new ArrayList()));
         assertFalse(Utils.isAnyNull((Arrays.asList(new int[100]))));
+        assertFalse(Utils.isAnyNull( 5, Integer.valueOf(5), "abc"));
     }
 
     @Test
