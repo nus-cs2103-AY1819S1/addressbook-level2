@@ -14,13 +14,29 @@ public class UtilsTest {
         //Solution below adapted from the current file, UtilsTest.java (line 32-35) and from
         //https://stackoverflow.com/questions/7123555/assertnull-should-be-used-or-assertnotnull
 
-        // check null
-        assertNull(null);
+        // empty
+        assertNotNull();
+        assertNotNull("");
+
+        // check null or mix of null with object
+        assertNull(null,null);
+        assertNull("123",null);
+        assertNull((Object) null);
+        assertNull("test",null,null);
 
         // check not null
         assertNotNull(2);
-        assertNotNull("");
+        assertNotNull("abc","123");
         assertNotNull("def");
+
+    }
+
+    private void assertNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+
+    private void assertNotNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 
     @Test
