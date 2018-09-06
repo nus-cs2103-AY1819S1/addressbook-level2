@@ -60,6 +60,7 @@ public class UtilsTest {
         assertHasNoNull("abc", "ab", "a");
         assertHasNoNull(1, 2);
         assertHasNoNull(objectList);
+        assertHasNoNull(objectList, "def", "ghi", "jkl");
 
         // some null objects
         assertHasNoNull("abc", "abc");
@@ -69,6 +70,7 @@ public class UtilsTest {
         assertHasNull(null, 1, Integer.valueOf(1));
         assertHasNull(null, null);
         assertHasNull(null, "a", "b", null);
+        assertHasNull(objectList, null, "mno", 3, "pqr", "x");
     }
 
     private void assertHasNull(Object... objects) {
