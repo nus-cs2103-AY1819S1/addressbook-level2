@@ -60,6 +60,10 @@ public class Command {
         return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
     }
 
+    /**
+     * Get target index.
+     * @return
+     */
     public int getTargetIndex() {
         return targetIndex;
     }
