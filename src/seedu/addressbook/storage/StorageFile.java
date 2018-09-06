@@ -23,6 +23,15 @@ public class StorageFile {
      */
 
     /**
+     * Signals that storage file made read-only while program is running
+     */
+    public static class ReadOnlyStorageFileException extends Exception {
+        public ReadOnlyStorageFileException(String message) {
+            super(message);
+        }
+    }
+
+    /**
      * Signals that the given file path does not fulfill the storage filepath constraints.
      */
     public static class InvalidStorageFilePathException extends IllegalValueException {
@@ -73,12 +82,13 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
+    public void save(AddressBook addressBook) throws ReadOnlyStorageFileException {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
-            throw new StorageOperationException("Error writing to file: " + path);
+//            System.out.print("Error: File " + path + " is read only.");
+            throw new ReadOnlyStorageFileException("Error: File " + path + " is read only.");
         }
     }
 
