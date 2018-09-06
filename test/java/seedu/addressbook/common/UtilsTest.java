@@ -9,7 +9,15 @@ import java.util.List;
 import org.junit.Test;
 
 public class UtilsTest {
-
+    
+    @Test
+    public void isAnyNull() {
+        assertFalse(Utils.isAnyNull());
+        assertTrue(Utils.isAnyNull((Object) null));
+        assertTrue(Utils.isAnyNull(null, 1));
+        assertTrue(Utils.isAnyNull(new Object[]{null, null, 1}));
+        assertTrue(Utils.isAnyNull(1, 2, 3, null));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
