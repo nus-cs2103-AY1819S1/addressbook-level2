@@ -63,9 +63,9 @@ public class UtilsTest {
 
         //all not null
         assertNotNull(1, Integer.valueOf(1));
-        assertNotNull(null, 1, Integer.valueOf(1));
-        assertNotNull(null, null);
-        assertNotNull(null, "a", "b", null);
+        assertNotNull("abc", 1, Integer.valueOf(1));
+        assertNotNull("a", "b");
+        assertNotNull("abc", "a", "b");
     }
 
     private void assertAreNull(Object... objects) {
