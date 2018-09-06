@@ -56,7 +56,6 @@ public class UtilsTest {
         //some identical object
         assertFalse(Utils.isAnyNull( "abc", "abc"));
         assertTrue(Utils.isAnyNull( object, object));
-
     }
 
 
