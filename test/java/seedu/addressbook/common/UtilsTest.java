@@ -12,29 +12,33 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() throws Exception {
-        // only one object
+        
+        // all objects non null
+        assertNoNull();
         assertNoNull((Object) 5);
         assertNoNull(1);
         assertNoNull("");
         assertNoNull("abc");
-        assertNoNull((Object) null);
-
-        // all objects non null
         assertNoNull("abc", "ab", "a");
         assertNoNull(1, 2);
 
         // some null objects
-        assertNoNull("abc", "a", null);
-        assertNoNull(null, "", null, "ABC");
-        assertNoNull(null, Integer.valueOf(1));
-        assertNoNull(null, 1, Integer.valueOf(1));
-        assertNoNull(null, null);
-        assertNoNull(null, "a", "b", null);
+        assertHasNull((Object) null);
+        assertHasNull("abc", "a", null);
+        assertHasNull(null, "", null, "ABC");
+        assertHasNull(null, Integer.valueOf(1));
+        assertHasNull(null, 1, Integer.valueOf(1));
+        assertHasNull(null, null);
+        assertHasNull("a", "b", null);
         
     }
 
     private void assertNoNull(Object... objects) {
-        assertFalse(Utils.isAnyNull(Arrays.asList(objects)));
+        assertFalse(Utils.isAnyNull(objects));
+    }
+
+    private void assertHasNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
     }
 
     @Test
