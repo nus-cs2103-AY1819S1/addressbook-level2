@@ -13,7 +13,6 @@ public class UtilsTest {
     public void isAnyNull() throws Exception {
         // only one null
         assertSomeNull((Object) null);
-        assertSomeNull(null);
 
         // only one non null
         assertNoNull(1);
