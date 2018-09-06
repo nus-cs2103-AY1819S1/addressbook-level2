@@ -42,6 +42,29 @@ public class Name {
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.split("\\s+"));
     }
+    
+    /**
+     * Checks if another name is similar to this one. A name is defined as similar to another if they have at most
+     * two different letters.
+     * @param other The other name.
+     * @return true if the names are similar, and false otherwise.
+     */
+    public boolean isSimilar(Name other) {
+        char[] charArr = fullName.toCharArray();
+        char[] otherCharArr = other.fullName.toCharArray();
+        if (Math.abs(other.fullName.length() - fullName.length()) > 0) {
+            return false;
+        }
+
+        int diffCount = 0;
+        for(int i = 0; i < charArr.length && i < otherCharArr.length; i++) {
+            if (charArr[i] != otherCharArr[i]) {
+                diffCount++;
+            }
+        }
+
+        return diffCount < 3;
+    }
 
     @Override
     public String toString() {
