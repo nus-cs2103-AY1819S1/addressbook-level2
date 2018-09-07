@@ -103,7 +103,10 @@ public class Parser {
                 return new HelpCommand();
             default:
                 String closestCmd = getClosestCommand(commandWord);
-                return (closestCmd == null) ? new HelpCommand() : new PromptCommand(closestCmd);
+                if (closestCmd != null) {
+                    return new PromptCommand(closestCmd);
+                }
+                return new HelpCommand();
         }
     }
 
