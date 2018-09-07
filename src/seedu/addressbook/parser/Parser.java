@@ -12,17 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.scene.web.PromptData;
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.common.TextUtils;
 import seedu.addressbook.data.exception.IllegalValueException;
 
@@ -109,10 +99,11 @@ public class Parser {
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
 
-            case HelpCommand.COMMAND_WORD: // Fallthrough
+            case HelpCommand.COMMAND_WORD:
+                return new HelpCommand();
             default:
                 String closestCmd = getClosestCommand(commandWord);
-                return new HelpCommand();
+                return (closestCmd == null) ? new HelpCommand() : new PromptCommand(closestCmd);
         }
     }
 
