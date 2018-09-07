@@ -8,32 +8,57 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
 
+    private Block block;
+    private Street street;
+    private Unit unit;
+    private PostalCode postalCode;
+
+
     public static final String EXAMPLE = "123, some street";
-    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
+    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses cant be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
-    public final String value;
     private boolean isPrivate;
+    public String value;
 
     /**
-     * Validates given address.
+     * Validates given address. Every field should be present
      *
      * @throws IllegalValueException if given address string is invalid.
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
-        String trimmedAddress = address.trim();
+        String[] addressDetails = address.split(", ");
+//        if (!isValidAddress(addressDetails)) {
+//            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
+//        }
+//        this.block = new Block(addressDetails[0]);
+//        this.street = new Street(addressDetails[1]);
+//        this.unit = new Unit(addressDetails[2]);
+//        this.postalCode = new PostalCode(addressDetails[3]);
+
         this.isPrivate = isPrivate;
-        if (!isValidAddress(trimmedAddress)) {
-            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
-        }
-        this.value = trimmedAddress;
+        //this.value = constructAddress();
+        this.value = address;
     }
 
     /**
-     * Returns true if a given string is a valid person address.
+     * Constructs the address with its given block, street, unit, postal code.
+     * @return the address in string format.
      */
-    public static boolean isValidAddress(String test) {
-        return test.matches(ADDRESS_VALIDATION_REGEX);
+    private String constructAddress() {
+        return block.toString() + ", " + street.toString() + ", " + unit.toString() + ", " + postalCode.toString();
+    }
+
+    /**
+     * Returns true if a given string is a valid person address. As long as we have 4 inputs for block, street, unit
+     * and postal code, it is a valid address.
+     */
+    public static boolean isValidAddress(String[] test) {
+        boolean result = false;
+        if (test.length == 4) {
+            result = true;
+        }
+        return result;
     }
 
     @Override
