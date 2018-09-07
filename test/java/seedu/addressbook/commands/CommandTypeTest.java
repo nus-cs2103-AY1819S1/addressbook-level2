@@ -33,8 +33,8 @@ public class CommandTypeTest {
     @Test
     public void shouldHaveAllCommands() {
         for (CommandType commandType : CommandType.values()) {
-            assertTrue(cmdWords.contains(commandType));
-            cmdWords.remove(commandType.name());
+            assertTrue(cmdWords.contains(commandType.commandName()));
+            cmdWords.remove(commandType.commandName());
         }
         assertTrue(cmdWords.isEmpty());
     }

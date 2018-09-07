@@ -9,7 +9,7 @@ public enum CommandType {
     DELETE(DeleteCommand.COMMAND_WORD), EXIT(ExitCommand.COMMAND_WORD),
     FIND(FindCommand.COMMAND_WORD), HELP(HelpCommand.COMMAND_WORD),
     LIST(ListCommand.COMMAND_WORD), VIEW(ViewCommand.COMMAND_WORD),
-    VIEWALL(ListCommand.COMMAND_WORD);
+    VIEWALL(ViewAllCommand.COMMAND_WORD);
 
     /**
      * Command word for a given {@code CommandType}
@@ -17,5 +17,9 @@ public enum CommandType {
     private final String name;
     CommandType(String name) {
         this.name = name;
+    }
+
+    public String commandName() {
+        return this.name;
     }
 }
