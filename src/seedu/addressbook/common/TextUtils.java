@@ -1,5 +1,8 @@
 package seedu.addressbook.common;
 
+import org.apache.commons.text.similarity.JaroWinklerDistance;
+import seedu.addressbook.commands.CommandType;
+
 public class TextUtils {
 
     private static final double SIMILARITY = 0.75;
@@ -50,4 +53,46 @@ public class TextUtils {
     public static boolean isSimilar(String s1, String s2) {
         return getSimilarity(s1, s2) >= SIMILARITY;
     }
+
+import org.apache.commons.text.similarity.JaroWinklerDistance;
+import seedu.addressbook.commands.CommandType;
+
+/**
+ * Methods to calculate similarity between 2 strings.
+ */
+public class TextUtils {
+
+    private static final double THRESHOLD = 0.8;
+
+    /**
+     * Calculates and returns the Jaro Winkler distance between 2 words.
+     * @param userInput
+     * @param commandType
+     * @return
+     */
+    private static double calculateDistance(String userInput, CommandType commandType) {
+        JaroWinklerDistance jaroWinklerDistance = new JaroWinklerDistance();
+        return jaroWinklerDistance.apply(userInput, commandType.commandName());
+    }
+
+    /**
+     * Finds the closest command above the threshold
+     * by comparing {@code userInput} against a command string
+     * and returns it, if one exists.
+     * @param userInput
+     * @return
+     */
+    public static CommandType getClosestCommand(String userInput) {
+        CommandType closestCmd = null;
+        double highScore = 0;
+        for (CommandType commandType : CommandType.values()) {
+            double score = calculateDistance(userInput, commandType);
+            if (score > THRESHOLD && score > highScore) {
+                closestCmd = commandType;
+                highScore = score;
+            }
+        }
+        return closestCmd;
+    }
+
 }
