@@ -50,8 +50,7 @@ public class UtilsTest {
         assertNoneNull();
 
         // One argument
-        // TODO : cannot test one null argument
-        // assertHasNull(blank);
+        assertHasNull((Object) null);
         assertNoneNull("1");
 
         // Multiple arguments, with null
