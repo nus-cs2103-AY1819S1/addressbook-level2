@@ -43,4 +43,38 @@ public class UtilsTest {
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
+
+    @Test
+    public void isAnyNull() {
+        // No arguments (implied no null value)
+        assertNotHasNull();
+
+        // Singular arguments
+
+        // singular null argument
+        assertHasNull((Object)null);
+
+        // singular non-null argument
+        assertNotHasNull(1);
+
+        // Multiple arguments
+
+        // arguments including a single null value
+        assertHasNull(1, 2, "Test", null);
+
+        // arguments including a multiple null values
+        assertHasNull(null, 1, 2, "Test", null, null);
+
+        // arguments without null value
+        assertNotHasNull(1, 2, "Test");
+    }
+
+    private void assertHasNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+
+    private void assertNotHasNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
+    }
+
 }
