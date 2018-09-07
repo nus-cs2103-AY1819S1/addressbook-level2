@@ -11,6 +11,9 @@ public enum CommandType {
     LIST(ListCommand.COMMAND_WORD), VIEW(ViewCommand.COMMAND_WORD),
     VIEWALL(ListCommand.COMMAND_WORD);
 
+    /**
+     * Command word for a given {@code CommandType}
+     */
     private final String name;
     CommandType(String name) {
         this.name = name;
