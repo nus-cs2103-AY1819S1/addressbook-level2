@@ -16,6 +16,12 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.addressbook.data.person.*;
+import seedu.addressbook.data.person.Address;
+import seedu.addressbook.data.person.Email;
+import seedu.addressbook.data.person.Name;
+import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.data.tag.Tag;
@@ -36,7 +42,6 @@ public class AddressBookTest {
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
     private AddressBook sampleAddressBook;
-
 
     @Before
     public void setUp() throws Exception {
@@ -159,4 +164,5 @@ public class AddressBookTest {
         assertTrue(maryJames.getName().isSimilar(maryJomes.getName()));
         assertTrue(maryJames.getName().isSimilar(maryJames.getName()));
     }
+
 }

@@ -129,7 +129,11 @@ public class TextUi {
         if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
         }
+<<<<<<< HEAD
         showToUser(result.getFeedback(), DIVIDER);
+=======
+        showToUser(result.feedbackToUser, DIVIDER);
+>>>>>>> fresh copy of addressbook-level2
     }
 
     /**

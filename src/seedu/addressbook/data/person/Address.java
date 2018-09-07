@@ -30,6 +30,7 @@ public class Address {
     }
 
     /**
+<<<<<<< HEAD
      * @see #Address(String, boolean)
      * @param block
      * @param street
@@ -44,6 +45,8 @@ public class Address {
     }
 
     /**
+=======
+>>>>>>> fresh copy of addressbook-level2
      * Returns true if a given string is a valid person address.
      */
     public static boolean isValidAddress(String test) {
