@@ -30,6 +30,23 @@ public class Address {
     }
 
     /**
+<<<<<<< HEAD
+     * @see #Address(String, boolean)
+     * @param block
+     * @param street
+     * @param unit
+     * @param postalCode
+     * @throws IllegalValueException
+     */
+    public Address(Block block, Street street, Unit unit, PostalCode postalCode, boolean isPrivate) throws IllegalValueException {
+        String address = String.format("/%s, %s, %s, %s", block, street, unit, postalCode);
+        this.value = null;
+        new Address(address, isPrivate);
+    }
+
+    /**
+=======
+>>>>>>> fresh copy of addressbook-level2
      * Returns true if a given string is a valid person address.
      */
     public static boolean isValidAddress(String test) {

@@ -1,15 +1,20 @@
 package seedu.addressbook.common;
 
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 
 public class UtilsTest {
 
+    @Test
+    public void testStringSimilarity() {
+        assertTrue(TextUtils.isSimilar("Drink", "Brink"));
+        assertFalse(TextUtils.isSimilar("Andy Malone", "Corene Macy"));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
@@ -34,6 +39,15 @@ public class UtilsTest {
         assertNotUnique(null, 1, Integer.valueOf(1));
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
+    }
+
+    @Test
+    public void isAnyNull() throws Exception {
+        Object[] containsNull = { new Object(), null };
+        Object[] noNull = { new Object(), new Object() };
+
+        assertTrue(Utils.isAnyNull(containsNull));
+        assertFalse(Utils.isAnyNull(noNull));
     }
 
     private void assertAreUnique(Object... objects) {
