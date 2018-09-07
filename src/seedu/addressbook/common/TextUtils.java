@@ -57,12 +57,14 @@ public class TextUtils {
 import org.apache.commons.text.similarity.JaroWinklerDistance;
 import seedu.addressbook.commands.CommandType;
 
+import static java.util.Objects.requireNonNull;
+
 /**
  * Methods to calculate similarity between 2 strings.
  */
 public class TextUtils {
 
-    private static final double THRESHOLD = 0.8;
+    public static final double THRESHOLD = 0.85;
 
     /**
      * Calculates and returns the Jaro Winkler distance between 2 words.
@@ -70,9 +72,21 @@ public class TextUtils {
      * @param commandType
      * @return
      */
-    private static double calculateDistance(String userInput, CommandType commandType) {
+    public static double calculateDistance(String userInput, CommandType commandType) {
+        requireNonNull(userInput);
+        requireNonNull(commandType);
+        return calculateDistance(userInput, commandType.commandName());
+    }
+
+    /**
+     * @see #calculateDistance(String, CommandType)
+     * @param userInput
+     * @param cmd
+     * @return
+     */
+    public static double calculateDistance(String userInput, String cmd) {
         JaroWinklerDistance jaroWinklerDistance = new JaroWinklerDistance();
-        return jaroWinklerDistance.apply(userInput, commandType.commandName());
+        return jaroWinklerDistance.apply(userInput, cmd);
     }
 
     /**
@@ -82,7 +96,7 @@ public class TextUtils {
      * @param userInput
      * @return
      */
-    public static CommandType getClosestCommand(String userInput) {
+    public static String getClosestCommand(String userInput) {
         CommandType closestCmd = null;
         double highScore = 0;
         for (CommandType commandType : CommandType.values()) {
@@ -92,7 +106,17 @@ public class TextUtils {
                 highScore = score;
             }
         }
-        return closestCmd;
+        return getClosestCommand(closestCmd);
+    }
+
+    /**
+     * @see #getClosestCommand(String)
+     * @param closestCommand
+     * @return
+     */
+    public static String getClosestCommand(CommandType closestCommand) {
+        if (closestCommand != null) return closestCommand.commandName();
+        return null;
     }
 
 }
