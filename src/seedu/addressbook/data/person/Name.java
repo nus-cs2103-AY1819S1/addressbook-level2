@@ -43,6 +43,15 @@ public class Name {
         return Arrays.asList(fullName.split("\\s+"));
     }
 
+    /**
+     * Retrieves a listing of every word in the name in order, as lowercase words.
+     */
+    public List<String> getLowerCaseWordsInName() {
+        final List<String> wordsInName = getWordsInName();
+        wordsInName.replaceAll(s -> s.toLowerCase());
+        return wordsInName;
+    }
+
     @Override
     public String toString() {
         return fullName;
