@@ -39,20 +39,19 @@ public class UtilsTest {
     @Test
     public void hasNullObject() throws Exception {
 
-        Object o = null;
 
         //one null object
-        assertHasNull(o);
+        assertTrue(Utils.isAnyNull((Object) null));
 
         //one not null object
-        assertNotNull("a");
+        assertFalse((Utils.isAnyNull("a")));
 
         //list contains null object(s)
-        assertHasNull(o, null, null);
-        assertHasNull(o, "aa", "bb");
+        assertTrue(Utils.isAnyNull(null, null));
+        assertTrue(Utils.isAnyNull(null, "aa", "bb"));
 
         //list of not null objects
-        assertNotNull("aaa", "bbb", "ccc");
+        assertFalse(Utils.isAnyNull("aaa", "bbb", "ccc"));
     }
 
     private void assertAreUnique(Object... objects) {
@@ -62,8 +61,4 @@ public class UtilsTest {
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
-
-    private void assertHasNull(Object... objects) {assertTrue(Utils.isAnyNull(Arrays.asList(objects)));}
-
-    private void assertNotNull(Object... objects) {assertFalse(Utils.isAnyNull(Arrays.asList(objects)));}
 }
