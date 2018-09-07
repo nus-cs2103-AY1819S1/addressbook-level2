@@ -64,7 +64,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class TextUtils {
 
-    public static final double THRESHOLD = 0.85;
+    public static final double THRESHOLD = 0.8;
 
     /**
      * Calculates and returns the Jaro Winkler distance between 2 words.

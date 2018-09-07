@@ -16,8 +16,8 @@ public class TextUtilsTest {
 
     @Test
     public void shouldFindClosestCmd() {
-        assertEquals(TextUtils.getClosestCommand("adf"), CommandType.ADD.commandName());
-        assertEquals(TextUtils.getClosestCommand("viewll"), CommandType.VIEWALL.commandName());
+        assertSame(TextUtils.getClosestCommand("adf"), CommandType.ADD.commandName());
+        assertSame(TextUtils.getClosestCommand("viewll"), CommandType.VIEWALL.commandName());
         assertNull(TextUtils.getClosestCommand(""));
     }
 }
