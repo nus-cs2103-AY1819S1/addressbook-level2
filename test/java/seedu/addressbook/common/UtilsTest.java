@@ -19,7 +19,7 @@ public class UtilsTest {
 
         assertTrue(Utils.isAnyNull(1,2,3,null));
         assertTrue(Utils.isAnyNull(null, null));
-        assertTrue(Utils.isAnyNull(null)); //test fails at this portion
+        assertTrue(Utils.isAnyNull((Object) null)); //test fails at this portion
     }
 
 
