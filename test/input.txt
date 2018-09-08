@@ -55,6 +55,16 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test sort person command
+##########################################################
+  # should be in same order
+  sort
+
+  # add new user to mess sort order
+  add Aaron Lim Ah p/12415 e/aaron@not.a.real.potato pa/555, ahgong street t/tubers t/starchy
+  sort
+
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
