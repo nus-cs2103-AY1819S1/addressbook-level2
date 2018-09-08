@@ -40,6 +40,8 @@ public class AddressBookEncoder {
 
         person.getTags().forEach(tag -> encodedPersonBuilder.append(" t/").append(tag.tagName));
 
+        encodedPersonBuilder.append(" s/").append(person.getStar());
+
         return encodedPersonBuilder.toString();
     }
 }

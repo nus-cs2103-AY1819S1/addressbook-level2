@@ -14,6 +14,7 @@ public interface ReadOnlyPerson {
     Phone getPhone();
     Email getEmail();
     Address getAddress();
+    String getStar();
 
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
@@ -71,6 +72,8 @@ public interface ReadOnlyPerson {
         for (Tag tag : getTags()) {
             builder.append(tag);
         }
+        // TODO: create star object
+        builder.append(" Star: ").append(getStar());
         return builder.toString();
     }
 
@@ -93,6 +96,8 @@ public interface ReadOnlyPerson {
         for (Tag tag : getTags()) {
             builder.append(tag);
         }
+        // TODO: create star object
+        builder.append(" Star: ").append(getStar());
         return builder.toString();
     }
 }

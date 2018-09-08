@@ -22,6 +22,7 @@ public class Person implements ReadOnlyPerson {
 
     /**
      * Assumption: Every field must be present and not null.
+     * Default value of star set as nothing
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         this.name = name;
@@ -29,7 +30,19 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.star = "";
+        this.star = " ";
+    }
+
+    /**
+     * Assumption: Every field must be present and not null.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, String star) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.star = star;
     }
 
     /**
@@ -63,6 +76,9 @@ public class Person implements ReadOnlyPerson {
     public Set<Tag> getTags() {
         return new HashSet<>(tags);
     }
+
+    @Override
+    public String getStar() { return star; }
 
     /**
      * Replaces this person's tags with the tags in the argument tag set.
