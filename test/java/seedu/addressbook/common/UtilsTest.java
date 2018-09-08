@@ -3,8 +3,8 @@ package seedu.addressbook.common;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.*;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -46,19 +46,12 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() throws Exception {
-        assertAnyNull((Object) null, null);
-        assertAnyNull(1, null);
-
-        assertNoneNull(1,2);
-        assertNoneNull("abn", "ab");
+        assertTrue(Utils.isAnyNull(null, null)); // Test for nulls
+        assertTrue(Utils.isAnyNull(1, null));
+        assertTrue(Utils.isAnyNull(new String[1]));
+        assertFalse(Utils.isAnyNull(new String[0]));
+        assertFalse(Utils.isAnyNull(new List[0]));
+        assertFalse(Utils.isAnyNull(1, 2)); // Test for int values
+        assertFalse(Utils.isAnyNull("abn", "ab")); // Test for String values
     }
-
-    private void assertAnyNull(Object... objects) {
-        assertTrue(Utils.isAnyNull(objects));
-    }
-
-    private void assertNoneNull(Object... objects) {
-        assertFalse(Utils.isAnyNull((objects)));
-    }
-
 }
