@@ -47,13 +47,13 @@ public class UtilsTest {
     @Test
     public void isAnyNull() {
         //empty list
-        assertFalse( false);
+        assertFalse(Utils.isAnyNull());
 
         //only one object
-        assertTrue(null, true);
-        assertFalse("1", false);
-        assertFalse("",false);
-        assertFalse("abc",false);
+        assertTrue(Utils.isAnyNull((Object)null));
+        assertFalse(Utils.isAnyNull(1));
+        assertFalse(Utils.isAnyNull(" "));
+        assertFalse(Utils.isAnyNull("abc"));
 
         //all null objects
         assertTrue(Utils.isAnyNull(null, null, null));
