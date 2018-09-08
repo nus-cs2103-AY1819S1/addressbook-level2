@@ -45,7 +45,6 @@
 || Address book has been cleared!
 || ===================================================
 || Enter command: || [Command entered:  list]
-||
 || 0 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  add wrong args wrong args]
