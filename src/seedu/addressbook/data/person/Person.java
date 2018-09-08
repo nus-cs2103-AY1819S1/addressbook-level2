@@ -16,6 +16,7 @@ public class Person implements ReadOnlyPerson {
     private Phone phone;
     private Email email;
     private Address address;
+    private String star;
 
     private final Set<Tag> tags = new HashSet<>();
 
@@ -28,6 +29,7 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.star = "";
     }
 
     /**
@@ -68,6 +70,13 @@ public class Person implements ReadOnlyPerson {
     public void setTags(Set<Tag> replacement) {
         tags.clear();
         tags.addAll(replacement);
+    }
+
+    /**
+     * Add's a star to this person
+     */
+    public void addStar() {
+        this.star = "*";
     }
 
     @Override
