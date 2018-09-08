@@ -38,9 +38,11 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() throws Exception {
-        assertNotContainsNull();
+        // contains null
         assertContainsNull(null, null);
         assertContainsNull(null, "a", "b", null);
+
+        // does not contains null
         assertNotContainsNull("abc", "", "abc", "ABC");
         assertNotContainsNull("", "abc", "a", "abc");
         assertNotContainsNull(1, Integer.valueOf(1));
@@ -55,10 +57,10 @@ public class UtilsTest {
     }
 
     private void assertContainsNull(Object... objects) {
-        assertTrue(Utils.isAnyNull(Arrays.asList(objects)));
+        assertTrue(Utils.isAnyNull(objects));
     }
 
     private void assertNotContainsNull(Object... objects) {
-        assertFalse(Utils.isAnyNull(Arrays.asList(objects)));
+        assertFalse(Utils.isAnyNull(objects));
     }
 }
