@@ -38,12 +38,12 @@ public class SortCommandTest {
     sortedAddressBook=TestUtil.createAddressBook(td.amy,td.dan);
     assertSortCommandBehaviour(unsortedAddressBook,sortedAddressBook, Arrays.asList(td.amy,td.dan));
 
-    // three person case
+    // three person case of unsorted addressBook
     unsortedAddressBook=TestUtil.createAddressBook(td.dan,td.candy,td.amy);
     sortedAddressBook=TestUtil.createAddressBook(td.amy,td.candy,td.dan);
     assertSortCommandBehaviour(unsortedAddressBook,sortedAddressBook, Arrays.asList(td.amy,td.candy,td.dan));
 
-    // four person case
+    // four person case of unsorted addressBook
     unsortedAddressBook=TestUtil.createAddressBook(td.dan,td.candy,td.bill,td.amy);
     sortedAddressBook=TestUtil.createAddressBook(td.amy,td.bill,td.candy,td.dan);
     assertSortCommandBehaviour(unsortedAddressBook,sortedAddressBook, Arrays.asList(td.amy,td.bill,td.candy,td.dan));
