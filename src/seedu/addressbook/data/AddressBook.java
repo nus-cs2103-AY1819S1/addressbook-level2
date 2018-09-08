@@ -39,6 +39,17 @@ public class AddressBook {
     }
 
     /**
+     * Adds a person to the address book.
+     *
+     * @throws DuplicatePersonException if an equivalent person already exists.
+     * @throws PersonNotFoundException if no such Person could be found.
+     */
+    public void updatePerson(ReadOnlyPerson toBeUpdated, Person toUpdate) throws DuplicatePersonException, PersonNotFoundException {
+        allPersons.update(toBeUpdated, toUpdate);
+    }
+
+
+    /**
      * Returns true if an equivalent person exists in the address book.
      */
     public boolean containsPerson(ReadOnlyPerson key) {
