@@ -18,7 +18,11 @@ public class ImportCommand extends Command {
         + "Example: " + COMMAND_WORD
         + " import_addressbook.txt";
 
-    public static final String MESSAGE_SUCCESS = "Added %d contacts.";
+    public static final String MESSAGE_SUCCESS = "Import of %s Successful.\n"
+        + "Added %d contacts.";
+
+    public static final String MESSAGE_IMPORT_FAILURE = "Import unsuccessful" +
+        ".\n";
 
     private String filename;
 
@@ -34,17 +38,23 @@ public class ImportCommand extends Command {
 
             int newEntriesCount = 0;
             Command addNewEntryCommand;
+            StringBuilder resultSB = new StringBuilder();
             for (String entry : importedEntry) {
                 addNewEntryCommand = new Parser().parseCommand("add " + entry);
-                Main.executeCommand(addNewEntryCommand);
-                newEntriesCount++;
+                CommandResult results = Main.executeCommand(addNewEntryCommand);
+                if (!results.feedbackToUser.equals(AddCommand.MESSAGE_DUPLICATE_PERSON)){
+                    newEntriesCount++;
+                }
+                resultSB.append(results.feedbackToUser);
+                resultSB.append("\n");
             }
+            resultSB.append(String.format(MESSAGE_SUCCESS, this.filename,
+                newEntriesCount));
 
-            return new CommandResult(String.format(MESSAGE_SUCCESS, newEntriesCount));
+            return new CommandResult(resultSB.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            return new CommandResult(MESSAGE_IMPORT_FAILURE);
         }
-        return Main.executeCommand(new HelpCommand());
     }
 
 }
