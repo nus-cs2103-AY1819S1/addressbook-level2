@@ -47,7 +47,9 @@ public class Name {
 
     /**
      * Returns true if the other name is very similar to this name.
-     * Two names are considered similar if ...
+     * Two names are considered similar if either name is made up of a word
+     * that is a substring of the other name.
+     * The similarity of names is case-insensitive.
      */
     public boolean isSimilar(Name other) {
         if(other == null) {
@@ -62,23 +64,27 @@ public class Name {
 
         for (String wordOther : wordsInOtherName) {
             for (String wordThis : wordsInThisName) {
-                if(wordThis.length() <= wordOther.length()) {
-                    if (wordOther.contains(wordThis)) {
-                        return true;
-                    }
-                } else { // wordOther is shorter
-                    if (wordThis.contains(wordOther)) {
-                        return true;
-                    }
+                if(Name.isSubstring(wordOther, wordThis)) {
+                    return true;
                 }
             }
         }
         return false;
+    }
 
-        // put list to lower case first, takes care of case sensitivity
-        // take short one then long.contains(short), checks if shorter one is a substring
-        // take the words out and check if any words between short and long are similar
-
+    /**
+     * Returns true if either string @code s1 or @code s2 is a substring of the other.
+     *
+     * @param s1 A string.
+     * @param s2 Another String.
+     * @return @code true if either string is a substring of the other @code false otherwise
+     */
+    private static boolean isSubstring(String s1, String s2) {
+        if(s1.contains(s2) || s2.contains(s1)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

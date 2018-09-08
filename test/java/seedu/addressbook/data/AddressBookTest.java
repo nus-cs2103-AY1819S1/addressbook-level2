@@ -142,34 +142,28 @@ public class AddressBookTest {
         assertTrueIsSimilarDifferentCase();
         assertTrueIsSimilarSuperOrSubSet_DifferentCase();
         assertTrueIsSimilarDifferentOrder_DifferentCase();
-        // is null
-        // is different order
-        // test for case sensitive
-        // multiple names
-        // subSet/super set
     }
 
-    public void assertFalseIsSimilarNull() throws Exception {
+    private void assertFalseIsSimilarNull() throws Exception {
         Name john = new Name("john");
         assertFalse(john.isSimilar(null));
     }
 
-    public void assertTrueIsSimilarDifferentCase() throws Exception {
+    private void assertTrueIsSimilarDifferentCase() throws Exception {
         Name john = new Name("john");
         Name differentCaseJohn = new Name("JOHN");
         assertTrue(john.isSimilar(differentCaseJohn));
         assertTrue(differentCaseJohn.isSimilar(john));
     }
 
-
-    public void assertTrueIsSimilarSuperOrSubSet_DifferentCase() throws Exception {
+    private void assertTrueIsSimilarSuperOrSubSet_DifferentCase() throws Exception {
         Name john = new Name("joHn");
         Name johnSuper = new Name("John Smith K");
         assertTrue((john.isSimilar(johnSuper)));
         assertTrue((johnSuper.isSimilar(john)));
     }
 
-    public void assertTrueIsSimilarDifferentOrder_DifferentCase() throws Exception {
+    private void assertTrueIsSimilarDifferentOrder_DifferentCase() throws Exception {
         Name john = new Name("john smith k");
         Name differentOrderJohn = new Name("Smith K John hello");
         assertTrue((differentOrderJohn.isSimilar(john)));
