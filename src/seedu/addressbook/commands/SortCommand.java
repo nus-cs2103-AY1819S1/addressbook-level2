@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SortCommand extends Command{
 
-    public static final String COMMAND_WORD = "sort";
+    public static final String COMMAND_WORD = "Sort";
 
     //To change
     public static final String MESSAGE_USAGE = COMMAND_WORD
