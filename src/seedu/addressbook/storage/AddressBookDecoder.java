@@ -58,7 +58,8 @@ public class AddressBookDecoder {
                 new Phone(matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate"))),
                 new Email(matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate"))),
                 new Address(matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
-                getTagsFromEncodedPerson(matcher.group("tagArguments"))
+                getTagsFromEncodedPerson(matcher.group("tagArguments")),
+                matcher.group("star")
         );
     }
 

@@ -1,5 +1,6 @@
 package seedu.addressbook.data;
 
+import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -52,6 +53,17 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+    }
+
+    /**
+     * Finds the equivalent person from the address book.
+     *
+     * @param toFind Name of person to find.
+     * @return The person found.
+     * @throws PersonNotFoundException if no suck person could be found.
+     */
+    public Person findPerson(Name toFind) throws PersonNotFoundException {
+        return allPersons.find(toFind);
     }
 
     /**
