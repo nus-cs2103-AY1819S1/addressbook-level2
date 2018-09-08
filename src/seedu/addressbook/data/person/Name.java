@@ -2,6 +2,7 @@ package seedu.addressbook.data.person;
 
 import seedu.addressbook.data.exception.IllegalValueException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,6 +42,21 @@ public class Name {
      */
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.split("\\s+"));
+    }
+
+    /**
+     * Converts the words in name to lower case.
+     *
+     * @return return the list of words in lower case.
+     */
+    public List<String> getWordsInNameInLowerCase() {
+        List<String> words = getWordsInName();
+        List<String> wordsInLowerCase = new ArrayList<>();
+        for(String word : words) {
+            wordsInLowerCase.add(word.toLowerCase());
+        }
+
+        return wordsInLowerCase;
     }
 
     @Override
