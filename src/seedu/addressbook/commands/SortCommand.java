@@ -24,6 +24,9 @@ public class SortCommand extends Command {
         return new CommandResult(getMessageForPersonListShownSummary(sortAllPersons), sortAllPersons);
     }
 
+    /**
+     * Sort the list of persons according to their names in alphabetical order.
+     */
     private static void sortAllPersonsInAlphabeticalOrder(List<ReadOnlyPerson> allPersons) {
         Collections.sort(allPersons, new Comparator<>() {
             @Override
