@@ -32,7 +32,7 @@ public class Parser {
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)" // variable number of tags
-                    + "s/(?<star>[^/]+)");
+                    + "(?<star>(?: s/[^/]+)*)");
 
 
     /**
