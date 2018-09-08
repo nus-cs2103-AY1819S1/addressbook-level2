@@ -74,7 +74,9 @@ public class AddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                         && this.allPersons.equals(((AddressBook) other).allPersons));
     }
-
+    /**
+     * Returns a sorted UniquePersonList of all persons in the address book at the time of the call.
+     */
     public UniquePersonList sortAllPersons(){
         UniquePersonList unsortedList= this.allPersons;
         unsortedList.sortPersonsInAddressBook();

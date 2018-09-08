@@ -142,7 +142,9 @@ public class UniquePersonList implements Iterable<Person> {
                         && this.internalList.equals(((UniquePersonList) other).internalList));
     }
 
-
+    /**
+     * Sorts all persons in list in ascending order.
+     */
     public void sortPersonsInAddressBook(){
         Collections.sort(internalList, new Comparator<Person>() {
             @Override
