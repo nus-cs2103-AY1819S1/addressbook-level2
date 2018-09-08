@@ -29,7 +29,7 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
-|| Sort: Displays all persons in the address book as a sorted list with index numbers.
+|| sort: Displays all persons in the address book as a sorted list with index numbers.
 || Example: sort
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
