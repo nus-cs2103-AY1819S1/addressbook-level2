@@ -9,7 +9,8 @@ import java.util.List;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
-
+import seedu.addressbook.data.utils.PersonChainedComparator;
+import seedu.addressbook.data.utils.PersonNameComparator;
 
 
 /**
@@ -120,6 +121,14 @@ public class UniquePersonList implements Iterable<Person> {
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
+    }
+
+    /**
+     * Sorts all persons in list.
+     */
+    public void sort() {
+        // This is just to sort by name first
+        Collections.sort(internalList, new PersonChainedComparator(new PersonNameComparator()));
     }
 
     /**

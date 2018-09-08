@@ -24,6 +24,7 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.data.tag.Tag;
+import seedu.addressbook.util.TestUtil;
 
 public class AddressBookTest {
     private Tag tagPrizeWinner;
@@ -134,5 +135,43 @@ public class AddressBookTest {
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void getAllSortedPersons() throws Exception {
+        AddressBook book = new AddressBook();
+        AddressBook orderedTestBook = new AddressBook();
+
+        // Test empty book
+        assertBookNotSorted(book);
+
+        // Test with 1 contact
+        book = new AddressBook(new UniquePersonList(aliceBetsy));
+        assertBookNotSorted(book);
+
+        // Test with 2 contacts
+        book = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
+        assertBookNotSorted(book);
+
+        orderedTestBook = TestUtil.clone(book);
+        book = new AddressBook(new UniquePersonList(bobChaplin, aliceBetsy));
+        assertBookSorted(orderedTestBook, book);
+
+
+        // Test with 3 contacts
+        book = new AddressBook((new UniquePersonList(aliceBetsy, bobChaplin, davidElliot)));
+        assertBookNotSorted(book);
+
+        orderedTestBook = TestUtil.clone(book);
+        book = new AddressBook(new UniquePersonList(davidElliot, aliceBetsy, bobChaplin));
+        assertBookSorted(orderedTestBook, book);
+    }
+
+    private void assertBookSorted(AddressBook expected, AddressBook bookToSort){
+        assertTrue(isIdentical(expected.getAllPersons(), bookToSort.getAllSortedPersons()));
+    }
+
+    private void assertBookNotSorted(AddressBook book){
+        assertTrue(isIdentical(book.getAllPersons(), book.getAllSortedPersons()));
     }
 }
