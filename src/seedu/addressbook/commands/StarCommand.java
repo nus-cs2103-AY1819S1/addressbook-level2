@@ -5,8 +5,6 @@ import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.UniquePersonList;
 
-import java.util.*;
-
 public class StarCommand extends Command {
     public static final String COMMAND_WORD = "star";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks the selected person with a star. " +
@@ -19,7 +17,6 @@ public class StarCommand extends Command {
 
     private final String name;
     private Person toStar;
-
     public StarCommand(String name) {
         this.name = name;
     }
