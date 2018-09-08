@@ -21,6 +21,8 @@ public class Parser {
 
     public static final Pattern PERSON_INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>.+)");
 
+    public static final Pattern STAR_ARGS_FORMAT = Pattern.compile("(?<name>.+)");
+
     public static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
@@ -76,7 +78,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case StarCommand.COMMAND_WORD:
-            return prepareFind(arguments); // TODO: change to prepareStar()
+            return prepareStar(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -241,5 +243,19 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
 
+    /**
+     * Parses arguments in the context of the find person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareStar(String args) {
+        final Matcher matcher = STAR_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    StarCommand.MESSAGE_USAGE));
+        }
 
+        return new StarCommand(matcher.group("name"));
+    }
 }
