@@ -143,7 +143,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
 
-    public void sortPersons(){
+    public void sortPersonsInAddressBook(){
         Collections.sort(internalList, new Comparator<Person>() {
             @Override
             public int compare(Person p1, Person p2) {

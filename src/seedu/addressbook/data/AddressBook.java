@@ -74,4 +74,10 @@ public class AddressBook {
                 || (other instanceof AddressBook // instanceof handles nulls
                         && this.allPersons.equals(((AddressBook) other).allPersons));
     }
+
+    public UniquePersonList sortAllPersons(){
+        UniquePersonList unsortedList= this.allPersons;
+        unsortedList.sortPersonsInAddressBook();
+        return unsortedList;
+    }
 }
