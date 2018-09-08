@@ -140,7 +140,7 @@ public class AddressBookTest {
     @Test
     public void getAllSortedPersons() throws Exception {
         AddressBook book = new AddressBook();
-        AddressBook orderedTestBook = new AddressBook();
+        AddressBook orderedTestBook;
 
         // Test empty book
         assertBookNotSorted(book);
