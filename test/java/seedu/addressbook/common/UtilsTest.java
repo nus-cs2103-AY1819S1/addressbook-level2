@@ -13,8 +13,17 @@ public class UtilsTest {
     @Test
     public void isAnyNullTest() {
         Utils testing = new Utils();
-        assertEquals(testing.isAnyNull("Hello"),false);
-        //assertEquals(testing.isAnyNull(null),true);
+
+        // Testing one null case
+        assertEquals(testing.isAnyNull((Object)null), true);
+
+        // Testing one object
+        assertEquals(testing.isAnyNull("Hello"), false);
+
+        // Testing more object with some null items
+        assertEquals(testing.isAnyNull((null),"Hello"), true);
+        assertEquals(testing.isAnyNull((null),"Hello","Bye"), true);
+        assertEquals(testing.isAnyNull((null), 1, 2), true);
 
     }
 
