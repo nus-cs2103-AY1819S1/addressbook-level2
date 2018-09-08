@@ -108,6 +108,14 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.add(toAdd);
+    }  
+    
+    /**
+     * Return size of list.
+     *
+     */
+    public int size() {
+        return internalList.size();
     }
 
     /**
