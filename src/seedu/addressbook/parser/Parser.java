@@ -11,17 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -41,6 +31,8 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    public static final Pattern ADDRESS_BOOK_IMPORT_FORMAT = Pattern.compile(
+        "(?<filename>[^/]+\\.txt)");
 
     /**
      * Signals that the user input could not be parsed.
@@ -97,7 +89,11 @@ public class Parser {
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
+        case ImportCommand.COMMAND_WORD:
+            return prepareImport(arguments);
+
         case HelpCommand.COMMAND_WORD: // Fallthrough
+
         default:
             return new HelpCommand();
         }
@@ -248,5 +244,36 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
 
+    /**
+     * Parses arguments in the context of the import command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareImport(String args) {
+        try {
+            final String filename = parseArgsAsFilename(args);
+            return new ImportCommand(filename);
+        } catch (ParseException pe) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ImportCommand.MESSAGE_USAGE));
+        } catch (NumberFormatException nfe) {
+            return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+    }
+
+    /**
+     * Parses the given arguments string as a single filename string.
+     *
+     * @param args arguments string to parse as index number
+     * @return the parsed filename
+     * @throws ParseException if no region of the args string could be found for the index
+     */
+    private String parseArgsAsFilename(String args) throws ParseException {
+        final Matcher matcher = ADDRESS_BOOK_IMPORT_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            throw new ParseException("Cannot find file/Invalid file provided.");
+        }
+        return matcher.group("filename");
+    }
 
 }
