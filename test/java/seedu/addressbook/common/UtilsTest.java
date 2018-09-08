@@ -1,15 +1,43 @@
 package seedu.addressbook.common;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class UtilsTest {
 
+    @Test
+    public void isAnyNull() throws Exception {
+        // no objects
+        assertIsNotNull();
+
+        // null object(s)
+        assertIsNull((Object) null);
+        assertIsNull((Object) null, (Object) null);
+        assertIsNull((Object) null, (Object) null, (Object) null);
+
+        // one non-null object
+        assertIsNotNull(1);
+        assertIsNotNull("");
+        assertIsNotNull("abc");
+
+        // one or more null object amongst a few objects
+        assertIsNull((Object) null, 1, "abc");
+        assertIsNull("", 1, (Object) null);
+        assertIsNull(1, (Object) null, "");
+        assertIsNull((Object) null, (Object) null, 1);
+        assertIsNull((Object) null, "abc", (Object) null);
+        assertIsNull("", (Object) null, (Object) null);
+
+
+        // few non-null objects
+        assertIsNotNull(1, "abc");
+        assertIsNotNull("abc", "");
+        assertIsNotNull("", 1);
+        assertIsNotNull(1, "abc", "");
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
@@ -36,6 +64,10 @@ public class UtilsTest {
         assertNotUnique(null, "a", "b", null);
     }
 
+    private void assertIsNull(Object... objects) { assertTrue(Utils.isAnyNull(objects)); }
+
+    private void assertIsNotNull(Object... objects) { assertFalse(Utils.isAnyNull(objects)); }
+
     private void assertAreUnique(Object... objects) {
         assertTrue(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
@@ -44,3 +76,4 @@ public class UtilsTest {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
     }
 }
+
