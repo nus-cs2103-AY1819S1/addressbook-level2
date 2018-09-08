@@ -177,9 +177,10 @@ Example:
 * `java seedu.addressbook.Main mydata.txt`
 
 
-== Changes from level 2
+== Enchancement from level 2
 
 What's different from AddressBook-Level2:
+
 * add a sort function to sort the person in address book by name
 
 == sorts all persons by name : `sort`
