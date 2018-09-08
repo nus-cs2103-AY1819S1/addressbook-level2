@@ -135,4 +135,38 @@ public class AddressBookTest {
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
+
+    @Test
+    public void isSimilar() throws Exception {
+        assertFalseIsSimilarNull();
+        assertTrueIsSimilarDifferentCase();
+        assertTrueIsSimilarSuperOrSubSet_DifferentCase();
+        assertTrueIsSimilarDifferentOrder_DifferentCase();
+    }
+
+    private void assertFalseIsSimilarNull() throws Exception {
+        Name john = new Name("john");
+        assertFalse(john.isSimilar(null));
+    }
+
+    private void assertTrueIsSimilarDifferentCase() throws Exception {
+        Name john = new Name("john");
+        Name differentCaseJohn = new Name("JOHN");
+        assertTrue(john.isSimilar(differentCaseJohn));
+        assertTrue(differentCaseJohn.isSimilar(john));
+    }
+
+    private void assertTrueIsSimilarSuperOrSubSet_DifferentCase() throws Exception {
+        Name john = new Name("joHn");
+        Name johnSuper = new Name("John Smith K");
+        assertTrue((john.isSimilar(johnSuper)));
+        assertTrue((johnSuper.isSimilar(john)));
+    }
+
+    private void assertTrueIsSimilarDifferentOrder_DifferentCase() throws Exception {
+        Name john = new Name("john smith k");
+        Name differentOrderJohn = new Name("Smith K John hello");
+        assertTrue((differentOrderJohn.isSimilar(john)));
+        assertTrue((john.isSimilar(differentOrderJohn)));
+    }
 }
