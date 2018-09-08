@@ -109,14 +109,6 @@ public class UniquePersonList implements Iterable<Person> {
         }
         internalList.add(toAdd);
     }  
-    
-    /**
-     * Return size of list.
-     *
-     */
-    public int size() {
-        return internalList.size();
-    }
 
     /**
      * Removes the equivalent person from the list.

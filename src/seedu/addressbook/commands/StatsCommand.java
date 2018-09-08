@@ -1,5 +1,9 @@
 package seedu.addressbook.commands;
 
+import seedu.addressbook.data.person.ReadOnlyPerson;
+
+import java.util.List;
+
 public class StatsCommand extends Command {
 
 
@@ -13,7 +17,8 @@ public class StatsCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        int size = addressBook.size();
+        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        int size = allPersons.size();
         return new CommandResult(MESSAGE_STATS + size);
     }
 

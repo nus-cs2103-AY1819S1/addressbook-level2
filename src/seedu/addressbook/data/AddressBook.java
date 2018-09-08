@@ -60,14 +60,7 @@ public class AddressBook {
     public void clear() {
         allPersons.clear();
     }
-
-
-    /**
-     * Get size of address book
-     */
-    public int size() {
-        return allPersons.size();
-    }
+    
     
     /**
      * Returns a new UniquePersonList of all persons in the address book at the time of the call.
