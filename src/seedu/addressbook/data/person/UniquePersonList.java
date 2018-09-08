@@ -1,11 +1,6 @@
 package seedu.addressbook.data.person;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -120,6 +115,27 @@ public class UniquePersonList implements Iterable<Person> {
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
+    }
+
+    /**
+     * Finds the equivalent person from the list.
+     *
+     * @param toFind Name of Person to find.
+     * @return The person found.
+     * @throws PersonNotFoundException if no such person could be found in the list.
+     */
+    public Person find(Name toFind) throws PersonNotFoundException {
+        Optional<Person> found = Optional.empty();
+        for (Person person : internalList) {
+            if (person.getName().toString().equals(toFind.toString())) {
+                found = Optional.of(person);
+                break;
+            }
+        }
+        if (!found.isPresent()) {
+            throw new PersonNotFoundException();
+        }
+        return found.get();
     }
 
     /**
