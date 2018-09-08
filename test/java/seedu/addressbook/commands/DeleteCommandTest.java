@@ -2,6 +2,7 @@ package seedu.addressbook.commands;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.Format;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.ui.Formatter;
 import seedu.addressbook.ui.TextUi;
 import seedu.addressbook.util.TestUtil;
 
@@ -53,49 +55,61 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_emptyAddressBook_returnsPersonNotFoundMessage() {
-        assertDeletionFailsDueToNoSuchPerson(1, emptyAddressBook, listWithEveryone);
+        assertDeletionFailsDueToNoSuchPerson(emptyAddressBook, listWithEveryone, 1);
+        assertDeletionFailsDueToNoSuchPerson(emptyAddressBook, listWithEveryone, new int[] {1, 2, 3, 4});
     }
 
     @Test
     public void execute_noPersonDisplayed_returnsInvalidIndexMessage() {
-        assertDeletionFailsDueToInvalidIndex(1, addressBook, emptyDisplayList);
+        assertDeletionFailsDueToInvalidIndex(addressBook, emptyDisplayList, 1);
+        assertDeletionFailsDueToInvalidIndex(addressBook, emptyDisplayList, new int[] {400, 1, 23});
     }
 
     @Test
     public void execute_targetPersonNotInAddressBook_returnsPersonNotFoundMessage()
             throws IllegalValueException {
-        Person notInAddressBookPerson = new Person(new Name("Not In Book"), new Phone("63331444", false),
+        Person notInAddressBookPerson1 = new Person(new Name("Not In Booka"), new Phone("63331444", false),
                 new Email("notin@book.com", false), new Address("156D Grant Road", false), Collections.emptySet());
-        List<ReadOnlyPerson> listWithPersonNotInAddressBook = TestUtil.createList(notInAddressBookPerson);
+        Person notInAddressBookPerson2 = new Person(new Name("Not In Bookb"), new Phone("633314445", false),
+                new Email("notina@book.com", false), new Address("156A Grant Road", false), Collections.emptySet());
+        List<ReadOnlyPerson> listWithPersonNotInAddressBook = TestUtil.createList(notInAddressBookPerson1, notInAddressBookPerson2);
 
-        assertDeletionFailsDueToNoSuchPerson(1, addressBook, listWithPersonNotInAddressBook);
+        assertDeletionFailsDueToNoSuchPerson(addressBook, listWithPersonNotInAddressBook, 1);
+        assertDeletionFailsDueToNoSuchPerson(addressBook, listWithPersonNotInAddressBook, 1, 2);
     }
 
     @Test
     public void execute_invalidIndex_returnsInvalidIndexMessage() {
-        assertDeletionFailsDueToInvalidIndex(0, addressBook, listWithEveryone);
-        assertDeletionFailsDueToInvalidIndex(-1, addressBook, listWithEveryone);
-        assertDeletionFailsDueToInvalidIndex(listWithEveryone.size() + 1, addressBook, listWithEveryone);
+        assertDeletionFailsDueToInvalidIndex(addressBook, listWithEveryone, 0);
+        assertDeletionFailsDueToInvalidIndex(addressBook, listWithEveryone, -1);
+        assertDeletionFailsDueToInvalidIndex(addressBook, listWithEveryone, listWithEveryone.size() + 1);
+        
+        assertDeletionFailsDueToInvalidIndex(addressBook, listWithEveryone, new int[] {0, -1});
+        assertDeletionFailsDueToInvalidIndex(addressBook, listWithEveryone, new int[] {0, -1, listWithEveryone.size() + 1});
     }
 
     @Test
     public void execute_validIndex_personIsDeleted() throws PersonNotFoundException {
-        assertDeletionSuccessful(1, addressBook, listWithSurnameDoe);
-        assertDeletionSuccessful(listWithSurnameDoe.size(), addressBook, listWithSurnameDoe);
+        assertMultipleDeletionSuccessful(addressBook, listWithSurnameDoe, 1);
+        assertMultipleDeletionSuccessful(addressBook, listWithSurnameDoe, listWithSurnameDoe.size());
 
         int middleIndex = (listWithSurnameDoe.size() / 2) + 1;
-        assertDeletionSuccessful(middleIndex, addressBook, listWithSurnameDoe);
+        assertMultipleDeletionSuccessful(addressBook, listWithSurnameDoe, middleIndex);
+        
+        // deleting multiple persons
+        assertMultipleDeletionSuccessful(addressBook, listWithEveryone, new int[] {1,2,3});
+        assertMultipleDeletionSuccessful(addressBook, listWithSurnameDoe, new int[] {1, 2, 3});
     }
 
     /**
      * Creates a new delete command.
      *
-     * @param targetVisibleIndex of the person that we want to delete
+     * @param targetVisibleIndexes
      */
-    private DeleteCommand createDeleteCommand(int targetVisibleIndex, AddressBook addressBook,
-                                                                      List<ReadOnlyPerson> displayList) {
+    private DeleteCommand createDeleteCommand(AddressBook addressBook,
+                                              List<ReadOnlyPerson> displayList, int... targetVisibleIndexes) {
 
-        DeleteCommand command = new DeleteCommand(targetVisibleIndex);
+        DeleteCommand command = new DeleteCommand(targetVisibleIndexes);
         command.setData(addressBook, displayList);
 
         return command;
@@ -116,12 +130,15 @@ public class DeleteCommandTest {
     /**
      * Asserts that the index is not valid for the given display list.
      */
-    private void assertDeletionFailsDueToInvalidIndex(int invalidVisibleIndex, AddressBook addressBook,
-                                                                        List<ReadOnlyPerson> displayList) {
+    private void assertDeletionFailsDueToInvalidIndex(AddressBook addressBook, List<ReadOnlyPerson> displayList, 
+                                                      int... invalidVisibleIndexes) {
+        String expectedMessage = "";
+        for (int invalidVisibleIndex : invalidVisibleIndexes) {
+            String resultFromDelete = String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX_WITH_CONTEXT, invalidVisibleIndex);
+            expectedMessage = Formatter.formatConcatResultMsg(expectedMessage, resultFromDelete);
+        }
 
-        String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
-
-        DeleteCommand command = createDeleteCommand(invalidVisibleIndex, addressBook, displayList);
+        DeleteCommand command = createDeleteCommand(addressBook, displayList, invalidVisibleIndexes);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -129,12 +146,15 @@ public class DeleteCommandTest {
      * Asserts that the person at the specified index cannot be deleted, because that person
      * is not in the address book.
      */
-    private void assertDeletionFailsDueToNoSuchPerson(int visibleIndex, AddressBook addressBook,
-                                                                        List<ReadOnlyPerson> displayList) {
+    private void assertDeletionFailsDueToNoSuchPerson(AddressBook addressBook, List<ReadOnlyPerson> displayList,
+                                                      int... visibleIndexes) {
+        String expectedMessage = "";
+        for (int visibleIndex : visibleIndexes) {
+            String resultFromDelete = String.format(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK_WITH_CONTEXT, visibleIndex);
+            expectedMessage = Formatter.formatConcatResultMsg(expectedMessage, resultFromDelete);
+        }
 
-        String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
-
-        DeleteCommand command = createDeleteCommand(visibleIndex, addressBook, displayList);
+        DeleteCommand command = createDeleteCommand(addressBook, displayList, visibleIndexes);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -145,18 +165,22 @@ public class DeleteCommandTest {
      *
      * @throws PersonNotFoundException if the selected person is not in the address book
      */
-    private void assertDeletionSuccessful(int targetVisibleIndex, AddressBook addressBook,
-                                          List<ReadOnlyPerson> displayList) throws PersonNotFoundException {
-
-        ReadOnlyPerson targetPerson = displayList.get(targetVisibleIndex - TextUi.DISPLAYED_INDEX_OFFSET);
-
+    private void assertMultipleDeletionSuccessful(AddressBook addressBook, List<ReadOnlyPerson> displayList, 
+                                                  int... targetVisibleIndexes) throws PersonNotFoundException {
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
-        expectedAddressBook.removePerson(targetPerson);
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson);
-
+        String expectedMessage = "";
+        for (int targetVisibleIndex : targetVisibleIndexes) {
+            ReadOnlyPerson targetPerson = displayList.get(targetVisibleIndex - TextUi.DISPLAYED_INDEX_OFFSET);
+            expectedAddressBook.removePerson(targetPerson);
+            String resultFromDelete = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson);
+            expectedMessage = Formatter.formatConcatResultMsg(expectedMessage, resultFromDelete);
+        }
+        
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
 
-        DeleteCommand command = createDeleteCommand(targetVisibleIndex, actualAddressBook, displayList);
+        DeleteCommand command = createDeleteCommand(actualAddressBook, displayList, targetVisibleIndexes);
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
     }
+    
+    
 }

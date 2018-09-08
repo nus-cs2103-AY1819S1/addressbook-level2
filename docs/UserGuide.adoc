@@ -94,11 +94,11 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
-Format: `delete INDEX`
+Format: `delete INDEXES...`
 
 ****
-Deletes the person at the specified `INDEX`.
-The index refers to the index number shown in the most recent listing.
+Deletes the person at the specified `INDEXES...`.
+The indexes refers to the index number shown in the most recent listing.
 ****
 
 Examples:
@@ -106,6 +106,10 @@ Examples:
 * `list` +
 `delete 2` +
 Deletes the 2nd person in the address book.
+
+* `list` +
+`delete 1 2` +
+Deletes the 1st and 2nd person in the address book.
 
 * `find Betsy` +
 `delete 1` +
