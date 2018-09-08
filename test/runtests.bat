@@ -15,7 +15,7 @@ IF ERRORLEVEL 1 (
 REM no error here, errorlevel == 0
 
 REM run the program, feed commands from input.txt file and redirect the output to the actual.txt
-java -classpath ..\bin seedu.addressbook.Main < input.txt > actual.txt
+java -classpath ..\bin seedu.addressbook.Main < sortinput.txt > actual.txt
 
 REM compare the output to the expected output
-FC actual.txt expected.txt
+FC actual.txt sortexpected.txt
