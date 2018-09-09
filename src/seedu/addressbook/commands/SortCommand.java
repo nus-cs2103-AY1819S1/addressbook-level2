@@ -26,6 +26,7 @@ public class SortCommand extends Command {
         }
     }
 
+    // TODO - remove sort by phone as it violates privacy
     private static class ByPhone implements Comparator<Person> {
         @Override
         public int compare(Person p1, Person p2) {
