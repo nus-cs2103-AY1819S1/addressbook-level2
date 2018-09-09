@@ -1,5 +1,7 @@
 package seedu.addressbook.commands;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -24,6 +26,16 @@ public class Command {
     }
 
     protected Command() {
+    }
+
+    public static String saveAddressBook(List<? extends ReadOnlyPerson> personsDisplayed){
+        try (PrintWriter out = new PrintWriter("ab2.txt")) {
+            out.println(personsDisplayed);
+            return String.format(Messages.MESSAGE_SAVE_CONTACT);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return String.format(Messages.MESSAGE_SAVE_FAILED);
     }
 
     /**
