@@ -3,6 +3,7 @@ package seedu.addressbook.commands;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
@@ -12,6 +13,8 @@ import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.tag.Tag;
+
+import static seedu.addressbook.ui.TextUi.DISPLAYED_INDEX_OFFSET;
 
 /**
  * Edits a person identified using it's last displayed index from the address book.
@@ -26,7 +29,8 @@ public class EditCommand extends Command {
             + "Example: " + COMMAND_WORD
             + " 1 John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Old: %1$s\n";
+    public static final String MESSAGE_SUCCESS = "New: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person toEdit;
@@ -68,8 +72,14 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute() {
         try {
-            addressBook.addPerson(toEdit);
-            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, toEdit));
+            final ReadOnlyPerson target = getTargetPerson();
+            addressBook.editPerson(toEdit, target, getTargetIndex() - DISPLAYED_INDEX_OFFSET);
+            return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, target, MESSAGE_SUCCESS, toEdit));
+
+        } catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        } catch (UniquePersonList.PersonNotFoundException pnfe) {
+            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }
