@@ -74,7 +74,7 @@ Format: `list`
 
 == Sorting all persons : `sort`
 
-Lists persons in alphabetical order of their names +
+Lists persons in alphabetical order of their names. +
 Format: `sort`
 
 == Finding all persons containing any keyword in their name: `find`
