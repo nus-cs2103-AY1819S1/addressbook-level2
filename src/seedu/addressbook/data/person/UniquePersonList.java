@@ -108,7 +108,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.add(toAdd);
-    }
+    }  
 
     /**
      * Removes the equivalent person from the list.

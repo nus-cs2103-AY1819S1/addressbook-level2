@@ -72,6 +72,11 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
+== Statistics for address book : `stats`
+
+Shows only the total number of Persons in the address book quickly without having to go through the verbose output of  `list`. +
+Format: `stats`
+
 == Finding all persons containing any keyword in their name: `find`
 
 Finds persons whose names contain any of the given keywords. +
