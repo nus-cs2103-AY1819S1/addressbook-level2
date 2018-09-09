@@ -37,7 +37,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void elementsAreNull() throws Exception {
+    public void isAnyNull() throws Exception {
         // No objects
         assertNoNulls();
 
