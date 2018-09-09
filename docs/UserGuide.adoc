@@ -85,8 +85,8 @@ and persons matching at least one keyword will be returned (i.e. `OR` search).
 
 Examples:
 
-* `find John` +
-Returns `John Doe` but not `john`.
+* `find john` +
+Returns `John Doe`.
 
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
