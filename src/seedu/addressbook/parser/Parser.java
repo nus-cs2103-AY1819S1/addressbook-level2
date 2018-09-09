@@ -31,7 +31,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
 public class Parser {
 
 
-    private static final String PERSON_INDEX_ARGS_FORMAT_STRING = "(?<targetIndex>.+) ";
+    private static final String PERSON_INDEX_ARGS_FORMAT_STRING = "(?<targetIndex>.+)";
     private static final String PERSON_DATA_ARGS_FORMAT_STRING =
             "(?<name>[^/]+)"
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
@@ -39,7 +39,7 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)";
     private static final String EDIT_PERSON_ARGS_FORMAT_STRING =
-            PERSON_INDEX_ARGS_FORMAT_STRING + PERSON_DATA_ARGS_FORMAT_STRING;
+            "(?<targetIndex>[^\\s]+)" + " " + PERSON_DATA_ARGS_FORMAT_STRING;
     public static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
