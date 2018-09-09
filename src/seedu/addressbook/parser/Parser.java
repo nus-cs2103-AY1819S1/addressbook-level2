@@ -241,6 +241,13 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
 
+
+    /**
+     * Parses arguments in the context of the findtag command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
     private Command prepareFindTag(String args) {
 
         final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());

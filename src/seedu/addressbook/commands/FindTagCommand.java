@@ -2,9 +2,12 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
-
 import java.util.*;
 
+/**
+ * Finds and lists all persons in address book whose tags contains any of the argument keywords.
+ * Keyword matching is case sensitive.
+ */
 public class FindTagCommand extends Command {
 
     public static final String COMMAND_WORD = "findtag";
