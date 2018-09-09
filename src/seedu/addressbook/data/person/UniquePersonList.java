@@ -134,6 +134,13 @@ public class UniquePersonList implements Iterable<Person> {
         return internalList.iterator();
     }
 
+    /**
+     * Sorts the list by name.
+     */
+    public void sort() {
+        Collections.sort(internalList);
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

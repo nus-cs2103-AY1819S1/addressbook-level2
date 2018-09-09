@@ -1,7 +1,6 @@
 package seedu.addressbook.data;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static seedu.addressbook.util.TestUtil.getSize;
 import static seedu.addressbook.util.TestUtil.isEmpty;
 import static seedu.addressbook.util.TestUtil.isIdentical;
@@ -38,6 +37,9 @@ public class AddressBookTest {
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
+    private AddressBook unsortedAddressBook;
+    private AddressBook sortedAddressBook;
+    private AddressBook reverseSortedAddressBook;
 
 
     @Before
@@ -73,6 +75,9 @@ public class AddressBookTest {
 
         emptyAddressBook = new AddressBook();
         defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
+        unsortedAddressBook = new AddressBook(new UniquePersonList(charlieDouglas, davidElliot, aliceBetsy, bobChaplin));
+        sortedAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin, charlieDouglas, davidElliot));
+        reverseSortedAddressBook = new AddressBook(new UniquePersonList(davidElliot, charlieDouglas, bobChaplin, aliceBetsy));
     }
 
     @Rule
@@ -126,6 +131,21 @@ public class AddressBookTest {
         defaultAddressBook.clear();
 
         assertTrue(isEmpty(defaultAddressBook.getAllPersons()));
+    }
+
+    @Test
+    public void sort() {
+        emptyAddressBook.sort();
+        assertEquals(emptyAddressBook, new AddressBook());
+
+        assertFalse(sortedAddressBook.equals(unsortedAddressBook));
+        assertFalse(sortedAddressBook.equals(reverseSortedAddressBook));
+
+        unsortedAddressBook.sort();
+        assertTrue(sortedAddressBook.equals(unsortedAddressBook));
+
+        reverseSortedAddressBook.sort();
+        assertTrue(sortedAddressBook.equals(reverseSortedAddressBook));
     }
 
     @Test
