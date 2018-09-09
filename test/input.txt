@@ -115,16 +115,14 @@
   # should only match full words in person names
   find_email bet
   # does not match if none have keyword
-  find 23912039120
+  find_email 23912039120
   # matching should be case-sensitive
-  find betsy
+  find_email BENchoo@nus.edu.sg
 
   # find unique keyword
-  find Betsy
-  # find multiple with same keyword
-  find Dickson
+  find_email benchoo@nus.edu.sg
   # find multiple with some keywords
-  find Charlie Betsy
+  find_email charlie.d@nus.edu.sg benchoo@nus.edu.sg
 
 ##########################################################
 # test delete person command

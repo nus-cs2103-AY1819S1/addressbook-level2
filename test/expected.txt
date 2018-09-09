@@ -256,7 +256,7 @@
 ||
 || 1 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  find charlie.d@nus.edu.sg benchoo@nus.edu.sg]
+|| Enter command: || [Command entered:  find_email charlie.d@nus.edu.sg benchoo@nus.edu.sg]
 || 	1. Betsy Choo Tags: [secretive]
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 ||
