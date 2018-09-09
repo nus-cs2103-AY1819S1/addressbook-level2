@@ -81,7 +81,20 @@ public class UniquePersonList implements Iterable<Person> {
         return Collections.unmodifiableList(internalList);
     }
 
+    /**
+     * Returns a mutable copy of the elements. Any changes to this list will not reflect
+     * on the actual list stored in the data.
+     * @return mutable copy of list of elements
+     */
+    public List<Person> mutableCopyListView() {
+        List<Person> copyList = new ArrayList<Person>();
 
+        for (int i = 0; i < internalList.size(); i++) {
+            copyList.add(internalList.get(i));
+        }
+
+        return copyList;
+    }
     /**
      * Checks if the list contains an equivalent person as the given argument.
      * The {@link ReadOnlyPerson#isSamePerson} method is used for this comparison, which

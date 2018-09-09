@@ -35,6 +35,7 @@ public class AddressBookTest {
     private Person bobChaplin;
     private Person charlieDouglas;
     private Person davidElliot;
+    private Person johnKSmith;
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
@@ -70,6 +71,12 @@ public class AddressBookTest {
                                     new Email("douglas@nuscomputing.com", false),
                                     new Address("11 Arts Link", false),
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
+
+        johnKSmith     = new Person(new Name("John K Smith"),
+                                    new Phone("83122422", false),
+                                    new Email("jksmith@nuscomputing.com", false),
+                                    new Address("10 Computing Drive", false),
+                                    new HashSet<>(Arrays.asList(tagMathematician, tagScientist)));
 
         emptyAddressBook = new AddressBook();
         defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
@@ -134,5 +141,20 @@ public class AddressBookTest {
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void nameIsSimilar() throws Exception {
+        Name variationOne = new Name("John K Smith");
+        Name variationTwo = new Name("John K SMIth");
+        Name variationThree = new Name("John Smith");
+//        Name variationFour = new Name("Smith, John K");
+//        Name variationFive = new Name("Smith, John");
+
+        assertTrue(johnKSmith.getName().isSimilar(variationOne));
+        assertTrue(johnKSmith.getName().isSimilar(variationTwo));
+        assertTrue(johnKSmith.getName().isSimilar(variationThree));
+//        assertTrue(johnKSmith.getName().isSimilar(variationFour));
+//        assertTrue(johnKSmith.getName().isSimilar(variationFive));
     }
 }
