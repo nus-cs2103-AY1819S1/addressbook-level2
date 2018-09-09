@@ -53,6 +53,7 @@ public class FindCommand extends Command {
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
             final Set<String> wordsInNameInTwoCases = new HashSet<>(wordsInName);
+
             for (String word : wordsInName) {
                 wordsInNameInTwoCases.add(word.toUpperCase());
                 wordsInNameInTwoCases.add(word.toLowerCase());
