@@ -15,7 +15,7 @@ public class SortCommand extends Command {
     public CommandResult execute() {
         PriorityQueue<Person> arrangedPersons = new PriorityQueue<>(new Comparator<Person>() {
             public int compare(Person p1, Person p2) {
-                return p2.getName().fullName.compareTo(p1.getName().fullName);
+                return p1.getName().fullName.compareTo(p2.getName().fullName);
             }
         });
         try {
