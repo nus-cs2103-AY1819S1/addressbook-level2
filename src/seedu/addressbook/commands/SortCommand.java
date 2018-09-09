@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Sorts the existing persons in the address book according to the alphabetical order of their first name.
+ * Lists out the sorted list.
  */
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
