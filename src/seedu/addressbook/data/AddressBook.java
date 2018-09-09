@@ -45,6 +45,10 @@ public class AddressBook {
         return allPersons.contains(key);
     }
 
+    public void swapIndex(int target1Index, int target2Index) throws PersonNotFoundException {
+        allPersons.swapIndex(target1Index, target2Index);
+    }
+
     /**
      * Removes the equivalent person from the address book.
      *
@@ -72,6 +76,6 @@ public class AddressBook {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                        && this.allPersons.equals(((AddressBook) other).allPersons));
+                && this.allPersons.equals(((AddressBook) other).allPersons));
     }
 }

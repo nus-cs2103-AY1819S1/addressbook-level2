@@ -259,7 +259,34 @@ public class Parser {
      */
     private Command prepareSwap(String args) {
         //TODO
-        return new SwapCommand();
+        try {
+            int[] targetsArray = parseArgsAsTwoDisplayedIndex(args);
+            return new SwapCommand(targetsArray[0], targetsArray[1]);
+        } catch (ParseException pe) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    ViewAllCommand.MESSAGE_USAGE));
+        } catch (NumberFormatException nfe) {
+            return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+    }
+
+    /**
+     * Parses the given arguments string to 2 index number.
+     *
+     * @param args arguments string to parse as index number
+     * @return the parsed index numbers in an int array
+     * @throws ParseException if no region of the args string could be found for the index
+     * @throws NumberFormatException the args string region is not a valid number
+     */
+    private int[] parseArgsAsTwoDisplayedIndex(String args) throws ParseException, NumberFormatException {
+        final Matcher matcher = PERSON_INDEX_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            throw new ParseException("Could not find index number to parse");
+        }
+        String[] stringArgs = matcher.group("targetIndex").split(" ");
+        int[] intArray = {Integer.parseInt(stringArgs[0]), Integer.parseInt(stringArgs[1])};
+        return intArray;
     }
 
 
