@@ -7,9 +7,9 @@ import java.util.*;
 
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
-
     public static final String MESSAGE_SUCCESS = "Successfully sorted.";
-    public static final String MESSAGE_EMPTY_BOOK = "Nothing to sort.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD +
+            ": Sorts all people in the Address Book lexicographically.";
 
     @Override
     public CommandResult execute() {
@@ -27,8 +27,6 @@ public class SortCommand extends Command {
                 addressBook.addPerson(arrangedPersons.poll());
             }
             return new CommandResult(MESSAGE_SUCCESS);
-        } catch (NullPointerException err) {
-            return new CommandResult(MESSAGE_EMPTY_BOOK);
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             // not possible to reach here
             return new CommandResult("");
