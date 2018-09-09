@@ -91,6 +91,22 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Editing a person : `edit`
+
+After a list/find command, the edit command makes changes to a given user. +
+Format: `edit INDEX NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
+
+[NOTE]
+====
+Edit will modify the entry, specified by INDEX, of a previous find/list command.
+====
+
+Examples:
+
+* `list` +
+`edit 1 John p/92345678 e/new@mail.com a/123 Street 11` +
+Modifies the 1st entry in a previous find/list and update with new particulars.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +

@@ -15,6 +15,7 @@ import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
+import seedu.addressbook.commands.EditCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
@@ -29,18 +30,26 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Parser {
 
-    public static final Pattern PERSON_INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>.+)");
 
-    public static final Pattern KEYWORDS_ARGS_FORMAT =
-            Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
-
-    public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
-            Pattern.compile("(?<name>[^/]+)"
+    private static final String PERSON_INDEX_ARGS_FORMAT_STRING = "(?<targetIndex>.+)";
+    private static final String PERSON_DATA_ARGS_FORMAT_STRING =
+            "(?<name>[^/]+)"
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
-                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+                    + "(?<tagArguments>(?: t/[^/]+)*)";
+    private static final String EDIT_PERSON_ARGS_FORMAT_STRING =
+            "(?<targetIndex>[^\\s]+)" + " " + PERSON_DATA_ARGS_FORMAT_STRING;
+    public static final Pattern KEYWORDS_ARGS_FORMAT =
+            Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
+    public static final Pattern PERSON_INDEX_ARGS_FORMAT = Pattern.compile(PERSON_INDEX_ARGS_FORMAT_STRING);
+
+    public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile(PERSON_DATA_ARGS_FORMAT_STRING); // variable number of tags
+
+    public static final Pattern EDIT_PERSON_ARGS_FORMAT =
+            Pattern.compile(EDIT_PERSON_ARGS_FORMAT_STRING);
 
     /**
      * Signals that the user input could not be parsed.
@@ -75,6 +84,9 @@ public class Parser {
 
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
+
+        case EditCommand.COMMAND_WORD:
+            return prepareEdit(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
@@ -132,6 +144,43 @@ public class Parser {
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
+        }
+    }
+
+    /**
+     * Parses arguments in the context of the add person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareEdit(String args) {
+        final Matcher matcher = EDIT_PERSON_ARGS_FORMAT.matcher(args.trim());
+        // Validate arg string format
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        }
+        try {
+            final int targetIndex = Integer.parseInt(matcher.group("targetIndex"));
+            return new EditCommand(
+                    targetIndex,
+
+                    matcher.group("name"),
+
+                    matcher.group("phone"),
+                    isPrivatePrefixPresent(matcher.group("isPhonePrivate")),
+
+                    matcher.group("email"),
+                    isPrivatePrefixPresent(matcher.group("isEmailPrivate")),
+
+                    matcher.group("address"),
+                    isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+
+                    getTagsFromArgs(matcher.group("tagArguments"))
+            );
+        } catch (IllegalValueException ive) {
+            return new IncorrectCommand(ive.getMessage());
+        } catch (NumberFormatException nfe) {
+            return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
     }
 

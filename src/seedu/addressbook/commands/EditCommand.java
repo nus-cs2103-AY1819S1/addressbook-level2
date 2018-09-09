@@ -1,8 +1,6 @@
 package seedu.addressbook.commands;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
@@ -13,21 +11,18 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.tag.Tag;
 
-/**
- * Adds a person to the address book.
- */
-public class AddCommand extends Command {
+import java.util.HashSet;
+import java.util.Set;
 
-    public static final String COMMAND_WORD = "add";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+public class EditCommand extends Command {
+    public static final String COMMAND_WORD = "edit";
+    public static final String MESSAGE_USAGE = "Edits a person identified by the index used in "
+            + "the last find/list call.\n"
             + "Contact details can be marked private by prepending 'p' to the prefix.\n"
             + "Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...\n"
             + "Example: " + COMMAND_WORD
             + " John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
-
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "Person edited: %1$s";
 
     private final Person toAdd;
 
@@ -36,11 +31,12 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String name,
+    public EditCommand(Integer oldIndex, String name,
                       String phone, boolean isPhonePrivate,
                       String email, boolean isEmailPrivate,
                       String address, boolean isAddressPrivate,
                       Set<String> tags) throws IllegalValueException {
+        super(oldIndex);
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -54,8 +50,9 @@ public class AddCommand extends Command {
         );
     }
 
-    public AddCommand(Person toAdd) {
-        this.toAdd = toAdd;
+    public EditCommand(Integer oldIndex, Person p) {
+        super(oldIndex);
+        toAdd = p;
     }
 
     public ReadOnlyPerson getPerson() {
@@ -65,11 +62,17 @@ public class AddCommand extends Command {
     @Override
     public CommandResult execute() {
         try {
+            addressBook.removePerson(getTargetPerson());
             addressBook.addPerson(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), true);
-        } catch (UniquePersonList.DuplicatePersonException dpe) {
-            return new CommandResult(MESSAGE_DUPLICATE_PERSON, false);
         }
-    }
+        catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, false);
+        } catch (UniquePersonList.PersonNotFoundException pnfe) {
+            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK, false);
+        } catch (UniquePersonList.DuplicatePersonException dpe) {
+            return new CommandResult(AddCommand.MESSAGE_DUPLICATE_PERSON, false);
+        }
 
+    }
 }
