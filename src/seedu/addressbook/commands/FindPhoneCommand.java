@@ -9,17 +9,16 @@ import java.util.Set;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case sensitive.
+ * Finds and lists all persons whose phone number equals to the number(s) specified.
  */
 public class FindPhoneCommand extends Command {
 
     public static final String COMMAND_WORD = "findPhone";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds and lists all persons whose phone number "
+            + "equals to the number(s) specified and displays them as a list with index numbers.\n"
+            + "Parameters: PHONE_NUMBER [MORE_PHONE_NUMBERS]...\n"
+            + "Example: " + COMMAND_WORD + " 81234567 99999999";
 
     private final Set<String> keywords;
 
