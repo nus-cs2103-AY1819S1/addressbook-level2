@@ -290,6 +290,9 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  save]
+|| Addressbook saved successfully
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
