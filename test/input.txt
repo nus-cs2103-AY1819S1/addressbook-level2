@@ -101,9 +101,20 @@
 
   # find unique keyword
   find Betsy
+  find alpha
+  find school
+  find 555555
+  find adam@gmail.com
+
+  # should not find with private fields
+  find dickson@nus.edu.sg
+  find Betsy dickson@nus.edu.sg school 555555
+
   # find multiple with same keyword
   find Dickson
+  find friends
   # find multiple with some keywords
+  find Betsy alpha school 555555
   find Charlie Betsy
 
 ##########################################################
