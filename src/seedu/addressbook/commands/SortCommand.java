@@ -1,5 +1,8 @@
 package seedu.addressbook.commands;
 
+/**
+ * Sorts the address book alphabetically.
+ */
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
     public static final String MESSAGE_USAGE = "Sorts the address book alphabetically.\n"
