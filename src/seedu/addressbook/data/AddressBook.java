@@ -58,11 +58,9 @@ public class AddressBook {
      * Edits the equivalent person from the address book by replacing with new data.
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
-     * @throws PersonNotFoundException if no such Person could be found.
      */
-    public void editPerson(Person toEdit, ReadOnlyPerson toReplace, int offsetIndex) throws DuplicatePersonException,
-            PersonNotFoundException {
-        allPersons.edit(toEdit, toReplace, offsetIndex);
+    public void editPerson(Person toEdit, int offsetIndex) throws DuplicatePersonException {
+        allPersons.edit(toEdit, offsetIndex);
     }
 
     /**
