@@ -38,13 +38,20 @@ public class UtilsTest {
 
     @Test
     public void isAnyNull() {
+        // Non empty list with null
         assertTrue(Utils.isAnyNull(1, 2, 3, null, 13));
         assertTrue(Utils.isAnyNull(1, 2, null, null, 13));
         assertTrue(Utils.isAnyNull(null, 1, 2, 3, 5));
         assertTrue(Utils.isAnyNull(1, 2, 3, null));
+
+        // List containing only null
         assertTrue(Utils.isAnyNull((Object) null));
+
+        // Empty list
         assertFalse(Utils.isAnyNull());
         assertFalse(Utils.isAnyNull(new Object[]{}));
+
+        // List containing no null
         assertFalse(Utils.isAnyNull(1, 2, 3, 4, 5));
     }
 
