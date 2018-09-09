@@ -68,6 +68,13 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    /**
+     * Sorts all person lexicographically according to their names.
+     */
+    public void sort() {
+        allPersons.sort();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

@@ -13,23 +13,7 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        PriorityQueue<Person> arrangedPersons = new PriorityQueue<>(new Comparator<Person>() {
-            public int compare(Person p1, Person p2) {
-                return p1.getName().fullName.compareTo(p2.getName().fullName);
-            }
-        });
-        try {
-            for (Person person : addressBook.getAllPersons()) {
-                arrangedPersons.add(person);
-            }
-            addressBook.clear();
-            while (!arrangedPersons.isEmpty()) {
-                addressBook.addPerson(arrangedPersons.poll());
-            }
-            return new CommandResult(MESSAGE_SUCCESS);
-        } catch (UniquePersonList.DuplicatePersonException dpe) {
-            // not possible to reach here
-            return new CommandResult("");
-        }
+        addressBook.sort();
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }
