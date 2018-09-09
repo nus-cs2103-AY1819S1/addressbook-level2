@@ -1,14 +1,14 @@
 package seedu.addressbook.storage;
 
+import seedu.addressbook.data.AddressBook;
+import seedu.addressbook.data.exception.IllegalValueException;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-
-import seedu.addressbook.data.AddressBook;
-import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
  * Represents the file used to store address book data.
@@ -37,6 +37,16 @@ public class StorageFile {
      */
     public static class StorageOperationException extends Exception {
         public StorageOperationException(String message) {
+            super(message);
+        }
+    }
+
+    /**
+     * Signals that some error has occured while trying to convert and write data between the application
+     * and the storage file.
+     */
+    public static class StorageReadOnlyException extends Exception {
+        public StorageReadOnlyException(String message) {
             super(message);
         }
     }
@@ -73,11 +83,14 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
+    public void save(AddressBook addressBook) throws StorageOperationException, StorageReadOnlyException {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
+            if (path.toFile().canRead()) {
+                throw new StorageReadOnlyException("Error: " + path + " is READ only. Please modify permissions.");
+            }
             throw new StorageOperationException("Error writing to file: " + path);
         }
     }
