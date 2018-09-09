@@ -8,7 +8,8 @@ import java.util.List;
 
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists all persons alphabetically in the address book to the user.
+ * Does not change the ordering stored inside the address book.
  */
 public class SortCommand extends Command {
 
