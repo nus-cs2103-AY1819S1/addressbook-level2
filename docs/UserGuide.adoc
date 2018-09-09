@@ -37,6 +37,8 @@ What's different from AddressBook-Level1:
 * Support for storing address (`a/`) and tags (`t/`)
 * Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`)
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
+* Edit details of a person (`edit` INDEX n/NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS [t/TAG]... :
+        updates details of person at indicated index
 
 == Viewing help : `help`
 
@@ -155,6 +157,22 @@ Views all details of the 1st person in the results of the `find` command.
 
 Clears all entries from the address book. +
 Format: `clear`
+
+== Editing a person : `edit`
+
+Edits the specified person from the address book. Irreversible. +
+Format: `edit INDEX n/NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
+
+****
+Edits the person at the specified `INDEX`.
+The index refers to the index number shown in the most recent listing.
+****
+
+Example:
+
+* `list` +
+`edit 2 n/John Doe p/98765543 e/doe@gmail.com a/AngMoKio t/bestfriend` +
+Edits the 2nd person in the address book with specified details.
 
 == Exiting the program : `exit`
 
