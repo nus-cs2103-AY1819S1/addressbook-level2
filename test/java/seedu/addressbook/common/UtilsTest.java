@@ -57,18 +57,18 @@ public class UtilsTest {
         assertHasNull((Object) null, 1, "", "abc");
 
         // there are no null objects
-        assertHasNoNull("abc", "ab", "a");
-        assertHasNoNull(1, 2);
         assertHasNoNull(objectList);
+        assertHasNoNull(1, 2);
+        assertHasNoNull("abc", "ab", "a");
         assertHasNoNull(objectList, "def", "ghi", "jkl");
 
         // some null objects
         assertHasNoNull("abc", "abc");
-        assertHasNoNull("abc", "", "abc", "ABC");
-        assertHasNoNull("", "abc", "a", "abc");
         assertHasNoNull(1, Integer.valueOf(1));
-        assertHasNull(null, 1, Integer.valueOf(1));
+        assertHasNoNull("", "abc", "a", "abc");
+
         assertHasNull(null, null);
+        assertHasNull(null, 1, Integer.valueOf(1));
         assertHasNull(null, "a", "b", null);
         assertHasNull(objectList, null, "mno", 3, "pqr", "x");
     }
