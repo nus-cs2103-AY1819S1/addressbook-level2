@@ -1,5 +1,6 @@
 package seedu.addressbook.data;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.addressbook.util.TestUtil.getSize;
@@ -38,6 +39,8 @@ public class AddressBookTest {
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
+    private AddressBook unsortedAddressBook;
+    private AddressBook sortedAddressBook;
 
 
     @Before
@@ -73,6 +76,8 @@ public class AddressBookTest {
 
         emptyAddressBook = new AddressBook();
         defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
+        unsortedAddressBook = new AddressBook(new UniquePersonList(bobChaplin, davidElliot, charlieDouglas, aliceBetsy));
+        sortedAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin, charlieDouglas, davidElliot));
     }
 
     @Rule
@@ -119,6 +124,12 @@ public class AddressBookTest {
     public void removePerson_personNotExists_throwsPersonNotFoundException() throws Exception {
         thrown.expect(PersonNotFoundException.class);
         defaultAddressBook.removePerson(charlieDouglas);
+    }
+
+    @Test
+    public void sort() {
+        unsortedAddressBook.sort();
+        assertEquals(unsortedAddressBook, sortedAddressBook);
     }
 
     @Test
