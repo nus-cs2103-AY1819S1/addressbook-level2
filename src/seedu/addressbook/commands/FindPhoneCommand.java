@@ -20,36 +20,37 @@ public class FindPhoneCommand extends Command {
             + "Parameters: PHONE_NUMBER [MORE_PHONE_NUMBERS]...\n"
             + "Example: " + COMMAND_WORD + " 81234567 99999999";
 
-    private final Set<String> keywords;
+    private final Set<String> phoneNumbers;
 
-    public FindPhoneCommand(Set<String> keywords) {
-        this.keywords = keywords;
+    public FindPhoneCommand(Set<String> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 
     /**
-     * Returns a copy of keywords in this command.
+     * Returns a copy of phone numbers in this command.
      */
-    public Set<String> getKeywords() {
-        return new HashSet<>(keywords);
+    public Set<String> getPhoneNumbers() {
+        return new HashSet<>(phoneNumbers);
     }
 
     @Override
     public CommandResult execute() {
-        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
+        final List<ReadOnlyPerson> personsFound = getPersonsWithPhoneNumber(phoneNumbers);
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 
     /**
-     * Retrieves all persons in the address book whose names contain some of the specified keywords.
+     * Retrieves all persons in the address book whose phone number equals to the number(s) specified.
      *
-     * @param keywords for searching
+     * @param phoneNumbers for searching
      * @return list of persons found
      */
-    private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
+    private List<ReadOnlyPerson> getPersonsWithPhoneNumber(Set<String> phoneNumbers) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
-            final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            final Set<String> personPhone = new HashSet<>();
+            personPhone.add(person.getPhone().toString());
+            if (!Collections.disjoint(personPhone, phoneNumbers)) {
                 matchedPersons.add(person);
             }
         }
