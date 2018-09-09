@@ -76,6 +76,11 @@ public class UniquePersonList implements Iterable<Person> {
         return Collections.unmodifiableList(internalList);
     }
 
+    /**
+     * Returns a java List view with elements cast as Person
+     * For use with other methods/libraries.
+     * Any changes to the internal list/elements are immediately visible in the returned list.
+     */
     public List<Person> sortedListView() {
         List<Person> newInternalList = new ArrayList<>();
         for (Person p : internalList) {
@@ -90,6 +95,15 @@ public class UniquePersonList implements Iterable<Person> {
             }
         });
         return newInternalList;
+    }
+
+    /**
+     * Returns a java List view with elements cast as Person.
+     * For use with AdressBookTest.java only.
+     * Any changes to the internal list/elements are immediately visible in the returned list.
+     */
+    public List<Person> listView() {
+        return internalList;
     }
 
 
