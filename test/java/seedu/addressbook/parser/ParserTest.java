@@ -16,6 +16,7 @@ import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
+import seedu.addressbook.commands.EditCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
@@ -195,6 +196,50 @@ public class ParserTest {
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
         assertEquals(keySet, result.getKeywords());
+    }
+
+    /*
+     * Tests for edit person command =============================================================================
+     */
+
+    @Test
+    public void parse_editCommandNoArgs_errorMessage() {
+        final String[] inputs = { "edit", "edit " };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_editCommandInvalidArgs_errorMessage() {
+        final String[] inputs = {
+                "edit 1 ",
+                // no phone prefix
+                String.format("edit 1 $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+                // no email prefix
+                String.format("edit 1 $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+                // no address prefix
+                String.format("edit 1 $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
+        };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_editCommandInvalidIndex_errorMessage() {
+        final String[] inputs = {
+                //Index not a number
+                String.format("edit notANumber $s p/$s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+        };
+        final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_editCommandCorrectArgs_parsedCorrectly() {
+        final Integer testIndex = 1;
+        final String input = String.format("edit %d %s p/%s e/%s a/%s", testIndex, Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE);
+
+        final EditCommand result = parseAndAssertCommandType(input, EditCommand.class);
     }
 
     /*
