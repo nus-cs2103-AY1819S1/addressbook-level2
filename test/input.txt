@@ -107,6 +107,19 @@
   find Charlie Betsy
 
 ##########################################################
+# test update persons command
+##########################################################
+
+  # should update record successfully
+  update 2 Charlie Dickson p/81231232 e/charlied@nus.edu.sg a/222, Kent Ridge Road
+
+  # should catch invalid index
+  update 3 Charlie Dickson p/81231232 e/charlied@nus.edu.sg a/222, Kent Ridge Road
+
+  # find multiple with some keywords
+  find Charlie Betsy
+
+##########################################################
 # test delete person command
 ##########################################################
 

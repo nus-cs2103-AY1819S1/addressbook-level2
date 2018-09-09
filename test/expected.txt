@@ -12,6 +12,9 @@
 || delete: Deletes the person identified by the index number used in the last person listing.
 || Parameters: INDEX
 || Example: delete 1
+|| update: Update a person in the address book. Contact details can be marked private by prepending 'p' to the prefix.
+|| Parameters: INDEX NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...
+|| Example: update 1 John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
 || Clears address book permanently.
 || Example: clear
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
@@ -233,6 +236,18 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  update 2 Charlie Dickson p/81231232 e/charlied@nus.edu.sg a/222, Kent Ridge Road]
+|| Person updated: Charlie Dickson Phone: 81231232 Email: charlied@nus.edu.sg Address: 222, Kent Ridge Road Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  update 3 Charlie Dickson p/81231232 e/charlied@nus.edu.sg a/222, Kent Ridge Road]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  find Charlie Betsy]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Charlie Dickson Phone: 81231232 Email: charlied@nus.edu.sg Address: 222, Kent Ridge Road Tags: 
+|| 
+|| 2 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
 || delete: Deletes the person identified by the index number used in the last person listing.
@@ -252,7 +267,7 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
-|| Deleted Person: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| Deleted Person: Charlie Dickson Phone: 81231232 Email: charlied@nus.edu.sg Address: 222, Kent Ridge Road Tags: 
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
 || Person could not be found in address book
