@@ -149,6 +149,20 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # add some fake person
+  add Esmond p/55555555 e/esmond@u.nus.edu a/pasir ris, singapore t/student t/drives
+  add Zhi Kai p/66666666 e/zhikai@u.nus.edu a/sengkang, singapore t/malaysian
+  add Zul p/00000000 e/zul@u.nus.edu a/tampines, singapore t/centpai
+  add Darren Ong p/33333333 e/darren@u.nus.edu a/bishan, singapore t/malaysian
+  add Eng Soon p/87878787 e/engsoon@u.nus.edu a/tahi street, singapore t/arsenal t/tahi
+  # sort
+  sort
+  list
+
+##########################################################
 # test exit command
 ##########################################################
 
