@@ -21,10 +21,12 @@ import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
+
 import static seedu.addressbook.util.TestUtil.assertTextFilesEqual;
 import static seedu.addressbook.util.TestUtil.assertFileDoesNotExist;
 
 public class StorageFileTest {
+
     private static final String TEST_DATA_FOLDER = "test/data/StorageFileTest";
     private static final String NON_EXISTANT_FILE_NAME = "ThisFileDoesNotExist.txt";
 
@@ -111,15 +113,15 @@ public class StorageFileTest {
     private AddressBook getTestAddressBook() throws Exception {
         AddressBook ab = new AddressBook();
         ab.addPerson(new Person(new Name("John Doe"),
-                                new Phone("98765432", false),
-                                new Email("johnd@gmail.com", false),
-                                new Address("John street, block 123, #01-01", false),
-                                Collections.emptySet()));
+                new Phone("98765432", false),
+                new Email("johnd@gmail.com", false),
+                new Address("John street, block 123, #01-01", false),
+                Collections.emptySet()));
         ab.addPerson(new Person(new Name("Betsy Crowe"),
-                                new Phone("1234567", true),
-                                new Email("betsycrowe@gmail.com", false),
-                                new Address("Newgate Prison", true),
-                                new HashSet<>(Arrays.asList(new Tag("friend"), new Tag("criminal")))));
+                new Phone("1234567", true),
+                new Email("betsycrowe@gmail.com", false),
+                new Address("Newgate Prison", true),
+                new HashSet<>(Arrays.asList(new Tag("friend"), new Tag("criminal")))));
         return ab;
     }
 }

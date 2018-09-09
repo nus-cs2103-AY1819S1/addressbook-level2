@@ -57,7 +57,8 @@ public class AddressBookDecoder {
                 new Name(matcher.group("name")),
                 new Phone(matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate"))),
                 new Email(matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate"))),
-                new Address(matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
+                new Address(matcher.group("address"),
+                        isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
                 getTagsFromEncodedPerson(matcher.group("tagArguments"))
         );
     }
@@ -70,8 +71,7 @@ public class AddressBookDecoder {
     }
 
     /**
-     * Extracts the {@code Tag}s from the {@code tagArguments} string.
-     * Merges duplicate tag strings.
+     * Extracts the {@code Tag}s from the {@code tagArguments} string. Merges duplicate tag strings.
      */
     private static Set<Tag> getTagsFromEncodedPerson(String tagArguments) throws IllegalValueException {
         if (tagArguments.isEmpty()) {

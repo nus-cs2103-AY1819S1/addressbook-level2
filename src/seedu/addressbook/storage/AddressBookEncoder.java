@@ -12,8 +12,8 @@ import seedu.addressbook.data.person.Person;
 public class AddressBookEncoder {
 
     /**
-     * Encodes all the {@code Person} in the {@code toSave} into a list of decodable and readable string presentation
-     * for storage.
+     * Encodes all the {@code Person} in the {@code toSave} into a list of decodable and readable string
+     * presentation for storage.
      */
     public static List<String> encodeAddressBook(AddressBook toSave) {
         final List<String> encodedPersons = new ArrayList<>();

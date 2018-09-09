@@ -17,19 +17,31 @@ import seedu.addressbook.ui.TextUi;
 
 
 /**
- * Entry point of the Address Book application.
- * Initializes the application and starts the interaction with the user.
+ * Entry point of the Address Book application. Initializes the application and starts the interaction with
+ * the user.
  */
+//  TODO (Joseph): [LO-ImplementClass]
+//  TODO (Joseph): [LO-SRP] 
+//  TODO (Joseph): [LO-Exceptions]
+//  TODO (Joseph): [LO-Inheritance]
+//  TODO (Joseph): [LO-ISP]
+//  TODO (Joseph): [LO-Composition]
+//  TODO (Joseph): [LO-AssociationClass]
+//  TODO (Joseph): [LO-TDD]
 public class Main {
 
-    /** Version info of the program. */
+    /**
+     * Version info of the program.
+     */
     public static final String VERSION = "AddressBook Level 2 - Version 1.0";
 
     private TextUi ui;
     private StorageFile storage;
     private AddressBook addressBook;
 
-    /** The list of person shown to the user most recently.  */
+    /**
+     * The list of person shown to the user most recently.
+     */
     private List<? extends ReadOnlyPerson> lastShownList = Collections.emptyList();
 
 
@@ -37,7 +49,9 @@ public class Main {
         new Main().run(launchArgs);
     }
 
-    /** Runs the program until termination.  */
+    /**
+     * Runs the program until termination.
+     */
     public void run(String[] launchArgs) {
         start(launchArgs);
         runCommandLoopUntilExitCommand();
@@ -48,7 +62,6 @@ public class Main {
      * Sets up the required objects, loads up the data from the storage file, and prints the welcome message.
      *
      * @param launchArgs arguments supplied by the user at program launch
-     *
      */
     private void start(String[] launchArgs) {
         try {
@@ -72,26 +85,31 @@ public class Main {
         }
     }
 
-    /** Prints the Goodbye message and exits. */
+    /**
+     * Prints the Goodbye message and exits.
+     */
     private void exit() {
         ui.showGoodbyeMessage();
         System.exit(0);
     }
 
-    /** Reads the user command and executes it, until the user issues the exit command.  */
+    /**
+     * Reads the user command and executes it, until the user issues the exit command.
+     */
     private void runCommandLoopUntilExitCommand() {
         Command command;
         do {
             String userCommandText = ui.getUserCommand();
-            command = new Parser().parseCommand(userCommandText);
+            command = Parser.parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
             recordResult(result);
             ui.showResultToUser(result);
-
         } while (!ExitCommand.isExit(command));
     }
 
-    /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
+    /**
+     * Updates the {@link #lastShownList} if the result contains a list of Persons.
+     */
     private void recordResult(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> personList = result.getRelevantPersons();
         if (personList.isPresent()) {
@@ -105,7 +123,7 @@ public class Main {
      * @param command user command
      * @return result of the command
      */
-    private CommandResult executeCommand(Command command)  {
+    private CommandResult executeCommand(Command command) {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();
@@ -119,6 +137,7 @@ public class Main {
 
     /**
      * Creates the StorageFile object based on the user specified path (if any) or the default storage path.
+     *
      * @param launchArgs arguments supplied by the user at program launch
      * @throws InvalidStorageFilePathException if the target file path is incorrect.
      */

@@ -49,7 +49,7 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 
 == Adding a person: `add`
 
-Adds a person to the address book. +
+Adds a person to the address book and show the latest list of persons in the address book. +
 Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
 
 ****
@@ -72,6 +72,11 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
+== Sort all persons inside the address book : `sort`
+
+Sorts all persons in the address book and shows a sorted list. +
+Format: `sort`
+
 == Finding all persons containing any keyword in their name: `find`
 
 Finds persons whose names contain any of the given keywords. +
@@ -93,7 +98,7 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 
 == Deleting a person : `delete`
 
-Deletes the specified person from the address book. Irreversible. +
+Deletes the specified person from the address book and show the latest list of persons in the address book. Irreversible. +
 Format: `delete INDEX`
 
 ****

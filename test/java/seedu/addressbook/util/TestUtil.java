@@ -25,6 +25,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 
 public class TestUtil {
+
     /**
      * Creates an address book containing the given persons.
      */
@@ -45,7 +46,7 @@ public class TestUtil {
     /**
      * Creates a list of persons.
      */
-    public static List<ReadOnlyPerson> createList(Person...persons) {
+    public static List<ReadOnlyPerson> createList(Person... persons) {
         List<ReadOnlyPerson> list = new ArrayList<ReadOnlyPerson>();
 
         for (Person person : persons) {
@@ -56,16 +57,16 @@ public class TestUtil {
     }
 
     /**
-     * Creates a copy of the original address book with the same entries
-     * of Persons and Tags. The Persons and Tags are not cloned.
+     * Creates a copy of the original address book with the same entries of Persons and Tags. The Persons and
+     * Tags are not cloned.
      */
     public static AddressBook clone(AddressBook addressBook) {
         return new AddressBook(addressBook.getAllPersons());
     }
 
     /**
-     * Returns true if every pair of corresponding elements two iterables are (deeply) identical.
-     * In other words, the two containers must have the same elements, in the same order.
+     * Returns true if every pair of corresponding elements two iterables are (deeply) identical. In other
+     * words, the two containers must have the same elements, in the same order.
      */
     public static <T> boolean isIdentical(Iterable<T> firstIterable, Iterable<T> secondIterable) {
         Iterator<T> currentPtr0 = firstIterable.iterator();
@@ -104,10 +105,15 @@ public class TestUtil {
         return numberOfElementsSeen;
     }
 
+    /**
+     * Generate a test person.
+     * @return A test person.
+     */
     public static Person generateTestPerson() {
         try {
             return new Person(new Name(Name.EXAMPLE), new Phone(Phone.EXAMPLE, false),
-                    new Email(Email.EXAMPLE, true), new Address(Address.EXAMPLE, false), Collections.emptySet());
+                    new Email(Email.EXAMPLE, true), new Address(Address.EXAMPLE, false),
+                    Collections.emptySet());
         } catch (IllegalValueException e) {
             fail("test person data should be valid by definition");
             return null;
@@ -115,8 +121,7 @@ public class TestUtil {
     }
 
     /**
-     * Asserts whether the text in the two given files are the same. Ignores any
-     * differences in line endings
+     * Asserts whether the text in the two given files are the same. Ignores any differences in line endings
      */
     public static void assertTextFilesEqual(Path path1, Path path2) throws IOException {
         List<String> list1 = Files.readAllLines(path1, Charset.defaultCharset());
