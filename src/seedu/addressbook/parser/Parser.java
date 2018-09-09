@@ -36,7 +36,7 @@ public class Parser {
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
 
     public static final Pattern PHONE_NUMBER_ARGS_FORMAT =
-            Pattern.compile("(?<phoneNumbers>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
+            Pattern.compile("(?<phoneNumbers>\\S+(?:\\s+\\S+)*)"); // one or more phone numbers separated by whitespace
 
     public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
