@@ -25,14 +25,18 @@ public class FindCommandTest {
         //same word, same case: matched
         assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
 
-        //same word, different case: not matched
-        assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
+        //same word, different case: matched
+        assertFindCommandBehavior(new String[]{"aMy"}, Arrays.asList(td.amy));
 
         //partial word: not matched
         assertFindCommandBehavior(new String[]{"my"}, Collections.emptyList());
 
-        //multiple words: matched
+        //multiple words, same case: matched
         assertFindCommandBehavior(new String[]{"Amy", "Bill", "Candy", "Destiny"},
+                Arrays.asList(td.amy, td.bill, td.candy));
+
+        //multiple words, different case: matched
+        assertFindCommandBehavior(new String[]{"aMy", "bILl", "cAnDy", "destiny"},
                 Arrays.asList(td.amy, td.bill, td.candy));
 
         //repeated keywords: matched
