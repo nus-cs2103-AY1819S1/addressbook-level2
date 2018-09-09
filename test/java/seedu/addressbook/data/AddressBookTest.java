@@ -6,9 +6,7 @@ import static seedu.addressbook.util.TestUtil.getSize;
 import static seedu.addressbook.util.TestUtil.isEmpty;
 import static seedu.addressbook.util.TestUtil.isIdentical;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -134,5 +132,40 @@ public class AddressBookTest {
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void getSortedList() throws Exception {
+        UniquePersonList testPersonList  = new UniquePersonList(bobChaplin, aliceBetsy);
+        List<Person> unsortedList = testPersonList.listView();
+        List<Person> sortedList = testPersonList.sortedListView();
+        assertListNotSorted(unsortedList);
+        assertListSorted(sortedList);
+    }
+
+    public void assertListSorted(List<Person> inputList) {
+        List<Person> sortedList = sortList(inputList);
+        assertTrue(isIdentical(inputList, sortedList));
+    }
+
+    public void assertListNotSorted(List<Person> inputList) {
+        List<Person> sortedList = sortList(inputList);
+        assertFalse(isIdentical(inputList, sortedList));
+    }
+
+    public List<Person> sortList(List<Person> inputList) {
+        List<Person> outputList = new ArrayList<>();
+        for (Person p : inputList) {
+            outputList.add(p);
+        }
+        Collections.sort(outputList, new Comparator<Person>() {
+            @Override
+            public int compare(Person person1, Person person2) {
+                String name1 = person1.getName().fullName;
+                String name2 = person2.getName().fullName;
+                return name1.compareToIgnoreCase(name2);
+            }
+        });
+        return outputList;
     }
 }
