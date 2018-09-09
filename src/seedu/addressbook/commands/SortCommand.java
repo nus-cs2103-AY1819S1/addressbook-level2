@@ -10,7 +10,7 @@ public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays all persons in the address book as a list sorted with index numbers.\n"
+            + ": Displays all persons in the address book as sorted list.\n"
             + "Example: " + COMMAND_WORD;
 
     private final String sortMethod;

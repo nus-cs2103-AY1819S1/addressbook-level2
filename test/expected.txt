@@ -297,14 +297,14 @@
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: [singer]
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-||
+|| 
 || Sorted by name! 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  sort phone]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: [singer]
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-||
+|| 
 || Sorted by phone! 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  clear]
