@@ -19,10 +19,10 @@ public class EditCommand extends Command {
             + "Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...\n"
             + "Example: " + COMMAND_WORD
             + " John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "Person edited: %1$s";
 
-    private final Person toEdit;
+    private final Integer toRemoveIndex;
+    private final Person toAdd;
 
     /**
      * Convenience constructor using raw values.
@@ -34,16 +34,31 @@ public class EditCommand extends Command {
                       String email, boolean isEmailPrivate,
                       String address, boolean isAddressPrivate,
                       Set<String> tags) throws IllegalValueException {
+        toRemoveIndex = oldIndex;
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
-        this.toEdit = new Person(
+        this.toAdd = new Person(
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
                 new Address(address, isAddressPrivate),
                 tagSet
         );
+    }
+
+    @Override
+    public CommandResult execute() {
+        CommandResult removeResult = new DeleteCommand(toRemoveIndex).execute();
+        if (!removeResult.isSuccessful) {
+            return removeResult;
+        } else {
+            CommandResult addResult = new AddCommand(toAdd).execute();
+            if (addResult.isSuccessful) {
+                return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            }
+            return addResult;
+        }
     }
 }
