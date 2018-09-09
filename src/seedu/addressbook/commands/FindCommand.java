@@ -42,7 +42,8 @@ public class FindCommand extends Command {
 
     /**
      * Retrieves all persons in the address book whose names contain some of the specified keywords.
-     * The person will be returned regardless of which case the keywords are entered.
+     * The person will be returned if the keywords entered are in the form of all lower-case letter,
+     * all upper-case letter or one upper-case letter + lower-case letter for the rest of the letter.
      *
      * @param keywords for searching
      * @return list of persons found
@@ -51,7 +52,7 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            final Set<String> wordsInNameInTwoCases = new HashSet<>();
+            final Set<String> wordsInNameInTwoCases = new HashSet<>(wordsInName);
             for (String word : wordsInName) {
                 wordsInNameInTwoCases.add(word.toUpperCase());
                 wordsInNameInTwoCases.add(word.toLowerCase());
