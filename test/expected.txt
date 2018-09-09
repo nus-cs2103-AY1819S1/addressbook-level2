@@ -271,7 +271,22 @@
 || 
 || 4 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  delete 4]
+|| Enter command: || [Command entered:  add Aaron Ang pp/666666 e/aaron.a@nus.edu.sg a/666, help street t/friends t/school]
+|| New person added: Aaron Ang Phone: (private) 666666 Email: aaron.a@nus.edu.sg Address: 666, help street Tags: [school][friends]
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| 	1. Aaron Ang Email: aaron.a@nus.edu.sg Address: 666, help street Tags: [school][friends]
+|| 	2. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	3. Betsy Choo Tags: [secretive]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 5 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 1]
+|| Deleted Person: Aaron Ang Phone: (private) 666666 Email: aaron.a@nus.edu.sg Address: 666, help street Tags: [school][friends]
+|| ===================================================
+|| Enter command: || [Command entered:  delete 5]
 || Deleted Person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
 || ===================================================
 || Enter command: || [Command entered:  list]

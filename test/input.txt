@@ -132,8 +132,13 @@
   # should have deleted based on last active view's index
   list
 
+  # lists in alphabetical order
+  add Aaron Ang pp/666666 e/aaron.a@nus.edu.sg a/666, help street t/friends t/school
+  sort
+  delete 1
+
   # deletes correct person
-  delete 4
+  delete 5
   list
 
   # listing indexes get updated on next request
