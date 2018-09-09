@@ -89,7 +89,7 @@ public class StorageFile {
             Files.write(path, encodedAddressBook);
         } catch (IOException ioe) {
             if (path.toFile().canRead()) {
-                throw new StorageReadOnlyException("Error: " + path + " is READ only. Please modify permissions.s");
+                throw new StorageReadOnlyException("Error: " + path + " is READ only. Please modify permissions.");
             }
             throw new StorageOperationException("Error writing to file: " + path);
         }
