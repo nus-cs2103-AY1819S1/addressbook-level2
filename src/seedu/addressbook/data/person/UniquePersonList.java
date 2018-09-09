@@ -123,10 +123,36 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Update the equivalent person in the list.
+     *
+     * @throws PersonNotFoundException if no such person could be found in the list
+     * @throws IndexOutOfBoundsException if index is out of bound of the list
+     */
+    public void update(ReadOnlyPerson targetPerson, Person toUpdate) throws PersonNotFoundException {
+        int index = indexOf(targetPerson);
+        internalList.remove(targetPerson);
+        internalList.add(index, toUpdate);
+    }
+
+    /**
      * Clears all persons in list.
      */
     public void clear() {
         internalList.clear();
+    }
+
+    public int indexOf(ReadOnlyPerson targetPerson) throws PersonNotFoundException {
+        int index = 0;
+        for (Person p : internalList) {
+            if (p.isSamePerson(targetPerson)) {
+                break;
+            }
+            index++;
+        }
+        if (index >= internalList.size()) {
+            throw new PersonNotFoundException();
+        }
+        return index;
     }
 
     @Override

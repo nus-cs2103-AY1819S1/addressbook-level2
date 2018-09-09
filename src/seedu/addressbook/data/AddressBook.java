@@ -55,6 +55,15 @@ public class AddressBook {
     }
 
     /**
+     * Updated the equivalent person in the address book.
+     *
+     * @throws PersonNotFoundException if no such person could be found
+     */
+    public void updatePerson(ReadOnlyPerson targetPerson, Person person) throws PersonNotFoundException {
+        allPersons.update(targetPerson, person);
+    }
+
+    /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
