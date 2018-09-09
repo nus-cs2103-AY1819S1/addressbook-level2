@@ -17,13 +17,13 @@ import seedu.addressbook.util.TypicalPersons;
 
 public class FindCommandTest {
 
-    private final AddressBook addressBook = new TypicalPersons().getTypicalAddressBook();
-    private final TypicalPersons td = new TypicalPersons();
+    private final AddressBook SAMPLE_ADDRESS_BOOK = new TypicalPersons().getTypicalAddressBook();
+    private final TypicalPersons TYPICAL_PERSONS_DATA = new TypicalPersons();
 
     @Test
     public void execute() throws IllegalValueException {
         //same word, same case: matched
-        assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
+        assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(TYPICAL_PERSONS_DATA.amy));
 
         //same word, different case: not matched
         assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
@@ -33,10 +33,10 @@ public class FindCommandTest {
 
         //multiple words: matched
         assertFindCommandBehavior(new String[]{"Amy", "Bill", "Candy", "Destiny"},
-                Arrays.asList(td.amy, td.bill, td.candy));
+                Arrays.asList(TYPICAL_PERSONS_DATA.amy, TYPICAL_PERSONS_DATA.bill, TYPICAL_PERSONS_DATA.candy));
 
         //repeated keywords: matched
-        assertFindCommandBehavior(new String[]{"Amy", "Amy"}, Arrays.asList(td.amy));
+        assertFindCommandBehavior(new String[]{"Amy", "Amy"}, Arrays.asList(TYPICAL_PERSONS_DATA.amy));
 
         //Keyword matching a word in address: not matched
         assertFindCommandBehavior(new String[]{"Clementi"}, Collections.emptyList());
@@ -56,7 +56,7 @@ public class FindCommandTest {
     private FindCommand createFindCommand(String[] keywords) {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         FindCommand command = new FindCommand(keywordSet);
-        command.setData(addressBook, Collections.emptyList());
+        command.setData(SAMPLE_ADDRESS_BOOK, Collections.emptyList());
         return command;
     }
 

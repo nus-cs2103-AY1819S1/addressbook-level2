@@ -111,6 +111,16 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+== Sort all persons by name and then by phone number: `sort`
+
+Sorts persons by name and if the name matches, then by phone number. +
+Format: `sort`
+
+[NOTE]
+====
+Two records having the same name and phone number are considered as duplicate records.
+====
+
 == View non-private details of a person : `view`
 
 Displays the non-private details of the specified person. +
