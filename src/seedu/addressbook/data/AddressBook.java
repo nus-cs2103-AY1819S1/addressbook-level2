@@ -55,12 +55,12 @@ public class AddressBook {
     }
 
     /**
-     * Update the equivalent person in the address book.
+     * Updated the equivalent person in the address book.
      *
      * @throws PersonNotFoundException if no such person could be found
      */
-    public void updatePerson(int index, Person person) throws PersonNotFoundException {
-        allPersons.update(index, person);
+    public void updatePerson(ReadOnlyPerson targetPerson, Person person) throws PersonNotFoundException {
+        allPersons.update(targetPerson, person);
     }
 
     /**
