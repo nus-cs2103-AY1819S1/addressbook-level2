@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
@@ -36,21 +37,32 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
+        final List<ReadOnlyPerson> personsFound = getPersonsContainingAnyKeyword(keywords);
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 
     /**
-     * Retrieves all persons in the address book whose names contain some of the specified keywords.
+     * Retrieves all persons in the address book whose any non private fields contain some of the specified keywords.
      *
      * @param keywords for searching
      * @return list of persons found
      */
-    private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
+    private List<ReadOnlyPerson> getPersonsContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            final Set<String> wordsInAddress = new HashSet<>(person.getAddress().getWordsInAddress());
+            final String wordsInEmail = person.getEmail().getWordsInEmail();
+            final String wordsInPhone = person.getPhone().getWordsInPhone();
+            final Set<String> wordsInTag = person.getTags().stream()
+                    .map(tag -> tag.getWordsInTag()).collect(Collectors.toSet());
+            final Set<String> keywordsSet = new HashSet<>();
+            keywordsSet.addAll(wordsInName);
+            keywordsSet.addAll(wordsInAddress);
+            keywordsSet.addAll(wordsInTag);
+            keywordsSet.add(wordsInEmail);
+            keywordsSet.add(wordsInPhone);
+            if (!Collections.disjoint(keywordsSet, keywords)) {
                 matchedPersons.add(person);
             }
         }

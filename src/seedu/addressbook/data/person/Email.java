@@ -31,6 +31,18 @@ public class Email {
     }
 
     /**
+     * Retrieves the word in the email
+     *
+     * @return the value of the email
+     */
+    public String getWordsInEmail() {
+        if(isPrivate) {
+            return "";
+        }
+        return value;
+    }
+
+    /**
      * Returns true if the given string is a valid person email.
      */
     public static boolean isValidEmail(String test) {

@@ -30,6 +30,18 @@ public class Phone {
     }
 
     /**
+     * Retrieves the word in the phone
+     *
+     * @return the value of the phone
+     */
+    public String getWordsInPhone() {
+        if(isPrivate) {
+            return "";
+        }
+        return value;
+    }
+
+    /**
      * Returns true if the given string is a valid person phone number.
      */
     public static boolean isValidPhone(String test) {

@@ -14,6 +14,15 @@ public class Tag {
     public final String tagName;
 
     /**
+     * Retrieves the word in the tag
+     *
+     * @return the name of the tag
+     */
+    public String getWordsInTag() {
+        return tagName;
+    }
+
+    /**
      * Validates given tag name.
      *
      * @throws IllegalValueException if the given tag name string is invalid.

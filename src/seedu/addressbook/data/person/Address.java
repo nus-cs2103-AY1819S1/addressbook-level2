@@ -2,6 +2,9 @@ package seedu.addressbook.data.person;
 
 import seedu.addressbook.data.exception.IllegalValueException;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Represents a Person's address in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
@@ -27,6 +30,16 @@ public class Address {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
         this.value = trimmedAddress;
+    }
+
+    /**
+     * Retrieves a listing of every word in the address, in order.
+     */
+    public List<String> getWordsInAddress() {
+        if(isPrivate) {
+            return Arrays.asList("");
+        }
+        return Arrays.asList(value.split("\\s+" + '|' + ","));
     }
 
     /**
