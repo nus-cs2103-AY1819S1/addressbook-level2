@@ -36,4 +36,8 @@ public class CommandResult {
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
+    
+    public List<? extends ReadOnlyPerson> getRelevantPersonsList() {
+        return relevantPersons;
+    }
 }
