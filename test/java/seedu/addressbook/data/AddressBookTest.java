@@ -8,6 +8,7 @@ import static seedu.addressbook.util.TestUtil.isIdentical;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 
 import org.junit.Before;
@@ -135,4 +136,22 @@ public class AddressBookTest {
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
+    @Test
+    public void sortAllPersons() throws Exception {
+        defaultAddressBook.addPerson(davidElliot);
+        defaultAddressBook.addPerson(charlieDouglas);
+
+        defaultAddressBook.sort(Comparator.comparing(Person::getName));
+
+        UniquePersonList allPersons = defaultAddressBook.getAllPersons();
+
+        Person prevPerson = null;
+        for (Person person : allPersons) {
+            if (prevPerson != null) {
+                assertTrue(prevPerson.getName().compareTo(person.getName()) <= 0);
+            }
+            prevPerson = person;
+        }
+    }
+
 }
