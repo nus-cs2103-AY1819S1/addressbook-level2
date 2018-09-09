@@ -20,6 +20,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.SwapCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -87,6 +88,9 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case SwapCommand.COMMAND_WORD:
+            return prepareSwap(arguments);
 
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
@@ -246,6 +250,16 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses arguments in the context of swap index command
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareSwap(String args) {
+        //TODO
+        return new SwapCommand();
     }
 
 
