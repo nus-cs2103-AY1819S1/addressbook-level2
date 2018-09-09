@@ -156,7 +156,7 @@ Views all details of the 1st person in the results of the `find` command.
 Clears all entries from the address book. +
 Format: `clear`
 
-== Sorting all entries in reversed lexicographical order: `sort`
+== Sorting all entries in lexicographical order by name: `sort`
 
 Sort all entries from the address book. +
 Format: `sort`
