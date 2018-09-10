@@ -14,7 +14,7 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.tag.Tag;
 
 /**
- * Adds a person to the address book.
+ * Adds a person to the address book. 
  */
 public class AddCommand extends Command {
 

@@ -4,6 +4,8 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * Represents a Person's name in the address book.
@@ -41,6 +43,48 @@ public class Name {
      */
     public List<String> getWordsInName() {
         return Arrays.asList(fullName.split("\\s+"));
+    }
+
+    /**
+     * Returns true if the other name is very similar to this name.
+     * Two names are considered similar if either name is made up of a word
+     * that is a substring of the other name.
+     * The similarity of names is case-insensitive.
+     */
+    public boolean isSimilar(Name other) {
+        if(other == null) {
+            return false;
+        }
+        List<String> wordsInOtherName = other.getWordsInName().stream()
+                .map(word -> word.toLowerCase())
+                .collect(Collectors.toList());
+        List<String> wordsInThisName = this.getWordsInName().stream()
+                .map(word -> word.toLowerCase())
+                .collect(Collectors.toList());
+
+        for (String wordOther : wordsInOtherName) {
+            for (String wordThis : wordsInThisName) {
+                if(Name.isSubstring(wordOther, wordThis)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if either string @code s1 or @code s2 is a substring of the other.
+     *
+     * @param s1 A string.
+     * @param s2 Another String.
+     * @return {@code true} If either string is a substring of the other {@code false} Otherwise
+     */
+    private static boolean isSubstring(String s1, String s2) {
+        if(s1.contains(s2) || s2.contains(s1)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
