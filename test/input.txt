@@ -139,6 +139,15 @@
   # listing indexes get updated on next request
   delete 1
   list
+  
+##########################################################
+# test sort command
+##########################################################
+
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  list
+  sort
+  list
 
 ##########################################################
 # test clear command
