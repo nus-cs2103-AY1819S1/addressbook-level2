@@ -296,20 +296,8 @@
 || Enter command: || [Command entered:edit 1 p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
 || Edited person: Betsy Choo Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
 || ===================================================
-|| Enter command: || [Command entered:list]
-|| 	1. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 	2. Betsy Choo Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
-||
-|| 2 persons listed!
-|| ===================================================
 || Enter command: || [Command entered:edit John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
 || The person index provided is invalid
-|| ===================================================
-|| Enter command: || [Command entered:edit 2 p/98765432 e/johnd@gmail.com]
-|| Invalid command format!
-|| edit:  Edits the information of a person identified by number index. Contact details can be marked private by prepending 'p' to the prefix.
-|| Parameters: INDEX [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...
-|| Example: edit 1 p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
 || ===================================================
 || Enter command: || [Command entered:edit 0 p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
 || The person index provided is invalid

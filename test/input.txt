@@ -145,10 +145,8 @@
 ##########################################################
   # deletes correct person
 edit 1 p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
-list
 
   # should catch invalid command format
-edit John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
 edit 2 p/98765432 e/johnd@gmail.com
 
   # should catch invalid index
