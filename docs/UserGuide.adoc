@@ -72,6 +72,12 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
+== Listing phone numbers only : `phonelist`
+
+Shows a list of all persons, along with only their phone number details, in the address book. +
+This command serves as a light version of `list` for specific information.
+Format: `phonelist`
+
 == Finding all persons containing any keyword in their name: `find`
 
 Finds persons whose names contain any of the given keywords. +
