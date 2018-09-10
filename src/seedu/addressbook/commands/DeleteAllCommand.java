@@ -1,15 +1,13 @@
 package seedu.addressbook.commands;
 
-import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.person.ReadOnlyPerson;
-import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 public class DeleteAllCommand extends Command {
-    public static final String COMMAND_WORD = "delete";
+    public static final String COMMAND_WORD = "deleteAll";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes all persons whose names contain any of "
             + "the specified keywords (case-sensitive). Removes the last listing.\n"
