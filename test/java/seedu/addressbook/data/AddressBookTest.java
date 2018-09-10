@@ -149,6 +149,5 @@ public class AddressBookTest {
                 assertTrue(name.compareToIgnoreCase(nameAfter) <= 0);
             }
         }
-
     }
 }
