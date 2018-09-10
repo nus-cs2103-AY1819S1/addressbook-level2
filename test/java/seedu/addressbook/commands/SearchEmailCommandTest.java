@@ -19,8 +19,25 @@ public class SearchEmailCommandTest {
 	private final AddressBook addressBook = new TypicalPersons().getTypicalAddressBook();
     private final TypicalPersons td = new TypicalPersons();
 
-    @Test
+	@Test
 	public void execute() throws IllegalValueException {
 		
+	}
+
+	/**
+	* Executes the SearchEmailCommand and asserts the validity of the output
+	*/
+	private void assertOutput(String[] emails, List<ReadOnlyPerson> output) {
+		SearchEmailCommand command = createSearchEmailCommand(emails);
+		CommandResult result = command.execute();
+
+		assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList), result.feedbackToUser);
+	}
+
+	private SearchEmailCommand createSearchEmailCommand(String[] emails) {
+		final Set<String> emailsSet = new HashSet<>(Arrays.asList(emails));
+		SearchEmailCommand command = new SearchEmailCommand(emailsSet);
+		command.setData(addressBook, Collections.emptyList());
+		return command;
 	}
 }
