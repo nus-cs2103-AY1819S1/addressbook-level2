@@ -62,6 +62,14 @@ public class AddressBook {
     }
 
     /**
+     * Sorts all the persons in the address book by name in alphabetical order.
+     */
+    public UniquePersonList sort() {
+        allPersons.sort();
+        return new UniquePersonList(allPersons);
+    }
+
+    /**
      * Returns a new UniquePersonList of all persons in the address book at the time of the call.
      */
     public UniquePersonList getAllPersons() {
