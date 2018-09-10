@@ -14,8 +14,6 @@ public class DeleteAllCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-    public static final String MESSAGE_DELETE_ALL_SUCCESS = "%s\n";
-
     private final Command finder;
 
     public DeleteAllCommand(Set<String> keywords) {
@@ -28,18 +26,19 @@ public class DeleteAllCommand extends Command {
         finder.setData(addressBook, relevantPersons);
         CommandResult found = finder.execute();
         final Optional<List<? extends ReadOnlyPerson>> personList = found.getRelevantPersons();
-        CommandResult[] output = {};
+        StringBuilder output = new StringBuilder();
         if (personList.isPresent()) {
             List<? extends ReadOnlyPerson> list = personList.get();
-            output = new CommandResult[list.size()];
             DeleteCommand deleter = new DeleteCommand(0);
             deleter.setData(addressBook, list);
-            for (int i = 0; i < list.size(); i++) {
+            final int numElem = list.size();
+            for (int i = 1; i <= numElem; i++) {
                 deleter.setTargetIndex(i);
-                output[i] = deleter.execute();
+                output.append(deleter.execute().feedbackToUser);
+                output.append("\n");
             }
         }
-        return new CommandResult(String.format(MESSAGE_DELETE_ALL_SUCCESS, output));
+        return new CommandResult(output.toString());
     }
 
 
