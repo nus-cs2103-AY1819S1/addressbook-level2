@@ -1,0 +1,3 @@
+Jacob Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/owesMoney t/friends
+John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/owesMoney t/friends
+Mary p/5432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/owesMoney t/friends
