@@ -94,11 +94,11 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 == Finding all persons with any phone number: `findPhone`
 
 Finds persons whose phone number equals to the phone number(s) specified. +
-Format: `find PHONE_NUMBER [MORE_PHONE_NUMBERS]`
+Format: `findPhone PHONE_NUMBER [MORE_PHONE_NUMBERS]`
 
 [NOTE]
 ====
-The phone number must be non-private for findPhone to return the matching person.
+The phone number need not be non-private for findPhone to return the matching person.
 ====
 
 Examples:
