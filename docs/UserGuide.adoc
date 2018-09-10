@@ -93,7 +93,7 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 
 == Finding all persons with any phone number: `findPhone`
 
-Finds persons whose phone number equals to the phone number(s) specified. +
+Finds persons whose phone number matches the phone number(s) specified. +
 Format: `findPhone PHONE_NUMBER [MORE_PHONE_NUMBERS]`
 
 [NOTE]
@@ -103,10 +103,10 @@ The phone number need not be non-private for findPhone to return the matching pe
 
 Examples:
 
-* `find 98765432` +
+* `findPhone 98765432` +
 Returns `John Doe`.
 
-* `find 88888888 98765432` +
+* `findPhone 88888888 98765432` +
 Returns Any person having the phone numbers `88888888` or `98765432`.
 
 == Deleting a person : `delete`
