@@ -139,6 +139,13 @@
   # listing indexes get updated on next request
   delete 1
   list
+  
+##########################################################
+# test backup command
+##########################################################
+
+  # backup current addressbook
+  backup
 
 ##########################################################
 # test clear command
@@ -147,6 +154,17 @@
   # clears all
   clear
   list
+
+##########################################################
+# test import command
+##########################################################
+
+  # import previous addressbook
+  import
+  
+  # should reflect the addressbook as it was before the previous clear function
+  list
+  clear
 
 ##########################################################
 # test exit command
