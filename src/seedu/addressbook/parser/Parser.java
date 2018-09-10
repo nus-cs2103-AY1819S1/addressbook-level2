@@ -17,6 +17,7 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.CountCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
@@ -93,6 +94,9 @@ public class Parser {
 
         case ViewAllCommand.COMMAND_WORD:
             return prepareViewAll(arguments);
+
+        case CountCommand.COMMAND_WORD:
+            return new CountCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

@@ -25,6 +25,8 @@
 || viewall: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: viewall 1
+|| count: Displays the total number of persons in the address book.
+|| Example: count
 || help: Shows program usage instructions.
 || Example: help
 || exit: Exits the program.
@@ -289,6 +291,9 @@
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  count]
+|| The total number of contacts in your address book is 2!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
