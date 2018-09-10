@@ -55,6 +55,13 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test phonelist command
+##########################################################
+
+  # should only show the phone number details
+  phonelist
+
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
@@ -132,13 +139,18 @@
   # should have deleted based on last active view's index
   list
 
+  # should be the same as list except only phone number is displayed
+  phonelist
+
   # deletes correct person
   delete 4
   list
+  phonelist
 
   # listing indexes get updated on next request
   delete 1
   list
+  phonelist
 
 ##########################################################
 # test clear command
@@ -147,6 +159,7 @@
   # clears all
   clear
   list
+  phonelist
 
 ##########################################################
 # test exit command
