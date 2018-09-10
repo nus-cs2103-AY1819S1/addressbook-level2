@@ -29,9 +29,9 @@ public class EditCommand extends Command {
             + "Example: " + COMMAND_WORD
             + " 1 John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney";
 
-    private static final String MESSAGE_EDIT_PERSON_SUCCESS = "Old entry: %1$s\n";
-    private static final String MESSAGE_SUCCESS = "New entry: %1$s";
-    private static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Old entry: %1$s\n";
+    public static final String MESSAGE_SUCCESS = "New entry: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person toEdit;
 
@@ -60,6 +60,11 @@ public class EditCommand extends Command {
         );
     }
 
+    public EditCommand(Person toEdit, int targetVisibleIndex) {
+        super(targetVisibleIndex);
+        this.toEdit = toEdit;
+    }
+
     public ReadOnlyPerson getPerson() {
         return toEdit;
     }
@@ -70,10 +75,9 @@ public class EditCommand extends Command {
             final ReadOnlyPerson target = getTargetPerson();
             addressBook.editPerson(toEdit, getTargetIndex() - DISPLAYED_INDEX_OFFSET);
 
-            final StringBuilder result = new StringBuilder();
-            result.append(String.format(MESSAGE_EDIT_PERSON_SUCCESS, target))
-                    .append(String.format(MESSAGE_SUCCESS, toEdit));
-            return new CommandResult(result.toString());
+            String result = String.format(MESSAGE_EDIT_PERSON_SUCCESS, target) +
+                    String.format(MESSAGE_SUCCESS, toEdit);
+            return new CommandResult(result);
 
         } catch (IndexOutOfBoundsException ie) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
