@@ -17,6 +17,7 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.FindPhoneCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
@@ -33,6 +34,9 @@ public class Parser {
 
     public static final Pattern KEYWORDS_ARGS_FORMAT =
             Pattern.compile("(?<keywords>\\S+(?:\\s+\\S+)*)"); // one or more keywords separated by whitespace
+
+    public static final Pattern PHONE_NUMBER_ARGS_FORMAT =
+            Pattern.compile("(?<phoneNumbers>\\S+(?:\\s+\\S+)*)"); // one or more phone numbers separated by whitespace
 
     public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
@@ -84,6 +88,9 @@ public class Parser {
 
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
+
+        case FindPhoneCommand.COMMAND_WORD:
+            return prepareFindPhone(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -246,6 +253,25 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses arguments in the context of the find person by phone command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareFindPhone(String args) {
+        final Matcher matcher = PHONE_NUMBER_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    FindPhoneCommand.MESSAGE_USAGE));
+        }
+
+        // phone numbers delimited by whitespace
+        final String[] phoneNumbers = matcher.group("phoneNumbers").split("\\s+");
+        final Set<String> phoneSet = new HashSet<>(Arrays.asList(phoneNumbers));
+        return new FindPhoneCommand(phoneSet);
     }
 
 

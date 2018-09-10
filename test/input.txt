@@ -87,6 +87,26 @@
   viewall 5
 
 ##########################################################
+# test find persons by phone command
+##########################################################
+
+  # should consider no keywords as invalid command format
+  findPhone
+  # should only match full phone numbers
+  findPhone 2222
+  # does not match if none have phone number
+  findPhone 23912039120
+  # does not match if not phone number
+  findPhone Betsy
+
+  # find number if there is a match
+  findPhone 111111
+  # find multiple numbers
+  findPhone 333333 111111
+  # ignores duplicate number
+  findPhone 333333 333333
+
+##########################################################
 # test find persons command
 ##########################################################
 
