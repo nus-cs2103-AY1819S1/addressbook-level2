@@ -55,7 +55,7 @@ public class AddressBook {
     }
 
     /**
-     * Clears all persons and tags from the address book.
+     * Sorts all persons alphabetically in the address book.
      */
     public void sort() {
         allPersons.sort();

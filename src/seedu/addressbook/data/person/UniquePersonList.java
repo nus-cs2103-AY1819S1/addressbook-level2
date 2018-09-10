@@ -1,6 +1,12 @@
 package seedu.addressbook.data.person;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -118,7 +124,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Clears all persons in list.
+     * Sorts all persons in list.
      */
     public void sort() {
         internalList.sort(new Comparator<Person>() {
