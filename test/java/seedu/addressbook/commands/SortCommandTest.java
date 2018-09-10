@@ -1,12 +1,13 @@
 package seedu.addressbook.commands;
 
+import org.junit.Assert;
 import org.junit.Test;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.util.TypicalPersons;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.function.BiConsumer;
@@ -14,6 +15,8 @@ import java.util.function.BiConsumer;
 import static org.junit.Assert.*;
 
 public class SortCommandTest {
+
+    private static final List<ReadOnlyPerson> EMPTY_PERSON_LIST = Collections.emptyList();
 
     private final TypicalPersons td = new TypicalPersons();
     private final AddressBook sortedAddressBook = td.getTypicalAddressBook();
@@ -23,8 +26,19 @@ public class SortCommandTest {
 
     @Test
     public void sortTest() {
-        this.<ReadOnlyPerson>assertArrayLists(sortedAddressBook.getAllPersons().immutableListView(), unsortedAddressBook.getAllPersons().immutableListView(),
-                (p1, p2) -> assertNotEquals(p1, p2));
+        // Before sorting
+        List<ReadOnlyPerson> sortedList = sortedAddressBook.getAllPersons().immutableListView();
+        this.<ReadOnlyPerson>assertArrayLists(sortedList, unsortedAddressBook.getAllPersons().immutableListView(),
+                Assert::assertNotEquals);
+
+        // Sorting
+        SortCommand command = new SortCommand();
+        command.setData(unsortedAddressBook, EMPTY_PERSON_LIST);
+        command.execute();
+
+        // After sorting
+        this.<ReadOnlyPerson>assertArrayLists(sortedList, unsortedAddressBook.getAllPersons().immutableListView(),
+                Assert::assertEquals);
     }
 
     private <E> void assertArrayLists(List<E> list1, List<E> list2, BiConsumer<E, E> assertion) {
