@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -120,6 +121,26 @@ public class UniquePersonList implements Iterable<Person> {
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
+    }
+
+    /**
+     * @return a unmodifiable java List view sorted in alphabetical order
+     * with elements cast as immutable {@link ReadOnlyPerson}s.
+     */
+    public List<ReadOnlyPerson> sortByAlphabetToImmutableList() {
+        final List<Person> sortedPersons = new ArrayList<>();
+        sortedPersons.addAll(internalList);
+
+        sortedPersons.sort(new Comparator<Person>() {
+            @Override
+            public int compare(Person p1, Person p2) {
+                final String personOneName = p1.getName().toString().toLowerCase();
+                final String personTwoName = p2.getName().toString().toLowerCase();
+                return personOneName.compareTo(personTwoName);
+            }
+        });
+
+        return Collections.unmodifiableList(sortedPersons);
     }
 
     /**
