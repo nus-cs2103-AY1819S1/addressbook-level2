@@ -129,6 +129,15 @@ public class AddressBookTest {
     }
 
     @Test
+    public void sort() throws Exception {
+        defaultAddressBook.sort();
+        UniquePersonList allPersons = defaultAddressBook.getAllPersons();
+        UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
+
+        assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
     public void getAllPersons() throws Exception {
         UniquePersonList allPersons = defaultAddressBook.getAllPersons();
         UniquePersonList personsToCheck = new UniquePersonList(bobChaplin, aliceBetsy);
