@@ -17,6 +17,9 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
+|| find_email: Finds all persons whose emails contain the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: find_email alice@example.com bob@example.com charlie@example.com
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
@@ -228,6 +231,35 @@
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  find Charlie Betsy]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find_email]
+|| Invalid command format! 
+|| find_email: Finds all persons whose emails contain the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: find_email alice@example.com bob@example.com charlie@example.com
+|| ===================================================
+|| Enter command: || [Command entered:  find_email bet]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find_email 23912039120]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find_email BENchoo@nus.edu.sg]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find_email benchoo@nus.edu.sg]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  find_email charlie.d@nus.edu.sg benchoo@nus.edu.sg]
 || 	1. Betsy Choo Tags: [secretive]
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 
