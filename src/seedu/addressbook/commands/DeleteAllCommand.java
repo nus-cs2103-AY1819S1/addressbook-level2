@@ -4,6 +4,8 @@ import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class DeleteAllCommand extends Command {
@@ -15,17 +17,26 @@ public class DeleteAllCommand extends Command {
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
     private final Command finder;
-    private final Command deleter;
 
     public DeleteAllCommand(Set<String> keywords) {
         finder = new FindCommand(keywords);
-        deleter = new DeleteCommand(0);
     }
 
 
     @Override
     public CommandResult execute() {
-        return null;
+        CommandResult found = finder.execute();
+        final Optional<List<? extends ReadOnlyPerson>> personList = found.getRelevantPersons();
+        if (personList.isPresent()) {
+            List<? extends ReadOnlyPerson> list = personList.get();
+            DeleteCommand deleter = new DeleteCommand(0);
+            deleter.setData(addressBook, list);
+            for (int i = 0; i < list.size(); i++) {
+                deleter.setTargetIndex(i);
+                deleter.execute();
+            }
+        }
+        return found;
     }
 
 
