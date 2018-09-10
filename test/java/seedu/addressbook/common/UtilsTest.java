@@ -46,16 +46,16 @@ public class UtilsTest {
 
     // this is a method for testing the method Utils.isAnyNull
     @Test 
-    public void isAnyNullTest() {
+    public void isAnyNullTest() throws Exception {
         // empty list --> why does it lead to test failure
-        //assertIsAnyNull();
-        //assertAllNotNull();
+        //assertIsAnyNull(); --> if no argument, isAnyNull will treat it as false.--> assertIsAnyNull return exception
+        assertAllNotNull();
 
         // only one object
         assertAllNotNull("");
         assertAllNotNull(Integer.valueOf("2"));
         assertAllNotNull(1);
-        assertIsAnyNull((Object) null);
+        assertIsAnyNull( (Object)null);
 
         // three objects, containing at least 1 null object, at different positions
         assertIsAnyNull((Object) null, "j", "p");
