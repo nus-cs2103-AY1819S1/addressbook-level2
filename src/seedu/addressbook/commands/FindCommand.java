@@ -48,13 +48,9 @@ public class FindCommand extends Command {
      */
     private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
-        final Set<String> lowercaseKeywords = new HashSet<>();
-        for (String word: keywords) {
-            lowercaseKeywords.add(word.toLowerCase());
-        }
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> lowerCaseWordsInName = new HashSet<>(person.getName().getLowerCaseWordsInName());
-            if (!Collections.disjoint(lowerCaseWordsInName, lowercaseKeywords)) {
+            if (!Collections.disjoint(lowerCaseWordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }

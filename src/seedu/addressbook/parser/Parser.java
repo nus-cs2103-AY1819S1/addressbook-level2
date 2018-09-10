@@ -244,7 +244,9 @@ public class Parser {
 
         // keywords delimited by whitespace
         final String[] keywords = matcher.group("keywords").split("\\s+");
-        final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
+        final String[] lowercaseKeywords = new String[keywords.length];
+        for (int i = 0; i < keywords.length; i++) lowercaseKeywords[i] = keywords[i].toLowerCase();
+        final Set<String> keywordSet = new HashSet<>(Arrays.asList(lowercaseKeywords));
         return new FindCommand(keywordSet);
     }
 
