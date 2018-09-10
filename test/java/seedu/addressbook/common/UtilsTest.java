@@ -48,7 +48,6 @@ public class UtilsTest {
         assertNoNulls(1, 2, 3);
 
         // At least one null object
-        assertAnyNull(null);
         assertAnyNull(null, null);
         assertAnyNull(null, "value");
         assertAnyNull(1, 2, 3, null);
