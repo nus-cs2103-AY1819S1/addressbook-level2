@@ -146,12 +146,13 @@ public class UniquePersonList implements Iterable<Person> {
      * Sorts all persons in list in ascending order.
      */
     public void sortPersonsInAddressBook(){
-        Collections.sort(internalList, new Comparator<Person>() {
+        Comparator<Person> personComparatorByName = new Comparator<Person>() {
             @Override
             public int compare(Person p1, Person p2) {
                 return p1.getName().toString().compareTo(p2.getName().toString());
             }
-        });
+        };
+        Collections.sort(internalList,personComparatorByName);
 
     }
 
