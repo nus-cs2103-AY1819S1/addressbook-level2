@@ -2,9 +2,8 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Lists all persons in the address book to the user.
@@ -32,7 +31,34 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        List<ReadOnlyPerson> allPersonsSorted = addressBook.getAllPersons()
+                .immutableListView()
+                .stream()
+                .sorted(getComparator())
+                .collect(Collectors.toList());
+
+        return new CommandResult(getMessageForPersonListShownSummary(allPersonsSorted), allPersonsSorted);
+    }
+
+    /**
+     * Returns a first level comparator used for sorting the results.
+     *
+     * @return Comparator used to sort the result
+     */
+    private Comparator<ReadOnlyPerson> getComparator() {
+        switch(keyword) {
+            case "phone":
+                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getPhone().value.compareTo(y.getPhone().value);
+
+            case "email":
+                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getEmail().value.compareTo(y.getEmail().value);
+
+            case "address":
+                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getAddress().value.compareTo(y.getAddress().value);
+
+            case "name":
+            default:
+                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getName().fullName.compareTo(y.getName().fullName);
+        }
     }
 }
