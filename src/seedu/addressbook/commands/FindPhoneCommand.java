@@ -9,14 +9,14 @@ import java.util.Set;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
- * Finds and lists all persons whose phone number equals to the number(s) specified.
+ * Finds and lists all persons whose phone number matches the number(s) specified.
  */
 public class FindPhoneCommand extends Command {
 
     public static final String COMMAND_WORD = "findPhone";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds and lists all persons whose phone number "
-            + "equals to the number(s) specified and displays them as a list with index numbers.\n"
+            + "matches the number(s) specified and displays them as a list with index numbers.\n"
             + "Parameters: PHONE_NUMBER [MORE_PHONE_NUMBERS]...\n"
             + "Example: " + COMMAND_WORD + " 81234567 99999999";
 
@@ -40,7 +40,7 @@ public class FindPhoneCommand extends Command {
     }
 
     /**
-     * Retrieves all persons in the address book whose phone number equals to the number(s) specified.
+     * Retrieves all persons in the address book whose phone number matches the number(s) specified.
      *
      * @param phoneNumbers for searching
      * @return list of persons found
