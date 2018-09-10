@@ -76,7 +76,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommand();
+            return prepareSort(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -239,5 +239,29 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses argument in the context of the sort command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareSort(String args) {
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    SortCommand.MESSAGE_USAGE));
+        }
+
+        // keywords delimited by whitespace
+        final String[] keywords = matcher.group("keywords").split("\\s+");
+        if (keywords.length > 1) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    SortCommand.MESSAGE_USAGE));
+        }
+
+        final String keyword = keywords[0];
+        return new SortCommand(keyword);
     }
 }
