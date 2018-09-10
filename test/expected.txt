@@ -17,7 +17,7 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
-|| findPhone: Finds and lists all persons whose phone number equals to the number(s) specified and displays them as a list with index numbers.
+|| findPhone: Finds and lists all persons whose phone number matches the number(s) specified and displays them as a list with index numbers.
 || Parameters: PHONE_NUMBER [MORE_PHONE_NUMBERS]...
 || Example: findPhone 81234567 99999999
 || list: Displays all persons in the address book as a list with index numbers.
@@ -203,7 +203,7 @@
 || ===================================================
 || Enter command: || [Command entered:  findPhone]
 || Invalid command format! 
-|| findPhone: Finds and lists all persons whose phone number equals to the number(s) specified and displays them as a list with index numbers.
+|| findPhone: Finds and lists all persons whose phone number matches the number(s) specified and displays them as a list with index numbers.
 || Parameters: PHONE_NUMBER [MORE_PHONE_NUMBERS]...
 || Example: findPhone 81234567 99999999
 || ===================================================
