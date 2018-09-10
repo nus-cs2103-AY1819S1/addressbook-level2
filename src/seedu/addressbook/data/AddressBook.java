@@ -39,6 +39,20 @@ public class AddressBook {
     }
 
     /**
+     * Sorts all person in the address book by name.
+     */
+    public void sortByName() {
+        allPersons.sortByName();
+    }
+
+    /**
+     * Sorts all person in the address book by phone number.
+     */
+    public void sortByPhone() {
+        allPersons.sortByPhone();
+    }
+
+    /**
      * Returns true if an equivalent person exists in the address book.
      */
     public boolean containsPerson(ReadOnlyPerson key) {
