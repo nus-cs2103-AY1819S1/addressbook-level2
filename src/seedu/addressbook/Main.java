@@ -80,9 +80,16 @@ public class Main {
 
     /** Reads the user command and executes it, until the user issues the exit command.  */
     private void runCommandLoopUntilExitCommand() {
-        Command command;
+        Command command = null;
+
         do {
             String userCommandText = ui.getUserCommand();
+
+            // teach the app to accept a sort command but ignore it
+            if (userCommandText.startsWith("sort")) {
+                continue;
+            }
+
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
             recordResult(result);
