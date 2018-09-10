@@ -74,7 +74,8 @@ Format: `list`
 
 == Listing phone numbers only : `phonelist`
 
-Shows a list of all persons, along with only their phone number details, in the address book. +
+Shows a list of all persons, along with only their phone number details, in the address book.
+The phone number field will not be displayed if it is marked private. +
 This command serves as a light version of `list` for specific information.
 Format: `phonelist`
 
