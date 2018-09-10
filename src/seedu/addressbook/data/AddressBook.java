@@ -38,6 +38,11 @@ public class AddressBook {
         allPersons.add(toAdd);
     }
 
+    //TODO javadoc
+    public void sort() {
+        allPersons.sort();
+    }
+
     /**
      * Returns true if an equivalent person exists in the address book.
      */
