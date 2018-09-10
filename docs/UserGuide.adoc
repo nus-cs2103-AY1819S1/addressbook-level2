@@ -91,9 +91,9 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
-== Finding all persons containing any keyword in their email address: `find_email`
+== Finding all persons containing the exact keyword in their email address: `find_email`
 
-Finds persons whose email addresses contain any of the given keywords. +
+Finds persons whose email addresses exactly matches the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 [NOTE]
