@@ -49,6 +49,12 @@ public class EditCommand extends Command{
         this.tagSet = tagSet;
     }
 
+    public Person getPerson() {return toEdit;}
+    public Phone getPhone() {return phone;}
+    public Email getEmail() {return email;}
+    public Address getAddress() {return address;}
+    public Set<Tag> getTags() {return tagSet;}
+
     @Override
     public CommandResult execute() {
         try {
