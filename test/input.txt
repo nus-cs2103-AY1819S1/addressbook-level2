@@ -87,26 +87,6 @@
   viewall 5
 
 ##########################################################
-# test find persons command
-##########################################################
-
-  # should consider no keywords as invalid command format
-  find
-  # should only match full words in person names
-  find bet
-  # does not match if none have keyword
-  find 23912039120
-  # matching should be case-sensitive
-  find betsy
-
-  # find unique keyword
-  find Betsy
-  # find multiple with same keyword
-  find Dickson
-  # find multiple with some keywords
-  find Charlie Betsy
-
-##########################################################
 # test find persons by phone command
 ##########################################################
 
@@ -125,6 +105,26 @@
   findPhone 333333 111111
   # ignores duplicate number
   findPhone 333333 333333
+
+##########################################################
+# test find persons command
+##########################################################
+
+  # should consider no keywords as invalid command format
+  find
+  # should only match full words in person names
+  find bet
+  # does not match if none have keyword
+  find 23912039120
+  # matching should be case-sensitive
+  find betsy
+
+  # find unique keyword
+  find Betsy
+  # find multiple with same keyword
+  find Dickson
+  # find multiple with some keywords
+  find Charlie Betsy
 
 ##########################################################
 # test delete person command
