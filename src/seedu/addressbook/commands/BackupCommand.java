@@ -15,13 +15,20 @@ public class BackupCommand extends Command{
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Backup successful!";
+
+    public static final String MESSAGE_FAILURE = "Backup failed";
     
     private StorageFile storage;
 
     @Override
-    public CommandResult execute() throws InvalidStorageFilePathException, StorageFile.StorageOperationException { 
-        storage = new StorageFile(DEFAULT_BACKUP_FILEPATH);
-        storage.save(addressBook);
+    public CommandResult execute() {
+        try {
+            storage = new StorageFile(DEFAULT_BACKUP_FILEPATH);
+            storage.save(addressBook);            
+        } catch (StorageFile.StorageOperationException | InvalidStorageFilePathException e) {
+            System.out.println(e.getMessage());
+            return new CommandResult(MESSAGE_FAILURE);
+        } 
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
