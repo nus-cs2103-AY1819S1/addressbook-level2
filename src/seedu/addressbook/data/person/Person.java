@@ -37,6 +37,22 @@ public class Person implements ReadOnlyPerson {
         this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getTags());
     }
 
+    public void setName(Name newName) {
+        this.name = newName;
+    }
+
+    public void setEmail(Email newEmail) {
+        this.email = newEmail;
+    }
+
+    public void setAddress(Address newAddress) {
+        this.address = newAddress;
+    }
+
+    public void setPhone(Phone newPhone) {
+        this.phone = newPhone;
+    }
+
     @Override
     public Name getName() {
         return name;
@@ -61,6 +77,8 @@ public class Person implements ReadOnlyPerson {
     public Set<Tag> getTags() {
         return new HashSet<>(tags);
     }
+
+
 
     /**
      * Replaces this person's tags with the tags in the argument tag set.

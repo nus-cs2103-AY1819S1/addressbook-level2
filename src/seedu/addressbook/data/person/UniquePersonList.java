@@ -6,10 +6,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
-
+import seedu.addressbook.data.exception.IllegalValueException;
 
 
 /**
@@ -120,6 +121,55 @@ public class UniquePersonList implements Iterable<Person> {
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
+    }
+
+    public void editPerson(ReadOnlyPerson targetPerson, int targetDetails, String editD) throws IllegalValueException {
+        int index = internalList.indexOf(targetPerson);
+        if (targetDetails == 0 || targetDetails == 4){
+            if (targetDetails == 0) {
+                Address newAddress = new Address(editD, false);
+                internalList.get(index).setAddress(newAddress);
+            }
+
+            else {
+                Address newAddress = new Address(editD, true);
+                internalList.get(index).setAddress(newAddress);
+            }
+
+
+        }
+
+        else if (targetDetails == 1 || targetDetails == 5){
+            if (targetDetails == 1) {
+                Email newEmail = new Email(editD, false);
+                internalList.get(index).setEmail(newEmail);
+            }
+
+            else {
+                Email newEmail = new Email(editD, true);
+                internalList.get(index).setEmail(newEmail);
+            }
+        }
+
+        else if (targetDetails == 2 || targetDetails == 6){
+            if (targetDetails == 2) {
+                Phone newPhone = new Phone(editD, false);
+                internalList.get(index).setPhone(newPhone);
+            }
+            else {
+                Phone newPhone = new Phone(editD, true);
+                internalList.get(index).setPhone(newPhone);
+            }
+
+        }
+
+        else {
+            Name newName = new Name(editD);
+            internalList.get(index).setName(newName);
+        }
+
+
+
     }
 
     /**

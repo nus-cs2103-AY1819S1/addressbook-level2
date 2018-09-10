@@ -1,5 +1,6 @@
 package seedu.addressbook.data;
 
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -67,6 +68,11 @@ public class AddressBook {
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
     }
+
+    public void editDetails(ReadOnlyPerson targetPerson, int targetDetails, String editD) throws IllegalValueException, PersonNotFoundException {
+        this.allPersons.editPerson(targetPerson, targetDetails, editD);
+    }
+
 
     @Override
     public boolean equals(Object other) {
