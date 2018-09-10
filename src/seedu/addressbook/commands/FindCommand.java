@@ -10,14 +10,14 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case sensitive.
+ * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-sensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
@@ -41,7 +41,7 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Retrieves all persons in the address book whose names contain some of the specified keywords.
+     * Retrieves all persons in the address book whose names contain some of the specified keywords (case insensitive).
      *
      * @param keywords for searching
      * @return list of persons found
@@ -50,8 +50,15 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
-                matchedPersons.add(person);
+            // Consider matched even if case is inconsistent
+            for (String keyword: keywords) {
+                for (String word: wordsInName) {
+                    if (keyword.toLowerCase().equals(word.toLowerCase())) {
+                        if (!matchedPersons.contains(person)) {
+                            matchedPersons.add(person);
+                        }
+                    }
+                }
             }
         }
         return matchedPersons;
