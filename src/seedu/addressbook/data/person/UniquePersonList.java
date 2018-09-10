@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Comparator;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -80,6 +81,13 @@ public class UniquePersonList implements Iterable<Person> {
     public List<ReadOnlyPerson> immutableListView() {
         return Collections.unmodifiableList(internalList);
     }
+
+    public List<ReadOnlyPerson> sortedListView() {
+        List<ReadOnlyPerson> newInternalList = new ArrayList<>(internalList);
+        Collections.sort(newInternalList, (ReadOnlyPerson p1, ReadOnlyPerson p2) -> p1.getName().fullName.compareToIgnoreCase(p2.getName().fullName));
+        return newInternalList;
+    }
+
 
 
     /**
