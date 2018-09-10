@@ -9,6 +9,7 @@ import static seedu.addressbook.util.TestUtil.isIdentical;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,6 +21,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
@@ -134,5 +136,19 @@ public class AddressBookTest {
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void sortAllPersons() {
+        defaultAddressBook.sortAllPersons();
+        List<ReadOnlyPerson> personsList = defaultAddressBook.getAllPersons().immutableListView();
+        if (personsList.size() > 1) {
+            for (int i = 0; i < personsList.size() - 1; i++) {
+                String name = personsList.get(i).getName().fullName;
+                String nameAfter = personsList.get(i+1).getName().fullName;
+                assertTrue(name.compareToIgnoreCase(nameAfter) <= 0);
+            }
+        }
+
     }
 }
