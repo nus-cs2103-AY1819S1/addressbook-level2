@@ -55,6 +55,15 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test settags command
+##########################################################
+
+  settags 1 t/smart
+  settags 1
+  settags 2 t/friendly
+  settags 2 t/secretive
+
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
