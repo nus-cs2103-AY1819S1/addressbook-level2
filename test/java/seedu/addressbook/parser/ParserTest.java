@@ -18,6 +18,7 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.FindPhoneCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
@@ -195,6 +196,45 @@ public class ParserTest {
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
         assertEquals(keySet, result.getKeywords());
+    }
+
+    /*
+     * Tests for find persons by phone number command ===================================================
+     */
+
+    @Test
+    public void parse_findPhoneCommandInvalidArgs_errorMessage() {
+        // no phone number
+        final String[] inputs = {
+            "findPhone",
+            "findPhone "
+        };
+        final String resultMessage =
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindPhoneCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_findPhoneCommandValidArgs_parsedCorrectly() {
+        final String[] phoneNumbers = { "phone1", "phone2", "phone3" };
+        final Set<String> phoneSet = new HashSet<>(Arrays.asList(phoneNumbers));
+
+        final String input = "find " + String.join(" ", phoneSet);
+        final FindPhoneCommand result =
+                parseAndAssertCommandType(input, FindPhoneCommand.class);
+        assertEquals(phoneSet, result.getPhoneNumbers());
+    }
+
+    @Test
+    public void parse_findCommandDuplicatePhone_parsedCorrectly() {
+        final String[] phoneNumbers = { "phone1", "phone2", "phone3" };
+        final Set<String> phoneSet = new HashSet<>(Arrays.asList(phoneNumbers));
+
+        // duplicate every keyword
+        final String input = "find " + String.join(" ", phoneSet) + " " + String.join(" ", phoneSet);
+        final FindPhoneCommand result =
+                parseAndAssertCommandType(input, FindPhoneCommand.class);
+        assertEquals(phoneSet, result.getPhoneNumbers());
     }
 
     /*
