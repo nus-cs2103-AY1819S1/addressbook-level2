@@ -38,7 +38,9 @@ public class AddressBook {
         allPersons.add(toAdd);
     }
 
-    //TODO javadoc
+    /**
+     * Sorts the list of persons by alphabetic order.
+     */
     public void sort() {
         allPersons.sort();
     }
