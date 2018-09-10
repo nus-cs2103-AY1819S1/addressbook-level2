@@ -55,6 +55,23 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # should catch invalid args format
+  list
+  sort
+  list
+
+  add Aann Tan p/12341234 e/aann@mail.com a/123, Royal Road
+  list
+  sort
+  list
+
+  delete 1
+  list
+  
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
