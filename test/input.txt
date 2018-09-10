@@ -55,6 +55,16 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test sort command
+##########################################################
+  
+  add abc p/1234 e/abc@gmail.com a/111, Clementi Street, #02-111
+  list
+  sort
+  delete 1
+  list
+
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
