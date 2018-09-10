@@ -22,7 +22,10 @@ import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.SetTagCommand;
+
 import seedu.addressbook.data.exception.IllegalValueException;
+
 
 /**
  * Parses user input.
@@ -41,6 +44,10 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    // TODO: improve recognition of whitespace
+    public static final Pattern PERSON_TAGS_ARGS_FORMAT =
+            Pattern.compile("(?<targetIndex>\\d+)" // target index
+                    + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
     /**
      * Signals that the user input could not be parsed.
@@ -93,6 +100,9 @@ public class Parser {
 
         case ViewAllCommand.COMMAND_WORD:
             return prepareViewAll(arguments);
+
+        case SetTagCommand.COMMAND_WORD:
+            return prepareSetTag(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -156,6 +166,28 @@ public class Parser {
         return new HashSet<>(tagStrings);
     }
 
+    /**
+     * Parses arguments in the context of the settag person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareSetTag(String args) {
+
+        final Matcher matcher = PERSON_TAGS_ARGS_FORMAT.matcher(args.trim());
+        // Validate arg string format
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SetTagCommand.MESSAGE_USAGE));
+        }
+        try {
+            return new SetTagCommand(
+                    Integer.parseInt(matcher.group("targetIndex")),
+                    getTagsFromArgs(matcher.group("tagArguments"))
+            );
+        } catch (IllegalValueException ive) {
+            return new IncorrectCommand(ive.getMessage());
+        }
+    }
 
     /**
      * Parses arguments in the context of the delete person command.

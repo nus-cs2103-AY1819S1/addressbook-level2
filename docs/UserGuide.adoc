@@ -67,6 +67,21 @@ Examples:
 * `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
 * `add Betsy Crowe pp/1234567 e/betsycrowe@gmail.com pa/Newgate Prison t/criminal t/friend`
 
+== Setting a person's tags: `settags`
+
+Sets the tags of the specified person. +
+Format: `settags INDEX [t/TAG]...`
+
+****
+The new set of tags can be any number (including 0).
+****
+
+Examples:
+
+* `settags 1 t/evil t/handsome`
+* `settags 2 t/criminal t/friend`
+* 'settags 3'
+
 == Listing all persons : `list`
 
 Shows a list of all persons, along with their non-private details, in the address book. +
