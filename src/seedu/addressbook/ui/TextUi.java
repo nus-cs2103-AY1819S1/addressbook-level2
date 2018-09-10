@@ -126,10 +126,24 @@ public class TextUi {
      */
     public void showResultToUser(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> resultPersons = result.getRelevantPersons();
-        if (resultPersons.isPresent()) {
+        if (resultPersons.isPresent() && result.lite) {
+            showPhoneListView(resultPersons.get());
+        } else if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
         }
         showToUser(result.feedbackToUser, DIVIDER);
+    }
+
+    /**
+     * Shows a list of persons to the user, formatted as an indexed list.
+     * Only the phone number detail is shown.
+     */
+    private void showPhoneListView(List<? extends ReadOnlyPerson> persons) {
+        final List<String> formattedPersons = new ArrayList<>();
+        for (ReadOnlyPerson person : persons) {
+            formattedPersons.add(person.getPhoneOnly());
+        }
+        showToUserAsIndexedList(formattedPersons);
     }
 
     /**

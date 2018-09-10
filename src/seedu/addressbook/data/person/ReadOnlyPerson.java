@@ -95,4 +95,16 @@ public interface ReadOnlyPerson {
         }
         return builder.toString();
     }
+
+    /**
+     * Formats a person as text, showing only phone number details.
+     */
+    default String getPhoneOnly() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getName());
+        if (!getPhone().isPrivate()) {
+            builder.append(" Phone: ").append(getPhone());
+        }
+        return builder.toString();
+    }
 }
