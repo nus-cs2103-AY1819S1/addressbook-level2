@@ -6,10 +6,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.security.KeyStore;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
-
+import seedu.addressbook.data.tag.Tag;
 
 
 /**
@@ -90,6 +92,20 @@ public class UniquePersonList implements Iterable<Person> {
     public boolean contains(ReadOnlyPerson toCheck) {
         for (Person p : internalList) {
             if (p.isSamePerson(toCheck)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Sets the tags of the equivalent person
+     * @return whether setTags was successful
+     */
+    public boolean setTags(ReadOnlyPerson toSet, Set<Tag> newTags) {
+        for (Person p : internalList) {
+            if (p.isSamePerson(toSet)) {
+                p.setTags(newTags);
                 return true;
             }
         }
