@@ -1,7 +1,7 @@
 package seedu.addressbook.commands;
 
-import seedu.addressbook.data.person.ReadOnlyPerson;
 import java.util.List;
+import seedu.addressbook.data.person.ReadOnlyPerson;
 
 /**
  * Sorts all persons in the address book by their name.

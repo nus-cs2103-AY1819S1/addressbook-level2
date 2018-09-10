@@ -126,28 +126,25 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public void sort() {
         ArrayList<String> fullNames = new ArrayList<>();
-        int i, j= 0;
-        int size = internalList.size();
+        int i, size = internalList.size();
         for (i = 0; i < size; i++){
             fullNames.add(internalList.get(i).getName().toString());
         }
         Collections.sort(fullNames);
         for (i = 0; i < size; i++){
-            String cur = internalList.get(i).getName().fullName;
+            String cur = internalList.get(i).getName().toString();
             if (cur.equals(fullNames.get(i))){
                 continue;
             }
             int id = i;
-            for (j = i + 1; j < size; j++){
-                cur = internalList.get(j).getName().fullName;
+            for (int j = i + 1; j < size; j++){
+                cur = internalList.get(j).getName().toString();
                 if (cur.equals(fullNames.get(i))){
                     id = j;
                     break;
                 }
             }
-            Person tmp = internalList.get(i);
-            internalList.set(i,internalList.get(id));
-            internalList.set(id, tmp);
+            Collections.swap(internalList, i, id);
         }
     }
 
