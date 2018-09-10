@@ -219,7 +219,7 @@ public class ParserTest {
         final String[] phoneNumbers = { "phone1", "phone2", "phone3" };
         final Set<String> phoneSet = new HashSet<>(Arrays.asList(phoneNumbers));
 
-        final String input = "find " + String.join(" ", phoneSet);
+        final String input = "findPhone " + String.join(" ", phoneSet);
         final FindPhoneCommand result =
                 parseAndAssertCommandType(input, FindPhoneCommand.class);
         assertEquals(phoneSet, result.getPhoneNumbers());
@@ -231,7 +231,7 @@ public class ParserTest {
         final Set<String> phoneSet = new HashSet<>(Arrays.asList(phoneNumbers));
 
         // duplicate every keyword
-        final String input = "find " + String.join(" ", phoneSet) + " " + String.join(" ", phoneSet);
+        final String input = "findPhone " + String.join(" ", phoneSet) + " " + String.join(" ", phoneSet);
         final FindPhoneCommand result =
                 parseAndAssertCommandType(input, FindPhoneCommand.class);
         assertEquals(phoneSet, result.getPhoneNumbers());
