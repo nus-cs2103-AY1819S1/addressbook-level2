@@ -49,6 +49,7 @@ public class UtilsTest {
         assertTrue(Utils.isAnyNull(null, null)); // Test for nulls
         assertTrue(Utils.isAnyNull(1, null));
         assertTrue(Utils.isAnyNull(new String[1]));
+        //assertFalse(Utils.isAnyNull(Arrays.asList((Object) null)));
         assertFalse(Utils.isAnyNull(new String[0]));
         assertFalse(Utils.isAnyNull(new List[0]));
         assertFalse(Utils.isAnyNull(1, 2)); // Test for int values
