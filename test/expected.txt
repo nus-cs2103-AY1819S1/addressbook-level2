@@ -14,6 +14,8 @@
 || Example: delete 1
 || Clears address book permanently.
 || Example: clear
+|| sort: Sorts the list of persons in the address book.
+|| Example: sort
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
