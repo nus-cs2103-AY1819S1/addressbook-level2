@@ -1,7 +1,6 @@
 package seedu.addressbook.commands;
 
 import static org.junit.Assert.assertEquals;
-import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.addressbook.parser.Parser.KEYWORDS_ARGS_FORMAT;
 
 import org.junit.Before;
@@ -26,36 +25,70 @@ import java.util.Set;
 
 
 public class DeleteAllCommandTest {
-    private AddressBook emptyAddressBook;
-    private AddressBook addressBook;
-
-    private List<ReadOnlyPerson> emptyDisplayList;
-    private List<ReadOnlyPerson> listWithEveryone;
-
-    private Person[] persons = new Person[5];
+    private Person[] persons = new Person[4];
 
     @Before
     public void setUp() throws Exception {
-        persons[0]  = new Person(new Name("John Doe"), new Phone("61234567", false),
-                new Email("john@doe.com", false), new Address("395C Ben Road", false), Collections.emptySet());
-        persons[1] = new Person(new Name("Jane Doe"), new Phone("91234567", false),
-                new Email("jane@doe.com", false), new Address("33G Ohm Road", false), Collections.emptySet());
-        persons[2] = new Person(new Name("Sam Doe"), new Phone("63345566", false),
-                new Email("sam@doe.com", false), new Address("55G Abc Road", false), Collections.emptySet());
-        persons[3] = new Person(new Name("David Grant"), new Phone("61121122", false),
+        persons[0] = new Person(new Name("David Grant"), new Phone("61121122", false),
                 new Email("david@grant.com", false), new Address("44H Define Road", false),
                 Collections.emptySet());
-
-        emptyAddressBook = TestUtil.createAddressBook();
-        addressBook = TestUtil.createAddressBook(persons);
-
-        emptyDisplayList = TestUtil.createList();
-        listWithEveryone = TestUtil.createList(persons);
+        persons[1]  = new Person(new Name("John Doe"), new Phone("61234567", false),
+                new Email("john@doe.com", false), new Address("395C Ben Road", false), Collections.emptySet());
+        persons[2] = new Person(new Name("Jane Doe"), new Phone("91234567", false),
+                new Email("jane@doe.com", false), new Address("33G Ohm Road", false), Collections.emptySet());
+        persons[3] = new Person(new Name("Sam Doe"), new Phone("63345566", false),
+                new Email("sam@doe.com", false), new Address("55G Abc Road", false), Collections.emptySet());
     }
 
     @Test
     public void all_matching_deleted() {
-//        createDeleteAllCommand("A", );
+        AddressBook addressBook;
+        AddressBook expectedBook;
+        List<ReadOnlyPerson> listOfPeople;
+        DeleteAllCommand deleteAll;
+
+        //Test 1
+        addressBook = TestUtil.createAddressBook(persons[0], persons[1]);
+        expectedBook = TestUtil.createAddressBook(persons[0]);
+        listOfPeople = TestUtil.createList(persons[1]);
+        deleteAll = createDeleteAllCommand("Doe", addressBook, listOfPeople);
+        assertCommandBehaviour(deleteAll, listOfPeople, expectedBook, addressBook);
+
+        //Test 2
+        addressBook = TestUtil.createAddressBook(persons[0], persons[1], persons[2]);
+        expectedBook = TestUtil.createAddressBook(persons[0]);
+        listOfPeople = TestUtil.createList(persons[1], persons[2]);
+        deleteAll = createDeleteAllCommand("Doe", addressBook, listOfPeople);
+        assertCommandBehaviour(deleteAll, listOfPeople, expectedBook, addressBook);
+
+        //Test 3
+        addressBook = TestUtil.createAddressBook(persons[0], persons[1], persons[2], persons[3]);
+        expectedBook = TestUtil.createAddressBook(persons[0]);
+        listOfPeople = TestUtil.createList(persons[1], persons[2], persons[3]);
+        deleteAll = createDeleteAllCommand("Doe", addressBook, listOfPeople);
+        assertCommandBehaviour(deleteAll, listOfPeople, expectedBook, addressBook);
+    }
+
+    @Test
+    public void none_deleted() {
+        AddressBook addressBook;
+        AddressBook expectedBook;
+        List<ReadOnlyPerson> listOfPeople;
+        DeleteAllCommand deleteAll;
+
+        //Test 1
+        addressBook = TestUtil.createAddressBook(persons[1]);
+        expectedBook = TestUtil.createAddressBook(persons[1]);
+        listOfPeople = TestUtil.createList();
+        deleteAll = createDeleteAllCommand("Grant", addressBook, listOfPeople);
+        assertCommandBehaviour(deleteAll, listOfPeople, expectedBook, addressBook);
+
+        //Test 2
+        addressBook = TestUtil.createAddressBook();
+        expectedBook = TestUtil.createAddressBook();
+        listOfPeople = TestUtil.createList();
+        deleteAll = createDeleteAllCommand("Grant", addressBook, listOfPeople);
+        assertCommandBehaviour(deleteAll, listOfPeople, expectedBook, addressBook);
     }
 
     /**
@@ -77,12 +110,18 @@ public class DeleteAllCommandTest {
     /**
      * Executes the command, and checks that the execution was what we had expected.
      */
-    private void assertCommandBehaviour(DeleteAllCommand deleteAllCommand, String message,
+    private void assertCommandBehaviour(DeleteAllCommand deleteAllCommand, List<ReadOnlyPerson> displayList,
                                         AddressBook expectedAddressBook, AddressBook actualAddressBook) {
 
         CommandResult result = deleteAllCommand.execute();
+        StringBuilder expectedMessage = new StringBuilder();
 
-        assertEquals(message, result.feedbackToUser);
+        for (int i = 0; i < displayList.size(); i++) {
+            ReadOnlyPerson targetPerson = displayList.get(i);
+            expectedMessage.append(String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson));
+            expectedMessage.append("\n");
+        }
+        assertEquals(expectedMessage.toString(), result.feedbackToUser);
         assertEquals(expectedAddressBook.getAllPersons(), actualAddressBook.getAllPersons());
     }
 
