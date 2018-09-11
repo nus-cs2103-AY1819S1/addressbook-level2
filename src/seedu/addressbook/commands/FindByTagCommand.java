@@ -25,11 +25,22 @@ public class FindByTagCommand extends Command {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             try {
-                tagSet.add(new Tag(tagName));
+                Tag newTag = new Tag(tagName);
+                if (!tagSet.contains(newTag)) {
+                    tagSet.add(newTag);
+                }
             } catch (IllegalValueException ive) {}
         }
         this.tags = tagSet;
     }
+
+    /**
+     * Returns a copy of tags in this command.
+     */
+    public Set<Tag> getTags() {
+        return new HashSet<>(tags);
+    }
+
 
     @Override
     public CommandResult execute() {
