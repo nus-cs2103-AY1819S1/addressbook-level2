@@ -1,17 +1,7 @@
 package seedu.addressbook.parser;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
@@ -21,6 +11,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.SortCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -31,6 +22,16 @@ import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
 public class ParserTest {
 
@@ -292,6 +293,29 @@ public class ParserTest {
             addCommand += " t/" + tag.tagName;
         }
         return addCommand;
+    }
+
+    /*
+     * Tests for sort command
+     */
+
+    @Test
+    public void parse_sortValidCommand_parsedCorrectly() {
+        List<String> fields = List.of("email", "name", "phone");
+        for (String s : fields) {
+            String command = "sort " + s;
+            parseAndAssertCommandType(command, SortCommand.class);
+        }
+    }
+
+    @Test
+    public void parse_sortInvalidCommand_errorMessage() {
+        List<String> invalidFields = List.of("nothing", "tags", "abc");
+        for (String s : invalidFields) {
+            String command = "sort " + s;
+            SortCommand sortCommand = parseAndAssertCommandType(command, SortCommand.class);
+            assertTrue(!sortCommand.isValid());
+        }
     }
 
     /*

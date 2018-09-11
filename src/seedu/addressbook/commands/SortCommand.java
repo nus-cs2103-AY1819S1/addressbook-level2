@@ -51,14 +51,22 @@ public class SortCommand extends Command {
      */
     public SortCommand(String string) throws IllegalArgumentException {
         Field f = Field.fromString(string);
-        if (f == null) {
-            throw new IllegalArgumentException();
-        }
         this.field = f;
+    }
+
+    /**
+     * Returns whether this command is valid, i.e. has a field.
+     * @return boolean that tells whether this command is valid.
+     */
+    public boolean isValid() {
+        return field != null;
     }
 
     @Override
     public CommandResult execute() {
+        if (field == null) {
+            return new CommandResult(MESSAGE_FIELD_DOES_NOT_EXIST);
+        }
         addressBook.sortPersons(new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
