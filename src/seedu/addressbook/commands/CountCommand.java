@@ -8,7 +8,7 @@ public class CountCommand extends Command {
     public static final String COMMAND_WORD = "count";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Gives you the number of persons in the address book. \n"
+            + ": Gives you the number of persons in the address book.\n"
             + "Example: " + COMMAND_WORD;
 
     @Override
