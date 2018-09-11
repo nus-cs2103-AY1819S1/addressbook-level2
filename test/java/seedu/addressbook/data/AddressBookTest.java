@@ -135,4 +135,18 @@ public class AddressBookTest {
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
+
+    @Test
+    public void getPrintableStrings() {
+        assertTrue(aliceBetsy.getPrintableString(
+                aliceBetsy.getName(),
+                aliceBetsy.getPhone(),
+                aliceBetsy.getEmail(),
+                aliceBetsy.getAddress()).equals(
+                        "Name: Alice Betsy, " +
+                        "Phone: 91235468, " +
+                        "Email: alice@nushackers.org, " +
+                        "Address: 8 Computing Drive, Singapore"));
+    }
+
 }
