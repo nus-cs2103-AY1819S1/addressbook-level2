@@ -2,11 +2,7 @@ package seedu.addressbook.commands;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -22,11 +18,20 @@ public class FindCommandTest {
 
     @Test
     public void execute() throws IllegalValueException {
-        //same word, same case: matched
+        //same word, all same case: matched
         assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
 
-        //same word, different case: not matched
-        assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
+        //same word, all upper case: matched
+        assertFindCommandBehavior(new String[]{"AMY"}, Arrays.asList(td.amy));
+
+        //same word, all lower case: matched
+        assertFindCommandBehavior(new String[]{"amy"}, Arrays.asList(td.amy));
+
+        //same word, mix of upper and lower case: matched
+        assertFindCommandBehavior(new String[]{"amY"}, Arrays.asList(td.amy));
+
+        //same word, mix of upper and lower case in different position: matched
+        assertFindCommandBehavior(new String[]{"aMy"}, Arrays.asList(td.amy));
 
         //partial word: not matched
         assertFindCommandBehavior(new String[]{"my"}, Collections.emptyList());
