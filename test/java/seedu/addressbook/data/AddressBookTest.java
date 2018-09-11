@@ -72,7 +72,7 @@ public class AddressBookTest {
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
 
         emptyAddressBook = new AddressBook();
-        defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
+        defaultAddressBook = new AddressBook(new UniquePersonList(bobChaplin, aliceBetsy));
     }
 
     @Rule
@@ -129,9 +129,18 @@ public class AddressBookTest {
     }
 
     @Test
-    public void getAllPersons() throws Exception {
+    public void sort() throws Exception {
+        defaultAddressBook.sort();
         UniquePersonList allPersons = defaultAddressBook.getAllPersons();
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
+
+        assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void getAllPersons() throws Exception {
+        UniquePersonList allPersons = defaultAddressBook.getAllPersons();
+        UniquePersonList personsToCheck = new UniquePersonList(bobChaplin, aliceBetsy);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
