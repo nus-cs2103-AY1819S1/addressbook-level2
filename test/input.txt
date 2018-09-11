@@ -141,6 +141,29 @@
   list
 
 ##########################################################
+# test edit command
+##########################################################
+
+  # last active view [1] betsy [2] dickson
+  edit
+
+  # catch invalid index
+  edit -1 p/666666
+
+  # edit correct person
+  # edit phone
+  edit 2 p/666666
+  list
+
+  # edit address
+  edit 2 a/666, alpha street
+  list
+
+  # edit email
+  edit 2 e/hello@abc.com
+  list
+
+##########################################################
 # test clear command
 ##########################################################
 

@@ -290,6 +290,42 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  edit]
+|| Invalid command format! 
+|| edit: Edits information of the person identified by the index number used in last person listing.
+|| Parameters: INDEX field/new value
+|| Example: edit 1 e/hello@abc.com
+|| ===================================================
+|| Enter command: || [Command entered:  edit -1 p/666666]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  edit 2 p/666666]
+|| Edited Person: Dickson Ee Phone: 666666 Email: (private) dickson@nus.edu.sg Address: 444, delta street Tags: [friends]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Dickson Ee Phone: 666666 Address: 444, delta street Tags: [friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  edit 2 a/666, alpha street]
+|| Edited Person: Dickson Ee Phone: 666666 Email: (private) dickson@nus.edu.sg Address: 666, alpha street Tags: [friends]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Dickson Ee Phone: 666666 Address: 666, alpha street Tags: [friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  edit 2 e/hello@abc.com]
+|| Edited Person: Dickson Ee Phone: 666666 Email: hello@abc.com Address: 666, alpha street Tags: [friends]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Dickson Ee Phone: 666666 Email: hello@abc.com Address: 666, alpha street Tags: [friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
