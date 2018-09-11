@@ -15,6 +15,7 @@ import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
+import seedu.addressbook.commands.EditCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
@@ -41,6 +42,9 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    public static final Pattern PERSON_DATA_EDIT_ARGS_FORMAT =
+            Pattern.compile("(?<targetIndex>.+)"
+                    + " ((?<private>p?)(?<prefix>[aep])/(?<value>[^/].+))");
 
     /**
      * Signals that the user input could not be parsed.
@@ -75,6 +79,9 @@ public class Parser {
 
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
+
+        case EditCommand.COMMAND_WORD:
+            return prepareEdit(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
@@ -133,6 +140,26 @@ public class Parser {
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
+    }
+
+    /**
+     * Parses arguments in the context of the edit person command.
+     *
+     * @param args full command argument string
+     * @return the prepared command
+     */
+    private Command prepareEdit(String args) {
+        final Matcher matcher = PERSON_DATA_EDIT_ARGS_FORMAT.matcher(args.trim());
+
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        }
+
+        int targetIndex = Integer.parseInt(matcher.group("targetIndex"));
+        String prefix = matcher.group("prefix");
+        String newValue = matcher.group("value");
+        boolean isPrivate = isPrivatePrefixPresent(matcher.group("private"));
+        return new EditCommand(targetIndex, prefix, newValue, isPrivate);
     }
 
     /**
