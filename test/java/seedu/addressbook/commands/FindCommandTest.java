@@ -22,24 +22,36 @@ public class FindCommandTest {
 
     @Test
     public void execute() throws IllegalValueException {
-        //same word, same case: matched
+        //same word in name, same case: matched
         assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
 
-        //same word, different case: not matched
+        //same word in name, different case: not matched
         assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
 
-        //partial word: not matched
+        //partial word in name: not matched
         assertFindCommandBehavior(new String[]{"my"}, Collections.emptyList());
 
-        //multiple words: matched
+        //multiple words in name: matched
         assertFindCommandBehavior(new String[]{"Amy", "Bill", "Candy", "Destiny"},
                 Arrays.asList(td.amy, td.bill, td.candy));
 
         //repeated keywords: matched
         assertFindCommandBehavior(new String[]{"Amy", "Amy"}, Arrays.asList(td.amy));
 
-        //Keyword matching a word in address: not matched
-        assertFindCommandBehavior(new String[]{"Clementi"}, Collections.emptyList());
+        //Keyword matching a word in address: matched
+        assertFindCommandBehavior(new String[]{"Clementi"}, Arrays.asList(td.amy, td.bill, td.candy));
+
+        //Keyword equal to email: matched
+        assertFindCommandBehavior(new String[]{"ab@gmail.com"}, Arrays.asList(td.amy));
+
+        //partial word in email: not matched
+        assertFindCommandBehavior(new String[]{"ab"}, Collections.emptyList());
+
+        //Keyword equal to phone number: matched
+        assertFindCommandBehavior(new String[]{"91119111"}, Arrays.asList(td.amy));
+
+        //partial word in phone number: not matched
+        assertFindCommandBehavior(new String[]{"9111"}, Collections.emptyList());
     }
 
     /**
