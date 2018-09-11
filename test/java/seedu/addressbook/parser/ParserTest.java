@@ -299,7 +299,23 @@ public class ParserTest {
      */
 
     @Test
-    public void parse_updateCommandInvalidArgs_errorMessage() {}
+    public void parse_updateCommandInvalidArgs_errorMessage() {
+        final String[] inputs = {
+            "update",
+            "update ",
+            "update 2",
+            "update wrong args format",
+            // no index
+            String.format("update $s p/$s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            // no phone prefix
+            String.format("update 1 $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            // no email prefix
+            String.format("update 2 $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            // no address prefix
+            String.format("update 3 $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
+    };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);}
 
     @Test
     public void parse_updateCommandInvalidPersonDataInArgs_errorMessage() {}
