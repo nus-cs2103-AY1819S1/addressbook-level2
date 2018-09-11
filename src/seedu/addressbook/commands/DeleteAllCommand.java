@@ -12,7 +12,7 @@ public class DeleteAllCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes all persons whose names contain any of "
             + "the specified keywords (case-sensitive). Removes the last listing.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+            + "Example: " + COMMAND_WORD + " Doe";
 
     private final Command finder;
 

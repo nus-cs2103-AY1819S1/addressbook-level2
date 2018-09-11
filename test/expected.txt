@@ -290,6 +290,30 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  deleteAll]
+|| Invalid command format! 
+|| deleteAll: Deletes all persons whose names contain any of the specified keywords (case-sensitive). Removes the last listing.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: deleteAll Doe
+|| ===================================================
+|| Enter command: || [Command entered:  add John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
+|| New person added: John Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| ===================================================
+|| Enter command: || [Command entered:  add Jon Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
+|| New person added: Jon Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| ===================================================
+|| Enter command: || [Command entered:  add Jn Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
+|| New person added: Jn Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| ===================================================
+|| Enter command: || [Command entered:  add John p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney]
+|| New person added: John Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| ===================================================
+|| Enter command: || [Command entered:  deleteAll Doe]
+|| Deleted Person: John Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| Deleted Person: Jon Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| Deleted Person: Jn Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+|| 
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
