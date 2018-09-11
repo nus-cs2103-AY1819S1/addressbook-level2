@@ -43,6 +43,7 @@ public class Parser {
 
     // "s/" followed by word
     public static final Pattern LIST_ARGS_FORMAT = Pattern.compile("(s/(?<sortBy>\\w+))?+");
+
     /**
      * Signals that the user input could not be parsed.
      */
@@ -87,7 +88,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            return prepareList(arguments);
 
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
@@ -247,6 +248,19 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses arguments in the context of the list command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareList(String args) {
+        if(args.equals("")) {
+            return new ListCommand();
+        }
+        return null;
     }
 
 
