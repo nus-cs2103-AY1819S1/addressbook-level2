@@ -23,7 +23,7 @@ public class FindNumberCommandTest {
 
         //same word, same case: matched
         assertFindCommandBehavior(new String[]{"Candy", "Destiny"}, td.candy.getPhone().value);
-        
+
     }
 
     /**

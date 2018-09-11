@@ -146,7 +146,6 @@
 
   # returns the phone number of the person only.
   findNumber Betsy
-  list
 
 ##########################################################
 # test clear command
