@@ -41,7 +41,8 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
-
+    // "s/" followed by word
+    public static final Pattern LIST_ARGS_FORMAT = Pattern.compile("(s/(?<sortBy>\\w+))?+");
     /**
      * Signals that the user input could not be parsed.
      */
