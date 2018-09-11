@@ -62,6 +62,14 @@ public class Person implements ReadOnlyPerson {
         return new HashSet<>(tags);
     }
 
+    public String getPrintableString(Printable... printables) {
+        String result = "";
+        for (Printable field : printables) {
+            result = result + field.getPrintableString() + ", ";
+        }
+        return result.substring(0, result.length() - 2);
+    }
+
     /**
      * Replaces this person's tags with the tags in the argument tag set.
      */
