@@ -14,7 +14,7 @@ public class SwapCommand extends Command {
 
     public static final String COMMAND_WORD = "swap";
     public static final String MESSAGE_USAGE = "Swap index of 2 person in address book.\n"
-            + "Example: " + COMMAND_WORD +" 1 2";
+            + "Example: " + COMMAND_WORD + " 1 2";
 
     public static final String MESSAGE_SWAP_SUCCESS = "Index successfully swapped.";
 
@@ -32,10 +32,13 @@ public class SwapCommand extends Command {
 
         //swap contacts here
         try {
+            //If both target are same index, throw exception.
+            if (target1Index == target2Index)
+                throw new IllegalArgumentException();
             addressBook.swapIndex(target1Index, target2Index);
             List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
             return new CommandResult(MESSAGE_SWAP_SUCCESS, allPersons);
-        } catch (UniquePersonList.PersonNotFoundException e) {
+        } catch (UniquePersonList.PersonNotFoundException | IllegalArgumentException e) {
             return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
     }
