@@ -252,9 +252,11 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
+|| Do you really want to delete this entry? Press 1 to confirm, and 0 to cancel: 
 || Deleted Person: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
+|| Do you really want to delete this entry? Press 1 to confirm, and 0 to cancel: 
 || Person could not be found in address book
 || ===================================================
 || Enter command: || [Command entered:  view 2]
@@ -272,6 +274,7 @@
 || 4 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 4]
+|| Do you really want to delete this entry? Press 1 to confirm, and 0 to cancel: 
 || Deleted Person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
 || ===================================================
 || Enter command: || [Command entered:  list]
@@ -282,6 +285,7 @@
 || 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
+|| Do you really want to delete this entry? Press 1 to confirm, and 0 to cancel: 
 || Deleted Person: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || ===================================================
 || Enter command: || [Command entered:  list]
