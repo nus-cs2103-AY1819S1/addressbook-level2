@@ -1,9 +1,13 @@
 package seedu.addressbook.commands;
 
-//import seedu.addressbook.data.person.Person;
-//import seedu.addressbook.data.person.UniquePersonList;
+import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.UniquePersonList;
 
-//import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
 //import java.util.List;
 
 /**
@@ -18,20 +22,32 @@ public class SortCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Address book has been sorted!";
+    public static final String MESSAGE_UNEXPECTED_EVENT = "Something is wrong! Please restart the application.";
 
     @Override
     public CommandResult execute() {
-        // clone
-//        UniquePersonList allPersons = addressBook.getAllPersons();
-        // sort
-//        Comparator<Person> byName = new Comparator.comparing(person -> person.getName());
-//        List<Person> sortedAllPersons = new List<>();
-        // clear adb
-//        addressBook.clear();
-        // add 1 by 1
-//        for (Person person : sortedAllPersons) {
-//            addressBook.addPerson(person);
-//        }
+        // clone list of persons in the current address book
+        Iterator<Person> iteratorOfPersons = addressBook.getAllPersons().iterator();
+        List<Person> sortedAllPersons = new ArrayList<>();
+        while (iteratorOfPersons.hasNext()) {
+            sortedAllPersons.add(iteratorOfPersons.next());
+        }
+
+        // sort the clone
+        Collections.sort(sortedAllPersons);
+
+        // clear address book
+        addressBook.clear();
+
+        // add each person in sorted clone to the cleared address book
+        for (Person person : sortedAllPersons) {
+            try {
+                addressBook.addPerson(person);
+            } catch (UniquePersonList.DuplicatePersonException dpe) {
+                return new CommandResult(MESSAGE_UNEXPECTED_EVENT);
+            }
+        }
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
