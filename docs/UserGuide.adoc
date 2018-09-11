@@ -91,6 +91,32 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Editing a person : `edit`
+
+Edits a particular field of the specified person from the address book. +
+Format: `edit INDEX FIELD/VALUE`
+
+****
+Edits a particular `FIELD` with specified `VALUE` of the person at the specified `INDEX`.
+The index refers to the index number shown in the most recent listing.
+****
+
+[NOTE]
+====
+The edit command is only able to edit one field at a time. Fields that can be edited are address, email
+and phone.
+====
+
+Examples:
+
+* `list` +
+`edit 2 p/12345678` +
+Edits the phone number of the 2nd person in the address book. +
+`edit 3 a/123, Alpha street` +
+Edits the address of the 3rd person in the address book. +
+`edit 1 e/hello@abc.com` +
+Edits the email of the 1st person in the address book.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
