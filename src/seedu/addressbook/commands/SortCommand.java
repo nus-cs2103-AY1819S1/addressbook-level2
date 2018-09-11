@@ -16,7 +16,7 @@ public class SortCommand extends Command {
 
         public static Field fromString(String name) {
             for (Field f : Field.values()) {
-                if (f.name.equalsIgnoreCase("name")) {
+                if (f.name.equalsIgnoreCase(name)) {
                     return f;
                 }
             }
