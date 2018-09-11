@@ -3,6 +3,8 @@ package seedu.addressbook.parser;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -10,11 +12,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
+import seedu.addressbook.commands.DeleteMCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
@@ -78,6 +82,9 @@ public class Parser {
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
+
+        case DeleteMCommand.COMMAND_WORD:
+            return prepareDeleteM(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -172,6 +179,27 @@ public class Parser {
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+    }
+
+    /**
+     * Parses arguments in the context of the delete multiple person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareDeleteM(String args) {
+
+            String [] itemsToBeDelete = args.split(",");
+            List<String> listOfItemsToBeDelete = Arrays.asList(itemsToBeDelete);
+
+            final List<Integer> targetIndexes = listOfItemsToBeDelete.stream()
+                    .map(s -> s.trim())
+                            .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+
+            return new DeleteMCommand(targetIndexes);
+        //TODO:upate the exception part
+
     }
 
     /**
