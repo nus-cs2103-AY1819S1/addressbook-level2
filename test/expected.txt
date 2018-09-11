@@ -29,6 +29,7 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
+|| contain: Searches the address book with given name
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || The person index provided is invalid
