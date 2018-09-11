@@ -44,7 +44,7 @@ public class Name {
     }
 
     public int compareTo(Name other) {
-        return this.fullName.compareTo(other.fullName);
+        return this.fullName.toUpperCase().compareTo(other.fullName.toUpperCase());
     }
 
     @Override
