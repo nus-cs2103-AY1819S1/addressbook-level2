@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.function.BiConsumer;
 
-import static org.junit.Assert.*;
-
 public class SortCommandTest {
 
     private static final List<ReadOnlyPerson> EMPTY_PERSON_LIST = Collections.emptyList();
@@ -32,13 +30,17 @@ public class SortCommandTest {
                 Assert::assertNotEquals);
 
         // Sorting
-        SortCommand command = new SortCommand();
-        command.setData(unsortedAddressBook, EMPTY_PERSON_LIST);
-        command.execute();
+        sortAddressBook(unsortedAddressBook);
 
         // After sorting
         this.<ReadOnlyPerson>assertArrayLists(sortedList, unsortedAddressBook.getAllPersons().immutableListView(),
                 Assert::assertEquals);
+    }
+
+    private void sortAddressBook(AddressBook addressBook) {
+        SortCommand command = new SortCommand();
+        command.setData(addressBook, EMPTY_PERSON_LIST);
+        command.execute();
     }
 
     private <E> void assertArrayLists(List<E> list1, List<E> list2, BiConsumer<E, E> assertion) {
