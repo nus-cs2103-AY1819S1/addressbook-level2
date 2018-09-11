@@ -31,23 +31,24 @@ public class DeleteMCommand extends Command{
 
     @Override
     public CommandResult execute() {
-//        try {
-        ArrayList<CommandResult> output = new ArrayList <>();
+        ArrayList<String> output = new ArrayList <>();
 
         for (Integer item: targetIndexes){
-            setTargetIndex(item);
-            final ReadOnlyPerson target = getTargetPerson();
+            super.setTargetIndex(item);
 
-            output.add (executeCommand(Delete) );
+            try {
+                final ReadOnlyPerson target = getTargetPerson();
+                addressBook.removePerson(target);
+                output.add(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
+            } catch (IndexOutOfBoundsException ie) {
+                output.add(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            } catch (PersonNotFoundException pnfe) {
+                output.add(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
+            }
+
+
         }
 
-        return new CommandResult(output);
-
-            //TODO:
-//        } catch (IndexOutOfBoundsException ie) {
-//            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-//        } catch (PersonNotFoundException pnfe) {
-//            return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
-//        }
+        return new CommandResult(String.valueOf(output));
     }
 }
