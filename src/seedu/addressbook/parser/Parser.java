@@ -20,6 +20,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.RenameCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -41,6 +42,8 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    public static final Pattern RENAME_ARGS_FORMAT =
+            Pattern.compile("(?<targetIndex>.+)" + "(?<name>[^/]+)");
 
     /**
      * Signals that the user input could not be parsed.
@@ -73,8 +76,12 @@ public class Parser {
 
         switch (commandWord) {
 
+            case RenameCommand.COMMAND_WORD:
+                return prepareRename(arguments);
+
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
+
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
@@ -101,6 +108,24 @@ public class Parser {
         default:
             return new HelpCommand();
         }
+    }
+
+    /**
+     * Parses arguments in the context of the rename command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareRename(String args) {
+        final Matcher matcher = RENAME_ARGS_FORMAT.matcher(args.trim());
+        // Validate arg string format
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RenameCommand.MESSAGE_USAGE));
+        }
+        return new RenameCommand(
+                matcher.group("targetIndex"),
+                matcher.group("name")
+        );
     }
 
     /**
