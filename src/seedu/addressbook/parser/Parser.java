@@ -20,6 +20,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.SortCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -40,6 +41,9 @@ public class Parser {
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+
+    public static final Pattern SORT_KEYWORD_FORMAT =
+            Pattern.compile("\\bphone\\b|\\bname\\b", Pattern.CASE_INSENSITIVE);
 
 
     /**
@@ -84,6 +88,9 @@ public class Parser {
 
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
+
+        case SortCommand.COMMAND_WORD:
+            return prepareSort(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -172,6 +179,21 @@ public class Parser {
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
+    }
+
+    /**
+     * Parses arguments in the context of the sort command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareSort(String args) {
+        final Matcher matcher = SORT_KEYWORD_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    SortCommand.MESSAGE_USAGE));
+        }
+        return new SortCommand(args.trim());
     }
 
     /**

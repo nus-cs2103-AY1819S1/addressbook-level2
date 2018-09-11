@@ -111,6 +111,20 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Sort all persons in list by name.
+     */
+    public void sortByName() {
+        internalList.sort((person1, person2) -> person1.getName().compareTo(person2.getName()));
+    }
+
+    /**
+     * Sort all persons in list by phone number.
+     */
+    public void sortByPhone() {
+        internalList.sort((person1, person2) -> person1.getPhone().compareTo(person2.getPhone()));
+    }
+
+    /**
      * Removes the equivalent person from the list.
      *
      * @throws PersonNotFoundException if no such person could be found in the list.
