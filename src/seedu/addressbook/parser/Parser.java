@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.Collections;
 import java.util.Collection;
 import java.util.Arrays;
-import seedu.addressbook.commands.ThenListCommand;
 
+import seedu.addressbook.commands.ThenListCommand;
 import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
