@@ -2,6 +2,7 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,4 +34,12 @@ public class CommandResult {
         return Optional.ofNullable(relevantPersons);
     }
 
+    public CommandResult concat(CommandResult other) {
+        List<ReadOnlyPerson> newList = new ArrayList<>();
+        if (relevantPersons != null)
+            newList.addAll(relevantPersons);
+        if (other.relevantPersons != null)
+        newList.addAll(other.relevantPersons);
+        return new CommandResult(feedbackToUser + other.feedbackToUser, newList);
+    }
 }
