@@ -88,8 +88,16 @@ public class Main {
             recordResult(result);
             ui.showResultToUser(result);
 
+            if(userCommandText.contains("add") || userCommandText.contains("delete")) {
+                command = new Parser().parseCommand("list");
+                CommandResult result1 = executeCommand(command);
+                recordResult(result1);
+                ui.showResultToUser(result1);
+
+            }
         } while (!ExitCommand.isExit(command));
-    }
+
+    }// while (!ExitCommand.isExit(command));
 
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
     private void recordResult(CommandResult result) {
