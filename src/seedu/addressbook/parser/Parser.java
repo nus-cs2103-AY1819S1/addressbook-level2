@@ -182,7 +182,7 @@ public class Parser {
      * @param args full command args string
      * @return the prepared command
      */
-    private Command prepareUpdate(String args) throws ParseException, NumberFormatException{
+    private Command prepareUpdate(String args) {
         final Matcher matcher = PERSON_INDEX_DATA_ARGS_FORMAT.matcher(args.trim());
         // Validate arg string format
         if (!matcher.matches()) {
@@ -207,6 +207,8 @@ public class Parser {
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
+        } catch (NumberFormatException nfe) {
+            return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
     }
 
