@@ -64,6 +64,7 @@ public class Parser {
      * Parses user input into command for execution.
      *
      * @param userInput full user input string
+     *
      * @return the command based on the user input
      */
     public Command parseCommand(String userInput) {
@@ -77,36 +78,36 @@ public class Parser {
 
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return prepareAdd(arguments);
+            case AddCommand.COMMAND_WORD:
+                return prepareAdd(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return prepareDelete(arguments);
+            case DeleteCommand.COMMAND_WORD:
+                return prepareDelete(arguments);
 
-        case DeleteMCommand.COMMAND_WORD:
-            return prepareDeleteM(arguments);
+            case DeleteMCommand.COMMAND_WORD:
+                return prepareDeleteM(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            case ClearCommand.COMMAND_WORD:
+                return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return prepareFind(arguments);
+            case FindCommand.COMMAND_WORD:
+                return prepareFind(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            case ListCommand.COMMAND_WORD:
+                return new ListCommand();
 
-        case ViewCommand.COMMAND_WORD:
-            return prepareView(arguments);
+            case ViewCommand.COMMAND_WORD:
+                return prepareView(arguments);
 
-        case ViewAllCommand.COMMAND_WORD:
-            return prepareViewAll(arguments);
+            case ViewAllCommand.COMMAND_WORD:
+                return prepareViewAll(arguments);
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
 
-        case HelpCommand.COMMAND_WORD: // Fallthrough
-        default:
-            return new HelpCommand();
+            case HelpCommand.COMMAND_WORD: // Fallthrough
+            default:
+                return new HelpCommand();
         }
     }
 
@@ -114,6 +115,7 @@ public class Parser {
      * Parses arguments in the context of the add person command.
      *
      * @param args full command args string
+     *
      * @return the prepared command
      */
     private Command prepareAdd(String args) {
@@ -150,17 +152,16 @@ public class Parser {
     }
 
     /**
-     * Extracts the new person's tags from the add command's tag arguments string.
-     * Merges duplicate tag strings.
+     * Extracts the new person's tags from the add command's tag arguments string. Merges duplicate tag strings.
      */
-    private static Set<String> getTagsFromArgs(String tagArguments) throws IllegalValueException {
+    private static Set <String> getTagsFromArgs(String tagArguments) throws IllegalValueException {
         // no tags
         if (tagArguments.isEmpty()) {
             return Collections.emptySet();
         }
         // replace first delimiter prefix, then split
-        final Collection<String> tagStrings = Arrays.asList(tagArguments.replaceFirst(" t/", "").split(" t/"));
-        return new HashSet<>(tagStrings);
+        final Collection <String> tagStrings = Arrays.asList(tagArguments.replaceFirst(" t/", "").split(" t/"));
+        return new HashSet <>(tagStrings);
     }
 
 
@@ -168,6 +169,7 @@ public class Parser {
      * Parses arguments in the context of the delete person command.
      *
      * @param args full command args string
+     *
      * @return the prepared command
      */
     private Command prepareDelete(String args) {
@@ -185,20 +187,42 @@ public class Parser {
      * Parses arguments in the context of the delete multiple person command.
      *
      * @param args full command args string
+     *
      * @return the prepared command
      */
     private Command prepareDeleteM(String args) {
+        if (args.length() == 0) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMCommand.MESSAGE_USAGE));
+        }
+        String[] itemsToBeDelete = args.split(",");
+        List <String> listOfItemsToBeDelete = Arrays.asList(itemsToBeDelete);
 
-            String [] itemsToBeDelete = args.split(",");
-            List<String> listOfItemsToBeDelete = Arrays.asList(itemsToBeDelete);
+        for (String testString : listOfItemsToBeDelete) {
+            try {
+                Integer.parseInt(testString);
+            } catch (NumberFormatException nfe) {
+                return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
+        }
 
-            final List<Integer> targetIndexes = listOfItemsToBeDelete.stream()
-                    .map(s -> s.trim())
-                            .map(s -> Integer.parseInt(s))
-                    .collect(Collectors.toList());
+        final List <Integer> targetIndexes = listOfItemsToBeDelete.stream()
+                .map(s -> s.trim())
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
 
-            return new DeleteMCommand(targetIndexes);
-        //TODO:upate the exception part
+        for (Integer testIndex : targetIndexes) {
+
+            try {
+                parseArgsAsDisplayedIndex(Integer.toString(testIndex));
+            } catch (ParseException pe) {
+                return new IncorrectCommand(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMCommand.MESSAGE_USAGE));
+            } catch (NumberFormatException nfe) {
+                return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
+        }
+
+        return new DeleteMCommand(targetIndexes);
 
     }
 
@@ -206,6 +230,7 @@ public class Parser {
      * Parses arguments in the context of the view command.
      *
      * @param args full command args string
+     *
      * @return the prepared command
      */
     private Command prepareView(String args) {
@@ -225,6 +250,7 @@ public class Parser {
      * Parses arguments in the context of the view all command.
      *
      * @param args full command args string
+     *
      * @return the prepared command
      */
     private Command prepareViewAll(String args) {
@@ -244,8 +270,10 @@ public class Parser {
      * Parses the given arguments string as a single index number.
      *
      * @param args arguments string to parse as index number
+     *
      * @return the parsed index number
-     * @throws ParseException if no region of the args string could be found for the index
+     *
+     * @throws ParseException        if no region of the args string could be found for the index
      * @throws NumberFormatException the args string region is not a valid number
      */
     private int parseArgsAsDisplayedIndex(String args) throws ParseException, NumberFormatException {
@@ -261,6 +289,7 @@ public class Parser {
      * Parses arguments in the context of the find person command.
      *
      * @param args full command args string
+     *
      * @return the prepared command
      */
     private Command prepareFind(String args) {
@@ -272,7 +301,7 @@ public class Parser {
 
         // keywords delimited by whitespace
         final String[] keywords = matcher.group("keywords").split("\\s+");
-        final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
+        final Set <String> keywordSet = new HashSet <>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
     }
 
