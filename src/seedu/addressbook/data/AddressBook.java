@@ -61,6 +61,15 @@ public class AddressBook {
         allPersons.clear();
     }
 
+
+    /**
+     * Sort address book in alphabetical order.
+     */
+    public void sort() {
+        allPersons.sort();
+    }
+
+
     /**
      * Returns a new UniquePersonList of all persons in the address book at the time of the call.
      */
