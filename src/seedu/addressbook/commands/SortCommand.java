@@ -2,8 +2,10 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.function.Function;
 
 /**
  * Sorts and list everyone in the address book.
@@ -35,7 +37,7 @@ public class SortCommand extends Command {
         List<ReadOnlyPerson> allPersonsSorted = addressBook.getAllPersons()
                 .immutableListView()
                 .stream()
-                .sorted(getComparator())
+                .sorted(Comparator.comparing(getDataValue(keyword)))
                 .collect(Collectors.toList());
 
         return new CommandResult(getMessageForPersonListShownSummary(allPersonsSorted), allPersonsSorted);
@@ -46,28 +48,18 @@ public class SortCommand extends Command {
      *
      * @return Comparator used to sort the result
      */
-    private Comparator<ReadOnlyPerson> getComparator() {
+    private Function<ReadOnlyPerson, String> getDataValue(String keyword) {
         switch (keyword) {
             case "phone":
-                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getPhone()
-                        .value
-                        .compareTo(y.getPhone().value);
-
+                return x -> x.getPhone().value;
             case "email":
-                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getEmail()
-                        .value
-                        .compareTo(y.getEmail().value);
-
+                return x -> x.getEmail().value;
             case "address":
-                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getAddress()
-                        .value
-                        .compareTo(y.getAddress().value);
-
+                return x -> x.getAddress().value;
             case "name":
+                return x -> x.getName().fullName;
             default:
-                return (ReadOnlyPerson x, ReadOnlyPerson y) -> x.getName()
-                        .fullName
-                        .compareTo(y.getName().fullName);
+                return null;
         }
     }
 }
