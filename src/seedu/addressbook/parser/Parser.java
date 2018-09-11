@@ -191,13 +191,17 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareDeleteM(String args) {
+        // If no argument, this is invalid input.
         if (args.length() == 0) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMCommand.MESSAGE_USAGE));
         }
 
+        // Get individual indexes
         String[] itemsToBeDelete = args.split(",");
         List <String> listOfItemsToBeDelete = Arrays.asList(itemsToBeDelete);
 
+        //TODO:For now, if one valid and one invalid(letter), it does not work. Can be improved.
+        // Testing the validity of each index
         for (String testString : listOfItemsToBeDelete) {
             try {
                 Integer.parseInt(testString.trim());
@@ -206,11 +210,13 @@ public class Parser {
             }
         }
 
+        // Convert Strings to ints
         final List <Integer> targetIndexes = listOfItemsToBeDelete.stream()
                 .map(s -> s.trim())
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
 
+        // The actual delete function
         for (Integer testIndex : targetIndexes) {
 
             try {
