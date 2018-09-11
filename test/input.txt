@@ -107,6 +107,23 @@
   find Charlie Betsy
 
 ##########################################################
+# test search email command
+##########################################################
+
+  # invalid command format
+  searchEmail
+  # invalid email format
+  searchEmail notanemail
+  # no person with provided email
+  searchEmail noone@gmail.com
+  # show result(s) if there is a match
+  searchEmail ab@gmail.com
+  # search multiple emails
+  searchEmail ab@gmail.com bc@gmail.com
+  # ignore duplicate input parameters
+  searchEmail ab@gmail.com ab@gmail.com
+  
+##########################################################
 # test delete person command
 ##########################################################
 
@@ -155,20 +172,3 @@
   # exits properly
   exit
   list
-
-##########################################################
-# test search email command
-##########################################################
-
- # invalid command format
- searchEmail
- # invalid email format
- searchEmail notanemail
- # no person with provided email 
- searchEmail noone@gmail.com
- # show result(s) if there is a match
- searchEmail adeel@gmail.com
- # search multiple emails
- searchEmail me@gmail.com you@gmail.com
- # ignore duplicate input parameters
- searchEmail me@gmail.com me@gmail.com

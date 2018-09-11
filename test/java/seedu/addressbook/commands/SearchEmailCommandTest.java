@@ -21,17 +21,27 @@ public class SearchEmailCommandTest {
 
 	@Test
 	public void execute() throws IllegalValueException {
-		
+		//invalid email - 0
+         assertSearchEmailCommandBehaviour(new String[]{"notanemail"}, Collections.emptyList());
+
+         //valid existing email - 1 result
+         assertSearchEmailCommandBehaviour(new String[]{"ab@gmail.com"}, Arrays.asList(td.amy));
+
+         //multiple emails: 2 results
+         assertSearchEmailCommandBehaviour(new String[]{"ab@gmail.com", "bc@gmail.com"},
+                 Arrays.asList(td.amy, td.bill));
+
+         //duplicate emails input - 1 result
+         assertSearchEmailCommandBehaviour(new String[]{"ab@gmail.com", "ab@gmail.com"}, Arrays.asList(td.amy));
 	}
 
 	/**
 	* Executes the SearchEmailCommand and asserts the validity of the output
 	*/
-	private void assertOutput(String[] emails, List<ReadOnlyPerson> output) {
+	private void assertSearchEmailCommandBehaviour(String[] emails, List<ReadOnlyPerson> output) {
 		SearchEmailCommand command = createSearchEmailCommand(emails);
 		CommandResult result = command.execute();
-
-		assertEquals(Command.getMessageForPersonListShownSummary(expectedPersonList), result.feedbackToUser);
+		assertEquals(Command.getMessageForPersonListShownSummary(output), result.feedbackToUser);
 	}
 
 	private SearchEmailCommand createSearchEmailCommand(String[] emails) {

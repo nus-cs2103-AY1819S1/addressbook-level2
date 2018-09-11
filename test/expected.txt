@@ -17,6 +17,9 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
+|| searchEmail: Finds and lists persons with email that match with email(s) being input and render an indexed list.
+|| Parameters: EMAIL [ADDITIONAL_EMAILS]...
+|| Example: searchEmail me@gmail.com you@gmail.com
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
@@ -29,9 +32,6 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
-|| searchEmail: Finds and lists persons with email that match with email(s) being input and render an indexed list.
-|| Parameters: EMAIL [ADDITIONAL_EMAILS]...
-|| Example: searchEmail me@gmail.com you@gmail.com
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || The person index provided is invalid
@@ -236,6 +236,36 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  searchEmail]
+|| Command format is invalid!
+|| searchEmail: Finds and lists persons with email that match with email(s) being input and render an indexed list.
+|| Parameters: EMAIL [ADDITIONAL_EMAILS]...
+|| Example: searchEmail me@gmail.com you@gmail.com
+|| ===================================================
+|| Enter command: || [Command entered:  searchEmail notanemail]
+||
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  searchEmail noone@gmail.com]
+||
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  searchEmail adeel@gmail.com]
+|| 	1. Adeel Dhedhi Bhyria Phone: 81234567 Email: adeel@gmail.com Address: Science Drive, alpha street Tags: [me]
+||
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  searchEmail adeel@gmail.com you@gmail.com]
+|| 	1. Adeel Dhedhi Bhyria Phone: 81234567 Email: adeel@gmail.com Address: 20 Baker Street Tags: [me]
+|| 	2. John Doe Phone: 87654321 Email: you@gmail.com Address: 22 Cookie Road Tags: [work][friends]
+||
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  searchEmail you@gmail.com you@gmail.com]
+|| 1. John Doe Phone: 87654321 Email: you@gmail.com Address: 22 Cookie Road Tags: [work][friends]
+||
+|| 1 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
 || delete: Deletes the person identified by the index number used in the last person listing.
@@ -304,34 +334,4 @@
 || Exiting Address Book as requested ...
 || ===================================================
 || Good bye!
-|| ===================================================
-|| Enter command: || [Command entered:  searchEmail]
-|| Command format is invalid! 
-|| searchEmail: Finds and lists persons with email that match with email(s) being input and render an indexed list.
-|| Parameters: EMAIL [ADDITIONAL_EMAILS]...
-|| Example: searchEmail me@gmail.com you@gmail.com
-|| ===================================================
-|| Enter command: || [Command entered:  searchEmail notanemail]
-|| 
-|| 0 persons listed!
-|| ===================================================
-|| Enter command: || [Command entered:  searchEmail noone@gmail.com]
-|| 
-|| 0 persons listed!
-|| ===================================================
-|| Enter command: || [Command entered:  searchEmail adeel@gmail.com]
-|| 	1. Adeel Dhedhi Bhyria Phone: 81234567 Email: adeel@gmail.com Address: Science Drive, alpha street Tags: [me]
-|| 
-|| 1 persons listed!
-|| ===================================================
-|| Enter command: || [Command entered:  searchEmail me@gmail.com you@gmail.com]
-|| 	1. Tom Ford Phone: 88774321 Email: me@gmail.com Address: 30 Baker Street, alpha street Tags: 
-|| 	2. John Doe Phone: 87654321 Email: you@gmail.com Address: 22 Cookie Road, gamma street Tags: [work][friends]
-|| 
-|| 2 persons listed!
-|| ===================================================
-|| Enter command: || [Command entered:  searchEmail you@gmail.com you@gmail.com]
-|| 1. John Doe Phone: 87654321 Email: you@gmail.com Address: 22 Cookie Road, gamma street Tags: [work][friends]
-|| 
-|| 1 persons listed!
 || ===================================================

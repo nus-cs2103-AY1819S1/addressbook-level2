@@ -8,7 +8,7 @@ import java.util.Set;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
-public class SearchEmailCommand {
+public class SearchEmailCommand extends Command {
 	public static final String COMMAND_WORD = "searchEmail";
 
 	public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds and lists persons with email that match with email(s) being input and render an indexed list.\n"
@@ -44,7 +44,7 @@ public class SearchEmailCommand {
 		final List<ReadOnlyPerson> results = new ArrayList<>();
 		for (ReadOnlyPerson person : addressBook.getAllPersons()) {
 			final Set<String> personEmail = new HashSet<>();
-			personEmail.add(person.getPhone().toString());
+			personEmail.add(person.getEmail().toString());
 			if (!Collections.disjoint(personEmail, emails)) {
 				results.add(person);
 			}
