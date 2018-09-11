@@ -259,6 +259,11 @@ public class Parser {
     private Command prepareList(String args) {
         if(args.equals("")) {
             return new ListCommand();
+        } else {
+            Matcher matcher = LIST_ARGS_FORMAT.matcher(args.trim());
+            if (!matcher.matches()) {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+            }
         }
         return null;
     }
