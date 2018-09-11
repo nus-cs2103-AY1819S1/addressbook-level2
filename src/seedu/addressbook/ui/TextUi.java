@@ -129,10 +129,11 @@ public class TextUi {
 
         if (result.specific == "number") {
             showToUser(resultPersons.get().get(0).getPhone().value, DIVIDER);
+            return;
         } else if (resultPersons.isPresent()) {
             showPersonListView(resultPersons.get());
-            showToUser(result.feedbackToUser, DIVIDER);
         }
+        showToUser(result.feedbackToUser, DIVIDER);
 
     }
 
