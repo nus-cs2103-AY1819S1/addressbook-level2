@@ -74,7 +74,7 @@ Format: `list`
 
 == Finding all persons containing any keyword in their name: `find`
 
-Finds persons whose names contain any of the given keywords. +
+Finds persons whose names contain any of the given keywords. Function is case-insensitive. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 [NOTE]
