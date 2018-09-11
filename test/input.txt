@@ -46,13 +46,37 @@
   list
   add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
   list
-  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
+  add Dickson Ee p/334444 pe/dickson@nus.edu.sg a/444, delta street t/friends
   list
-  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Esther Potato p/555556 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
 
   # should not allow adding duplicate persons
-  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Esther Potato p/555556 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+##########################################################
+# test find phone prefix command
+##########################################################
+
+  # empty input is invalid
+  prefix
+  # non-numerical input is invalid
+  prefix asdfg
+  # mixed alphanumerical input is invalid
+  prefix 3a2
+
+  # should only match prefix, not other substring
+  prefix 56
+  # does not match if none match prefix
+  prefix 7777
+
+  # find unique prefix
+  prefix 22
+  # find multiple with same prefix
+  prefix 33
+
+  # reset view to full list as expected by next command
+  list
 
 ##########################################################
 # test view/viewall persons command
