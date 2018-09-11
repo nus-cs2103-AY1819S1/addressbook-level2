@@ -3,6 +3,7 @@ package seedu.addressbook.commands;
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.UniquePersonList;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Command {
     /**
      * Executes the command and returns the result.
      */
-    public CommandResult execute(){
+    public CommandResult execute() throws UniquePersonList.DuplicatePersonException {
         throw new UnsupportedOperationException("This method is to be implemented by child classes");
     };
 
