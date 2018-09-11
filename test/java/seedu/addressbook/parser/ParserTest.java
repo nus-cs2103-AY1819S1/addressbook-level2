@@ -21,6 +21,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.SortCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -156,6 +157,30 @@ public class ParserTest {
         final String input = "viewall " + testIndex;
         final ViewAllCommand result = parseAndAssertCommandType(input, ViewAllCommand.class);
         assertEquals(result.getTargetIndex(), testIndex);
+    }
+    
+    @Test
+    public void parse_sortCommandNoArgs_errorMessage() {
+    	final String input = "sort";
+    	final String resultMessage = 
+    			String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
+    	parseAndAssertIncorrectWithMessage(resultMessage, input);
+    }
+    
+    @Test
+    public void parse_sortCommandOneArg_parsedCorrectly() {
+    	final String testArg = "name";
+    	final String input = "sort " + testArg;
+    	final SortCommand result = parseAndAssertCommandType(input, SortCommand.class);
+    	assertEquals(result.getKey(), testArg);
+    }
+    
+    @Test
+    public void parse_sortCommandTwoArgs_errorMessage() {
+    	final String input = "sort index name";
+    	final String resultMessage = 
+    			String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
+    	parseAndAssertIncorrectWithMessage(resultMessage, input);
     }
 
     /*
