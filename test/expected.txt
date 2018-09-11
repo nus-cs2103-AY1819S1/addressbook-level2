@@ -17,6 +17,9 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
+|| prefix: Finds all persons whose phone numbers start with the specified prefix and displays them as a list with index numbers.
+|| Parameters: PREFIX 
+|| Example: prefix 65
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
@@ -112,31 +115,68 @@
 || 
 || 3 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends]
-|| New person added: Dickson Ee Phone: 444444 Email: (private) dickson@nus.edu.sg Address: 444, delta street Tags: [friends]
+|| Enter command: || [Command entered:  add Dickson Ee p/334444 pe/dickson@nus.edu.sg a/444, delta street t/friends]
+|| New person added: Dickson Ee Phone: 334444 Email: (private) dickson@nus.edu.sg Address: 444, delta street Tags: [friends]
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	4. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
 || 
 || 4 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
-|| New person added: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
+|| Enter command: || [Command entered:  add Esther Potato p/555556 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
+|| New person added: Esther Potato Phone: 555556 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
 || 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	4. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555556 Email: esther@not.a.real.potato Tags: [tubers][starchy]
 || 
 || 5 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
+|| Enter command: || [Command entered:  add Esther Potato p/555556 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
 || This person already exists in the address book
+|| ===================================================
+|| Enter command: || [Command entered:  prefix]
+|| Invalid command format! 
+|| prefix: Finds all persons whose phone numbers start with the specified prefix and displays them as a list with index numbers.
+|| Parameters: PREFIX 
+|| Example: prefix 65
+|| ===================================================
+|| Enter command: || [Command entered:  prefix asdfg]
+|| Invalid command format! 
+|| prefix: Finds all persons whose phone numbers start with the specified prefix and displays them as a list with index numbers.
+|| Parameters: PREFIX 
+|| Example: prefix 65
+|| ===================================================
+|| Enter command: || [Command entered:  prefix 3a2]
+|| Invalid command format! 
+|| prefix: Finds all persons whose phone numbers start with the specified prefix and displays them as a list with index numbers.
+|| Parameters: PREFIX 
+|| Example: prefix 65
+|| ===================================================
+|| Enter command: || [Command entered:  prefix 56]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  prefix 7777]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  prefix 22]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  prefix 33]
+|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	2. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
+|| 
+|| 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  view]
 || Invalid command format! 
@@ -175,28 +215,28 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  view 1]
-|| Viewing person: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
-|| ===================================================
-|| Enter command: || [Command entered:  viewall 1]
-|| Viewing person: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
-|| ===================================================
-|| Enter command: || [Command entered:  view 3]
 || Viewing person: Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || ===================================================
-|| Enter command: || [Command entered:  view 4]
-|| Viewing person: Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| ===================================================
-|| Enter command: || [Command entered:  view 5]
-|| Viewing person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
-|| ===================================================
-|| Enter command: || [Command entered:  viewall 3]
+|| Enter command: || [Command entered:  viewall 1]
 || Viewing person: Charlie Dickson Phone: (private) 333333 Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || ===================================================
+|| Enter command: || [Command entered:  view 3]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  view 4]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  view 5]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  viewall 3]
+|| The person index provided is invalid
+|| ===================================================
 || Enter command: || [Command entered:  viewall 4]
-|| Viewing person: Dickson Ee Phone: 444444 Email: (private) dickson@nus.edu.sg Address: 444, delta street Tags: [friends]
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  viewall 5]
-|| Viewing person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  find]
 || Invalid command format! 
@@ -223,7 +263,7 @@
 || ===================================================
 || Enter command: || [Command entered:  find Dickson]
 || 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	2. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
 || 
 || 2 persons listed!
 || ===================================================
@@ -266,18 +306,18 @@
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
-|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-|| 	4. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	3. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
+|| 	4. Esther Potato Phone: 555556 Email: esther@not.a.real.potato Tags: [tubers][starchy]
 || 
 || 4 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete 4]
-|| Deleted Person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
+|| Deleted Person: Esther Potato Phone: 555556 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
 || 	2. Betsy Choo Tags: [secretive]
-|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	3. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
 || 
 || 3 persons listed!
 || ===================================================
@@ -286,7 +326,7 @@
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo Tags: [secretive]
-|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	2. Dickson Ee Phone: 334444 Address: 444, delta street Tags: [friends]
 || 
 || 2 persons listed!
 || ===================================================
