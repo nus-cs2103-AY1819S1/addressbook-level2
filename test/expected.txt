@@ -234,10 +234,39 @@
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  fuzzyFind]
-|| 
+|| Invalid command format! 
+|| find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: find alice bob charlie
 || ===================================================
-|| Enter command: || [Command entered:  fuzzyFind amy tom]
+|| Enter command: || [Command entered:  fuzzyFind bet]
 || 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind 23912039120]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind betsy]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind Betsy]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind Dickson]
+|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind Charlie Betsy]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 
+|| 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 

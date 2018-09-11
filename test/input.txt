@@ -110,9 +110,21 @@
 # test fuzzyFind persons command
 ##########################################################
 
-  #can accept the fuzzyFind command but do nothing
+  # should consider no keywords as invalid command format
   fuzzyFind
-  fuzzyFind amy tom
+  # should only match full words in person names
+  fuzzyFind bet
+  # does not match if none have keyword
+  fuzzyFind 23912039120
+  # matching should be case-sensitive
+  fuzzyFind betsy
+
+  # find unique keyword
+  fuzzyFind Betsy
+  # find multiple with same keyword
+  fuzzyFind Dickson
+  # find multiple with some keywords
+  fuzzyFind Charlie Betsy
 
 ##########################################################
 # test delete person command
