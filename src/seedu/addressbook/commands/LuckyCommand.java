@@ -14,7 +14,6 @@ public class LuckyCommand extends Command{
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Generates a random 'lucky person' that the "
             + "user should contact for fun!\n"
-            + "Parameters: -"
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Feeling lucky today? Why not give this person a call!\n"
