@@ -86,7 +86,7 @@ public class Parser {
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
 
-        case SortCommand.COMAND_WORD:
+        case SortCommand.COMMAND_WORD:
                 return new SortCommand();
 
         case ListCommand.COMMAND_WORD:
