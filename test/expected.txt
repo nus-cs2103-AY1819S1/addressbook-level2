@@ -25,6 +25,8 @@
 || viewall: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: viewall 1
+|| sort: Sorts all persons in the address book by name by alphabetic order.
+|| Example: sort
 || help: Shows program usage instructions.
 || Example: help
 || exit: Exits the program.
@@ -137,6 +139,44 @@
 || ===================================================
 || Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy]
 || This person already exists in the address book
+|| ===================================================
+|| Enter command: || [Command entered:  add Daniel Ew p/444555 pe/daniel@nus.edu.sg a/455, delta avenue t/friends]
+|| New person added: Daniel Ew Phone: 444555 Email: (private) daniel@nus.edu.sg Address: 455, delta avenue Tags: [friends]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 	6. Daniel Ew Phone: 444555 Address: 455, delta avenue Tags: [friends]
+|| 
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| Address Book sorted!
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Daniel Ew Phone: 444555 Address: 455, delta avenue Tags: [friends]
+|| 	5. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	6. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 4]
+|| Deleted Person: Daniel Ew Phone: 444555 Email: (private) daniel@nus.edu.sg Address: 455, delta avenue Tags: [friends]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	4. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	5. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 5 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  view]
 || Invalid command format! 
