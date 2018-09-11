@@ -39,11 +39,13 @@ public class Parser {
                     + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
+                    + " (?<isNotesPrivate>p?)n/(?<notes>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
 
     /**
-     * Signals that the user input could not be parsed.
+     * Signals that the user input could not be parsed:w
+     * .
      */
     public static class ParseException extends Exception {
         ParseException(String message) {
@@ -127,6 +129,9 @@ public class Parser {
 
                     matcher.group("address"),
                     isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+
+                    matcher.group("notes"),
+                    isPrivatePrefixPresent(matcher.group("isNotesPrivate")),
 
                     getTagsFromArgs(matcher.group("tagArguments"))
             );

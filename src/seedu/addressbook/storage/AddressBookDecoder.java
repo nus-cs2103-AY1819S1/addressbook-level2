@@ -15,6 +15,7 @@ import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.Notes;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.tag.Tag;
@@ -58,6 +59,7 @@ public class AddressBookDecoder {
                 new Phone(matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate"))),
                 new Email(matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate"))),
                 new Address(matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
+                new Notes(matcher.group("notes"), isPrivatePrefixPresent(matcher.group("isNotesPrivate"))),
                 getTagsFromEncodedPerson(matcher.group("tagArguments"))
         );
     }

@@ -29,6 +29,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.Notes;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
 
@@ -208,11 +209,17 @@ public class ParserTest {
             "add ",
             "add wrong args format",
             // no phone prefix
-            String.format("add $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            String.format("add $s $s e/$s a/$s n/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE,
+                    Notes.EXAMPLE),
             // no email prefix
-            String.format("add $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            String.format("add $s p/$s $s a/$s n/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE,
+                    Notes.EXAMPLE),
             // no address prefix
-            String.format("add $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
+            String.format("add $s p/$s e/$s $s n/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE,
+                    Notes.EXAMPLE),
+            // no notes prefix
+            String.format("add $s p/$s e/$s a/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE,
+                    Notes.EXAMPLE),
         };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
@@ -228,8 +235,8 @@ public class ParserTest {
         final String validEmailArg = "e/" + Email.EXAMPLE;
         final String invalidTagArg = "t/invalid_-[.tag";
 
-        // address can be any string, so no invalid address
-        final String addCommandFormatString = "add $s $s $s a/" + Address.EXAMPLE;
+        // address or notes can be any string, so no invalid address or notes
+        final String addCommandFormatString = "add $s $s $s a/" + Address.EXAMPLE + " n/" + Notes.EXAMPLE;
 
         // test each incorrect person data field argument individually
         final String[] inputs = {
@@ -275,6 +282,7 @@ public class ParserTest {
                 new Phone(Phone.EXAMPLE, true),
                 new Email(Email.EXAMPLE, false),
                 new Address(Address.EXAMPLE, true),
+                new Notes(Notes.EXAMPLE, true),
                 new HashSet<>(Arrays.asList(new Tag("tag1"), new Tag ("tag2"), new Tag("tag3")))
             );
         } catch (IllegalValueException ive) {
