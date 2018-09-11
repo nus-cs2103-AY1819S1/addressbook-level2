@@ -46,6 +46,13 @@ public class AddressBook {
     }
 
     /**
+     * Sorts address book by name alphabetically.
+     */
+    public void sort() {
+        allPersons.sort();
+    }
+
+    /**
      * Removes the equivalent person from the address book.
      *
      * @throws PersonNotFoundException if no such Person could be found.
