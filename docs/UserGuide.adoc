@@ -156,6 +156,17 @@ Views all details of the 1st person in the results of the `find` command.
 Clears all entries from the address book. +
 Format: `clear`
 
+
+=== Creating a backup of data : `backup`
+
+Backup the data in current addressbook into another file.
+Format: `backup`
+
+=== Importing a backup : `import`
+
+Import data from backup and merges with existing addressbook.
+Format: `import`
+
 == Exiting the program : `exit`
 
 Exits the program. +

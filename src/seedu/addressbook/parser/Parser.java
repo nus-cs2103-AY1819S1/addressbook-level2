@@ -12,12 +12,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.addressbook.commands.AddCommand;
+import seedu.addressbook.commands.BackupCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
+import seedu.addressbook.commands.ImportCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
@@ -75,6 +77,9 @@ public class Parser {
 
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
+        
+        case BackupCommand.COMMAND_WORD:
+            return new BackupCommand();
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
@@ -84,7 +89,10 @@ public class Parser {
 
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
-
+            
+        case ImportCommand.COMMAND_WORD:
+            return new ImportCommand();
+            
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 

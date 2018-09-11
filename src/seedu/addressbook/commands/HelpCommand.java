@@ -16,8 +16,10 @@ public class HelpCommand extends Command {
         return new CommandResult(
                 AddCommand.MESSAGE_USAGE
                 + "\n" + DeleteCommand.MESSAGE_USAGE
+                + "\n" + BackupCommand.MESSAGE_USAGE       
                 + "\n" + ClearCommand.MESSAGE_USAGE
                 + "\n" + FindCommand.MESSAGE_USAGE
+                + "\n" + ImportCommand.MESSAGE_USAGE        
                 + "\n" + ListCommand.MESSAGE_USAGE
                 + "\n" + ViewCommand.MESSAGE_USAGE
                 + "\n" + ViewAllCommand.MESSAGE_USAGE

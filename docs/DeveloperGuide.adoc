@@ -42,6 +42,8 @@
 
 image::mainClassDiagram.png[]
 
+* New feature classes added: ImportCommand and BackupCommand (same level as AddCommand/ClearCommand class)
+
 == Testing
 
 === I/O tests
