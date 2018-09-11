@@ -14,6 +14,7 @@ public interface ReadOnlyPerson {
     Phone getPhone();
     Email getEmail();
     Address getAddress();
+    Module getModule();
 
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
