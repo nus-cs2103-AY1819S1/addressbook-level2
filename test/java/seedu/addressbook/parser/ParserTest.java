@@ -18,6 +18,7 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.FindByTagCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
@@ -196,6 +197,43 @@ public class ParserTest {
                 parseAndAssertCommandType(input, FindCommand.class);
         assertEquals(keySet, result.getKeywords());
     }
+
+    /*
+     * Tests for find person by tags command =====================================================================
+     */
+
+    @Test
+    public void parse_findByTagCommandValidTags_parsedCorrectly() {
+        final String[] tags = { "key1", "key2", "key3" };
+        final Set<String> stringTags = new HashSet<>(Arrays.asList(tags));
+        final Set<Tag> tagSet = new HashSet<>();
+        for (String tagName : stringTags) {
+            try {
+                tagSet.add(new Tag(tagName));
+            } catch (IllegalValueException ive) {}
+        }
+
+        final String input = "findByTag " + String.join(" ", stringTags);
+        final FindByTagCommand result = parseAndAssertCommandType(input, FindByTagCommand.class);
+        assertEquals(tagSet, result.getTags());
+    }
+
+    @Test
+    public void parse_findByTagDuplicateTags_parsedCorrectly() {
+        final String[] tags = { "key1", "key2", "key3" };
+        final Set<String> stringTags = new HashSet<>(Arrays.asList(tags));
+        final Set<Tag> tagSet = new HashSet<>();
+        for (String tagName : stringTags) {
+            try {
+                tagSet.add(new Tag(tagName));
+            } catch (IllegalValueException ive) {}
+        }
+
+        final String input = "findByTag " + String.join(" ", stringTags) + " " + String.join(" ", stringTags);
+        final FindByTagCommand result = parseAndAssertCommandType(input, FindByTagCommand.class);
+        assertEquals(tagSet, result.getTags());
+    }
+
 
     /*
      * Tests for add person command ==============================================================================
