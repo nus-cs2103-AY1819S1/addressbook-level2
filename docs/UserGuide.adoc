@@ -37,6 +37,7 @@ What's different from AddressBook-Level1:
 * Support for storing address (`a/`) and tags (`t/`)
 * Support for marking a contact detail as 'private' (`pa/`) (`pe/`) (`pp/`)
 * View details of a person (`view` : shows non-private details), (`viewall` : shows all details)
+* Ability to quickly view basic statistics of the address book (`stats`: show statistics of the address book)
 
 == Viewing help : `help`
 
@@ -71,6 +72,10 @@ Examples:
 
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
+
+== Viewing statistics: `stats`
+
+Shows the statistics of the address book, which at this point is just the number of people in the address book.
 
 == Finding all persons containing any keyword in their name: `find`
 

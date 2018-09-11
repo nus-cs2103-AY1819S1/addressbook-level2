@@ -19,6 +19,8 @@
 || Example: find alice bob charlie
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
+|| stats: Shows statistics of the address book.
+|| Example: stats
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: view 1
@@ -45,6 +47,10 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  stats]
+|| There are 0 people in the address book!
+|| Address book statistics listed!
 || ===================================================
 || Enter command: || [Command entered:  add wrong args wrong args]
 || Invalid command format! 
@@ -296,6 +302,30 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  clear]
+|| Address book has been cleared!
+|| ===================================================
+|| Enter command: || [Command entered:  stats]
+|| There are 0 people in the address book!
+|| Address book statistics listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add person p/19382435 e/a@a.a a/abcde street]
+|| New person added: person Phone: 19382435 Email: a@a.a Address: abcde street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  stats]
+|| There is 1 person in the address book!
+|| Address book statistics listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add anotha person p/19382444 e/a@b.a a/abcdef street]
+|| New person added: anotha person Phone: 19382444 Email: a@b.a Address: abcdef street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  stats]
+|| There are 2 people in the address book!
+|| Address book statistics listed!
+|| ===================================================
+|| Enter command: || [Command entered:  clear]
+|| Address book has been cleared!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...

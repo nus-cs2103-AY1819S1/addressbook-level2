@@ -13,6 +13,8 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_PROGRAM_LAUNCH_ARGS_USAGE = "Launch command format: " +
             "java seedu.addressbook.Main [STORAGE_FILE_PATH]";
+    public static final String MESSAGE_STATS_NUMBER_OF_PERSONS = "There %1$s %2$d %3$s in the address book!";
+    public static final String MESSAGE_STATS_LISTED_OVERVIEW = "Address book statistics listed!";
     public static final String MESSAGE_WELCOME = "Welcome to your Address Book!";
     public static final String MESSAGE_USING_STORAGE_FILE = "Using storage file : %1$s";
 }

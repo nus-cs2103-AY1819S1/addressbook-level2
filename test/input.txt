@@ -21,6 +21,7 @@
   # address book should be emptied
   clear
   list
+  stats
 
 ##########################################################
 # test add person command, setup state for further tests
@@ -147,6 +148,25 @@
   # clears all
   clear
   list
+
+##########################################################
+# @Louiz: test stats command
+##########################################################
+
+  # there are 0 people in the list
+  clear
+  stats
+  
+  # there is 1 person in the list
+  add person p/19382435 e/a@a.a a/abcde street
+  stats
+  
+  # there are 2 people in the list
+  add anotha person p/19382444 e/a@b.a a/abcdef street
+  stats
+
+  # clear all
+  clear
 
 ##########################################################
 # test exit command
