@@ -22,6 +22,9 @@
   clear
   list
 
+  # should show that there are 0 entries
+  total
+
 ##########################################################
 # test add person command, setup state for further tests
 ##########################################################
@@ -32,6 +35,9 @@
   add Valid Name p/12345 valid@email.butNoPrefix a/valid, address
   add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address
   add Valid Name p/12345 e/valid@email.butNoTagPrefix a/valid, address t/goodTag noPrefixTag
+
+  # should still show that there are 0 entries
+  total
   
   # should catch invalid person data
   add []\[;] p/12345 e/valid@e.mail a/valid, address
@@ -39,20 +45,31 @@
   add Valid Name p/12345 e/notAnEmail a/valid, address
   add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag
 
-  # should add correctly and list non private information
+  # should still show that there are 0 entries
+  total
+
+  # should add correctly and list non private information and show correct total number of entries
   add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
   list
+  total
   add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
   list
+  total
   add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
   list
+  total
   add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
   list
+  total
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
+  total
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+  # should show that there are 5 entries in total
+  total
 
 ##########################################################
 # test view/viewall persons command
@@ -116,14 +133,22 @@
   delete
   delete should be only one number
 
+  # should still show that there are 5 entries in total
+  total
+
   # should catch invalid index
   delete -1
   delete 0
   delete 3
 
+  # should still show that there are 5 entries in total
+  total
+
   # should catch attempt to delete something already deleted
   delete 2
+  total
   delete 2
+  total
 
   # should catch attempt to view something already deleted
   view 2
@@ -135,10 +160,12 @@
   # deletes correct person
   delete 4
   list
+  total
 
   # listing indexes get updated on next request
   delete 1
   list
+  total
 
 ##########################################################
 # test clear command
