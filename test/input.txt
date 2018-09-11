@@ -85,6 +85,16 @@
   viewall 3
   viewall 4
   viewall 5
+##########################################################
+# test update persons command
+##########################################################
+
+  # should catch invalid command format
+  list
+  update 5 Esther Potato p/666 e/esther@apotato.com t/notatuber
+
+  # updates
+  update 5 Esther Potato p/666 e/esther@potato.com a/home t/notatuber
 
 ##########################################################
 # test find persons command
