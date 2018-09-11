@@ -19,7 +19,7 @@ public class BackupCommand extends Command{
     public static final String MESSAGE_FAILURE = "Backup failed";
     
     private StorageFile storage;
-
+    
     @Override
     public CommandResult execute() {
         try {

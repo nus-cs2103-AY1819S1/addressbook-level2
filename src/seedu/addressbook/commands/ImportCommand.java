@@ -4,6 +4,9 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.storage.StorageFile;
 import seedu.addressbook.storage.StorageFile.InvalidStorageFilePathException;
 
+/**
+ * Imports data from previous backup and merges it with current addressbook.
+ */
 public class ImportCommand extends Command{
 
     public static final String DEFAULT_BACKUP_FILEPATH = "backup.txt";
