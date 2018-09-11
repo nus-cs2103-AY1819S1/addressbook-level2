@@ -36,6 +36,13 @@ public class Phone {
         return test.matches(PHONE_VALIDATION_REGEX);
     }
 
+    /**
+     * Return phone number entered
+     */
+    public String getPhoneNumber() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return value;
