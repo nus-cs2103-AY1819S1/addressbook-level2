@@ -110,6 +110,20 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+== Deleting all persons containing any keyword in their name: `deleteAll`
+
+Deletes the specified person from the address book. Irreversible. +
+Format: `deleteAll KEYWORD [MORE_KEYWORDS]`
+
+****
+Deleting all persons containing any keyword in their name.
+****
+
+Examples:
+
+* `deleteAll Doe` +
+Deletes all persons with names containing Doe.
+
 == View non-private details of a person : `view`
 
 Displays the non-private details of the specified person. +
