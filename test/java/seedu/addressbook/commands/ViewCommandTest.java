@@ -135,8 +135,8 @@ public class ViewCommandTest {
      * 2. The CommandResult it returns has no relevant persons.
      * 3. The original addressbook data is not modified after executing ViewCommand and ViewAllCommand.
      */
-    private static void assertViewBehavior(Command viewCommand, AddressBook addressBook,
-                                           List<ReadOnlyPerson> relevantPersons, String expectedMessage) {
+    static void assertViewBehavior(Command viewCommand, AddressBook addressBook,
+                                   List<ReadOnlyPerson> relevantPersons, String expectedMessage) {
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
 
         viewCommand.setData(addressBook, relevantPersons);
