@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
 import seedu.addressbook.common.Messages;
+import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 public class RandomCommand  extends Command {
@@ -21,7 +22,11 @@ public class RandomCommand  extends Command {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult("No User Found");
+        int max = relevantPersons.size(), min = 1;
+        int randomIndex = (int)(Math.random() * ((max-min) + 1)) + min;
+        ViewCommand viewCommand = new ViewCommand(randomIndex);
+        viewCommand.setData(addressBook, relevantPersons);
+        return viewCommand.execute();
     }
 
 }
