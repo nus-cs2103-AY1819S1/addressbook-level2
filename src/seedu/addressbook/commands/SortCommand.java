@@ -12,10 +12,11 @@ public class SortCommand extends Command {
             + ": Sorts all persons in the address book alphabetically.\n"
             + "Example: " + COMMAND_WORD;
 
+    public static final String MESSAGE_SUCCESS = "Address book has been sorted!";
 
     @Override
     public CommandResult execute() {
-        List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        addressBook.sort();
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }
