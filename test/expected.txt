@@ -12,6 +12,9 @@
 || delete: Deletes the person identified by the index number used in the last person listing.
 || Parameters: INDEX
 || Example: delete 1
+|| deleteM: Deletes people identified by their comma seperated index numbers used in the last find/list call.
+|| Parameters: COMMER SEPERATED INDEXES
+|| Example: deleteM 1,2,3
 || Clears address book permanently.
 || Example: clear
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
@@ -292,6 +295,116 @@
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add AAAAA p/111111 e/AAA@gmail.com a/111, alpha street]
+|| New person added: AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add BBBBB p/222222 e/BBB@gmail.com a/222, beta street]
+|| New person added: BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add CCCCC p/333333 e/CCC@gmail.com a/333, beta2 street]
+|| New person added: CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add DDDDD p/444444 e/DDD@gmail.com a/444, beta3 street]
+|| New person added: DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add EEEEE p/555555 e/EEE@gmail.com a/555, beta4 street]
+|| New person added: EEEEE Phone: 555555 Email: EEE@gmail.com Address: 555, beta4 street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 	4. DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| 	5. EEEEE Phone: 555555 Email: EEE@gmail.com Address: 555, beta4 street Tags: 
+|| 
+|| 5 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM]
+|| Invalid command format! 
+|| deleteM: Deletes people identified by their comma seperated index numbers used in the last find/list call.
+|| Parameters: COMMER SEPERATED INDEXES
+|| Example: deleteM 1,2,3
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 	4. DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| 	5. EEEEE Phone: 555555 Email: EEE@gmail.com Address: 555, beta4 street Tags: 
+|| 
+|| 5 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM 5]
+|| [Index 5:Deleted Person:EEEEE Phone: 555555 Email: EEE@gmail.com Address: 555, beta4 street Tags: ]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 	4. DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| 
+|| 4 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM 5]
+|| [Index 5:The person index provided is invalid]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 	4. DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| 
+|| 4 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM invalidinput]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 	4. DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| 
+|| 4 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM 666,777]
+|| [Index 666:The person index provided is invalid, Index 777:The person index provided is invalid]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 	4. DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: 
+|| 
+|| 4 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM 4,5]
+|| [Index 4:Deleted Person:DDDDD Phone: 444444 Email: DDD@gmail.com Address: 444, beta3 street Tags: , Index 5:The person index provided is invalid]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 
+|| 3 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM 3,invalidinput]
+|| The person index provided is invalid
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: 
+|| 	2. BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: 
+|| 	3. CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: 
+|| 
+|| 3 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  deleteM 1,2,3]
+|| [Index 1:Deleted Person:AAAAA Phone: 111111 Email: AAA@gmail.com Address: 111, alpha street Tags: , Index 2:Deleted Person:BBBBB Phone: 222222 Email: BBB@gmail.com Address: 222, beta street Tags: , Index 3:Deleted Person:CCCCC Phone: 333333 Email: CCC@gmail.com Address: 333, beta2 street Tags: ]
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 
