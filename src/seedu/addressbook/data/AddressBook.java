@@ -5,6 +5,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import java.util.Collections;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -59,6 +60,13 @@ public class AddressBook {
      */
     public void clear() {
         allPersons.clear();
+    }
+
+    /**
+     * Sorts the internal list.
+     */
+    public void sort() {
+        allPersons.sort();
     }
 
     /**
