@@ -202,23 +202,6 @@ public class ParserTest {
      */
 
     @Test
-    public void parse_addCommandInvalidArgs_errorMessage() {
-        final String[] inputs = {
-            "add",
-            "add ",
-            "add wrong args format",
-            // no phone prefix
-            String.format("add $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
-            // no email prefix
-            String.format("add $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
-            // no address prefix
-            String.format("add $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
-        };
-        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
-        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
-    }
-
-    @Test
     public void parse_addCommandInvalidPersonDataInArgs_errorMessge() {
         final String invalidName = "[]\\[;]";
         final String validName = Name.EXAMPLE;
