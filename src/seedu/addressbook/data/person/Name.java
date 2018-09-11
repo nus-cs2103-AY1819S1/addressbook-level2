@@ -43,6 +43,10 @@ public class Name {
         return Arrays.asList(fullName.split("\\s+"));
     }
 
+    public int compareTo(Name other) {
+        return this.fullName.toUpperCase().compareTo(other.fullName.toUpperCase());
+    }
+
     @Override
     public String toString() {
         return fullName;
