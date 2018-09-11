@@ -1,5 +1,6 @@
 package seedu.addressbook.data.person;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -19,6 +20,8 @@ public class Person implements ReadOnlyPerson {
 
     public static final String[] personFields = { "Name","Phone","Email","Address" };
 
+    public final HashMap<String,String> fieldToFieldValue = new HashMap<>();
+
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -30,6 +33,11 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+
+        fieldToFieldValue.put("Name",name.fullName);
+        fieldToFieldValue.put("Phone",phone.toString());
+        fieldToFieldValue.put("Email",email.toString());
+        fieldToFieldValue.put("Address",address.toString());
     }
 
     /**
@@ -63,6 +71,9 @@ public class Person implements ReadOnlyPerson {
     public Set<Tag> getTags() {
         return new HashSet<>(tags);
     }
+
+    @Override
+    public HashMap<String,String> getFieldToFieldValueMap() { return fieldToFieldValue; }
 
     /**
      * Replaces this person's tags with the tags in the argument tag set.

@@ -1,5 +1,6 @@
 package seedu.addressbook.data.person;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import seedu.addressbook.data.tag.Tag;
@@ -14,7 +15,7 @@ public interface ReadOnlyPerson {
     Phone getPhone();
     Email getEmail();
     Address getAddress();
-
+    HashMap<String, String> getFieldToFieldValueMap();
     /**
      * Returns a new TagSet that is a deep copy of the internal TagSet,
      * changes on the returned set will not affect the person's internal tags.

@@ -39,7 +39,7 @@ public class Parser {
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
     // "s/" followed by word
-    public static final Pattern LIST_ARGS_FORMAT = Pattern.compile("(s/(?<sortBy>\\w+))?+");
+    public static final Pattern LIST_ARGS_FORMAT = Pattern.compile("(s/(?<sortKey>\\w+))?+");
 
     /**
      * Signals that the user input could not be parsed.
@@ -254,7 +254,7 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareList(String args) {
-        if(args.trim().equals("")) {
+        if(args.trim().equals("")) { //No sort key is specified
             return new ListCommand();
         } else {
             Matcher matcher = LIST_ARGS_FORMAT.matcher(args.trim());
@@ -264,15 +264,15 @@ public class Parser {
                 return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
             }
 
-            String sortBy = matcher.group("sortBy");
-            boolean isValidPersonField = Arrays.stream(Person.personFields).anyMatch((field) -> field.equals(sortBy));
+            String sortKey = matcher.group("sortKey");
+            boolean isValidPersonField = Arrays.stream(Person.personFields).anyMatch((field) -> field.equals(sortKey));
 
             if(!isValidPersonField) {
                 return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
             }
 
+            return new ListCommand(sortKey);
         }
-        return null;
     }
 
 
