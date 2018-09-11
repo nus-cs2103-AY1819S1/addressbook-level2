@@ -18,16 +18,14 @@ public class UtilsTest {
 
         //only one object
         assertNoneNull(0);
-        assertHasNull((null);
-
+        assertHasNull(null);
         //contain null object
         assertHasNull(null, null, "CJ", "SOCOOLLL");
         assertHasNull(null, 1);
 
         //does not contain null object
         assertNoneNull("CJ", "SOCOOLLL");
-        assertNoneNull("85241253);
-
+        assertNoneNull("85241253");
 
     }
 
