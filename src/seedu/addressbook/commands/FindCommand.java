@@ -36,7 +36,12 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
+        Set<String> keywordsSmall = new HashSet<>();
+        for (String word : keywords){
+            String wordSmall = word.toLowerCase();
+            keywordsSmall.add(wordSmall);
+        }
+        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywordsSmall);
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 
@@ -50,9 +55,17 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            Set<String> wordsInNameSmall = new HashSet<>();
+            for (String word : wordsInName){
+                String wordSmall = word.toLowerCase();
+                wordsInNameSmall.add(wordSmall);
+            }
+            if (!Collections.disjoint(wordsInNameSmall, keywords)) {
+                matchedPersons.add(person);
+            } else if (!Collections.disjoint(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
+
         }
         return matchedPersons;
     }
