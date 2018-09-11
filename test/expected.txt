@@ -42,6 +42,9 @@
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
+|| Enter command: || [Command entered:  cleat]
+|| prompt: Did you mean clear instead?
+|| ===================================================
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
