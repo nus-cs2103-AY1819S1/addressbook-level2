@@ -194,12 +194,13 @@ public class Parser {
         if (args.length() == 0) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteMCommand.MESSAGE_USAGE));
         }
+
         String[] itemsToBeDelete = args.split(",");
         List <String> listOfItemsToBeDelete = Arrays.asList(itemsToBeDelete);
 
         for (String testString : listOfItemsToBeDelete) {
             try {
-                Integer.parseInt(testString);
+                Integer.parseInt(testString.trim());
             } catch (NumberFormatException nfe) {
                 return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
