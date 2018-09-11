@@ -149,6 +149,32 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # sort on empty list should return null list
+  sort
+
+  # add a few people to populate address book
+  add adam p/111111 e/adam@gmail.com a/111, alpha street
+  add Adam p/111111 e/adam@gmail.com a/111, alpha street
+  add charlie p/222222 e/aaa@gmail.com a/000, alpha street
+  add bravoman p/000000 e/zzz@gmail.com a/999, alpha street
+  add bravo p/0 e/a@gmail.com a/9, alpha street
+  add a p/00 e/aa@gmail.com a/1, alpha street
+
+  # Address book is now unsorted
+  list
+
+  # After "sort", address book should be sorted and
+  # automatically list all contacts
+  sort
+
+  # clears all
+  clear
+  list
+
+##########################################################
 # test exit command
 ##########################################################
 

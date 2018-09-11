@@ -9,6 +9,8 @@
 || add: Adds a person to the address book. Contact details can be marked private by prepending 'p' to the prefix.
 || Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...
 || Example: add John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
+|| sort: Sorts all persons in the address book alphabetically be name.
+|| Example: sort
 || delete: Deletes the person identified by the index number used in the last person listing.
 || Parameters: INDEX
 || Example: delete 1
@@ -289,6 +291,55 @@
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  clear]
+|| Address book has been cleared!
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add adam p/111111 e/adam@gmail.com a/111, alpha street]
+|| New person added: adam Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add Adam p/111111 e/adam@gmail.com a/111, alpha street]
+|| New person added: Adam Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add charlie p/222222 e/aaa@gmail.com a/000, alpha street]
+|| New person added: charlie Phone: 222222 Email: aaa@gmail.com Address: 000, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add bravoman p/000000 e/zzz@gmail.com a/999, alpha street]
+|| New person added: bravoman Phone: 000000 Email: zzz@gmail.com Address: 999, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add bravo p/0 e/a@gmail.com a/9, alpha street]
+|| New person added: bravo Phone: 0 Email: a@gmail.com Address: 9, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  add a p/00 e/aa@gmail.com a/1, alpha street]
+|| New person added: a Phone: 00 Email: aa@gmail.com Address: 1, alpha street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. adam Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. Adam Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	3. charlie Phone: 222222 Email: aaa@gmail.com Address: 000, alpha street Tags: 
+|| 	4. bravoman Phone: 000000 Email: zzz@gmail.com Address: 999, alpha street Tags: 
+|| 	5. bravo Phone: 0 Email: a@gmail.com Address: 9, alpha street Tags: 
+|| 	6. a Phone: 00 Email: aa@gmail.com Address: 1, alpha street Tags: 
+|| 
+|| 6 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| 	1. Adam Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	2. a Phone: 00 Email: aa@gmail.com Address: 1, alpha street Tags: 
+|| 	3. adam Phone: 111111 Email: adam@gmail.com Address: 111, alpha street Tags: 
+|| 	4. bravo Phone: 0 Email: a@gmail.com Address: 9, alpha street Tags: 
+|| 	5. bravoman Phone: 000000 Email: zzz@gmail.com Address: 999, alpha street Tags: 
+|| 	6. charlie Phone: 222222 Email: aaa@gmail.com Address: 000, alpha street Tags: 
+|| 
+|| 6 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
