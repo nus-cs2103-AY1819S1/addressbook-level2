@@ -18,6 +18,7 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.FindEmailCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
@@ -194,6 +195,45 @@ public class ParserTest {
         final String input = "find " + String.join(" ", keySet) + " " + String.join(" ", keySet);
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
+        assertEquals(keySet, result.getKeywords());
+    }
+
+    /*
+     * Tests for find a person's email by keyword in name command ===================================================
+     */
+
+    @Test
+    public void parse_findEmailCommandInvalidArgs_errorMessage() {
+        // no keywords
+        final String[] inputs = {
+                "find/e",
+                "find/e "
+        };
+        final String resultMessage =
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindEmailCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_findEmailCommandValidArgs_parsedCorrectly() {
+        final String[] keywords = { "key1", "key2", "key3" };
+        final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
+
+        final String input = "find/e " + String.join(" ", keySet);
+        final FindEmailCommand result =
+                parseAndAssertCommandType(input, FindEmailCommand.class);
+        assertEquals(keySet, result.getKeywords());
+    }
+
+    @Test
+    public void parse_findEmailCommandDuplicateKeys_parsedCorrectly() {
+        final String[] keywords = { "key1", "key2", "key3" };
+        final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
+
+        // duplicate every keyword
+        final String input = "find/e " + String.join(" ", keySet) + " " + String.join(" ", keySet);
+        final FindEmailCommand result =
+                parseAndAssertCommandType(input, FindEmailCommand.class);
         assertEquals(keySet, result.getKeywords());
     }
 

@@ -91,6 +91,16 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Finding a person's email address by name: `find/e`
+
+Finds a person's email address by his/her name. +
+Format: `find/e KEYWORD [MORE_KEYWORDS]`
+
+Examples:
+
+* `find/e John Doe` +
+Returns `johnd@gmail.com`.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
