@@ -301,7 +301,8 @@ public class ParserTest {
     public void parse_listCommandInvalidArgs_errorMessage() {
         final String[] inputs = {
                 "list asdl",
-                "list adhdm adkd dkak"
+                "list adhdm adkd dkak",
+                "list s/ggg"
         };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,ListCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage,inputs);

@@ -3,11 +3,7 @@ package seedu.addressbook.parser;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +19,7 @@ import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.person.Person;
 
 /**
  * Parses user input.
@@ -261,9 +258,19 @@ public class Parser {
             return new ListCommand();
         } else {
             Matcher matcher = LIST_ARGS_FORMAT.matcher(args.trim());
-            if (!matcher.matches()) {
+            boolean isMatchFormat = matcher.matches();
+
+            if (!isMatchFormat) {
                 return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
             }
+
+            String sortBy = matcher.group("sortBy");
+            boolean isValidPersonField = Arrays.stream(Person.personFields).anyMatch((field) -> field.equals(sortBy));
+
+            if(!isValidPersonField) {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+            }
+
         }
         return null;
     }

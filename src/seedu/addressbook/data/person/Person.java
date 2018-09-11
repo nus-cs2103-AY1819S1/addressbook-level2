@@ -17,6 +17,8 @@ public class Person implements ReadOnlyPerson {
     private Email email;
     private Address address;
 
+    public static final String[] personFields = { "Name","Phone","Email","Address" };
+
     private final Set<Tag> tags = new HashSet<>();
 
     /**
