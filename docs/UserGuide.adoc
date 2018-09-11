@@ -49,7 +49,7 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 
 == Adding a person: `add`
 
-Adds a person to the address book. +
+Adds a person to the address book. Then, lists all contacts in the address book.+
 Format: `add NAME [p]p/PHONE_NUMBER [p]e/EMAIL [p]a/ADDRESS [t/TAG]...`
 
 ****
@@ -93,11 +93,11 @@ Returns Any person having names `Betsy`, `Tim`, or `John`.
 
 == Deleting a person : `delete`
 
-Deletes the specified person from the address book. Irreversible. +
+Deletes the specified person from the address book. Irreversible. Then, lists all contacts in the address book.+
 Format: `delete INDEX`
 
 ****
-Deletes the person at the specified `INDEX`.
+Deletes the person at the specified `INDEX`. 
 The index refers to the index number shown in the most recent listing.
 ****
 
