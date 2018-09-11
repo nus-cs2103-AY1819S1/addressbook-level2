@@ -55,4 +55,7 @@ public class UpdateCommand extends Command{
         }
     }
 
+    public Person getUpdatePerson() {
+        return updatePerson;
+    }
 }

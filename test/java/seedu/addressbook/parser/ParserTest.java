@@ -354,9 +354,6 @@ public class ParserTest {
         }
     }
 
-    @Test
-    public void parse_updateCommandValidPersonalData_parsedCorrectly() {}
-
     /*
      * Utility methods ====================================================================================
      */
