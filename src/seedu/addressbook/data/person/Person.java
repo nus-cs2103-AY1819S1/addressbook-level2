@@ -88,4 +88,13 @@ public class Person implements ReadOnlyPerson {
         return getAsTextShowAll();
     }
 
+    /**
+     * Compares the names of two Persons.
+     *
+     * @param other The other person.
+     * @return -1, 0, or 1 depending on the full names compared.
+     */
+    public int compareName(Person other) {
+        return this.getName().toString().compareTo(other.getName().toString());
+    }
 }
