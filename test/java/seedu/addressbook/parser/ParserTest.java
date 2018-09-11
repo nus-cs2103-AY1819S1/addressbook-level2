@@ -12,6 +12,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.addressbook.commands.UpdateCommand;
 import seedu.addressbook.commands.AddCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
@@ -314,11 +315,22 @@ public class ParserTest {
             // no address prefix
             String.format("update 3 $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
     };
-        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);}
 
     @Test
-    public void parse_updateCommandInvalidPersonDataInArgs_errorMessage() {}
+    public void parse_updateCommandInvalidPersonDataInArgs_errorMessage() {
+        final String invalidName = "384920";
+        final String validName = Name.EXAMPLE;
+        final String invalidPhoneArg = "p/popopop";
+        final String validPhoneArg = "p/" + Phone.EXAMPLE;
+        final String invalidEmailArg = "e/notAnEmail123";
+        final String validEmailArg = "e/" + Email.EXAMPLE;
+        final String invalidTagArg = "t/invalid_-[.tag";
+        final String validTagArg = "t/validtag";
+
+
+    }
 
     @Test
     public void parse_updateCommandValidPersonalData_parsedCorrectly() {}
