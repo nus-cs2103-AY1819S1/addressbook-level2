@@ -36,9 +36,9 @@ public class Parser {
 
     public static final Pattern PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<name>[^/]+)"
-                    + " (?<isPhonePrivate>p?)p/(?<phone>[^/]+)"
-                    + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
-                    + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
+                    + "( (?<isPhonePrivate>p?)p/(?<phone>[^/]+))?"
+                    + "( (?<isEmailPrivate>p?)e/(?<email>[^/]+))?"
+                    + "( (?<isAddressPrivate>p?)a/(?<address>[^/]+))?"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
 
@@ -139,7 +139,7 @@ public class Parser {
      * Returns true if the private prefix is present for a contact detail in the add command's arguments string.
      */
     private static boolean isPrivatePrefixPresent(String matchedPrefix) {
-        return matchedPrefix.equals("p");
+        return matchedPrefix != null && matchedPrefix.equals("p");
     }
 
     /**
