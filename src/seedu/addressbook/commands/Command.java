@@ -37,6 +37,16 @@ public class Command {
     }
 
     /**
+     * Constructs a feedback message to summarise an operation that displayed the count of all persons in address book.
+     *
+     * @param personsCounted used to generate counting
+     * @return summary message for persons counted
+     */
+    public static String getMessageForPersonCountShownSummary(List<? extends ReadOnlyPerson> personsCounted) {
+        return String.format(Messages.MESSAGE_PERSONS_COUNTED_OVERVIEW, personsCounted.size());
+    }
+
+    /**
      * Executes the command and returns the result.
      */
     public CommandResult execute(){
