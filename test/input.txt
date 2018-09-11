@@ -75,6 +75,9 @@
   # find multiple with same prefix
   prefix 33
 
+  # reset view to full list as expected by next command
+  list
+
 ##########################################################
 # test view/viewall persons command
 ##########################################################
