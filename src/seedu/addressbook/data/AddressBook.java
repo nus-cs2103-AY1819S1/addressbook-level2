@@ -39,6 +39,13 @@ public class AddressBook {
     }
 
     /**
+     * Sorts the list of persons by alphabetic order.
+     */
+    public void sort() {
+        allPersons.sort();
+    }
+
+    /**
      * Returns true if an equivalent person exists in the address book.
      */
     public boolean containsPerson(ReadOnlyPerson key) {

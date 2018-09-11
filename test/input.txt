@@ -55,6 +55,17 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test sort command
+##########################################################
+  # add person to create alphabetic disorder
+  add Daniel Ew p/444555 pe/daniel@nus.edu.sg a/455, delta avenue t/friends
+  list
+  sort
+  list
+  delete 4
+  list
+
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
