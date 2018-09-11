@@ -38,7 +38,6 @@ public class TextUi {
 
     /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
     private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
-
     private final Scanner in;
     private final PrintStream out;
 
@@ -90,6 +89,10 @@ public class TextUi {
         showToUser("[Command entered:" + fullInputLine + "]");
         return fullInputLine;
     }
+    
+    public int getUserConfirmation() {
+        return in.nextInt();
+    }
 
 
     public void showWelcomeMessage(String version, String storageFilePath) {
@@ -107,8 +110,7 @@ public class TextUi {
     public void showGoodbyeMessage() {
         showToUser(MESSAGE_GOODBYE, DIVIDER, DIVIDER);
     }
-
-
+    
     public void showInitFailedMessage() {
         showToUser(MESSAGE_INIT_FAILED, DIVIDER, DIVIDER);
     }

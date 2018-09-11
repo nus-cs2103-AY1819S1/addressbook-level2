@@ -3,6 +3,7 @@ package seedu.addressbook.commands;
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.ui.TextUi;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Command {
     protected AddressBook addressBook;
     protected List<? extends ReadOnlyPerson> relevantPersons;
     private int targetIndex = -1;
+    public TextUi ui = null;
 
     /**
      * @param targetIndex last visible listing index of the target person
