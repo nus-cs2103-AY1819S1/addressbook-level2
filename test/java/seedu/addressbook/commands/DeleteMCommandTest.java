@@ -82,6 +82,7 @@ public class DeleteMCommandTest {
         assertDeletionSuccessful(Arrays.asList(middleIndex), addressBook, listWithSurnameDoe);
     }
 
+    //TODO: tests can be made more general
     /**
      * Creates a new delete command.
      *
@@ -114,7 +115,7 @@ public class DeleteMCommandTest {
     private void assertDeletionFailsDueToInvalidIndex(List<Integer> targetIndexes, AddressBook addressBook,
                                                                         List<ReadOnlyPerson> displayList) {
 
-        String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        String expectedMessage = String.format("[Index %s:",targetIndexes.get(0))+String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX+"]");
 
         DeleteMCommand command = createDeleteMCommand(targetIndexes, addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
@@ -127,7 +128,7 @@ public class DeleteMCommandTest {
     private void assertDeletionFailsDueToNoSuchPerson(List<Integer> targetIndexes, AddressBook addressBook,
                                                                         List<ReadOnlyPerson> displayList) {
 
-        String expectedMessage = "[Index "+Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
+        String expectedMessage = "[Index 1:"+Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK+"]";
 
         DeleteMCommand command = createDeleteMCommand(targetIndexes, addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
@@ -147,7 +148,7 @@ public class DeleteMCommandTest {
 
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
         expectedAddressBook.removePerson(targetPerson);
-        String expectedMessage = String.format(DeleteMCommand.MESSAGE_DELETEM_PERSON_SUCCESS, targetPerson);
+        String expectedMessage = String.format("[Index %s:",targetIndexes.get(0))+String.format(DeleteMCommand.MESSAGE_DELETEM_PERSON_SUCCESS+"]", targetPerson);
 
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
 
