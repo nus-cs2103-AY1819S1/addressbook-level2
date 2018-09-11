@@ -1,9 +1,5 @@
 package seedu.addressbook.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -14,6 +10,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.junit.Test;
+import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
@@ -23,6 +21,8 @@ import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
+
+import static org.junit.Assert.*;
 
 public class TestUtil {
     /**
@@ -129,5 +129,20 @@ public class TestUtil {
      */
     public static void assertFileDoesNotExist(String filePath) {
         assertTrue(Files.notExists(Paths.get(filePath)));
+    }
+
+    @Test
+    public void testIsAnyNull() {
+        //the expected output should be true
+        assertTrue(Utils.isAnyNull((Object)null));
+        assertTrue(Utils.isAnyNull("abc", null));
+        assertTrue(Utils.isAnyNull(1, "abc", null));
+        assertTrue(Utils.isAnyNull(new Object(), null, 1, null));
+
+        //the expected output should be false
+        assertFalse(Utils.isAnyNull(""));
+        assertFalse(Utils.isAnyNull(1, 2));
+        assertFalse(Utils.isAnyNull("abc", 1, 'a'));
+        assertFalse(Utils.isAnyNull(new Object()));
     }
 }

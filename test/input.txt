@@ -96,8 +96,13 @@
   find bet
   # does not match if none have keyword
   find 23912039120
-  # matching should be case-sensitive
+
+  # matching should be case-insensitive
   find betsy
+  # matching should be case-insensitive
+  find POTATO
+  # matching should be case-insensitive
+  find Brown
 
   # find unique keyword
   find Betsy
@@ -147,6 +152,21 @@
   # clears all
   clear
   list
+
+##########################################################
+# test sort command
+##########################################################
+  
+  # adds persons to the list
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+
+  # lists unsorted persons list
+  list
+
+  #sorts the persons list
+  sort
 
 ##########################################################
 # test exit command
