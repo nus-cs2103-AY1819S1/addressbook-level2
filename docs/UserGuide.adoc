@@ -74,7 +74,7 @@ Format: `list`
 
 == Sorted display of all persons : `sort`
 
-Shows a sorted list of all persons, along with their non-private details, in the address book. +
+Shows a sorted list of all persons, along with their non-private details, in the address book. This only displays, but not affect the actual address book sorting. +
 Format: `sort`
 
 == Finding all persons containing any keyword in their name: `find`
