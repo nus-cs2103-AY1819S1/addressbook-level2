@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -78,6 +79,13 @@ public class UniquePersonList implements Iterable<Person> {
      * Any changes to the internal list/elements are immediately visible in the returned list.
      */
     public List<ReadOnlyPerson> immutableListView() {
+        Collections.sort(internalList, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getName().toString().compareToIgnoreCase(o2.getName().toString());
+            }
+        });
+
         return Collections.unmodifiableList(internalList);
     }
 
