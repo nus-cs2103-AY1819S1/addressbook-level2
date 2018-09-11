@@ -50,7 +50,12 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            Set<String> wordsInNameSmall = new HashSet<>();
+            for (String word : wordsInName){
+                String wordSmall = word.toLowerCase();
+                wordsInNameSmall.add(wordSmall);
+            }
+            if (!Collections.disjoint(wordsInNameSmall, keywords)) {
                 matchedPersons.add(person);
             }
         }
