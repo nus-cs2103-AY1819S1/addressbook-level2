@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.util.stream.Collectors.toSet;
+
 /**
  * Utility methods
  */
@@ -33,5 +35,9 @@ public class Utils {
             }
         }
         return true;
+    }
+
+    public static Set<String> convertStringsToLowerCase(Collection<String> collection) {
+        return collection.stream().map(String::toLowerCase).collect(toSet());
     }
 }
