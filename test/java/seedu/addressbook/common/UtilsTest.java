@@ -71,7 +71,11 @@ public class UtilsTest {
         assertAnyNull(null, "a", "b", null);
     }
 
-    private void assertAnyNull(Object... objects) { assertTrue(Utils.isAnyNull(objects)); }
+    private void assertAnyNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
 
-    private void assertNoneNull(Object... objects) { assertFalse(Utils.isAnyNull(objects)); }
+    private void assertNoneNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
+    }
 }
