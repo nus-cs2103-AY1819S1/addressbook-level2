@@ -111,6 +111,10 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+A confirmation message will pop up. This prevents accidental deletion of entries, or deletion of wrong entries.
+
+Press 1 to confirm, or 0 to cancel.
+
 == View non-private details of a person : `view`
 
 Displays the non-private details of the specified person. +

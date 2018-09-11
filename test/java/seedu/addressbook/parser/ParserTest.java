@@ -31,14 +31,15 @@ import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
+import seedu.addressbook.ui.TextUi;
 
 public class ParserTest {
 
     private Parser parser;
-
+    private TextUi ui = new TextUi();
     @Before
     public void setUp() {
-        parser = new Parser();
+        parser = new Parser(ui);
     }
 
     /*
