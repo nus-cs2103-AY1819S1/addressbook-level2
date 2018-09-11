@@ -11,6 +11,10 @@ public class TotalCommand extends Command {
     @Override
     public CommandResult execute() {
         int size = addressBook.getSize();
+        return getCommandResult(size);
+    }
+
+    private CommandResult getCommandResult(int size) {
         if (size == 1) {
             return new CommandResult(size + MESSAGE_SINGULAR);
         } else {
