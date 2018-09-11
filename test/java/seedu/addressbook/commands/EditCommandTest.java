@@ -68,8 +68,16 @@ public class EditCommandTest {
         assertEditFailsDueToNoSuchPerson(1, addressBook, listWithPersonNotInAddressBook, "p", "12345678", false);
     }
 
-    public void execute_editCommand_incorrectValue() {
+    @Test
+    public void execute_editCommand_wrongFormatForValue_returnsInvalidFormatMessage() {
+        String phoneExpectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, Phone.MESSAGE_PHONE_CONSTRAINTS);
+        String emailExpectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, Email.MESSAGE_EMAIL_CONSTRAINTS);
 
+        EditCommand command = createEditCommand(1, addressBook, listWithEveryone, "p", "abcd", false);
+        assertCommandBehaviour(command, phoneExpectedMessage, addressBook, addressBook);
+
+        command = createEditCommand(1, addressBook, listWithEveryone, "e", "123", false);
+        assertCommandBehaviour(command, emailExpectedMessage, addressBook, addressBook);
     }
 
     private void assertEditFailsDueToInvalidPrefix(int visibleIndex, AddressBook addressBook, List<ReadOnlyPerson> displayList,
@@ -83,16 +91,6 @@ public class EditCommandTest {
     private void assertEditFailsDueToNoSuchPerson(int visibleIndex, AddressBook addressBook, List<ReadOnlyPerson> displayList,
                                                   String prefix, String value, boolean isPrivate) {
         String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
-
-        EditCommand command = createEditCommand(visibleIndex, addressBook, displayList, prefix, value, isPrivate);
-        assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
-    }
-
-    private void assertEditFailsDueWrongValue(int visibleIndex, AddressBook addressBook, List<ReadOnlyPerson> displayList,
-                                                  String prefix, String value, boolean isPrivate) {
-        String phoneExpectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, Phone.MESSAGE_PHONE_CONSTRAINTS);
-        String addressExpectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, Address.MESSAGE_ADDRESS_CONSTRAINTS);
-        String emailExpectedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, Email.MESSAGE_EMAIL_CONSTRAINTS);
 
         EditCommand command = createEditCommand(visibleIndex, addressBook, displayList, prefix, value, isPrivate);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
@@ -113,12 +111,4 @@ public class EditCommandTest {
         assertEquals(expectedMessage, result.feedbackToUser);
         assertEquals(expectedAddressBook.getAllPersons(), actualAddressBook.getAllPersons());
     }
-
-    private void assertConstructingInvalidEditCommandThrowsException(int visibleIndex, AddressBook addressBook,
-                                                                     List<ReadOnlyPerson> visibleList, String prefix,
-                                                                     String value) {
-
-    }
-
-
 }
