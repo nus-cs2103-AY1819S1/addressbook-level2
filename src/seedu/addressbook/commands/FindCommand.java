@@ -57,7 +57,10 @@ public class FindCommand extends Command {
             }
             if (!Collections.disjoint(wordsInNameSmall, keywords)) {
                 matchedPersons.add(person);
+            } else if (!Collections.disjoint(wordsInName, keywords)) {
+                matchedPersons.add(person);
             }
+
         }
         return matchedPersons;
     }
