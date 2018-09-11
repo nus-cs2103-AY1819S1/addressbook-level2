@@ -9,18 +9,15 @@ import static seedu.addressbook.util.TestUtil.isIdentical;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.addressbook.data.person.Address;
-import seedu.addressbook.data.person.Email;
-import seedu.addressbook.data.person.Name;
-import seedu.addressbook.data.person.Person;
-import seedu.addressbook.data.person.Phone;
-import seedu.addressbook.data.person.UniquePersonList;
+import seedu.addressbook.data.person.*;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.data.tag.Tag;
@@ -135,4 +132,17 @@ public class AddressBookTest {
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
+    @Test
+    public void getSortedPersons() throws Exception {
+        UniquePersonList unsortedList = new UniquePersonList(aliceBetsy, davidElliot, bobChaplin, charlieDouglas);
+        List<ReadOnlyPerson> sortedList = unsortedList.sortedListView();
+        Person[] correctSortedList = {aliceBetsy, bobChaplin, charlieDouglas, davidElliot};
+        for(int i = 0; i < 4; i++) {
+            assertTrue(sortedList.get(i).isSamePerson(correctSortedList[i]));
+        }
+
+        UniquePersonList emptyList = new UniquePersonList();
+        assert(emptyList.sortedListView().isEmpty());
+    }
+
 }
