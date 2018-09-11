@@ -54,8 +54,5 @@ public class UpdateCommand extends Command{
             return new CommandResult(MESSAGE_DUPLICATE_DETAILS);
         }
     }
-
-    public Person getUpdatePerson() {
-        return updatePerson;
-    }
+    
 }
