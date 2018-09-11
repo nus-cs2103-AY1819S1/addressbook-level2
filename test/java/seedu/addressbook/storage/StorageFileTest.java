@@ -47,14 +47,6 @@ public class StorageFileTest {
     }
 
     @Test
-    public void load_invalidFormat_exceptionThrown() throws Exception {
-        // The file contains valid txt data, but does not match the Person format
-        StorageFile storage = getStorage("InvalidData.txt");
-        thrown.expect(StorageOperationException.class);
-        storage.load();
-    }
-
-    @Test
     public void load_validFormat() throws Exception {
         AddressBook actualAB = getStorage("ValidData.txt").load();
         AddressBook expectedAB = getTestAddressBook();
