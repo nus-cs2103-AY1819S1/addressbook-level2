@@ -1,0 +1,3 @@
+Edric Teo p/91111111 e/etjk@mail.com a/1, Ang Mo Kio Ave 1, #01-11 t/friends
+Koh Zheng Wei p/92222222 e/kzw@mail.com a/2, Jln Bukit Batok, #02-22 t/friends
+Reuben Tan p/93333333 e/rtjl@mail.com a/3, Yishun Ave 3, #03-33 t/friends
