@@ -107,6 +107,24 @@
   find Charlie Betsy
 
 ##########################################################
+# test edit person command, setup state for further tests
+##########################################################
+
+  # should catch invalid args format
+  edit wrong args wrong args
+  edit 1 Name 12345 e/valid@email.butNoPhonePrefix a/valid, address
+
+  # should edit correctly
+  edit 1 n/Bobby Brown p/111111 e/adam@gmail.com a/111, alpha street t/nothing
+  list
+
+  # should not allow adding duplicate persons
+  edit 5 n/Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+  # should catch invalid index
+  edit 100 n/Bobby Brown p/123456 e/adam@gmail.com a/111, alpha street, t/nothing
+
+##########################################################
 # test delete person command
 ##########################################################
 
