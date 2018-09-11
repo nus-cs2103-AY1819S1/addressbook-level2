@@ -17,8 +17,8 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
-|| list: Displays all persons in the address book as a list with index numbers.
-|| Example: list
+|| list: Displays all persons in the address book as a list with index numbers. Sorts the persons by sort key if specified with the s/ prefix.
+|| Example: list s/Address
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: view 1
@@ -296,6 +296,25 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  clear]
+|| Address book has been cleared!
+|| ===================================================
+|| Enter command: || [Command entered:  add Aarya p/99991111 e/zach@gmail.com a/123 Singapore]
+|| New person added: Aarya Phone: 99991111 Email: zach@gmail.com Address: 123 Singapore Tags:
+|| ===================================================
+|| Enter command: || [Command entered:  add Bran p/89221111 e/aabaca@gmail.com a/789 Singapore]
+|| New person added: Bran Phone: 89221111 Email: aabaca@gmail.com Address: 789 Singapore Tags:
+|| ===================================================
+|| Enter command: || [Command entered:  add Jon p/94561123 e/zzz@gmail.com a/567 Singapore]
+|| New person added: Jon Phone: 94561123 Email: zzz@gmail.com Address: 567 Singapore Tags:
+|| ===================================================
+|| Enter command: || [Command entered:  list s/Address]
+||     1. Aarya Phone: 99991111 Email: zach@gmail.com Address: 123 Singapore Tags:
+||     2. Jon Phone: 94561123 Email: zzz@gmail.com Address: 567 Singapore Tags:
+||     3. Bran Phone: 89221111 Email: aabaca@gmail.com Address: 789 Singapore Tags:
+||
+|| 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...

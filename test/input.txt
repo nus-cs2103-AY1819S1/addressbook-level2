@@ -147,7 +147,15 @@
   # clears all
   clear
   list
-
+##########################################################
+# test list command
+##########################################################
+  # clears all
+  clear
+  add Aarya p/99991111 e/zach@gmail.com a/123 Singapore
+  add Bran p/89221111 e/aabaca@gmail.com a/789 Singapore
+  add Jon p/94561123 e/zzz@gmail.com a/567 Singapore
+  list s/Address
 ##########################################################
 # test exit command
 ##########################################################
