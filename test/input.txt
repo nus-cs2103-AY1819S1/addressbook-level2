@@ -141,6 +141,20 @@
   list
 
 ##########################################################
+# test deleteAll command
+##########################################################
+
+  # should catch invalid args format
+  deleteAll
+
+  # deletes correct people
+  add John Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
+  add Jon Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
+  add Jn Doe p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
+  add John p/98765432 e/johnd@gmail.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney
+  deleteAll Doe
+
+##########################################################
 # test clear command
 ##########################################################
 
