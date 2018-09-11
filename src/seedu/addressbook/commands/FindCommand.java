@@ -36,7 +36,12 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
+        Set<String> keywordsSmall = new HashSet<>();
+        for (String word : keywords){
+            String wordSmall = word.toLowerCase();
+            keywordsSmall.add(wordSmall);
+        }
+        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywordsSmall);
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 
