@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
@@ -24,7 +25,7 @@ public class FindCommand extends Command {
     private final Set<String> keywords;
 
     public FindCommand(Set<String> keywords) {
-        this.keywords = keywords;
+        this.keywords = keywords.stream().map(string -> string.toUpperCase()).collect(Collectors.toSet());
     }
 
     /**
