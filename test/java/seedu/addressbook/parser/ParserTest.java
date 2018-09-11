@@ -320,6 +320,8 @@ public class ParserTest {
 
     @Test
     public void parse_updateCommandInvalidPersonDataInArgs_errorMessage() {
+        final String invalidIndex = "notanIn_dex";
+        final String validIndex = "2";
         final String invalidName = "384920";
         final String validName = Name.EXAMPLE;
         final String invalidPhoneArg = "p/popopop";
@@ -330,6 +332,26 @@ public class ParserTest {
         final String validTagArg = "t/validtag";
 
 
+        // address can be any string, so no invalid address
+        final String updateCommandFormatString = "update $s $s $s $s a/" + Address.EXAMPLE;
+
+        // test each incorrect person data field argument individually
+        final String[] inputs = {
+                // invalid index
+                String.format(updateCommandFormatString, invalidIndex, validName, validPhoneArg, validEmailArg),
+                // invalid name
+                String.format(updateCommandFormatString, validIndex, invalidName, validPhoneArg, validEmailArg),
+                // invalid phone
+                String.format(updateCommandFormatString, validIndex, validName, invalidPhoneArg, validEmailArg),
+                // invalid email
+                String.format(updateCommandFormatString, validIndex, validName, validPhoneArg, invalidEmailArg),
+                // invalid tag
+                String.format(updateCommandFormatString, validIndex, validName,
+                        validPhoneArg, validEmailArg) + " " + invalidTagArg
+        };
+        for (String input : inputs) {
+            parseAndAssertCommandType(input, IncorrectCommand.class);
+        }
     }
 
     @Test
