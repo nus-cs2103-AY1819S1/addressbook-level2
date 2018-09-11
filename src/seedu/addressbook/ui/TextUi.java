@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -79,6 +81,9 @@ public class TextUi {
      * @return command (full line) entered by the user
      */
     public String getUserCommand() {
+        String currentYear = getYear();
+        showToUser("The current year is: " + currentYear);
+
         out.print(LINE_PREFIX + "Enter command: ");
         String fullInputLine = in.nextLine();
 
@@ -91,6 +96,12 @@ public class TextUi {
         return fullInputLine;
     }
 
+    private static String getYear() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        return dtf.format(now);
+    }
 
     public void showWelcomeMessage(String version, String storageFilePath) {
         String storageFileInfo = String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
