@@ -8,8 +8,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-//import java.util.List;
-
 /**
  * Sorts all persons in the address book to the user.
  */
