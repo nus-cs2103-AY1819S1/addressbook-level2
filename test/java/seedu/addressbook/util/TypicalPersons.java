@@ -34,9 +34,9 @@ public class TypicalPersons {
         }
     }
 
-    private void loadAddressBookWithSampleData(AddressBook ab) {
+    private void loadAddressBookWithSampleData(AddressBook ab, Person[] persons) {
         try {
-            for (Person p : this.getTypicalPersons()) {
+            for (Person p : persons) {
                 ab.addPerson(new Person(p));
             }
         } catch (IllegalValueException e) {
@@ -49,8 +49,12 @@ public class TypicalPersons {
     }
 
     public AddressBook getTypicalAddressBook() {
+        return getAddressBook(this.getTypicalPersons());
+    }
+
+    public AddressBook getAddressBook(Person[] persons) {
         AddressBook ab = new AddressBook();
-        loadAddressBookWithSampleData(ab);
+        loadAddressBookWithSampleData(ab, persons);
         return ab;
     }
 
