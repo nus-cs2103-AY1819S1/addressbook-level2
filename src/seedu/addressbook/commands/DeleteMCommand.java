@@ -19,7 +19,7 @@ public class DeleteMCommand extends Command{
             + "Example: " + COMMAND_WORD + " 1,2,3";
 
     //TODO:
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_DELETEM_PERSON_SUCCESS = "Deleted Person:%1$s";
 
     //TODO: change to Set
     private final List<Integer> targetIndexes;
@@ -33,20 +33,19 @@ public class DeleteMCommand extends Command{
     public CommandResult execute() {
         ArrayList<String> output = new ArrayList <>();
 
-        for (Integer item: targetIndexes){
-            super.setTargetIndex(item);
-
+        for (Integer targetIndex: targetIndexes){
+            super.setTargetIndex(targetIndex);
+            //TODO: add nextline for better format
+            //TODO: simplify the code
             try {
-                final ReadOnlyPerson target = getTargetPerson();
-                addressBook.removePerson(target);
-                output.add(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
+                final ReadOnlyPerson targetPerson = getTargetPerson();
+                addressBook.removePerson(targetPerson);
+                output.add(String.format("Index "+ Integer.toString(targetIndex)+":"+ MESSAGE_DELETEM_PERSON_SUCCESS, targetPerson));
             } catch (IndexOutOfBoundsException ie) {
-                output.add(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+                output.add("Index "+ Integer.toString(targetIndex)+":"+Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             } catch (PersonNotFoundException pnfe) {
-                output.add(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
+                output.add("Index "+ Integer.toString(targetIndex)+":"+Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
             }
-
-
         }
 
         return new CommandResult(String.valueOf(output));
