@@ -295,6 +295,19 @@ public class ParserTest {
     }
 
     /*
+     * Tests for update person command ===========================================================================
+     */
+
+    @Test
+    public void parse_updateCommandInvalidArgs_errorMessage() {}
+
+    @Test
+    public void parse_updateCommandInvalidPersonDataInArgs_errorMessage() {}
+
+    @Test
+    public void parse_updateCommandValidPersonalData_parsedCorrectly() {}
+
+    /*
      * Utility methods ====================================================================================
      */
 

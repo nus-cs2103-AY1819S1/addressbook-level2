@@ -157,7 +157,6 @@ public class Parser {
         return new HashSet<>(tagStrings);
     }
 
-
     /**
      * Parses arguments in the context of the delete person command.
      *
@@ -174,7 +173,6 @@ public class Parser {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
     }
-
 
     /**
      * Parses the given arguments string in the context of update person command.
