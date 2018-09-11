@@ -72,15 +72,16 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
-== Finding all persons containing any keyword in their name: `find`
+== Finding all persons containing any keyword in their name/address/email/phone: `find`
 
-Finds persons whose names contain any of the given keywords. +
+Finds persons whose names/address/email/phone contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 [NOTE]
 ====
-The search is case sensitive, the order of the keywords does not matter, only the name is searched,
-and persons matching at least one keyword will be returned (i.e. `OR` search).
+The search is case sensitive, the order of the keywords does not matter, the name, address, email and phone number are
+searched, and persons matching at least one keyword will be returned (i.e. `OR` search).
+Keep in mind that the search requires exact keyword for email id and phone number since they are single words.
 ====
 
 Examples:
@@ -90,6 +91,12 @@ Returns `John Doe` but not `john`.
 
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
+
+*  `find Clementi` +
+Returns Any person having `Clementi` in their address.
+
+*  `find ab@gmail.com` +
+Returns Any person having their email id equal to `ab@gmail.com`
 
 == Deleting a person : `delete`
 
