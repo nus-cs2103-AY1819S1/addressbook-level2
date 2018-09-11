@@ -257,7 +257,7 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareList(String args) {
-        if(args.equals("")) {
+        if(args.trim().equals("")) {
             return new ListCommand();
         } else {
             Matcher matcher = LIST_ARGS_FORMAT.matcher(args.trim());
