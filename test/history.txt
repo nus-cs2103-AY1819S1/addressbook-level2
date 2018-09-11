@@ -1,0 +1,10 @@
+All the (0)person has been removed at 22:43:45.773176
+Add new Person Adam Brown (adam@gmail.com) at 22:43:45.851349
+Add new Person Betsy Choo (benchoo@nus.edu.sg) at 22:43:45.877196
+Add new Person Charlie Dickson (charlie.d@nus.edu.sg) at 22:43:45.881820
+Add new Person Dickson Ee (dickson@nus.edu.sg) at 22:43:45.886240
+Add new Person Esther Potato (esther@not.a.real.potato) at 22:43:45.890648
+Remove the Person Charlie Dickson (charlie.d@nus.edu.sg) at 22:43:45.946489
+Remove the Person Esther Potato (esther@not.a.real.potato) at 22:43:45.953593
+Remove the Person Adam Brown (adam@gmail.com) at 22:43:45.956226
+All the (2)persons have been removed at 22:43:45.959800
