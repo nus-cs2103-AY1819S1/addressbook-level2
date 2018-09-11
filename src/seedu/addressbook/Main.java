@@ -25,12 +25,13 @@ public class Main {
     /** Version info of the program. */
     public static final String VERSION = "AddressBook Level 2 - Version 1.0";
 
-    private TextUi ui;
-    private StorageFile storage;
-    private AddressBook addressBook;
+    private static TextUi ui;
+    private static StorageFile storage;
+    private static AddressBook addressBook;
 
     /** The list of person shown to the user most recently.  */
-    private List<? extends ReadOnlyPerson> lastShownList = Collections.emptyList();
+    private static List<? extends ReadOnlyPerson> lastShownList =
+        Collections.emptyList();
 
 
     public static void main(String... launchArgs) {
@@ -105,7 +106,7 @@ public class Main {
      * @param command user command
      * @return result of the command
      */
-    private CommandResult executeCommand(Command command)  {
+    public static CommandResult executeCommand(Command command)  {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();

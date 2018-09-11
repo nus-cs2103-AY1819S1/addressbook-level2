@@ -151,6 +151,20 @@ Views all details of the 2nd person in the address book.
 `viewall 1` +
 Views all details of the 1st person in the results of the `find` command.
 
+== Importing an existing addressbook : `import`
+
+Imports an existing address book into the current address book. +
+Format: `import FILE_NAME.txt`
+
+****
+Inserts all entries from the specified address book, to the current address book. The current Address Book is referring to the one you are in on start up.
+****
+
+Examples:
+
+* `import existing_ab.txt` +
+
+
 == Clearing all entries : `clear`
 
 Clears all entries from the address book. +

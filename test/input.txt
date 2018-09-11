@@ -149,6 +149,21 @@
   list
 
 ##########################################################
+# test import command
+##########################################################
+
+  # test invalid filename
+  import 123
+
+  # import test_import.txt
+  import test_import.txt
+  list
+
+  # tests for duplicates
+  import test_import.txt
+  list
+
+##########################################################
 # test exit command
 ##########################################################
 

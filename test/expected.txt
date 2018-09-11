@@ -297,6 +297,39 @@
 || 
 || 0 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  import 123]
+|| Invalid command format! 
+|| Imports an address book.
+|| Example: import import_addressbook.txt
+|| ===================================================
+|| Enter command: || [Command entered:  import test_import.txt]
+|| New person added: Edric Teo Phone: 91111111 Email: etjk@mail.com Address: 1, Ang Mo Kio Ave 1, #01-11 Tags: [friends]
+|| New person added: Koh Zheng Wei Phone: 92222222 Email: kzw@mail.com Address: 2, Jln Bukit Batok, #02-22 Tags: [friends]
+|| New person added: Reuben Tan Phone: 93333333 Email: rtjl@mail.com Address: 3, Yishun Ave 3, #03-33 Tags: [friends]
+|| Import of test_import.txt Successful.
+|| Added 3 contacts.
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Edric Teo Phone: 91111111 Email: etjk@mail.com Address: 1, Ang Mo Kio Ave 1, #01-11 Tags: [friends]
+|| 	2. Koh Zheng Wei Phone: 92222222 Email: kzw@mail.com Address: 2, Jln Bukit Batok, #02-22 Tags: [friends]
+|| 	3. Reuben Tan Phone: 93333333 Email: rtjl@mail.com Address: 3, Yishun Ave 3, #03-33 Tags: [friends]
+|| 
+|| 3 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  import test_import.txt]
+|| This person already exists in the address book
+|| This person already exists in the address book
+|| This person already exists in the address book
+|| Import of test_import.txt Successful.
+|| Added 0 contacts.
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Edric Teo Phone: 91111111 Email: etjk@mail.com Address: 1, Ang Mo Kio Ave 1, #01-11 Tags: [friends]
+|| 	2. Koh Zheng Wei Phone: 92222222 Email: kzw@mail.com Address: 2, Jln Bukit Batok, #02-22 Tags: [friends]
+|| 	3. Reuben Tan Phone: 93333333 Email: rtjl@mail.com Address: 3, Yishun Ave 3, #03-33 Tags: [friends]
+|| 
+|| 3 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
 || ===================================================
