@@ -103,6 +103,14 @@
   find Betsy
   # find multiple with same keyword
   find Dickson
+  # find with email
+  find charlie.d@nus.edu.sg
+  # find with phone number
+  find 222222
+  # find with address
+  find delta
+  # find with all mixed
+  find Dickson 222222 dickson@nus.edu.sg
   # find multiple with some keywords
   find Charlie Betsy
 
