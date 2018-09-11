@@ -1,10 +1,13 @@
 package seedu.addressbook.data;
 
+import seedu.addressbook.data.history.History;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+
+import java.util.LinkedList;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -12,12 +15,14 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 public class AddressBook {
 
     private final UniquePersonList allPersons;
+    private final LinkedList<History> allHistories;
 
     /**
      * Creates an empty address book.
      */
     public AddressBook() {
         allPersons = new UniquePersonList();
+        allHistories = new LinkedList<>();
     }
 
     /**
@@ -27,6 +32,7 @@ public class AddressBook {
      */
     public AddressBook(UniquePersonList persons) {
         this.allPersons = new UniquePersonList(persons);
+        allHistories = new LinkedList<>();
     }
 
     /**
@@ -66,6 +72,34 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+    }
+
+    /**
+     * Adds a piece of hisotry to the address book.
+     */
+    public void addHistory(History toAdd){
+        allHistories.add(toAdd);
+    }
+
+    /**
+     * Adds list of histories from the history.txt to the address book.
+     */
+    public void initializeHistory(LinkedList<History> allHistories){
+        this.allHistories.addAll(allHistories);
+    }
+
+    /**
+     * Returns a new Linkedlist of all histories in the address book at the time of the call.
+     */
+    public LinkedList<History> getAllHistories() {
+        return new LinkedList<>(allHistories);
+    }
+
+    /**
+     * Clears all histories and from the address book.
+     */
+    public void clearHistory() {
+        allHistories.clear();
     }
 
     @Override

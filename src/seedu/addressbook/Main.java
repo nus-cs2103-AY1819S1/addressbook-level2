@@ -55,6 +55,7 @@ public class Main {
             this.ui = new TextUi();
             this.storage = initializeStorage(launchArgs);
             this.addressBook = storage.load();
+            //storage.loadHistory(this.addressBook);
             ui.showWelcomeMessage(VERSION, storage.getPath());
 
         } catch (InvalidStorageFilePathException | StorageOperationException e) {
@@ -124,7 +125,7 @@ public class Main {
      */
     private StorageFile initializeStorage(String[] launchArgs) throws InvalidStorageFilePathException {
         boolean isStorageFileSpecifiedByUser = launchArgs.length > 0;
-        return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();
+        return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0], StorageFile.DEFAULT_HISTORY_STORAGE_FILEPATH) : new StorageFile();
     }
 
 
