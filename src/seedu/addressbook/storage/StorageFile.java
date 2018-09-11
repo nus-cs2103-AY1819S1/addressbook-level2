@@ -2,6 +2,7 @@ package seedu.addressbook.storage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -73,10 +74,12 @@ public class StorageFile {
      *
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
-    public void save(AddressBook addressBook) throws StorageOperationException {
+    public void save(AddressBook addressBook) throws StorageOperationException, AccessDeniedException {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
+        } catch (AccessDeniedException ade) {
+            throw ade;
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
         }
