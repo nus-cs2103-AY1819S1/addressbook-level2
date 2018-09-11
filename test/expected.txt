@@ -233,6 +233,12 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  fuzzyFind]
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind amy tom]
+|| 
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
 || delete: Deletes the person identified by the index number used in the last person listing.

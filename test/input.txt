@@ -107,6 +107,14 @@
   find Charlie Betsy
 
 ##########################################################
+# test fuzzyFind persons command
+##########################################################
+
+  #can accept the fuzzyFind command but do nothing
+  fuzzyFind
+  fuzzyFind amy tom
+
+##########################################################
 # test delete person command
 ##########################################################
 
