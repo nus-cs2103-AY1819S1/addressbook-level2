@@ -141,6 +141,17 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+  # add another person so AddressBook out of order
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  list
+
+  sort
+  list
+
+##########################################################
 # test clear command
 ##########################################################
 
