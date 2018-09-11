@@ -3,6 +3,7 @@ package seedu.addressbook.commands;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
@@ -25,7 +26,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person toEdit;
-    private final String index;
+    private final int index;
     /**
      * Convenience constructor using raw values.
      *
@@ -37,7 +38,7 @@ public class EditCommand extends Command {
                       String email, boolean isEmailPrivate,
                       String address, boolean isAddressPrivate,
                       Set<String> tags) throws IllegalValueException {
-        this.index = index;
+        this.index = Integer.parseInt(index);
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
@@ -52,7 +53,7 @@ public class EditCommand extends Command {
     }
 
     public EditCommand(String index, Person toEdit) {
-        this.index = index;
+        this.index = Integer.parseInt(index);
         this.toEdit = toEdit;
     }
 
@@ -63,12 +64,13 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute() {
         try {
-            addressBook.editPerson(index, toEdit);
+            addressBook.editPerson(Integer.toString(index), toEdit);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toEdit));
+        } catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         }
     }
-
 
 }
