@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.List;
 
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.history.History;
 
 /**
  * Represents the file used to store address book data.
@@ -17,6 +19,8 @@ public class StorageFile {
 
     /** Default file path used if the user doesn't provide the file name. */
     public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
+    /** Default file path used for history. */
+    public static final String DEFAULT_HISTORY_STORAGE_FILEPATH = "history.txt";
 
     /* Note: Note the use of nested classes below.
      * More info https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
@@ -42,20 +46,30 @@ public class StorageFile {
     }
 
     public final Path path;
+    public final Path historyPath;
 
     /**
      * @throws InvalidStorageFilePathException if the default path is invalid
      */
     public StorageFile() throws InvalidStorageFilePathException {
-        this(DEFAULT_STORAGE_FILEPATH);
+        this(DEFAULT_STORAGE_FILEPATH, DEFAULT_HISTORY_STORAGE_FILEPATH);
     }
+
 
     /**
      * @throws InvalidStorageFilePathException if the given file path is invalid
      */
     public StorageFile(String filePath) throws InvalidStorageFilePathException {
+        this(filePath, DEFAULT_HISTORY_STORAGE_FILEPATH);
+    }
+
+    /**
+     * @throws InvalidStorageFilePathException if the given file path is invalid
+     */
+    public StorageFile(String filePath, String historyPath) throws InvalidStorageFilePathException {
         path = Paths.get(filePath);
-        if (!isValidPath(path)) {
+        this.historyPath = Paths.get(historyPath);
+        if (!isValidPath(path) || !isValidPath(this.historyPath)) {
             throw new InvalidStorageFilePathException("Storage file should end with '.txt'");
         }
     }
@@ -77,8 +91,21 @@ public class StorageFile {
         try {
             List<String> encodedAddressBook = AddressBookEncoder.encodeAddressBook(addressBook);
             Files.write(path, encodedAddressBook);
+            saveHistory(addressBook.getAllHistories());
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
+        }
+    }
+
+    /**
+     * Saves the history to the history file.
+     */
+    public void saveHistory(LinkedList<History> histories) throws StorageOperationException {
+        try {
+            List<String> stringHistories = HistoryEncoder.encodeHistoryToString(histories);
+            Files.write(historyPath, stringHistories);
+        } catch (IOException ioe) {
+            throw new StorageOperationException("Error writing to file: " + historyPath);
         }
     }
 
@@ -106,8 +133,31 @@ public class StorageFile {
         }
     }
 
+    /**
+     * Loads the hisotry data from the history file.
+     *
+     * @throws StorageOperationException if there were errors reading and/or converting data from file.
+     */
+    public void loadHistory(AddressBook addressBook) throws StorageOperationException {
+
+        try {
+            addressBook.initializeHistory(HistoryDecoder.decodeHistories((Files.readAllLines(historyPath)), addressBook.getAllPersons()));
+        } catch (FileNotFoundException fnfe) {
+            throw new AssertionError("A non-existent file scenario is already handled earlier.");
+            // other errors
+        } catch (IOException ioe) {
+            throw new StorageOperationException("Error writing to file: " + path);
+        } catch (IllegalValueException ive) {
+            throw new StorageOperationException("File contains illegal data values; data type constraints not met");
+        }
+    }
+
     public String getPath() {
         return path.toString();
+    }
+
+    public String getHistoryPath() {
+        return historyPath.toString();
     }
 
 }

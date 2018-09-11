@@ -1,8 +1,11 @@
 package seedu.addressbook.commands;
 
 import seedu.addressbook.common.Messages;
+import seedu.addressbook.data.history.RemoveHistory;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+
+import java.time.LocalTime;
 
 
 /**
@@ -30,6 +33,8 @@ public class DeleteCommand extends Command {
         try {
             final ReadOnlyPerson target = getTargetPerson();
             addressBook.removePerson(target);
+            RemoveHistory historyToAdd = new RemoveHistory(LocalTime.now(), target.getName(), target.getEmail());
+            addressBook.addHistory(historyToAdd);
             return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, target));
 
         } catch (IndexOutOfBoundsException ie) {
