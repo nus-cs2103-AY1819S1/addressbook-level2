@@ -18,7 +18,9 @@ import seedu.addressbook.util.TestUtil;
 public class SortCommandTest {
     private AddressBook addressBook;
     private AddressBook sortedAddressBook;
+    private AddressBook emptyAddressBook;
     private List<ReadOnlyPerson> listWithEveryone;
+    private List<ReadOnlyPerson> emptyList;
 
 
     @Before
@@ -38,14 +40,19 @@ public class SortCommandTest {
         addressBook = TestUtil.createAddressBook(samDoe, bellDoe, davidGrant, adamDoe);
         sortedAddressBook = TestUtil.createAddressBook(adamDoe, bellDoe, davidGrant, samDoe);
 
+        emptyAddressBook = TestUtil.createAddressBook();
+        emptyList = TestUtil.createList();
         listWithEveryone = TestUtil.createList(adamDoe, bellDoe, davidGrant, samDoe);
     }
 
     @Test
     public void execute_addressBook_sorted() {
-        assertSortSuccessful(addressBook, listWithEveryone);
-    }
+        // sort on empty address book
+        assertSortSuccessful(emptyAddressBook, emptyList, emptyAddressBook);
 
+        // sort on address book
+        assertSortSuccessful(addressBook, listWithEveryone, sortedAddressBook);
+    }
 
     /**
      * Creates a new sort command.
@@ -59,14 +66,13 @@ public class SortCommandTest {
         return command;
     }
 
-
     /**
      * Asserts that the address book is successfully sorted.
      *
      * The addressBook passed in will not be modified (no side effects).
      */
-    private void assertSortSuccessful(AddressBook addressBook, List<ReadOnlyPerson> displayList) {
-        AddressBook expectedAddressBook = sortedAddressBook;
+    private void assertSortSuccessful(AddressBook addressBook, List<ReadOnlyPerson> displayList,
+            AddressBook expectedAddressBook) {
         String expectedMessage = SortCommand.MESSAGE_SORTED;
 
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
