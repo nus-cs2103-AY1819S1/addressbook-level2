@@ -30,7 +30,7 @@ public class SortCommand extends Command {
 
         UniquePersonList allSortedPersons = new UniquePersonList(allPersonsList);
         List<ReadOnlyPerson> readOnlySortedPersons = allSortedPersons.immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(
-                readOnlySortedPersons), readOnlySortedPersons);
+        return new CommandResult(
+                getMessageForPersonListShownSummary(readOnlySortedPersons), readOnlySortedPersons);
     }
 }
