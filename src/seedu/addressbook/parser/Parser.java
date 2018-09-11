@@ -17,12 +17,14 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.FindByTagCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.tag.Tag;
 
 /**
  * Parses user input.
@@ -84,6 +86,9 @@ public class Parser {
 
         case FindCommand.COMMAND_WORD:
             return prepareFind(arguments);
+
+        case FindByTagCommand.COMMAND_WORD:
+            return prepareFindByTag(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -248,5 +253,37 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
 
+
+    /**
+     * Parses arguments in the context of the findByTag person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareFindByTag(String args) {
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    FindByTagCommand.MESSAGE_USAGE));
+        }
+
+        // keywords delimited by whitespace
+        final String[] keywords = matcher.group("keywords").split("\\s+");
+        return new FindByTagCommand(getFindTagsFromArgs(keywords));
+    }
+
+    /**
+     * Extracts the new person's tags from the add command's tag arguments string.
+     * Merges duplicate tag strings.
+     */
+    private static Set<String> getFindTagsFromArgs(String[] tagArguments) {
+        // no tags
+        if (tagArguments.length == 0) {
+            return Collections.emptySet();
+        }
+        // replace first delimiter prefix, then split
+        final Collection<String> tagStrings = Arrays.asList(tagArguments);
+        return new HashSet<>(tagStrings);
+    }
 
 }
