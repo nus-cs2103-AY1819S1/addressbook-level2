@@ -20,12 +20,15 @@ public class TypicalPersons {
 
     public TypicalPersons() {
         try {
-            amy = new Person(new Name("Amy Buck"), new Phone("91119111", false), new Email("ab@gmail.com", false),
+            amy = new Person(new Name("Amy Buck"), new Phone("91119111", false),
+                    new Email("ab@gmail.com", false),
                     new Address("1 Clementi Road", false), Collections.emptySet());
-            bill = new Person(new Name("Bill Clint"), new Phone("92229222", false), new Email("bc@gmail.com", false),
+            bill = new Person(new Name("Bill Clint"), new Phone("92229222", false),
+                    new Email("bc@gmail.com", false),
                     new Address("2 Clementi Road", true), Collections.emptySet());
             candy = new Person(new Name("Candy Destiny"), new Phone("93339333", true),
-                    new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), Collections.emptySet());
+                    new Email("cd@gmail.com", false), new Address("3 Clementi Road", true),
+                    Collections.emptySet());
             dan = new Person(new Name("Dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
                     new Address("NUS", true), Collections.singleton(new Tag("test")));
         } catch (IllegalValueException e) {
@@ -34,9 +37,9 @@ public class TypicalPersons {
         }
     }
 
-    private void loadAddressBookWithSampleData(AddressBook ab) {
+    private void loadAddressBookWithSampleData(AddressBook ab, Person[] personsToLoad) {
         try {
-            for (Person p : this.getTypicalPersons()) {
+            for (Person p : personsToLoad) {
                 ab.addPerson(new Person(p));
             }
         } catch (IllegalValueException e) {
@@ -45,12 +48,22 @@ public class TypicalPersons {
     }
 
     public Person[] getTypicalPersons() {
+        return new Person[]{candy, bill, dan, amy};
+    }
+
+    public Person[] getAlphabeticalOrderPersons() {
         return new Person[]{amy, bill, candy, dan};
     }
 
     public AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
-        loadAddressBookWithSampleData(ab);
+        loadAddressBookWithSampleData(ab, this.getTypicalPersons());
+        return ab;
+    }
+
+    public AddressBook getAlphabeticalOrderAddressBook() {
+        AddressBook ab = new AddressBook();
+        loadAddressBookWithSampleData(ab, this.getAlphabeticalOrderPersons());
         return ab;
     }
 
