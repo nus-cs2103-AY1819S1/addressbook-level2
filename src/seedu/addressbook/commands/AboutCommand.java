@@ -7,7 +7,7 @@ public class AboutCommand extends Command {
 
     public static final String COMMAND_WORD = "about";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ":abou Shows information about this application";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows information about this application";
     public static final String MESSAGE_ABOUT = "This is a CLI (Command Line Interface) Address Book application " +
             "written in OOP fashion.\n" +
             "\n" +
