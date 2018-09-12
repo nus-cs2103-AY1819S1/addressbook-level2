@@ -149,6 +149,50 @@
   list
 
 ##########################################################
+# test deleteM command
+##########################################################
+
+  # prepare data
+  add AAAAA p/111111 e/AAA@gmail.com a/111, alpha street
+  add BBBBB p/222222 e/BBB@gmail.com a/222, beta street
+  add CCCCC p/333333 e/CCC@gmail.com a/333, beta2 street
+  add DDDDD p/444444 e/DDD@gmail.com a/444, beta3 street
+  add EEEEE p/555555 e/EEE@gmail.com a/555, beta4 street
+  
+  # deleteM empty
+  list
+  deleteM
+
+  # deleteM single
+  list
+  deleteM 5
+
+  # deleteM invalid single(out of range)
+  list
+  deleteM 5
+
+  # deleteM invalid single (invalid input)
+  list
+  deleteM invalidinput
+
+  # deleteM invalid double (both out of range)
+  list
+  deleteM 666,777
+
+  # deleteM two elements (one valid one invalid)
+  list
+  deleteM 4,5
+
+  # deleteM two elements (one valid one invalid)
+  list
+  deleteM 3,invalidinput
+
+  # deleteM three elements
+  list
+  deleteM 1,2,3
+  list
+
+##########################################################
 # test exit command
 ##########################################################
 
