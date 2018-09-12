@@ -129,6 +129,14 @@ public class AddressBookTest {
     }
 
     @Test
+    public void count() {
+        assertTrue(defaultAddressBook.getNumOfPersons() == 2);
+
+        defaultAddressBook.clear();
+        assertTrue(defaultAddressBook.getNumOfPersons() == 0);
+    }
+
+    @Test
     public void getAllPersons() throws Exception {
         UniquePersonList allPersons = defaultAddressBook.getAllPersons();
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
