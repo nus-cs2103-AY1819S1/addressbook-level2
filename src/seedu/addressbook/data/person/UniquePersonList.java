@@ -111,6 +111,13 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Sort the list of persons based on their names.
+     */
+    public void sort() {
+        Collections.sort(internalList);
+    }
+
+    /**
      * Removes the equivalent person from the list.
      *
      * @throws PersonNotFoundException if no such person could be found in the list.
