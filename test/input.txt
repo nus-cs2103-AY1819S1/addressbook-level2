@@ -141,6 +141,20 @@
   list
 
 ##########################################################
+# test sort command
+##########################################################
+
+    #add person to show unsorted order of list
+    add Amy Sim p/111112 e/amysim@gmail.com a/112, yishun street
+    list
+
+    #sort all persons and list
+    sort
+
+    #check if addressbook is updated with the sorted list
+    list
+
+##########################################################
 # test clear command
 ##########################################################
 
