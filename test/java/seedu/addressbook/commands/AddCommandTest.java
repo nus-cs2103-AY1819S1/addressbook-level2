@@ -30,7 +30,7 @@ public class AddCommandTest {
 
     @Test
     public void addCommand_invalidName_throwsException() {
-        final String[] invalidNames = { "", " ", "[]\\[;]" };
+        final String[] invalidNames = { "", " ", "-", "- ", " -", "- -- ---", "[]\\[;]" };
         for (String name : invalidNames) {
             assertConstructingInvalidAddCmdThrowsException(name, Phone.EXAMPLE, true, Email.EXAMPLE, false,
                     Address.EXAMPLE, true, EMPTY_STRING_SET);
