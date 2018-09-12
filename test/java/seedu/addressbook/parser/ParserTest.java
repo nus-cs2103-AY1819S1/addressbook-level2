@@ -8,6 +8,7 @@ import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -175,18 +176,18 @@ public class ParserTest {
     }
 
     @Test
-    public void parse_findCommandValidArgs_parsedCorrectly() {
+    public void parse_findCommandValidArgs_parsedCorrectlyAsUppercase() {
         final String[] keywords = { "key1", "key2", "key3" };
         final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
 
         final String input = "find " + String.join(" ", keySet);
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
-        assertEquals(keySet, result.getKeywords());
+        assertEquals(keySet.stream().map(string -> string.toUpperCase()).collect(Collectors.toSet()), result.getKeywords());
     }
 
     @Test
-    public void parse_findCommandDuplicateKeys_parsedCorrectly() {
+    public void parse_findCommandDuplicateKeys_parsedCorrectlyAsUppercase() {
         final String[] keywords = { "key1", "key2", "key3" };
         final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
 
@@ -194,7 +195,7 @@ public class ParserTest {
         final String input = "find " + String.join(" ", keySet) + " " + String.join(" ", keySet);
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
-        assertEquals(keySet, result.getKeywords());
+        assertEquals(keySet.stream().map(string -> string.toUpperCase()).collect(Collectors.toSet()), result.getKeywords());
     }
 
     /*
