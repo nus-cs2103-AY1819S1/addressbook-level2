@@ -67,10 +67,22 @@ Examples:
 * `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
 * `add Betsy Crowe pp/1234567 e/betsycrowe@gmail.com pa/Newgate Prison t/criminal t/friend`
 
-== Listing all persons : `list`
+== Listing persons : `list`
 
 Shows a list of all persons, along with their non-private details, in the address book. +
-Format: `list`
+Format: `list` +
+Shows a list of persons from a specific page, along with their non-private details, in the address book. +
+Format: `list [PAGE_NUMBER]`
+[NOTE]
+====
+If an invalid page number is provided, e.g. -1 or 10000, list will list out all persons in the address book.
+Currently a page can only hold 3 persons.
+====
+
+== Counting all persons: `count`
+
+Shows the number of all persons in the address book. +
+Format: `count`
 
 == Finding all persons containing any keyword in their name: `find`
 
