@@ -38,6 +38,7 @@ public class UtilsTest {
         assertNoNull("abc", "abc");
         assertNoNull(" ", "abc", "a", "abc");
         assertNoNull(1);
+        assertNoNull(2);
     }
 
     private void assertAreUnique(Object... objects) {
