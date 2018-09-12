@@ -91,6 +91,27 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Tagging a person : `tag`
+
+Tags the specified person from the address book with a given tag. Irreversible. +
+Format: `tag INDEX TAG`
+
+****
+Tags the person at the specified `INDEX` with the specified `TAG`.
+The index refers to the index number shown in the most recent listing.
+****
+
+Examples:
+
+* `list` +
+`tag 2 friend` +
+Tags the 2nd person in the address book as a friend.
+
+* `find Betsy` +
+`tag 1 boss` +
+Deletes the 1st person in the results of the `find` command as a boss.
+
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
