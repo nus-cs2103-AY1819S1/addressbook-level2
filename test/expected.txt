@@ -22,6 +22,8 @@
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: view 1
+|| sortSorts the list of users by name.
+|| Example: sort
 || viewall: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: viewall 1
@@ -289,6 +291,27 @@
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add Bobby Kim p/223322 e/bobkim@nus.edu.sg pa/223, brave street t/cool]
+|| New person added: Bobby Kim Phone: 223322 Email: bobkim@nus.edu.sg Address: (private) 223, brave street Tags: [cool]
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	3. Bobby Kim Phone: 223322 Email: bobkim@nus.edu.sg Tags: [cool]
+|| 
+|| 3 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| Address Book sorted.
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Bobby Kim Phone: 223322 Email: bobkim@nus.edu.sg Tags: [cool]
+|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 
+|| 3 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
