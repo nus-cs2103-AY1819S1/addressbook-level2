@@ -49,7 +49,8 @@ public class AddCommandTest {
     @Test
     public void addCommand_invalidEmail_throwsException() {
         final String[] invalidEmails = { "", " ", "def.com", "@", "@def", "@def.com", "abc@",
-                                         "@invalid@email", "invalid@email!", "!invalid@email" };
+                                         "@invalid@email", "invalid@email!", "!invalid@email", "invalid@email",
+                                         "email@invalid..domain_name" };
         for (String email : invalidEmails) {
             assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, false, email, false,
                     Address.EXAMPLE, false, EMPTY_STRING_SET);

@@ -59,6 +59,8 @@ items with `...` after them can have multiple instances. Order of parameters are
 Put a `p` before the phone / email / address prefixes to mark it as `private`. `private` details can only
 be seen using the `viewall` command.
 
+Emails must be of the format "some_acc0unt_name@domain.tld"
+
 Persons can have any number of tags (including 0).
 ****
 
