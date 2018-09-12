@@ -1,13 +1,13 @@
 package seedu.addressbook.commands;
 
         import static org.junit.Assert.assertEquals;
-
         import org.junit.Before;
         import org.junit.Test;
         import seedu.addressbook.common.Messages;
         import seedu.addressbook.data.AddressBook;
         import seedu.addressbook.data.person.*;
         import seedu.addressbook.util.TestUtil;
+        import seedu.addressbook.commands.ShowListCommand;
 
         import java.util.Collections;
         import java.util.List;
