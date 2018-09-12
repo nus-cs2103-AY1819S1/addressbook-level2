@@ -48,7 +48,7 @@ public class Name {
      *
      * @return 1, 0 or -1 if this fullName is larger, equal, or smaller than other fullName, respectively.
      */
-    public int compareTo(Name other){
+    public int compareTo(Name other) {
         return this.fullName.compareTo(other.fullName);
     }
 

@@ -35,7 +35,7 @@ public class UtilsTest {
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
     }
-    
+
     @Test
     public void isAnyNull() {
         assertFalse(Utils.isAnyNull("A", 2));

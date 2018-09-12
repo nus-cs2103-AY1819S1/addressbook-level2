@@ -3,7 +3,7 @@ package seedu.addressbook.commands;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.*;
+import java.util.Collections;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import seedu.addressbook.util.TestUtil;
 public class SortCommandTest {
     private AddressBook addressBook;
     private AddressBook sortedAddressBook;
-    
+
     @Before
     public void setUp() throws Exception {
         Person abi = new Person(new Name("Abi Doe"), new Phone("61234567", false),
@@ -32,12 +32,12 @@ public class SortCommandTest {
                 new Email("david@grant.com", false), new Address("44H Define Road", false),
                 Collections.emptySet());
 
-        sortedAddressBook= TestUtil.createAddressBook(abi,ben,charlie,david);
-        addressBook = TestUtil.createAddressBook(ben,abi,david,charlie);
+        sortedAddressBook = TestUtil.createAddressBook(abi, ben, charlie, david);
+        addressBook = TestUtil.createAddressBook(ben, abi, david, charlie);
     }
 
     @Test
-    public void sortCommand_sortedData_correctlySorted(){
+    public void sortCommand_sortedData_correctlySorted() {
         assertFalse(addressBook.equals(sortedAddressBook));
         addressBook.sort();
         assertTrue(addressBook.equals(sortedAddressBook));
