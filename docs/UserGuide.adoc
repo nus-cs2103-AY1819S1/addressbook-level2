@@ -91,6 +91,15 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Searching for a person via their phone number: `search`
+
+Searches for a person whose phone number matches the keyword. +
+Format: `search 98374820`
+
+Examples: 
+* `search 91583820` +
+Returns the contact information that has this phone number. 
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
