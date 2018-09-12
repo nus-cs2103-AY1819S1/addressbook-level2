@@ -11,18 +11,9 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.person.Phone;
 
 /**
  * Parses user input.
@@ -73,6 +64,9 @@ public class Parser {
 
         switch (commandWord) {
 
+            case NumCommand.COMMAND_WORD:
+                return prepareNum(arguments);
+
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
 
@@ -100,6 +94,22 @@ public class Parser {
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
             return new HelpCommand();
+        }
+    }
+
+    /**
+     * Checks for validity of number and returns the prepared command
+     *
+     * @param args single string of 8digit
+     * @return the prepared command
+     */
+    private Command prepareNum(String args) {
+        final String num = args.trim();
+        try {
+            Phone number = new Phone(num, true);
+            return new NumCommand(number);
+        } catch (IllegalValueException ive) {
+            return new IncorrectCommand(ive.getMessage());
         }
     }
 
