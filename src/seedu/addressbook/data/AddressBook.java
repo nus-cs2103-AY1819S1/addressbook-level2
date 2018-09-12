@@ -1,10 +1,12 @@
 package seedu.addressbook.data;
 
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.data.tag.Tag;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -59,6 +61,20 @@ public class AddressBook {
      */
     public void clear() {
         allPersons.clear();
+    }
+
+    /**
+     * Adds a given argument tag to the person represented by the argument ReadOnlyPerson.
+     * @param target the ReadOnlyPerson copy of the person
+     * @param newTagName the new tag as a String
+     * @return true if the tag has been added successfully, false if the tag already exists
+     * @throws IllegalValueException when the input string is not legal for a tag
+     * @throws PersonNotFoundException when the person does not exist in the address book
+     */
+    public boolean tagPerson(ReadOnlyPerson target, String newTagName)
+            throws IllegalValueException, PersonNotFoundException {
+        Tag newTag = new Tag(newTagName);
+        return allPersons.get(target).addTag(newTag);
     }
 
     /**
