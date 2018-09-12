@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
-import org.junit.Before;
+import static junit.framework.TestCase.assertEquals;
+
 import org.junit.Test;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -15,15 +16,15 @@ public class GenerateCommandTest {
     private AddressBook book;
     private UniquePersonList people;
 
-    @Before
-    public void setUp(){
+    @Test
+    public void generateCommand_addressBookAlreadyContainsNames() {
         book = new AddressBook();
         GenerateCommand command = new GenerateCommand();
         command.setData(book, EMPTY_PERSON_LIST);
         CommandResult result = command.execute();
-        people = book.getAllPersons();
+
+        CommandResult duplicateResult = command.execute();
+        assertEquals(GenerateCommand.MESSAGE_DUPLICATE_PEOPLE, duplicateResult.feedbackToUser);
     }
-
-
 
 }
