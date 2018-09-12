@@ -59,7 +59,8 @@ items with `...` after them can have multiple instances. Order of parameters are
 Put a `p` before the phone / email / address prefixes to mark it as `private`. `private` details can only
 be seen using the `viewall` command.
 
-Persons can have any number of tags (including 0).
+Persons can have any number of tags (including 0). Person names must only contain spaces, hyphens or letters,
+but cannot be just spaces or hyphens.
 ****
 
 Examples:

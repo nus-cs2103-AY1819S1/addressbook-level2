@@ -11,9 +11,9 @@ import java.util.List;
  */
 public class Name {
 
-    public static final String EXAMPLE = "John Doe";
-    public static final String MESSAGE_NAME_CONSTRAINTS = "Person names should be spaces or alphabetic characters";
-    public static final String NAME_VALIDATION_REGEX = "[\\p{Alpha} ]+";
+    public static final String EXAMPLE = "John-John Doe";
+    public static final String MESSAGE_NAME_CONSTRAINTS = "Person names should be spaces, hyphens or alphabetic characters";
+    public static final String NAME_VALIDATION_REGEX = "[\\p{Alpha}- ]+";
     public final String fullName;
 
     /**
@@ -22,7 +22,13 @@ public class Name {
      * @throws IllegalValueException if given name string is invalid.
      */
     public Name(String name) throws IllegalValueException {
-        String trimmedName = name.trim();
+        // Trim start/end spaces and hyphens
+        String trimmedName = "";
+        String trimmedAgainName = name;
+        while (!trimmedName.equals(trimmedAgainName)) {
+            trimmedName = trimmedAgainName;
+            trimmedAgainName = trimmedAgainName.trim().replaceAll("-$|^-", "");;
+        }
         if (!isValidName(trimmedName)) {
             throw new IllegalValueException(MESSAGE_NAME_CONSTRAINTS);
         }
