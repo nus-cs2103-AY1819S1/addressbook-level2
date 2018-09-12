@@ -77,7 +77,7 @@
 || Person names should be spaces or alphabetic characters
 || ===================================================
 || Enter command: || [Command entered:  add Valid Name p/not_numbers e/valid@e.mail a/valid, address]
-|| Person phone numbers should only contain numbers
+|| Person phone numbers should only contain numbers and may start with a +
 || ===================================================
 || Enter command: || [Command entered:  add Valid Name p/12345 e/notAnEmail a/valid, address]
 || Person emails should be 2 alphanumeric/period strings separated by '@'
