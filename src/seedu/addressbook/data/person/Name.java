@@ -27,7 +27,7 @@ public class Name {
         String trimmedAgainName = name;
         while (!trimmedName.equals(trimmedAgainName)) {
             trimmedName = trimmedAgainName;
-            trimmedAgainName = trimmedAgainName.trim().replaceAll("-$|^-", "");;
+            trimmedAgainName = trimmedAgainName.trim().replaceAll("-$|^-", "");
         }
         if (!isValidName(trimmedName)) {
             throw new IllegalValueException(MESSAGE_NAME_CONSTRAINTS);
