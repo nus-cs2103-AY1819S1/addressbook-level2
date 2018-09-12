@@ -1,11 +1,6 @@
 package seedu.addressbook.data.person;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -70,6 +65,14 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public UniquePersonList(UniquePersonList source) {
         internalList.addAll(source.internalList);
+    }
+
+    /**
+     * Constructs a shallow copy of the list sorted according to the input comparator.
+     */
+    public UniquePersonList(UniquePersonList source, Comparator<Person> comparator) {
+        internalList.addAll(source.internalList);
+        Collections.sort(internalList, comparator);
     }
 
     /**
