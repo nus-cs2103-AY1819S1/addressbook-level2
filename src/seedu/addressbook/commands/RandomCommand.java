@@ -10,8 +10,7 @@ import java.util.Random;
  */
 public class RandomCommand extends Command {
   public static final String COMMAND_WORD = "random";
-  public static final String MESSAGE_USAGE = COMMAND_WORD + ": Choose a random person in the contact."
-    + "Parameters: -"
+  public static final String MESSAGE_USAGE = COMMAND_WORD + ": Choose a random person in the contact.\n"
     + "Example: " + COMMAND_WORD;
   public static final String MESSAGE_SUCCESS = "Here's a random person! Choose what you want to do to him!\n" +
     "The person is: ";
