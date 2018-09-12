@@ -290,6 +290,30 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:    add Amy Sim p/111112 e/amysim@gmail.com a/112, yishun street]
+|| New person added: Amy Sim Phone: 111112 Email: amysim@gmail.com Address: 112, yishun street Tags: 
+|| ===================================================
+|| Enter command: || [Command entered:    list]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 	3. Amy Sim Phone: 111112 Email: amysim@gmail.com Address: 112, yishun street Tags: 
+|| 
+|| 3 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:    sort]
+|| 	1. Amy Sim Phone: 111112 Email: amysim@gmail.com Address: 112, yishun street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 
+|| 3 persons sorted!
+|| ===================================================
+|| Enter command: || [Command entered:    list]
+|| 	1. Amy Sim Phone: 111112 Email: amysim@gmail.com Address: 112, yishun street Tags: 
+|| 	2. Betsy Choo Tags: [secretive]
+|| 	3. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 
+|| 3 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================

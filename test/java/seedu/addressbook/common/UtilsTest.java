@@ -6,10 +6,33 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 
+import com.sun.jdi.IntegerValue;
 import org.junit.Test;
 
 public class UtilsTest {
 
+    @Test
+    public void elementsAreNull () {
+        assertNotNull();
+
+        // one object
+        assertIsNull((Object) null);
+        assertNotNull(1);
+        assertNotNull("");
+        assertNotNull("abc");
+
+        // more than one object
+        assertIsNull(1, "abc", "", null);
+        assertIsNull(null, null, 2, 5);
+        assertNotNull(1, "abc", "", 2);
+        assertNotNull(Integer.valueOf(52), "ABC", 6);
+
+    }
+
+    private void assertIsNull(Object... objects) { assertTrue(Utils.isAnyNull(objects)); }
+    private void assertNotNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
+    }
 
     @Test
     public void elementsAreUnique() throws Exception {
