@@ -39,7 +39,7 @@ public class FindPhoneNumberCommand extends Command {
     }
 
     /**
-     * Retrieves all persons in the address book whose names contain some of the specified keywords.
+     * Retrieves all persons in the address book who contains phone number some of the specified keywords.
      *
      * @param keywords for searching
      * @return list of persons found
@@ -48,11 +48,11 @@ public class FindPhoneNumberCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             System.out.println(person.getPhone());
-            final Set<String> personWithPhoneNumber = new HashSet<String>(person.getPhone().toString());
-//            final Set<Phone> personWithPhoneNumber = new HashSet<>(person.getPhone());
-//            if (!Collections.disjoint(personWithPhoneNumber, keywords)) {
-//                matchedPersons.add(person);
-//            }
+            final Set<String> personWithPhoneNumber = new HashSet<String>();
+            personWithPhoneNumber.add(person.getPhone().toString());
+            if (!Collections.disjoint(personWithPhoneNumber, keywords)) {
+                matchedPersons.add(person);
+            }
         }
         return matchedPersons;
     }
