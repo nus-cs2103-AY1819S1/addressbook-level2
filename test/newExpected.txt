@@ -1,0 +1,22 @@
+|| ===================================================
+|| ===================================================
+|| Welcome to your Address Book!
+|| AddressBook Level 2 - Version 1.0
+|| Launch command format: java seedu.addressbook.Main [STORAGE_FILE_PATH]
+|| Using storage file : addressbook.txt
+|| ===================================================
+|| Enter command: || [Command entered:  create username p/password1]
+New User Created: Username: username Password: password1
+|| Successfully created account!
+|| ===================================================
+|| Enter command: || [Command entered:  list_users]
+username:password1
+
+|| Users and password listed.
+|| ===================================================
+|| Enter command: || [Command entered:  exit]
+|| Exiting Address Book as requested ...
+|| ===================================================
+|| Good bye!
+|| ===================================================
+|| ===================================================

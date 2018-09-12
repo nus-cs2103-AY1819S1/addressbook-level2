@@ -11,17 +11,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -41,6 +31,9 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    public static final Pattern PERSON_CREATE_ARGS_FORMAT =
+            Pattern.compile("(?<username>[^/]+)"
+                            + " p/(?<password>[^/]+)");
 
     /**
      * Signals that the user input could not be parsed.
@@ -94,8 +87,14 @@ public class Parser {
         case ViewAllCommand.COMMAND_WORD:
             return prepareViewAll(arguments);
 
+        case CreateCommand.COMMAND_WORD:
+            return prepareCreate(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
+
+        case ListUsersCommand.COMMAND_WORD:
+            return new ListUsersCommand();
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
@@ -132,6 +131,20 @@ public class Parser {
             );
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
+        }
+    }
+
+    private Command prepareCreate(String args) {
+        final Matcher matcher = PERSON_CREATE_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateCommand.MESSAGE_USAGE));
+        }
+        else {
+            return new CreateCommand(
+                    matcher.group("username"),
+
+                    matcher.group("password")
+            );
         }
     }
 
@@ -247,6 +260,5 @@ public class Parser {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
     }
-
 
 }

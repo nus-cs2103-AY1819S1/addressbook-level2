@@ -156,6 +156,23 @@ Views all details of the 1st person in the results of the `find` command.
 Clears all entries from the address book. +
 Format: `clear`
 
+== Adding new user : `create`
+
+Creates a username and password.
+Format: 'create USERNAME p/PASSWORD'
+
+Words in UPPER_CASE are the parameters. Order of parameters are fixed.
+
+Examples:
+
+* `create username p/password123'
+
+== Listing all users : `list_users`
+
+Show a list of all users along with their passwords that were created.
+
+Format: 'list_users'
+
 == Exiting the program : `exit`
 
 Exits the program. +
