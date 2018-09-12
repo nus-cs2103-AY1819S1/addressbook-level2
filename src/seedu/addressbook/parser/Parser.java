@@ -94,6 +94,9 @@ public class Parser {
         case ViewAllCommand.COMMAND_WORD:
             return prepareViewAll(arguments);
 
+        case CreateCommand.COMMAND_WORD:
+            return new CreateCommand();
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
