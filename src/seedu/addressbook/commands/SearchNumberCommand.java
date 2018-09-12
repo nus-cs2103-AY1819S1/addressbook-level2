@@ -15,7 +15,7 @@ public class SearchNumberCommand extends Command {
 
   public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds the person with the phone number"
           + " and displays the contact.\n"
-          + "Parameters : KEYWORD [NUMBER_TO_SEARCH]\n"
+          + "Parameters : KEYWORD [NUMBER_TO_SEARCH]...\n"
           + "Example: " + COMMAND_WORD + " 98746372";
 
   private final String number;
