@@ -1,27 +1,28 @@
 package seedu.addressbook.commands;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.AddressBook;
+import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.util.TestUtil;
+
+import java.util.Collections;
+import java.util.List;
 
 public class CountCommandTest {
+    private static final List<ReadOnlyPerson> EMPTY_PERSON_LIST = Collections.emptyList();
 
     @Test
-    public void execute() throws IllegalValueException {
+    public void countCheckNonZero() throws Exception {
 
-        //When there is 0-9 people in address book
-        assertTrue(toString().matches("||.*[0-9]"));
+        AddressBook addressBook = new AddressBook();
+        addressBook.addPerson(TestUtil.generateTestPerson());
 
-        //When there is 0-99 people in address book
-        assertTrue(toString().matches("||.*[0-9][0-9]"));
+        CountCommand count = new CountCommand();
+        count.setData(addressBook, addressBook.getAllPersons().immutableListView());
 
-        //When there is 0-99 people in address book
-        assertTrue(toString().matches("||.*[0-9][0-9][0-9]"));
-
-        //When the format for people in address book is wrong
-        assertFalse(toString().matches("||.*[^0-9]"));
-        }
+        assertEquals("1 persons listed!", count.execute().feedbackToUser);
     }
+}
