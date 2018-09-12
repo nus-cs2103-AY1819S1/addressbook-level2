@@ -107,6 +107,24 @@
   find Charlie Betsy
 
 ##########################################################
+# test fuzzyFind persons command
+##########################################################
+
+  # should consider no keywords as invalid command format
+  fuzzyFind
+
+  #not match (levenshtein distance is greater than 2)
+  fuzzyFind 23912039120
+  fuzzyFind 23912039120 Climenti
+  fuzzyFind bETSY
+
+  #match (levenshtein distance is less than or equal to 2)
+  fuzzyFind Betsy
+  fuzzyFind dikson
+  fuzzyFind betsy Cho
+  fuzzyFind Charlie Besy
+
+##########################################################
 # test delete person command
 ##########################################################
 
