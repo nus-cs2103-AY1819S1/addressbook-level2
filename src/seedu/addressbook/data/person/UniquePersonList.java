@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -140,4 +141,15 @@ public class UniquePersonList implements Iterable<Person> {
                 || (other instanceof UniquePersonList // instanceof handles nulls
                         && this.internalList.equals(((UniquePersonList) other).internalList));
     }
+
+    /**
+     * Sorts all persons in list in ascending order.
+     */
+    public void sortPersonsInAddressBookByName(){
+        Comparator<Person> personComparatorByName = (Person person1,Person person2)->(person1.getName().toString().compareTo(person2.getName().toString()));
+        internalList.sort(personComparatorByName);
+
+    }
+
+
 }

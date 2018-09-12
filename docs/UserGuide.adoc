@@ -176,6 +176,25 @@ Example:
 
 * `java seedu.addressbook.Main mydata.txt`
 
+
+== Enchancement from level 2
+
+What's different from AddressBook-Level2:
+
+* add a sort function to sort the person in address book by name
+
+== sorts all persons by name : `sort`
+
+sort all of the persons in address book by name. +
+Format: `sort`
+
+Examples:
+
+* `sort` +
+`list` +
+Views all details of the person in the address book sorted by name.
+
+
 [NOTE]
 ====
 The file name must end in `.txt` for it to be acceptable to the program.
@@ -183,3 +202,5 @@ The file name must end in `.txt` for it to be acceptable to the program.
 When running the program inside IntelliJ, you can set command line parameters
 before running the program.
 ====
+
+
