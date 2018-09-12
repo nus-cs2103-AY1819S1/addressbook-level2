@@ -141,3 +141,8 @@ public class UniquePersonList implements Iterable<Person> {
                         && this.internalList.equals(((UniquePersonList) other).internalList));
     }
 }
+
+    /**
+     * Sorts all people in the list.
+     */
+    public void sort() {Collections.sort(internalList, new CompareName()); }
