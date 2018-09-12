@@ -110,6 +110,18 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.add(toAdd);
     }
 
+    public void update(ReadOnlyPerson toUpdate, Name name) throws PersonNotFoundException {
+        if (!contains(toUpdate)) {
+            throw new PersonNotFoundException();
+        }
+
+        internalList.set(internalList.indexOf(toUpdate),
+                new Person(name, toUpdate.getPhone(),
+                            toUpdate.getEmail(),
+                            toUpdate.getAddress(),
+                            toUpdate.getTags()));
+    }
+
     /**
      * Removes the equivalent person from the list.
      *

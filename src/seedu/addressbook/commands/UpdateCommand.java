@@ -1,8 +1,10 @@
 package seedu.addressbook.commands;
 
 import seedu.addressbook.common.Messages;
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
+import seedu.addressbook.data.person.Name;
 
 public class UpdateCommand extends Command {
 
@@ -15,17 +17,20 @@ public class UpdateCommand extends Command {
 
     public static final String MESSAGE_UPDATE_PERSON_SUCCESS = "Updated Person: %1$s";
 
+    public Name name;
 
-    public UpdateCommand(int targetVisibleIndex) {
+
+    public UpdateCommand(int targetVisibleIndex, String name) throws IllegalValueException {
         super(targetVisibleIndex);
+        this.name = new Name(name);
     }
 
 
     @Override
-    public CommandResult execute() {
+    public CommandResult execute()  {
         try {
             final ReadOnlyPerson target = getTargetPerson();
-            addressBook.removePerson(target);
+            addressBook.updatePerson(target, name);
             return new CommandResult(String.format(MESSAGE_UPDATE_PERSON_SUCCESS, target));
 
         } catch (IndexOutOfBoundsException ie) {
