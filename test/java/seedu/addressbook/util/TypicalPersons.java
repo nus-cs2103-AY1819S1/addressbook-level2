@@ -6,6 +6,7 @@ import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
@@ -21,13 +22,13 @@ public class TypicalPersons {
     public TypicalPersons() {
         try {
             amy = new Person(new Name("Amy Buck"), new Phone("91119111", false), new Email("ab@gmail.com", false),
-                    new Address("1 Clementi Road", false), Collections.emptySet());
+                    new Address("1 Clementi Road", false), new Gender("Female", false), Collections.emptySet());
             bill = new Person(new Name("Bill Clint"), new Phone("92229222", false), new Email("bc@gmail.com", false),
-                    new Address("2 Clementi Road", true), Collections.emptySet());
+                    new Address("2 Clementi Road", true), new Gender("Male", false), Collections.emptySet());
             candy = new Person(new Name("Candy Destiny"), new Phone("93339333", true),
-                    new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), Collections.emptySet());
+                    new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), new Gender("Female", false), Collections.emptySet());
             dan = new Person(new Name("Dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
-                    new Address("NUS", true), Collections.singleton(new Tag("test")));
+                    new Address("NUS", true), new Gender("Male", false), Collections.singleton(new Tag("test")));
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";

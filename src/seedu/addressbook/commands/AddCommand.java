@@ -9,6 +9,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.tag.Tag;
@@ -40,6 +41,7 @@ public class AddCommand extends Command {
                       String phone, boolean isPhonePrivate,
                       String email, boolean isEmailPrivate,
                       String address, boolean isAddressPrivate,
+                      String gender, boolean isGenderPrivate,
                       Set<String> tags) throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
@@ -50,6 +52,7 @@ public class AddCommand extends Command {
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
                 new Address(address, isAddressPrivate),
+                new Gender(gender, isGenderPrivate),
                 tagSet
         );
     }

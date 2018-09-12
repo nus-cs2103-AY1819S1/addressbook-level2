@@ -20,6 +20,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
@@ -51,24 +52,28 @@ public class AddressBookTest {
                                     new Phone("91235468", false),
                                     new Email("alice@nushackers.org", false),
                                     new Address("8 Computing Drive, Singapore", false),
+                                    new Gender("Female", false),
                                     Collections.singleton(tagMathematician));
 
         bobChaplin     = new Person(new Name("Bob Chaplin"),
                                     new Phone("94321500", false),
                                     new Email("bob@nusgreyhats.org", false),
                                     new Address("9 Computing Drive", false),
+                                    new Gender("Male", false),
                                     Collections.singleton(tagMathematician));
 
         charlieDouglas = new Person(new Name("Charlie Douglas"),
                                     new Phone("98751365", false),
                                     new Email("charlie@nusgdg.org", false),
                                     new Address("10 Science Drive", false),
+                                    new Gender("Male", false),
                                     Collections.singleton(tagScientist));
 
         davidElliot    = new Person(new Name("David Elliot"),
                                     new Phone("84512575", false),
                                     new Email("douglas@nuscomputing.com", false),
                                     new Address("11 Arts Link", false),
+                                    new Gender("Male", false),
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
 
         emptyAddressBook = new AddressBook();
