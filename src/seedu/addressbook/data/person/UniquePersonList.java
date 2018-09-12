@@ -129,7 +129,6 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
-    @Override
     public void sort(){
         Collections.sort(internalList,
                 (person1, person2) ->
