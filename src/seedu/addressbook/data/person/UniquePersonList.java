@@ -129,6 +129,10 @@ public class UniquePersonList implements Iterable<Person> {
         return internalList.get(internalList.size() - 1);
     }
 
+    public int getSize() {
+        return internalList.size();
+    }
+
     /**
      * Clears all persons in list.
      */

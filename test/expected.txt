@@ -39,6 +39,9 @@
 || Enter command: || [Command entered:  viewall 1]
 || The person index provided is invalid
 || ===================================================
+|| Enter command: || [Command entered:  newest]
+|| There is no entry in address book
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
