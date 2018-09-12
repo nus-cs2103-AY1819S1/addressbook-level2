@@ -50,9 +50,17 @@
   list
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
   list
+  add Aaron Doe p/6666666 e/Aaron@doe.com a/Baker street
+  list
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+##########################################################
+# test sort persons command
+##########################################################
+ # sort people in alphabetical order based on their names
+ sort
 
 ##########################################################
 # test view/viewall persons command
@@ -67,24 +75,24 @@
   # should catch invalid index
   view -1
   view 0
-  view 6
+  view 7
   viewall -1
   viewall 0
-  viewall 6
+  viewall 7
 
   # should show all non private for both view and viewall
-  view 1
-  viewall 1
+  view 2
+  viewall 2
 
   # should show only non private details for view
-  view 3
   view 4
   view 5
+  view 6
 
   # should show all details even private for viewall
-  viewall 3
   viewall 4
   viewall 5
+  viewall 6
 
 ##########################################################
 # test find persons command
@@ -133,11 +141,11 @@
   list
 
   # deletes correct person
-  delete 4
+  delete 5
   list
 
   # listing indexes get updated on next request
-  delete 1
+  delete 2
   list
 
 ##########################################################
