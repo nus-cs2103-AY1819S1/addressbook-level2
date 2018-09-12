@@ -75,7 +75,7 @@ Format: `list`
 == Sorting all persons : `sort`
 
 Shows a list of all persons, according to their in the alphabetical order, along with their non-private details, in the address book. +
-Format: `list`
+Format: `sort`
 
 == Finding all persons containing any keyword in their name: `find`
 

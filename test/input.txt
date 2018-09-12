@@ -158,6 +158,7 @@
   add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
   add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
   add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
+  add ada p/3232323 e/ada@gmail.com a/233, Kent Ridge
   sort
   clear
 
