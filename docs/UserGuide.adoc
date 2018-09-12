@@ -131,6 +131,12 @@ Views the 2nd person in the address book.
 `view 1` +
 Views the 1st person in the results of the `find` command.
 
+== Sorting all persons : `sort`
+ 
+Sorts the list of all people in address book lexicographically. Shows sorted list next time `list` is entered.
+Format: `sort`
+
+
 == View all details of a person : `viewall`
 
 Displays all details (including private details) of the specified person. +
