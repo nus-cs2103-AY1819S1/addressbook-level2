@@ -107,6 +107,23 @@
   find Charlie Betsy
 
 ##########################################################
+# test swap person command
+##########################################################
+
+  # should catch invalid args format
+  swap 
+  swap 1
+  
+  # should swap person 1 and 2 from list.
+  swap 1 2
+
+  # should show error that index provided is out of range.
+  swap 0 1
+
+  # swap back person 1 and 2, back to original position.
+  swap 2 1
+
+##########################################################
 # test delete person command
 ##########################################################
 
