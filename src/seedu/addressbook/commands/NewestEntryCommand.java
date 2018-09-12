@@ -6,6 +6,9 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Shows the newest entry into the address book.
+ */
 public class NewestEntryCommand extends Command {
 
     public static final String COMMAND_WORD = "newest";

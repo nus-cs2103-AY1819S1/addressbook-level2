@@ -122,6 +122,9 @@ public class UniquePersonList implements Iterable<Person> {
         }
     }
 
+    /**
+     * Returns the last person in the address book.
+     */
     public ReadOnlyPerson getLast() {
         return internalList.get(internalList.size() - 1);
     }

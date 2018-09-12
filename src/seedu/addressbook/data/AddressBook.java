@@ -68,6 +68,9 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    /**
+     * Returns the last person in the address book.
+     */
     public ReadOnlyPerson getLastPerson() {
         return allPersons.getLast();
     }
