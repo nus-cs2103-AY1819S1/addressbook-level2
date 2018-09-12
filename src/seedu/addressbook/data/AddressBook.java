@@ -68,6 +68,17 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    /**
+     * Returns the last person in the address book.
+     */
+    public ReadOnlyPerson getLastPerson() {
+        return allPersons.getLast();
+    }
+
+    public int getCurrentSize() {
+        return allPersons.getSize();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

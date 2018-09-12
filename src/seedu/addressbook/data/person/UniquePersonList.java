@@ -123,6 +123,17 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns the last person in the address book.
+     */
+    public ReadOnlyPerson getLast() {
+        return internalList.get(internalList.size() - 1);
+    }
+
+    public int getSize() {
+        return internalList.size();
+    }
+
+    /**
      * Clears all persons in list.
      */
     public void clear() {
