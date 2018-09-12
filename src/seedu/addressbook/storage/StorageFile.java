@@ -90,7 +90,10 @@ public class StorageFile {
      */
     public AddressBook load() throws StorageOperationException {
 
-        if (!Files.exists(path) || !Files.isRegularFile(path)) {
+        boolean fileExits = Files.exists(path);
+        boolean fileIsRegular = Files.isRegularFile(path);
+
+        if (!fileExits || !fileIsRegular) {
             return new AddressBook();
         }
 
