@@ -187,7 +187,7 @@ public class ParserTest {
     }
 
     @Test
-    public void parse_findCommandDuplicateKeys_parsedCorrectly() {
+    public void parse_findCommandDuplicateKeys_parsedCorrectlyAsUppercase() {
         final String[] keywords = { "key1", "key2", "key3" };
         final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
 
