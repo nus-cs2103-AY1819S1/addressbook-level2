@@ -85,6 +85,18 @@ public class AddressBookTest {
     }
 
     @Test
+    public void sortPersons() throws Exception {
+        AddressBook toBeSorted = emptyAddressBook;
+        toBeSorted.addPerson(bobChaplin);
+        toBeSorted.addPerson(aliceBetsy);
+        toBeSorted.sortPersons();
+
+        UniquePersonList sortedPersons = toBeSorted.getAllPersons();
+        UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
+        assertTrue(isIdentical(sortedPersons, personsToCheck));
+    }
+
+    @Test
     public void containsPerson() throws Exception {
         UniquePersonList personsWhoShouldBeIn = new UniquePersonList(aliceBetsy, bobChaplin);
         UniquePersonList personsWhoShouldNotBeIn = new UniquePersonList(charlieDouglas, davidElliot);
