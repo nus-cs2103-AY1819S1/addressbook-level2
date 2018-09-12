@@ -1,11 +1,6 @@
 package seedu.addressbook.data.person;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -73,10 +68,12 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Returns an modifiable java List view.
+     * Returns a List view sorted in ascending alphabetical order.
      */
-    public List<Person> mutableListView() {
+    public List<Person> sortedListView() {
         List<Person> copyPersonList = new ArrayList<>(internalList);
+        Comparator<Person> byName = Comparator.comparing(Person::getName);
+        Collections.sort(copyPersonList, byName);
         return copyPersonList;
     }
 
