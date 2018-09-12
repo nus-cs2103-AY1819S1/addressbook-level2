@@ -290,6 +290,9 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  findNumber Betsy]
+|| 222222
+|| ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
 || ===================================================
