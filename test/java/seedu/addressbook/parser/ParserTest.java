@@ -293,6 +293,20 @@ public class ParserTest {
         }
         return addCommand;
     }
+    /*
+     * Tests for list person command ==============================================================================
+     */
+
+    @Test
+    public void parse_listCommandInvalidArgs_errorMessage() {
+        final String[] inputs = {
+                "list asdl",
+                "list adhdm adkd dkak",
+                "list s/ggg"
+        };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,ListCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage,inputs);
+    }
 
     /*
      * Utility methods ====================================================================================
@@ -307,6 +321,8 @@ public class ParserTest {
             assertEquals(result.feedbackToUser, feedbackMessage);
         }
     }
+
+
 
     /**
      * Parses input and asserts the class/type of the returned command object.

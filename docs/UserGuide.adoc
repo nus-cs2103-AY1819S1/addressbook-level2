@@ -69,8 +69,14 @@ Examples:
 
 == Listing all persons : `list`
 
-Shows a list of all persons, along with their non-private details, in the address book. +
-Format: `list`
+Shows a list of all persons, along with their non-private details, in the address book.
+ List can be sorted by specified sort key which can be any one of the person fields. +
+Format: `list [s/PERSON_FIELD]`
+
+Examples:
+
+* `list s/Address` +
+Returns list that is sorted by address of the persons.
 
 == Finding all persons containing any keyword in their name: `find`
 

@@ -3,11 +3,7 @@ package seedu.addressbook.parser;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.addressbook.common.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +19,7 @@ import seedu.addressbook.commands.ListCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.person.Person;
 
 /**
  * Parses user input.
@@ -41,6 +38,8 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    // "s/" followed by word
+    public static final Pattern LIST_ARGS_FORMAT = Pattern.compile("(s/(?<sortKey>\\w+))?+");
 
     /**
      * Signals that the user input could not be parsed.
@@ -86,7 +85,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            return prepareList(arguments);
 
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
@@ -246,6 +245,34 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses arguments in the context of the list command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareList(String args) {
+        if(args.trim().equals("")) { //No sort key is specified
+            return new ListCommand();
+        } else {
+            Matcher matcher = LIST_ARGS_FORMAT.matcher(args.trim());
+            boolean isMatchFormat = matcher.matches();
+
+            if (!isMatchFormat) {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+            }
+
+            String sortKey = matcher.group("sortKey");
+            boolean isValidPersonField = Arrays.stream(Person.personFields).anyMatch((field) -> field.equals(sortKey));
+
+            if(!isValidPersonField) {
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+            }
+
+            return new ListCommand(sortKey);
+        }
     }
 
 
