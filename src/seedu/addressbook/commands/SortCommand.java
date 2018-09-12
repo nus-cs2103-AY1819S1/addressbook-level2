@@ -3,17 +3,17 @@ package seedu.addressbook.commands;
 /**
  * Clears the address book.
  */
-public class ClearCommand extends Command {
+public class SortCommand extends Command {
 
-    public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_USAGE = "Clears address book permanently.\n"
+    public static final String COMMAND_WORD = "sort";
+    public static final String MESSAGE_USAGE = "Sorts the address book alphabetically.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Address book has been cleared!";
+    public static final String MESSAGE_SUCCESS = "Address book has been sorted!";
 
     @Override
     public CommandResult execute() {
-        addressBook.clear();
+        addressBook.sort();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
