@@ -20,6 +20,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.UpdateCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -40,6 +41,13 @@ public class Parser {
                     + " (?<isEmailPrivate>p?)e/(?<email>[^/]+)"
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
+
+    public static final Pattern UPDATE_PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
+            Pattern.compile("(?<targetIndex>[0-9]+) "
+                    + "(?<isUpdatingPhone>((?<isPhonePrivate>p?)p/(?<phone>[^/]+)\\s?)?)"
+                    + "(?<isUpdatingEmail>((?<isEmailPrivate>p?)e/(?<email>[^/]+)\\s?)?)"
+                    + "(?<isUpdatingAddress>((?<isAddressPrivate>p?)a/(?<address>[^/]+)\\s?)?)"
+                    + "(?<tagArguments>(?:t/[^/]+\\s?)*)"); // variable number of tags
 
 
     /**
@@ -75,6 +83,9 @@ public class Parser {
 
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
+            
+        case UpdateCommand.COMMAND_WORD:
+            return prepareUpdate(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
@@ -139,7 +150,7 @@ public class Parser {
      * Returns true if the private prefix is present for a contact detail in the add command's arguments string.
      */
     private static boolean isPrivatePrefixPresent(String matchedPrefix) {
-        return matchedPrefix.equals("p");
+        return (matchedPrefix != null) && matchedPrefix.equals("p");
     }
 
     /**
@@ -156,7 +167,48 @@ public class Parser {
         return new HashSet<>(tagStrings);
     }
 
+    /**
+     * Parses arguments in the context of the update person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareUpdate(String args) {
+        final Matcher matcher = UPDATE_PERSON_DATA_ARGS_FORMAT.matcher(args.trim());
+        // Validate arg string format
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateCommand.MESSAGE_USAGE));
+        }
+        try {
+            return new UpdateCommand(
+                    matcher.group("targetIndex"),
 
+                    isFieldPresent(matcher.group("isUpdatingPhone")),
+                    matcher.group("phone"),
+                    isPrivatePrefixPresent(matcher.group("isPhonePrivate")),
+
+                    isFieldPresent(matcher.group("isUpdatingEmail")),
+                    matcher.group("email"),
+                    isPrivatePrefixPresent(matcher.group("isEmailPrivate")),
+
+                    isFieldPresent(matcher.group("isUpdatingAddress")),
+                    matcher.group("address"),
+                    isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+
+                    getTagsFromArgs(" " + matcher.group("tagArguments"))
+            );
+        } catch (IllegalValueException ive) {
+            return new IncorrectCommand(ive.getMessage());
+        }
+    }
+
+    /**
+     * Returns true if the phone/email/address field is present in the update command's arguments string.
+     */
+    private static boolean isFieldPresent(String matchedField) {
+        return !matchedField.isEmpty();
+    }
+    
     /**
      * Parses arguments in the context of the delete person command.
      *

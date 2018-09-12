@@ -61,7 +61,7 @@ public class Person implements ReadOnlyPerson {
     public Set<Tag> getTags() {
         return new HashSet<>(tags);
     }
-
+    
     /**
      * Replaces this person's tags with the tags in the argument tag set.
      */

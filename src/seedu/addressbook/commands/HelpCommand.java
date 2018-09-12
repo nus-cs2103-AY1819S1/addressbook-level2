@@ -14,7 +14,8 @@ public class HelpCommand extends Command {
     @Override
     public CommandResult execute() {
         return new CommandResult(
-                AddCommand.MESSAGE_USAGE
+                AddCommand.MESSAGE_USAGE 
+                + "\n" + UpdateCommand.MESSAGE_USAGE
                 + "\n" + DeleteCommand.MESSAGE_USAGE
                 + "\n" + ClearCommand.MESSAGE_USAGE
                 + "\n" + FindCommand.MESSAGE_USAGE
