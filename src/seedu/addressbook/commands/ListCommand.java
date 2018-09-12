@@ -12,11 +12,12 @@ import java.util.List;
 public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
-    public static final int PAGE_CONTAIN = 10;
+    public static final int PAGE_CONTAIN = 3;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays all persons in the address book as a list with index numbers.\n"
-            + "Example: " + COMMAND_WORD;
+            + ": Displays all persons or persons in one page in the address book as a list with index numbers.\n"
+            + "Example: " + COMMAND_WORD + "\n"
+            + "Example: " + COMMAND_WORD + " 1";
 
     public ListCommand(int targetPage) { super(targetPage); }
     public ListCommand() {}
