@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Comparator;
 import java.util.List;
 
 import seedu.addressbook.common.Utils;
@@ -127,6 +128,16 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public void clear() {
         internalList.clear();
+    }
+
+    /**
+     * Sorts the persons in list by name.
+     */
+    public void sortByName() {
+        Comparator<Person> nameComparator =
+                (Person p1, Person p2) -> p1.getName().compareTo(p2.getName());
+
+        internalList.sort(nameComparator);
     }
 
     @Override
