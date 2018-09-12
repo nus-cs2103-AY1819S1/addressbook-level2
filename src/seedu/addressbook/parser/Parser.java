@@ -66,6 +66,9 @@ public class Parser {
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
 
+        case TagCommand.COMMAND_WORD:
+            return prepareTag(arguments);
+
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
 
