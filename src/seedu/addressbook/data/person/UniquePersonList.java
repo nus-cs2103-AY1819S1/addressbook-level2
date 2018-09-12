@@ -118,10 +118,10 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Gets the person represented by the argument immutable ReadOnlyPerson
+     * Gets the person represented by the argument immutable ReadOnlyPerson.
      * @param person the read only copy of the person
      * @return the mutable person
-     * @throws PersonNotFoundException
+     * @throws PersonNotFoundException when the person does not exist in the list
      */
     public Person get(ReadOnlyPerson person) throws PersonNotFoundException{
         Optional<Person> opPerson = internalList.stream()
