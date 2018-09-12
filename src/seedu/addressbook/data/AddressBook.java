@@ -77,9 +77,9 @@ public class AddressBook {
     /**
      * Returns a sorted UniquePersonList of all persons in the address book at the time of the call.
      */
-    public UniquePersonList sortAllPersons(){
+    public UniquePersonList sortAllPersonsByName(){
         UniquePersonList unsortedList= this.allPersons;
-        unsortedList.sortPersonsInAddressBook();
+        unsortedList.sortPersonsInAddressBookByName();
         return unsortedList;
     }
 }

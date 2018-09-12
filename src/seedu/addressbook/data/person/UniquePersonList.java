@@ -145,7 +145,7 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Sorts all persons in list in ascending order.
      */
-    public void sortPersonsInAddressBook(){
+    public void sortPersonsInAddressBookByName(){
         Comparator<Person> personComparatorByName = new Comparator<Person>() {
             @Override
             public int compare(Person p1, Person p2) {
