@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -50,11 +51,24 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (!disjointIgnoreCase(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
     }
 
+    private static boolean disjointIgnoreCase(Set<String> coll1, Set<String> coll2) {
+        return Collections.disjoint(lowercased(coll1), lowercased(coll2));
+    }
+
+    private static Set<String> lowercased(Set<String> strings) {
+        String[] stringsArray = strings.toArray(new String[0]);
+        for (int i = 0; i < stringsArray.length; ++i) {
+            stringsArray[i] = stringsArray[i].toLowerCase();
+        }
+        strings.clear();
+        strings.addAll(Arrays.asList(stringsArray));
+        return strings;
+    }
 }
