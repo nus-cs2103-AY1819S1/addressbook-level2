@@ -3,10 +3,14 @@ package seedu.addressbook.common;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import org.junit.Test;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class UtilsTest {
 
@@ -42,5 +46,10 @@ public class UtilsTest {
 
     private void assertNotUnique(Object... objects) {
         assertFalse(Utils.elementsAreUnique(Arrays.asList(objects)));
+    }
+
+    @Test
+    public void isAnyNull() {
+        assertTrue(Utils.isAnyNull((Object)null));
     }
 }
