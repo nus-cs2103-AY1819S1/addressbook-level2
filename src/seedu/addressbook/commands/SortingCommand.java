@@ -1,3 +1,5 @@
+package seedu.addressbook.commands;
+
 /**
  * Sort the list of people in address book
  */
