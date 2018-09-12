@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -81,6 +82,23 @@ public class UniquePersonList implements Iterable<Person> {
         return Collections.unmodifiableList(internalList);
     }
 
+    /**
+     * Returns an unmodifiable java List view sorted in alphabetical order
+     * with elements cast as immutable {@link ReadOnlyPerson}
+     */
+    public List<ReadOnlyPerson> sortImmutableListView() {
+        final List<ReadOnlyPerson> sortedList = new ArrayList<>();
+        sortedList.addAll(internalList);
+        sortedList.sort(new Comparator<ReadOnlyPerson>() {
+            @Override
+            public int compare(ReadOnlyPerson o1, ReadOnlyPerson o2) {
+                String personOne = o1.getName().toString().toLowerCase();
+                String personTwo = o2.getName().toString().toLowerCase();
+                return personOne.compareTo(personTwo);
+            }
+        });
+        return Collections.unmodifiableList(sortedList);
+    }
 
     /**
      * Checks if the list contains an equivalent person as the given argument.
