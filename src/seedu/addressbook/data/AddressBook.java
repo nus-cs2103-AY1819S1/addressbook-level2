@@ -62,6 +62,13 @@ public class AddressBook {
     }
 
     /**
+     * Sorts the contacts in the address book by name in ascending alphabetical order.
+     */
+    public void sort() {
+        allPersons.sort();
+    }
+
+    /**
      * Returns a new UniquePersonList of all persons in the address book at the time of the call.
      */
     public UniquePersonList getAllPersons() {
@@ -72,6 +79,6 @@ public class AddressBook {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                        && this.allPersons.equals(((AddressBook) other).allPersons));
+                && this.allPersons.equals(((AddressBook) other).allPersons));
     }
 }
