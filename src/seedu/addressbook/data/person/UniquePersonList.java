@@ -128,6 +128,11 @@ public class UniquePersonList implements Iterable<Person> {
     public void clear() {
         internalList.clear();
     }
+    
+    /**
+     * Sorts all people in the list.
+     */
+    public void sort() {Collections.sort(internalList, new CompareName()); }
 
     @Override
     public Iterator<Person> iterator() {
@@ -142,7 +147,4 @@ public class UniquePersonList implements Iterable<Person> {
     }
 }
 
-    /**
-     * Sorts all people in the list.
-     */
-    public void sort() {Collections.sort(internalList, new CompareName()); }
+
