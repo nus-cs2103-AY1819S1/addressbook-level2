@@ -183,3 +183,8 @@ The file name must end in `.txt` for it to be acceptable to the program.
 When running the program inside IntelliJ, you can set command line parameters
 before running the program.
 ====
+
+== Find all friends
+
+Shows a list of all persons who are tagged as friends, along with their non-private details, in the address book. +
+Format: `findFriends`
