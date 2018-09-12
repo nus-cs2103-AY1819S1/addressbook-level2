@@ -13,7 +13,6 @@ public class DeleteAllCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes every person in the last displayed list in the address book.\n"
-            + "Parameters: none\n"
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_DELETE_ALL_SUCCESS = "All Persons from last displayed list deleted";
