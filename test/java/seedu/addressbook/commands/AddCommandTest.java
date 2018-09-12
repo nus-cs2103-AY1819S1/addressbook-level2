@@ -95,6 +95,7 @@ public class AddCommandTest {
         fail(error);
     }
 
+
     @Test
     public void addCommand_validData_correctlyConstructed() throws Exception {
         AddCommand command = new AddCommand(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
