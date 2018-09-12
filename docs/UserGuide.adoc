@@ -116,6 +116,9 @@ Deletes every person in the last viewed list. Irreversible. +
 Format: `deleteall`
 
 ****
+Deletes every person in the last viewed list. The list refers to the list
+displayed from the last command such as `list` or `find`.
+****
 
 Examples:
 
