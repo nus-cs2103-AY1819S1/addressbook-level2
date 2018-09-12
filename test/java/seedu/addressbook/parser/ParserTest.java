@@ -12,17 +12,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.addressbook.commands.AddCommand;
-import seedu.addressbook.commands.ClearCommand;
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.DeleteCommand;
-import seedu.addressbook.commands.ExitCommand;
-import seedu.addressbook.commands.FindCommand;
-import seedu.addressbook.commands.HelpCommand;
-import seedu.addressbook.commands.IncorrectCommand;
-import seedu.addressbook.commands.ListCommand;
-import seedu.addressbook.commands.ViewAllCommand;
-import seedu.addressbook.commands.ViewCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
@@ -67,6 +57,12 @@ public class ParserTest {
     public void parse_helpCommand_parsedCorrectly() {
         final String input = "help";
         parseAndAssertCommandType(input, HelpCommand.class);
+    }
+
+    @Test
+    public void parse_searchNumberCommand_parsedCorrectly() {
+        final String input = "search";
+        parseAndAssertCommandType(input, IncorrectCommand.class);
     }
 
     @Test
@@ -195,6 +191,16 @@ public class ParserTest {
         final FindCommand result =
                 parseAndAssertCommandType(input, FindCommand.class);
         assertEquals(keySet, result.getKeywords());
+    }
+    /*
+     * Tests for search number command ===========================================================================
+     */
+
+    @Test
+    public void parse_searchCommandWithAlphabets_errorMessage() {
+        final String resultMessage = "Please enter only numerals.";
+        final String[] inputs = {"search abcdefg"};
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
 
     /*
