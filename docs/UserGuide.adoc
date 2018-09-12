@@ -91,6 +91,21 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Finding all persons are similar to any keyword in their name: `fuzzyFind`
+
+Finds persons whose names are similar to any of the given keywords. +
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+[NOTE]
+====
+The 'similar' means the https://en.wikipedia.org/wiki/Levenshtein_distance[levenshtein distance] between two words is less than or equal to 2.
+====
+
+Examples:
+
+* `fuzzyFind Betsy Tim John` +
+Returns Any person having names similar to `Betsy`, `Tim`, or `John`.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
