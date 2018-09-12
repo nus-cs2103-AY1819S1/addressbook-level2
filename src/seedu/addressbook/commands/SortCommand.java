@@ -7,11 +7,11 @@ public class SortCommand extends Command{
             + "Sorts the list of users by name.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Address Book sorted.\n"
+    public static final String MESSAGE_SUCCESS = "Address Book sorted.\n";
 
     @Override
     public CommandResult execute() {
         addressBook.sortAddressBook();
-        return CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }
