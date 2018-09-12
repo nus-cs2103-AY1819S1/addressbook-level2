@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
@@ -58,6 +59,7 @@ public class AddressBookDecoder {
                 new Phone(matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate"))),
                 new Email(matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate"))),
                 new Address(matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
+                new Gender(matcher.group("gender"), isPrivatePrefixPresent(matcher.group("isGenderPrivate"))),
                 getTagsFromEncodedPerson(matcher.group("tagArguments"))
         );
     }

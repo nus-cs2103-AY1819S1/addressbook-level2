@@ -19,6 +19,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.storage.StorageFile.StorageOperationException;
 import static seedu.addressbook.util.TestUtil.assertTextFilesEqual;
@@ -114,6 +115,7 @@ public class StorageFileTest {
                                 new Phone("98765432", false),
                                 new Email("johnd@gmail.com", false),
                                 new Address("John street, block 123, #01-01", false),
+                                new Gender()
                                 Collections.emptySet()));
         ab.addPerson(new Person(new Name("Betsy Crowe"),
                                 new Phone("1234567", true),

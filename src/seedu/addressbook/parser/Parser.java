@@ -128,6 +128,9 @@ public class Parser {
                     matcher.group("address"),
                     isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
 
+                    matcher.group("gender"),
+                    isPrivatePrefixPresent(matcher.group("isGendersPrivate")),
+
                     getTagsFromArgs(matcher.group("tagArguments"))
             );
         } catch (IllegalValueException ive) {
