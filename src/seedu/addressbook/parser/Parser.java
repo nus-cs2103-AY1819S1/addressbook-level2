@@ -131,6 +131,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses arguments in the context of the update person command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
     private Command prepareUpdate(String args) {
         final Matcher matcher = PERSON_UPDATE_FORMAT.matcher(args.trim());
 

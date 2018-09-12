@@ -55,6 +55,13 @@ public class AddressBook {
         allPersons.remove(toRemove);
     }
 
+    /**
+     * Updates the name of a person from the address book.
+     *
+     * @param toUpdate person to be updated
+     * @param name new name for the person
+     * @throws PersonNotFoundException if no such Person could be found.
+     */
     public void updatePerson(ReadOnlyPerson toUpdate, Name name) throws PersonNotFoundException {
         allPersons.update(toUpdate, name);
     }
