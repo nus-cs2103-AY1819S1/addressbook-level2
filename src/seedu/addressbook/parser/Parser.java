@@ -195,7 +195,6 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareView(String args) {
-
         try {
             final int targetIndex = parseArgsAsDisplayedIndex(args);
             return new ViewCommand(targetIndex);
