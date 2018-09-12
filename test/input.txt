@@ -136,6 +136,7 @@
 
   # deletes correct person
   delete 4
+  newest
   list
 
   # listing indexes get updated on next request
