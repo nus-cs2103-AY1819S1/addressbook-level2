@@ -40,7 +40,7 @@ public class ListCommand extends Command {
     /**
      * Sorts the persons list in AddressBook by the given key
      *
-     * @param sortKey
+     * @param sortKey used to sort the Persons in AddressBook
      * @return list of ReadOnlyPersons in sorted order
      */
     public List<ReadOnlyPerson> sortPersonsBy(String sortKey) {

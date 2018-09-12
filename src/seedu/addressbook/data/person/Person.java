@@ -20,6 +20,7 @@ public class Person implements ReadOnlyPerson {
 
     public static final String[] personFields = { "Name","Phone","Email","Address" };
 
+    /* maps a detail label to this person's detail */
     public final HashMap<String,String> fieldToFieldValue = new HashMap<>();
 
     private final Set<Tag> tags = new HashSet<>();
