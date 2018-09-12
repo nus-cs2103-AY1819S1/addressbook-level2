@@ -112,19 +112,17 @@
 
   # should consider no keywords as invalid command format
   fuzzyFind
-  # should only match full words in person names
-  fuzzyFind bet
-  # does not match if none have keyword
-  fuzzyFind 23912039120
-  # matching should be case-sensitive
-  fuzzyFind betsy
 
-  # find unique keyword
+  #not match (levenshtein distance is greater than 2)
+  fuzzyFind 23912039120
+  fuzzyFind 23912039120 Climenti
+  fuzzyFind bETSY
+
+  #match (levenshtein distance is less than or equal to 2)
   fuzzyFind Betsy
-  # find multiple with same keyword
-  fuzzyFind Dickson
-  # find multiple with some keywords
-  fuzzyFind Charlie Betsy
+  fuzzyFind dikson
+  fuzzyFind betsy Cho
+  fuzzyFind Charlie Besy
 
 ##########################################################
 # test delete person command

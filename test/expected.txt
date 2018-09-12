@@ -239,15 +239,15 @@
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
 || ===================================================
-|| Enter command: || [Command entered:  fuzzyFind bet]
-|| 
-|| 0 persons listed!
-|| ===================================================
 || Enter command: || [Command entered:  fuzzyFind 23912039120]
 || 
 || 0 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  fuzzyFind betsy]
+|| Enter command: || [Command entered:  fuzzyFind 23912039120 Climenti]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind bETSY]
 || 
 || 0 persons listed!
 || ===================================================
@@ -256,13 +256,18 @@
 || 
 || 1 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  fuzzyFind Dickson]
+|| Enter command: || [Command entered:  fuzzyFind dikson]
 || 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
 || 
 || 2 persons listed!
 || ===================================================
-|| Enter command: || [Command entered:  fuzzyFind Charlie Betsy]
+|| Enter command: || [Command entered:  fuzzyFind betsy Cho]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  fuzzyFind Charlie Besy]
 || 	1. Betsy Choo Tags: [secretive]
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 

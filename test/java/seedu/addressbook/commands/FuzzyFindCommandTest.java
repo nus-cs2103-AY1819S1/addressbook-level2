@@ -25,13 +25,17 @@ public class FuzzyFindCommandTest {
         assertFindCommandBehavior(new String[]{"Amy"}, Arrays.asList(td.amy));
 
         //same word, different case: not matched
-        assertFindCommandBehavior(new String[]{"aMy"}, Collections.emptyList());
+        assertFindCommandBehavior(new String[]{"aMy"}, Arrays.asList(td.amy));
 
-        //partial word: not matched
-        assertFindCommandBehavior(new String[]{"my"}, Collections.emptyList());
+        //partial word: not matched (levenshtein distance equals to 3)
+        assertFindCommandBehavior(new String[]{"aMY"}, Collections.emptyList());
 
         //multiple words: matched
         assertFindCommandBehavior(new String[]{"Amy", "Bill", "Candy", "Destiny"},
+                Arrays.asList(td.amy, td.bill, td.candy));
+
+        //multiple words: matched
+        assertFindCommandBehavior(new String[]{"Amy", "Biil", "candy", "Destiny"},
                 Arrays.asList(td.amy, td.bill, td.candy));
 
         //repeated keywords: matched
