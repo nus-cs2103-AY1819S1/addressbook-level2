@@ -53,6 +53,11 @@ public class Phone {
         return value.hashCode();
     }
 
+    public String getPhoneNumber() {
+        System.out.println("inside" + this.value);
+        return this.value;
+    }
+
     public boolean isPrivate() {
         return isPrivate;
     }
