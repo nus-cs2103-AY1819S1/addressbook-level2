@@ -106,6 +106,20 @@
   # find multiple with some keywords
   find Charlie Betsy
 
+
+##########################################################
+# test findPhoneNumber command
+##########################################################
+
+  # should consider no keywords as invalid command format
+  findPhoneNumber
+  # only match one phoen number
+  findPhoneNumber 444444
+  # contain two phone number
+  findPhoneNumber 444444 111111
+  # phone number that is not listed
+  findPhoneNumber 98766789
+
 ##########################################################
 # test delete person command
 ##########################################################

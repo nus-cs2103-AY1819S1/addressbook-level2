@@ -47,7 +47,6 @@ public class FindPhoneNumberCommand extends Command {
     private List<ReadOnlyPerson> getPersonsWithPhoneNumber(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
-            System.out.println(person.getPhone());
             final Set<String> personWithPhoneNumber = new HashSet<String>();
             personWithPhoneNumber.add(person.getPhone().toString());
             if (!Collections.disjoint(personWithPhoneNumber, keywords)) {
