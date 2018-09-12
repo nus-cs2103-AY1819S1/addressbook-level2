@@ -2,6 +2,7 @@ package seedu.addressbook.data;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static seedu.addressbook.util.TestUtil.getSize;
 import static seedu.addressbook.util.TestUtil.isEmpty;
 import static seedu.addressbook.util.TestUtil.isIdentical;
@@ -72,7 +73,7 @@ public class AddressBookTest {
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
 
         emptyAddressBook = new AddressBook();
-        defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin));
+        defaultAddressBook = new AddressBook(new UniquePersonList(bobChaplin, aliceBetsy));
     }
 
     @Rule
@@ -111,7 +112,7 @@ public class AddressBookTest {
         assertFalse(defaultAddressBook.containsPerson(aliceBetsy));
 
         int numberOfPersonsAfterRemoval = getSize(defaultAddressBook.getAllPersons());
-        assertTrue(numberOfPersonsAfterRemoval == numberOfPersonsBeforeRemoval - 1);
+        assertEquals(numberOfPersonsAfterRemoval, numberOfPersonsBeforeRemoval - 1);
 
     }
 
@@ -129,9 +130,18 @@ public class AddressBookTest {
     }
 
     @Test
-    public void getAllPersons() throws Exception {
+    public void sortAddressBook() throws Exception {
+        defaultAddressBook.sortAddressBook();
         UniquePersonList allPersons = defaultAddressBook.getAllPersons();
         UniquePersonList personsToCheck = new UniquePersonList(aliceBetsy, bobChaplin);
+
+        assertTrue(isIdentical(allPersons, personsToCheck));
+    }
+
+    @Test
+    public void getAllPersons() throws Exception {
+        UniquePersonList allPersons = defaultAddressBook.getAllPersons();
+        UniquePersonList personsToCheck = new UniquePersonList(bobChaplin, aliceBetsy);
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
