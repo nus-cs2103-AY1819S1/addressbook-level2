@@ -87,7 +87,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            return prepareList(arguments);
 
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
@@ -175,6 +175,19 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+    }
+
+    /**
+     * Parses arguments in the context of the list command.
+     */
+    private Command prepareList(String args) {
+
+        try {
+            final int targetIndex = Integer.parseInt(args.trim());
+            return new ListCommand(targetIndex);
+        } catch (Exception e){
+            return new ListCommand();
         }
     }
 
