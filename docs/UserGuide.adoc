@@ -91,6 +91,26 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Finding all persons containing phone numbers that user input: `findPhoneNumber`
+
+Finds persons whose names contain any of the given keywords. +
+Format: `findPhoneNumber KEYWORD [MORE_KEYWORDS]`
+
+[NOTE]
+====
+The search is case sensitive, the order of the keywords does not matter, only the name is searched,
+and persons matching at least one keyword will be returned (i.e. `OR` search).
+====
+
+Examples:
+
+* `findPhoneNumber 12345678`
+Returns `John Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]`.
+
+* `findPhoneNumber 98765432 99065432`
+Returns '1. John Doe Phone: 98765432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]
+         2. Jason Van Phone: 99065432 Email: johnd@gmail.com Address: 311, Clementi Ave 2, #02-25 Tags: [owesMoney][friends]'
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
