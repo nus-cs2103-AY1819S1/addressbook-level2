@@ -74,7 +74,7 @@ Format: `list`
 
 == Counting all persons: `count`
 
-Shows the number of all persons in the address book.
+Shows the number of all persons in the address book. +
 Format: `count`
 
 == Finding all persons containing any keyword in their name: `find`
