@@ -76,7 +76,8 @@ public class UniquePersonList implements Iterable<Person> {
      * Returns an modifiable java List view.
      */
     public List<Person> mutableListView() {
-        return internalList;
+        List<Person> copyPersonList = new ArrayList<>(internalList);
+        return copyPersonList;
     }
 
     /**
