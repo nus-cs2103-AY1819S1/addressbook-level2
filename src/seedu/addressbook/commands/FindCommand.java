@@ -1,10 +1,6 @@
 package seedu.addressbook.commands;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
@@ -50,11 +46,34 @@ public class FindCommand extends Command {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
             final Set<String> wordsInName = new HashSet<>(person.getName().getWordsInName());
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (!disjointIgnoreCase(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
     }
+    /**
+     * This is a case insensitive version of disjoint method
+     *
+     * @param coll1
+     * @param coll2
+     * @return  boolean value of the result of disjoint comparsion
+     */
+    private static boolean disjointIgnoreCase(Collection<String> coll1, Collection<String> coll2) {
+        return Collections.disjoint(lowercased(coll1), lowercased(coll2));
+    }
 
+    /**
+     * This method transforms collection items to lower case
+     *
+     * @param coll
+     * @return lower case string collection
+     */
+    private static Collection<String> lowercased(Collection<String> coll) {
+        Collection<String> lowercase = new HashSet<String>();
+        for(String item: coll) {
+            lowercase.add(item.toLowerCase());
+        }
+        return lowercase;
+    }
 }
