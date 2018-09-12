@@ -96,10 +96,10 @@ public class Parser {
             return prepareViewAll(arguments);
 
         case ExitCommand.COMMAND_WORD:
-            return new ExitCommand()
+            return new ExitCommand();
 
         case SortCommand.COMMAND_WORD:
-            return new ListCommand();
+            return new SortCommand();
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:
