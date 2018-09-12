@@ -1,5 +1,4 @@
 package seedu.addressbook.commands;
-import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.util.List;
@@ -21,9 +20,9 @@ public class ShowListCommand extends Command {
     }
 
     /**
-     * Formats the stats message that informs the user of statistics.
-     * @param personList The list of persons to read from.
-     * @return A string representation of the statistics of personList.
+     * print the number of ppl.
+     * @param personList The list of ppl in addressbook.
+     * @return A string presenting the number of ppl.
      */
     public String setList(List<ReadOnlyPerson> personList) {
         int numPeople = personList.size();
