@@ -106,6 +106,20 @@
   # find multiple with some keywords
   find Charlie Betsy
 
+  ##########################################################
+  # test find persons using phone number command
+  ##########################################################
+
+    # should consider no phone number as invalid command format
+    findP
+    # should only match complete phone number in person phone numbers
+    findP 111111
+    # does not match if phone number is partial
+    findP 11
+    # does not match if phone number does not exist in all persons
+    findP 12131415
+
+
 ##########################################################
 # test delete person command
 ##########################################################
