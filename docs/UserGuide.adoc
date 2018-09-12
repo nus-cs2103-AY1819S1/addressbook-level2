@@ -91,6 +91,21 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Finding person(s) with a given phone number: `num`
+
+Finds person(s) whose phone contains the given 8-digit number. +
+Format: `num 8-DIGIT-NUMBER`
+
+[NOTE]
+====
+The search is sensitive to having exactly 8digits as per info supplied by the user when adding.
+Multiple people with the same contact number will be listed.
+====
+
+Examples:
+* `find 12345678` +
+Returns anyone with the phone number 12345678.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +
