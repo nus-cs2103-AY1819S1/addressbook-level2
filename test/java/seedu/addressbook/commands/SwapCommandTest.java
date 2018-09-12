@@ -31,7 +31,7 @@ public class SwapCommandTest {
         assertSwapSuccessful(AMY_POS, BILL_POS);
         assertSwapSuccessful(CANDY_POS, DAN_POS);
         assertSwapFailed(AMY_POS,AMY_POS);
-        assertSwapFailed(AMY_POS,9999);
+        assertSwapFailed(AMY_POS,-10);
         assertSwapFailed(0,BILL_POS);
     }
 

@@ -264,7 +264,7 @@ public class Parser {
             return new SwapCommand(targetsArray[0], targetsArray[1]);
         } catch (ParseException pe) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    ViewAllCommand.MESSAGE_USAGE));
+                    SwapCommand.MESSAGE_USAGE));
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
@@ -285,8 +285,11 @@ public class Parser {
             throw new ParseException("Could not find index number to parse");
         }
         String[] stringArgs = matcher.group("targetIndex").split(" ");
-        int[] intArray = {Integer.parseInt(stringArgs[0]), Integer.parseInt(stringArgs[1])};
-        return intArray;
+        if( stringArgs.length == 2) {
+            int[] intArray = {Integer.parseInt(stringArgs[0]), Integer.parseInt(stringArgs[1])};
+            return intArray;
+        }
+        throw new ParseException("Could not find index number to parse");
     }
 
 
