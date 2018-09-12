@@ -49,12 +49,11 @@ public class FindCommand extends Command {
     private List<ReadOnlyPerson> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final List<ReadOnlyPerson> matchedPersons = new ArrayList<>();
 
-        final ArrayList<String> lower_keywords = new ArrayList<>();
+        final ArrayList<String> lowerKeywords = new ArrayList<>();
         //get a lowercase keywords list
-        for(String newSplitWords : keywords)
-        {
+        for(String newSplitWords : keywords) {
             //System.out.println(newSplitWords);
-            lower_keywords.add(newSplitWords.toLowerCase());
+            lowerKeywords.add(newSplitWords.toLowerCase());
         }
 
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
@@ -65,7 +64,7 @@ public class FindCommand extends Command {
                 lower_wordsInName.add(inWord.toLowerCase());
             }
             //compare lowercase to avoid case-sensitivity
-            if (!Collections.disjoint(lower_wordsInName, lower_keywords)) {
+            if (!Collections.disjoint(lower_wordsInName, lowerKeywords)) {
                 matchedPersons.add(person);
             }
         }
