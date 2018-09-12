@@ -17,6 +17,7 @@ import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
@@ -80,11 +81,12 @@ public class AddCommandTest {
      * Asserts that attempting to construct an add command with the supplied
      * invalid data throws an IllegalValueException
      */
-    private void assertConstructingInvalidAddCmdThrowsException(String name, String phone,
+    private void assertConstructingInvalidAddCmdThrowsException(String name, String phone, String gender,
             boolean isPhonePrivate, String email, boolean isEmailPrivate, String address,
+            boolean isGenderPrivate, String gender,
             boolean isAddressPrivate, Set<String> tags) {
         try {
-            new AddCommand(name, phone, isPhonePrivate, email, isEmailPrivate, address, isAddressPrivate,
+            new AddCommand(name, phone, isPhonePrivate, email, isEmailPrivate, address, isAddressPrivate, gender, isGenderPrivate,
                     tags);
         } catch (IllegalValueException e) {
             return;

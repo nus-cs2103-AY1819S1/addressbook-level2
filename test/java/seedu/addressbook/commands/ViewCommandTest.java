@@ -14,6 +14,7 @@ import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
+import seedu.addressbook.data.person.Gender;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
@@ -49,6 +50,7 @@ public class ViewCommandTest {
                                              new Phone("123", true),
                                              new Email("some@hey.go", true),
                                              new Address("nus", false),
+                                             new Gender("Male",false),
                                              Collections.emptySet());
         List<ReadOnlyPerson> listWithExtraPerson
                 = new ArrayList<ReadOnlyPerson>(listWithAllTypicalPersons);
