@@ -176,10 +176,10 @@ public class Parser {
     private Command prepareTag(String args) {
         try {
             String[] splittedArgs = args.split(" ");
-            if (splittedArgs.length != 2) {
+            if (splittedArgs.length != 3) {
                 throw new ParseException("Invalid number of arguments");
             }
-            final int targetIndex = parseArgsAsDisplayedIndex(splittedArgs[0]);
+            final int targetIndex = parseArgsAsDisplayedIndex(splittedArgs[1]);
             return new TagCommand(targetIndex, splittedArgs[2]);
         } catch (ParseException pe) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
