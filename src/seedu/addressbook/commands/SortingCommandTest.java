@@ -27,8 +27,60 @@
                 new Email("sam@el.com", false), new Address("44H Buana Road", false),
                 Collections.emptySet());
         
-        addressBook = TestUtil.createAddressBook(SamAl, SamUl, SamIl, SamEl);
+         addressBook = TestUtil.createAddressBook(SamAl, SamUl, SamIl, SamEl);
         
 
-        sortedList = TestUtil.createList(SamAl, SamEl, SamIl, SamUl);
+         sortedList = TestUtil.createList(SamAl, SamEl, SamIl, SamUl);
+ }
+  
+   @Test
+ public void execute_addressBookIsSorted() {
+         assertSortSuccessful(addressBook, sortedList);
+ }
+ 
+ /**
+   * Creates a new sorting command.
+   *
+   */
+ private SortingCommand createSortingCommand(AddressBook addressBook,
+                                             List<ReadOnlyPerson> displayList) {
+ 
+         SortingCommand command = new SortingCommand();
+         command.setData(addressBook, displayList);
+ 
+         return command;
+ }
+  /**
+    * Asserts that the address book is successfully sorted.
+    *
+    * The addressBook passed in will not be modified (no side effects).
+    */
+  private void assertSortingSuccessful(AddressBook addressBook,
+                                       List<ReadOnlyPerson> displayList) {
+         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
+         expectedAddressBook.sort();
+         String expectedMessage = SortingCommand.MESSAGE_SORTED;
+ 
+         AddressBook actualAddressBook = TestUtil.clone(addressBook);
+ 
+         SortingCommand command = createSortingCommand(actualAddressBook, displayList);
+         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
+ 
+  }
+ 
+  /**
+    * Executes the command, and checks that the execution was what we had expected.
+    */
+  private void assertCommandBehaviour(SortingCommand sortCommand, String expectedMessage,
+                                         AddressBook expectedAddressBook, AddressBook actualAddressBook) {
+ 
+         CommandResult result = sortCommand.execute();
+ 
+         assertEquals(expectedMessage, result.feedbackToUser);
+         assertEquals(expectedAddressBook.getAllPersons(), actualAddressBook.getAllPersons());
+  }
+ 
+ 
+ 
+ 
  }
