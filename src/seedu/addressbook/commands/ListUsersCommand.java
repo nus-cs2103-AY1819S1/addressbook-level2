@@ -16,7 +16,7 @@ public class ListUsersCommand extends Command{
             + ": Displays all created users and password.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE = "TESTING MESSAGE";
+    public static final String SUCCESS_MESSAGE = "Users and password listed.";
 
     @Override
     public CommandResult execute() {
@@ -34,6 +34,6 @@ public class ListUsersCommand extends Command{
             e.printStackTrace();
         }
 
-        return new CommandResult(MESSAGE);
+        return new CommandResult(SUCCESS_MESSAGE);
     }
 }

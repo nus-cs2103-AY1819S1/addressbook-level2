@@ -16,10 +16,10 @@ public class CreateCommand extends Command {
             + " user123 p/password123 ";
 
     public CreateCommand(String username, String password) {
-        System.out.println("Manage to call \"create\" command");
+//        System.out.println("Manage to call \"create\" command");
         System.out.println("New User Created: Username: " + username + " Password: " + password);
 
-        try {
+        try { //TODO: extract this from CreateCommand
             BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true));
 
             writer.write(username + ":" + password + "\n");
