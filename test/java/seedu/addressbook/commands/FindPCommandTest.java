@@ -27,12 +27,6 @@ public class FindPCommandTest {
 
         //different phone number: not matched
         assertFindPCommandBehavior("91234567", Collections.emptyList());
-
-        //partially matched phone number: not matched
-        assertFindPCommandBehavior("9111", Collections.emptyList());
-
-        //matched phone number with extra digits : not matched
-        assertFindPCommandBehavior("9111911111", Collections.emptyList());
     }
 
     /**
