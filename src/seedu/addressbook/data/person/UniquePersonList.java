@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Comparator;
 
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
@@ -81,6 +82,22 @@ public class UniquePersonList implements Iterable<Person> {
         return Collections.unmodifiableList(internalList);
     }
 
+    /**
+     * Returns an unmodifiable java List view with elements cast as immutable {@link ReadOnlyPerson}s.
+     * For use with other methods/libraries.
+     * Any changes to the internal list/elements are immediately visible in the returned list.
+     */
+    public List<ReadOnlyPerson> sortedListView() {
+        final List<Person> sorted = new ArrayList<>();
+        sorted.addAll(internalList);
+        sorted.sort(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getName().toString().compareToIgnoreCase(o2.getName().toString());
+            }
+        });
+        return Collections.unmodifiableList(sorted);
+    }
 
     /**
      * Checks if the list contains an equivalent person as the given argument.
