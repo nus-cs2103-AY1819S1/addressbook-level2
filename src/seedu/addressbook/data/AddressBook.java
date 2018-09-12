@@ -68,6 +68,10 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    public ReadOnlyPerson getLastPerson() {
+        return allPersons.getLast();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

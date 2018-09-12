@@ -122,6 +122,10 @@ public class UniquePersonList implements Iterable<Person> {
         }
     }
 
+    public ReadOnlyPerson getLast() {
+        return internalList.get(internalList.size() - 1);
+    }
+
     /**
      * Clears all persons in list.
      */
