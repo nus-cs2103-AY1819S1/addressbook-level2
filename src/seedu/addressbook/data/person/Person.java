@@ -70,6 +70,15 @@ public class Person implements ReadOnlyPerson {
         tags.addAll(replacement);
     }
 
+    /**
+     * Adds the argument tag to this person's tags
+     * @param newTag the tag to add
+     * @return true if the tag has been added successfully, false if it already exists.
+     */
+    public boolean addTag(Tag newTag) {
+        return tags.add(newTag);
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
