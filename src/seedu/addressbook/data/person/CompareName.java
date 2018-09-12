@@ -1,5 +1,8 @@
+package seedu.addressbook.data.person;
+
 import java.util.Comparator;
- class CompareName implements Comparator<Person>{
+
+class CompareName implements Comparator<Person>{
     @Override
     public int compare(Person p1, Person p2) {
         return p1.getName().toString()
