@@ -129,6 +129,12 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
+    public void sort(){
+        Collections.sort(internalList,
+                (person1, person2) ->
+                        person1.getName().toString().compareToIgnoreCase(person2.getName().toString()));
+    }
+
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();
