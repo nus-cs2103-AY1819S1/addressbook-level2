@@ -25,6 +25,7 @@
 || viewall: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: viewall 1
+|| about: Shows information about this application
 || help: Shows program usage instructions.
 || Example: help
 || exit: Exits the program.
@@ -45,6 +46,13 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  about]
+|| This is a CLI (Command Line Interface) Address Book application written in OOP fashion.
+|| 
+|| It is a Java sample application intended for students learning Software Engineering while using Java as the main programming language.
+|| 
+|| It provides a reasonably well-written code example that is significantly bigger than what students usually write in data structure modules.
 || ===================================================
 || Enter command: || [Command entered:  add wrong args wrong args]
 || Invalid command format! 
