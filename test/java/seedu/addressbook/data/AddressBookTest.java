@@ -141,6 +141,6 @@ public class AddressBookTest {
         assertTrue(defaultAddressBook.getTotalPersons() == 2);
 
         defaultAddressBook.clear();
-        assertTrue(defaultAddressBook.getTotalPersons()) == 0;
+        assertTrue(defaultAddressBook.getTotalPersons() == 0);
     }
 }
