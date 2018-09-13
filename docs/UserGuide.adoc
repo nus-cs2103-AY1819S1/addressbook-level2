@@ -114,7 +114,7 @@ Deletes the 1st person in the results of the `find` command.
 == Display total number of persons in address book : `total`
 
 Shows the total number of persons in the address book. +
-Format: `list`
+Format: `total`
 
 == View non-private details of a person : `view`
 
