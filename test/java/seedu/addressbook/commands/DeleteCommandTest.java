@@ -92,12 +92,12 @@ public class DeleteCommandTest {
     /**
      * Creates a new delete command.
      *
-     * @param targetVisibleIndex of the person that we want to delete
+     * @param targetVisibleIndices of the people that we want to delete
      */
-    private DeleteCommand createDeleteCommand(int targetVisibleIndex, AddressBook addressBook,
+    private DeleteCommand createDeleteCommand(List<Integer> targetVisibleIndices, AddressBook addressBook,
                                                                       List<ReadOnlyPerson> displayList) {
 
-        DeleteCommand command = new DeleteCommand(targetVisibleIndex);
+        DeleteCommand command = new DeleteCommand(new HashSet<>(targetVisibleIndices));
         command.setData(addressBook, displayList);
 
         return command;
@@ -123,7 +123,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-        DeleteCommand command = createDeleteCommand(invalidVisibleIndex, addressBook, displayList);
+        DeleteCommand command = createDeleteCommand(makeListFromIndex(invalidVisibleIndex), addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -136,7 +136,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
 
-        DeleteCommand command = createDeleteCommand(visibleIndex, addressBook, displayList);
+        DeleteCommand command = createDeleteCommand(makeListFromIndex(visibleIndex), addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -154,11 +154,11 @@ public class DeleteCommandTest {
 
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
         expectedAddressBook.removePerson(targetPerson);
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson);
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PEOPLE_SUCCESS, targetPerson);
 
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
 
-        DeleteCommand command = createDeleteCommand(targetVisibleIndex, actualAddressBook, displayList);
+        DeleteCommand command = createDeleteCommand(makeListFromIndex(targetVisibleIndex), actualAddressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
     }
 
