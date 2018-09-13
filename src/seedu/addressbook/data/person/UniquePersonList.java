@@ -123,6 +123,34 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Removes the equivalent person from the list.
+     * This method differs from {@code remove(ReadOnlyPerson toRemove)} in that
+     * the person is only compared based on their name and phone number.
+     * Internally, this methods calls {@code remove(ReadOnlyPerson toRemove)}
+     * to remove the person.
+     *
+     * @throws PersonNotFoundException if no such person could be found in the list.
+     */
+    public void removeShallow(ReadOnlyPerson toRemove) throws PersonNotFoundException {
+        for (Person p : internalList) {
+            if (p.isSamePerson(toRemove)) {
+                remove(p);
+                return;
+            }
+        }
+        throw new PersonNotFoundException();
+    }
+
+    /**
+     * Returns the size of the internal list.
+     *
+     * @return the size of the internal list.
+     */
+    public int size() {
+        return internalList.size();
+    }
+
+    /**
      * Clears all persons in list.
      */
     public void clear() {
