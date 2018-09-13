@@ -91,6 +91,26 @@ Returns `John Doe` but not `john`.
 * `find Betsy Tim John` +
 Returns Any person having names `Betsy`, `Tim`, or `John`.
 
+== Updating a person : `update`
+
+Updates the specified person and changes his/her name.
+Format: `update INDEX NEW_NAME`
+
+****
+Updates the name of the person at the specified `INDEX` with `NEW_NAME`.
+The index refers to the index number shown in the most recent listing.
+****
+
+Examples:
+
+* `list` +
+`update 2 John` +
+Updates the name of the 2nd person to John.
+
+* `find Betsy` +
+`update 1 Betty` +
+Updates the name of the 1st person in the results of the `find` command to Betty.
+
 == Deleting a person : `delete`
 
 Deletes the specified person from the address book. Irreversible. +

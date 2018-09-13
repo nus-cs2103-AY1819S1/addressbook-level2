@@ -5,6 +5,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.data.person.Name;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -52,6 +53,17 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+    }
+
+    /**
+     * Updates the name of a person from the address book.
+     *
+     * @param toUpdate person to be updated
+     * @param name new name for the person
+     * @throws PersonNotFoundException if no such Person could be found.
+     */
+    public void updatePerson(ReadOnlyPerson toUpdate, Name name) throws PersonNotFoundException {
+        allPersons.update(toUpdate, name);
     }
 
     /**
