@@ -27,13 +27,13 @@ public class ShowListCommand extends Command{
     public String setList(List<ReadOnlyPerson> personList) {
         int numPeople = personList.size();
         return String.format(
-                "Current number of people in address book : %1$s!", numPeople) + personList.toString();
+                "Current number of people in address book : %1$s!", numPeople) ;
     }
     public String createStatsMessage(List<ReadOnlyPerson> personList) {
 
         int numPeople = personList.size();
         return String.format(
-                "Current number of people in address book : %1$s!", numPeople) + personList.toString();
+                "Current number of people in address book : %1$s!", numPeople);
     }
 
 }

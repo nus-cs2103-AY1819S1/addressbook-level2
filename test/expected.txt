@@ -29,6 +29,8 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
+|| showList: Shows the list of people in address book.
+|| Example: showList
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || The person index provided is invalid
