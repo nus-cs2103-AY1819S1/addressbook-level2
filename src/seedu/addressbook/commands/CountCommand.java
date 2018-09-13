@@ -1,4 +1,5 @@
 package seedu.addressbook.commands;
+
 /**
  * Shows total number of persons in address book.
  */
@@ -9,6 +10,7 @@ public class CountCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Counts the total number of contacts "
             + "in the address book.\n"
             + "Example: " + COMMAND_WORD;
+    
     public static final String MESSAGE_COUNTED = "Total number of persons in address book: %1$s";
 
     @Override

@@ -28,8 +28,8 @@ public class AddressBook {
      * @param persons external changes to this will not affect this address book
      */
     public AddressBook(UniquePersonList persons) {
-        sumPersons = getSize(persons);
         this.allPersons = new UniquePersonList(persons);
+        sumPersons = getSize(persons);
     }
 
     /**
@@ -39,9 +39,11 @@ public class AddressBook {
      */
     public static <T> int getSize(Iterable<T> persons) {
         int sumElements = 0;
-        for (T elem : persons) {
+
+        for (T element : persons) {
             sumElements++;
         }
+
         return sumElements;
     }
 
@@ -89,6 +91,9 @@ public class AddressBook {
 
     }
 
+    /**
+     * Returns total number of persons in the address book at the time of the call.
+     */
     public int getSumPersons() {
         return this.sumPersons;
 
