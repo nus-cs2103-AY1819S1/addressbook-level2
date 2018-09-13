@@ -72,6 +72,22 @@ Examples:
 Shows a list of all persons, along with their non-private details, in the address book. +
 Format: `list`
 
+== Sorting the address book: `sort`
+
+Sorts the address book by the specified keyword and display the sorted address book in a list. +
+Format: `sort KEYWORD`
+
+[NOTE]
+====
+The sorting keyword is case sensitive.
+====
+
+Examples:
+
+* `sort email` 
+
+* `sort address`
+
 == Finding all persons containing any keyword in their name: `find`
 
 Finds persons whose names contain any of the given keywords. +
