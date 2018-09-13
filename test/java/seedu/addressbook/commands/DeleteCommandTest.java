@@ -2,7 +2,9 @@ package seedu.addressbook.commands;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Before;
@@ -158,5 +160,11 @@ public class DeleteCommandTest {
 
         DeleteCommand command = createDeleteCommand(targetVisibleIndex, actualAddressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
+    }
+
+    private List<Integer> makeListFromIndex(int index) {
+        List<Integer> list = new ArrayList<>();
+        list.add(index);
+        return list;
     }
 }
