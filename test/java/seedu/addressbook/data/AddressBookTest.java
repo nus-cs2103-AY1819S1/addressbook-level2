@@ -140,6 +140,6 @@ public class AddressBookTest {
     public void count() {
         assertTrue(defaultAddressBook.getSumPersons() == 2);
         defaultAddressBook.clear();
-        assertTrue(defaultAddressBook.getSumPersons()) == 0;
+        assertTrue(defaultAddressBook.getSumPersons() == 0);
     }
 }
