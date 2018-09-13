@@ -13,7 +13,7 @@ public class UpdateCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Updates the person identified by the index number used in the last person listing.\n"
             + "Parameters: INDEX\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Example: " + COMMAND_WORD + " 1 John";
 
     public static final String MESSAGE_UPDATE_PERSON_SUCCESS = "Updated Person: %1$s";
 
