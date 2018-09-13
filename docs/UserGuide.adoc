@@ -176,6 +176,11 @@ Example:
 
 * `java seedu.addressbook.Main mydata.txt`
 
+== Sorting people : `sort`
+
+Sort all the people in the addressbook by name in alphabetically ascending order.
+Format: `sort`
+
 [NOTE]
 ====
 The file name must end in `.txt` for it to be acceptable to the program.
