@@ -17,6 +17,9 @@
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || Parameters: KEYWORD [MORE_KEYWORDS]...
 || Example: find alice bob charlie
+|| tag: Finds all persons whose tags contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: tag classmates friends family
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
@@ -198,6 +201,41 @@
 || Enter command: || [Command entered:  viewall 5]
 || Viewing person: Esther Potato Phone: 555555 Email: esther@not.a.real.potato Address: (private) 555, epsilon street Tags: [tubers][starchy]
 || ===================================================
+|| Enter command: || [Command entered:  tag]
+|| Invalid command format! 
+|| tag: Finds all persons whose tags contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: tag classmates friends family
+|| ===================================================
+|| Enter command: || [Command entered:  tag fri]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  tag 23912039120]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  tag Secretive]
+|| 
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  tag secretive]
+|| 	1. Betsy Choo Tags: [secretive]
+|| 
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  tag friends]
+|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+|| 
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  tag starchy school]
+|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	2. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+|| 
+|| 2 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  find]
 || Invalid command format! 
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
@@ -231,48 +269,6 @@
 || 	1. Betsy Choo Tags: [secretive]
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 
-|| 2 persons listed!
-|| ===================================================
-|| Enter command: tag
-|| [Command entered:tag]
-|| Invalid command format!
-|| tag: Finds all persons whose tags contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
-|| Parameters: KEYWORD [MORE_KEYWORDS]...
-|| Example: tag classmates friends family
-|| ===================================================
-|| Enter command: tag fri
-|| [Command entered:tag fri]
-||
-|| 0 persons listed!
-|| ===================================================
-|| Enter command: tag 23912039120
-|| [Command entered:tag 23912039120]
-||
-|| 0 persons listed!
-|| ===================================================
-|| Enter command: tag Secretive
-|| [Command entered:tag Secretive]
-||
-|| 0 persons listed!
-|| ===================================================
-|| Enter command: tag secretive
-|| [Command entered:tag secretive]
-|| 	1. Betsy Choo Tags: [secretive]
-||
-|| 1 persons listed!
-|| ===================================================
-|| Enter command: tag friends
-|| [Command entered:tag friends]
-|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
-||
-|| 2 persons listed!
-|| ===================================================
-|| Enter command: tag starchy school
-|| [Command entered:tag starchy school]
-|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
-|| 	2. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
-||
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  delete]
