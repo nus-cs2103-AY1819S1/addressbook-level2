@@ -100,8 +100,8 @@ public class ParserTest {
 
     @Test
     public void parse_deleteCommandArgsAreNotSpacedNumbers_errorMessage() {
-        final String[] inputs = { "delete notAnumber ", "delete 8*wh12", "delete 1, 2, 3, 4, 5" };
-        final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        final String[] inputs = { "delete notAnumber ", "delete 8*wh12", "delete 1,2s345" };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
 
