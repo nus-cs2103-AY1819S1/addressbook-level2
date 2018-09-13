@@ -39,6 +39,13 @@ public class AddressBook {
     }
 
     /**
+     * Edits a person in the address book.
+     */
+    public void editPerson(Person toEdit) {
+        allPersons.edit(toEdit);
+    }
+
+    /**
      * Returns true if an equivalent person exists in the address book.
      */
     public boolean containsPerson(ReadOnlyPerson key) {
