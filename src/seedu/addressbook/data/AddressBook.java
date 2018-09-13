@@ -13,6 +13,8 @@ public class AddressBook {
 
     private final UniquePersonList allPersons;
 
+    private int sumPersons = 0;
+
     /**
      * Creates an empty address book.
      */
@@ -27,6 +29,21 @@ public class AddressBook {
      */
     public AddressBook(UniquePersonList persons) {
         this.allPersons = new UniquePersonList(persons);
+        sumPersons = getSize(persons);
+    }
+
+    /**
+     * Returns the number of elements in the container behind an iterable.
+     *
+     */
+    public static <T> int getSize(Iterable<T> persons) {
+        int sumElements = 0;
+
+        for (T element : persons) {
+            sumElements++;
+        }
+
+        return sumElements;
     }
 
     /**
@@ -36,6 +53,7 @@ public class AddressBook {
      */
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
+        sumPersons++;
     }
 
     /**
@@ -52,6 +70,7 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+        sumPersons--;
     }
 
     /**
@@ -59,6 +78,7 @@ public class AddressBook {
      */
     public void clear() {
         allPersons.clear();
+        sumPersons = 0;
     }
 
     /**
@@ -66,6 +86,15 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+
+    }
+
+    /**
+     * Returns total number of persons in the address book at the time of the call.
+     */
+    public int getSumPersons() {
+        return this.sumPersons;
+
     }
 
     @Override

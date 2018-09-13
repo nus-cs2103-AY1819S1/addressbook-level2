@@ -107,6 +107,15 @@
   find Charlie Betsy
 
 ##########################################################
+# test count command
+##########################################################
+
+  # should only count the number of people inputted into the
+
+  # address book
+  count
+
+##########################################################
 # test delete person command
 ##########################################################
 
