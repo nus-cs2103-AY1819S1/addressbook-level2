@@ -55,6 +55,17 @@
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
 
 ##########################################################
+# test edit person command
+##########################################################
+
+  # should edit correctly
+  edit Esther Potato p/555555 e/estherpotato@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+  # should catch that the person is not in the address book
+  # should add in that person into the address book
+  edit Esther Carrot p/555555 e/esther@not.a.real.carrot pa/555, epsilon street t/tubers t/starchy
+  
+##########################################################
 # test view/viewall persons command
 ##########################################################
 
