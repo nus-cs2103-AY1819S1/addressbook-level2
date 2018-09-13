@@ -162,6 +162,12 @@ public class DeleteCommandTest {
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
     }
 
+    /**
+     * Creates a single-element List from a singular index.
+     *
+     * @param index of the person, to be the only addition to the List
+     * @return a List with a single element, the index provided as an argument
+     */
     private List<Integer> makeListFromIndex(int index) {
         List<Integer> list = new ArrayList<>();
         list.add(index);
