@@ -28,6 +28,7 @@ public class AddressBook {
      */
     public AddressBook(UniquePersonList persons) {
         this.allPersons = new UniquePersonList(persons);
+        this.totalPersons = getSize(persons);
     }
 
     /**
@@ -38,6 +39,19 @@ public class AddressBook {
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
         totalPersons++;
+    }
+
+    /**
+     * Returns the number of elements in the container behind an iterable.
+     */
+    public static <T> int getSize(Iterable<T> it) {
+        int numberOfElementsSeen = 0;
+
+        for (T elem : it) {
+            numberOfElementsSeen++;
+        }
+
+        return numberOfElementsSeen;
     }
 
     /**
