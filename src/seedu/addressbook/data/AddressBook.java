@@ -12,12 +12,13 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 public class AddressBook {
 
     private final UniquePersonList allPersons;
-
+    private static int numOfPersons;
     /**
      * Creates an empty address book.
      */
     public AddressBook() {
         allPersons = new UniquePersonList();
+        numOfPersons = 0;
     }
 
     /**
@@ -26,7 +27,21 @@ public class AddressBook {
      * @param persons external changes to this will not affect this address book
      */
     public AddressBook(UniquePersonList persons) {
+        numOfPersons = getSize(persons);
         this.allPersons = new UniquePersonList(persons);
+    }
+
+    /**
+     * Returns the number of elements in the container behind an iterable.
+     */
+    public static <T> int getSize(Iterable<T> it) {
+        int numberOfElementsSeen = 0;
+
+        for (T elem : it) {
+            numberOfElementsSeen++;
+        }
+
+        return numberOfElementsSeen;
     }
 
     /**
@@ -36,6 +51,7 @@ public class AddressBook {
      */
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
+        numOfPersons++;
     }
 
     /**
@@ -52,13 +68,22 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+        numOfPersons--;
     }
 
     /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
+        numOfPersons = 0;
         allPersons.clear();
+    }
+
+    /**
+     * Returns the number of persons in the address book.
+     */
+    public int getNumOfPersons() {
+        return numOfPersons;
     }
 
     /**

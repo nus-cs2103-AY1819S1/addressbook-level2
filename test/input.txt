@@ -1,4 +1,11 @@
 ##########################################################
+# count number of persons before anyone is added
+##########################################################
+
+  #should be 0
+  count
+
+##########################################################
 # invalid command
 ##########################################################
 
@@ -105,6 +112,14 @@
   find Dickson
   # find multiple with some keywords
   find Charlie Betsy
+
+##########################################################
+# test count command
+##########################################################
+
+  # should only count the number of people inputted into the
+  # address book
+  count
 
 ##########################################################
 # test delete person command

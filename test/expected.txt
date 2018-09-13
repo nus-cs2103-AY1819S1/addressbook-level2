@@ -5,6 +5,9 @@
 || Launch command format: java seedu.addressbook.Main [STORAGE_FILE_PATH]
 || Using storage file : addressbook.txt
 || ===================================================
+|| Enter command: || [Command entered:  count]
+|| There are 0 people in the address book.
+|| ===================================================
 || Enter command: || [Command entered:  sfdfd]
 || add: Adds a person to the address book. Contact details can be marked private by prepending 'p' to the prefix.
 || Parameters: NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...
@@ -29,6 +32,8 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
+|| count: Counts the number of person/s in the address book.
+|| Example: count
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || The person index provided is invalid
@@ -232,6 +237,9 @@
 || 	2. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
 || 
 || 2 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  count]
+|| There are 5 people in the address book.
 || ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 

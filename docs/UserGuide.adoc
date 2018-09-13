@@ -176,6 +176,11 @@ Example:
 
 * `java seedu.addressbook.Main mydata.txt`
 
+== Counting the number of persons in the address book: `count`
+
+Counts the number of persons in the address book. +
+Format: `count`
+
 [NOTE]
 ====
 The file name must end in `.txt` for it to be acceptable to the program.
