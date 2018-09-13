@@ -25,7 +25,7 @@
 || viewall: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: viewall 1
-|| count: Counts the total number of persons in the address book.
+|| count: Counts the total number of contacts in the address book.
 || Example: count
 || help: Shows program usage instructions.
 || Example: help
@@ -236,7 +236,7 @@
 || 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  count]
-|| There are 5 people in the address book.
+|| Total number of persons in address book: 5
 || ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 

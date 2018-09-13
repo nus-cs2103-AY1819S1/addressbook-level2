@@ -35,7 +35,6 @@ public class AddressBook {
     /**
      * Returns the number of elements in the container behind an iterable.
      *
-     *
      */
     public static <T> int getSize(Iterable<T> persons) {
         int sumElements = 0;
@@ -46,7 +45,6 @@ public class AddressBook {
 
         return sumElements;
     }
-
 
     /**
      * Adds a person to the address book.
