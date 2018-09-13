@@ -27,7 +27,21 @@ public class AddressBook {
      * @param persons external changes to this will not affect this address book
      */
     public AddressBook(UniquePersonList persons) {
+        numOfPersons = getSize(persons);
         this.allPersons = new UniquePersonList(persons);
+    }
+
+    /**
+     * Returns the number of elements in the container behind an iterable.
+     */
+    public static <T> int getSize(Iterable<T> it) {
+        int numberOfElementsSeen = 0;
+
+        for (T elem : it) {
+            numberOfElementsSeen++;
+        }
+
+        return numberOfElementsSeen;
     }
 
     /**
