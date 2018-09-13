@@ -36,6 +36,11 @@ public class Command {
         return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, personsDisplayed.size());
     }
 
+    /* get message of total number */
+    public static String getMessageForTotalNumber(List<? extends ReadOnlyPerson> personsDisplayed) {
+        return String.format(Messages.MESSAGE_TOTAL, personsDisplayed.size());
+    }
+
     /**
      * Executes the command and returns the result.
      */
