@@ -258,7 +258,6 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareSwap(String args) {
-        //TODO
         try {
             int[] targetsArray = parseArgsAsTwoDisplayedIndex(args);
             return new SwapCommand(targetsArray[0], targetsArray[1]);
