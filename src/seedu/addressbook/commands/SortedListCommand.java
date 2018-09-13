@@ -13,7 +13,7 @@ public class SortedListCommand extends Command {
     public static final String COMMAND_WORD = "sortedlist";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays all persons in the address book as a list in ascending alphabetical order.\n"
+            + ": Displays all persons in the address book as a list in ascending alphabetical order with index numbers.\n"
             + "Example: " + COMMAND_WORD;
 
     @Override
