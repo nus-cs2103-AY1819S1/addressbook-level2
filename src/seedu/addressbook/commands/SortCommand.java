@@ -22,19 +22,18 @@ public class SortCommand extends Command {
     private final String keyword;
     
     public SortCommand(String keyword) {
-        this.keyword = keyword;
+        this.keyword = keyword.trim();
     }
     
     @Override
     public CommandResult execute() {
         try {
-            System.out.println("keyword: $" + keyword);
             addressBook.sort((ReadOnlyPerson p1, ReadOnlyPerson p2) -> {
                 switch (keyword) {
-                    case " name": return p1.getName().toString().compareTo(p2.getName().toString());
-                    case " phone": return p1.getPhone().toString().compareTo(p2.getPhone().toString());
-                    case " email": return p1.getEmail().toString().compareTo(p2.getEmail().toString());
-                    case " address": return p1.getAddress().toString().compareTo(p2.getAddress().toString());
+                    case "name": return p1.getName().toString().compareTo(p2.getName().toString());
+                    case "phone": return p1.getPhone().toString().compareTo(p2.getPhone().toString());
+                    case "email": return p1.getEmail().toString().compareTo(p2.getEmail().toString());
+                    case "address": return p1.getAddress().toString().compareTo(p2.getAddress().toString());
                     default:
                         throw new InvalidParameterException();
                 }

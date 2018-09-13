@@ -40,8 +40,8 @@ public class UtilsTest {
         assertAnyNull(null);
         
         // non-empty objects
-        assertAnyNull(1, 2, 3);
-        assertAnyNull("a", "b", "c");
+        assertNoneNull(1, 2, 3);
+        assertNoneNull("a", "b", "c");
         
     }
 
@@ -55,5 +55,9 @@ public class UtilsTest {
     
     private void assertAnyNull(Object... objects) {
         assertTrue(Utils.isAnyNull(objects));
+    }
+    
+    private void assertNoneNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 }
