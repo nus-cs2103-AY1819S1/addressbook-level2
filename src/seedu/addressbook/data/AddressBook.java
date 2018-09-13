@@ -12,6 +12,7 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 public class AddressBook {
 
     private final UniquePersonList allPersons;
+    private int sumPersons = 0;
 
     /**
      * Creates an empty address book.
@@ -36,6 +37,7 @@ public class AddressBook {
      */
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
+        sumPersons++;
     }
 
     /**
@@ -52,6 +54,7 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+        sumPersons--;
     }
 
     /**
@@ -59,6 +62,7 @@ public class AddressBook {
      */
     public void clear() {
         allPersons.clear();
+        sumPersons = 0;
     }
 
     /**
@@ -66,6 +70,12 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+
+    }
+
+    public int getSumPersons() {
+        return this.sumPersons;
+
     }
 
     @Override
