@@ -29,6 +29,8 @@
 || Example: help
 || exit: Exits the program.
 || Example: exit
+|| total: Returns the total number of entries in the address book.
+|| Example: total
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
 || The person index provided is invalid
