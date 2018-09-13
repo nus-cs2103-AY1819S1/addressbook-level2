@@ -14,6 +14,13 @@ public class AddressBook {
     private final UniquePersonList allPersons;
 
     /**
+     * Sort the address book.
+     */
+    public void SortPerson() {
+        //sort all the person in the address book.
+    }
+
+    /**
      * Creates an empty address book.
      */
     public AddressBook() {
