@@ -2,8 +2,7 @@ package seedu.addressbook.commands;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -87,15 +86,24 @@ public class DeleteCommandTest {
         assertDeletionSuccessful(middleIndex, addressBook, listWithSurnameDoe);
     }
 
+    @Test
+    public void execute_validIndex_peopleAreDeleted() throws PersonNotFoundException {
+        List<Integer> indicesToDelete = new ArrayList<>();
+        indicesToDelete.add(1);
+        indicesToDelete.add(2);
+
+        assertMultipleDeletionSuccessful(indicesToDelete, addressBook, listWithSurnameDoe);
+    }
+
     /**
      * Creates a new delete command.
      *
-     * @param targetVisibleIndex of the person that we want to delete
+     * @param targetVisibleIndices of the people that we want to delete
      */
-    private DeleteCommand createDeleteCommand(int targetVisibleIndex, AddressBook addressBook,
+    private DeleteCommand createDeleteCommand(List<Integer> targetVisibleIndices, AddressBook addressBook,
                                                                       List<ReadOnlyPerson> displayList) {
 
-        DeleteCommand command = new DeleteCommand(targetVisibleIndex);
+        DeleteCommand command = new DeleteCommand(new HashSet<>(targetVisibleIndices));
         command.setData(addressBook, displayList);
 
         return command;
@@ -121,7 +129,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 
-        DeleteCommand command = createDeleteCommand(invalidVisibleIndex, addressBook, displayList);
+        DeleteCommand command = createDeleteCommand(makeListFromIndex(invalidVisibleIndex), addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -134,7 +142,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK;
 
-        DeleteCommand command = createDeleteCommand(visibleIndex, addressBook, displayList);
+        DeleteCommand command = createDeleteCommand(makeListFromIndex(visibleIndex), addressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, addressBook, addressBook);
     }
 
@@ -152,11 +160,50 @@ public class DeleteCommandTest {
 
         AddressBook expectedAddressBook = TestUtil.clone(addressBook);
         expectedAddressBook.removePerson(targetPerson);
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, targetPerson);
+        String expectedMessage = DeleteCommand.MESSAGE_DELETE_PEOPLE_SUCCESS + targetPerson.toString();
+        expectedMessage = expectedMessage.trim();
 
         AddressBook actualAddressBook = TestUtil.clone(addressBook);
 
-        DeleteCommand command = createDeleteCommand(targetVisibleIndex, actualAddressBook, displayList);
+        DeleteCommand command = createDeleteCommand(makeListFromIndex(targetVisibleIndex), actualAddressBook, displayList);
         assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
+    }
+
+    /**
+     * Asserts that the people at the specified indices can be successfully deleted.
+     *
+     * The addressBook passed in will not be modified (no side effects).
+     *
+     * @throws PersonNotFoundException if any of the selected people are not in the address book
+     */
+    private void assertMultipleDeletionSuccessful(List<Integer> targetVisibleIndices, AddressBook addressBook,
+                                          List<ReadOnlyPerson> displayList) throws PersonNotFoundException {
+        List<ReadOnlyPerson> peopleToDelete = new ArrayList<>();
+        String peopleString = "";
+        for (Integer targetVisibleIndex : targetVisibleIndices) {
+            ReadOnlyPerson targetPerson = displayList.get(targetVisibleIndex - TextUi.DISPLAYED_INDEX_OFFSET);
+            peopleToDelete.add(targetPerson);
+            peopleString = peopleString.concat(targetPerson.toString()).concat("\n");
+        }
+
+        AddressBook expectedAddressBook = TestUtil.clone(addressBook);
+        expectedAddressBook.removePeople(peopleToDelete);
+        String expectedMessage = DeleteCommand.MESSAGE_DELETE_PEOPLE_SUCCESS + peopleString.trim();
+        AddressBook actualAddressBook = TestUtil.clone(addressBook);
+
+        DeleteCommand command = createDeleteCommand(targetVisibleIndices, actualAddressBook, displayList);
+        assertCommandBehaviour(command, expectedMessage, expectedAddressBook, actualAddressBook);
+    }
+
+    /**
+     * Creates a single-element List from a singular index.
+     *
+     * @param index of the person, to be the only addition to the List
+     * @return a List with a single element, the index provided as an argument
+     */
+    private List<Integer> makeListFromIndex(int index) {
+        List<Integer> list = new ArrayList<>();
+        list.add(index);
+        return list;
     }
 }
