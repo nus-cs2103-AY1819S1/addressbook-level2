@@ -21,6 +21,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.UpdateCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -208,11 +209,11 @@ public class ParserTest {
             "add ",
             "add wrong args format",
             // no phone prefix
-            String.format("add $s $s e/$s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            String.format("add %s %s e/%s a/%s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
             // no email prefix
-            String.format("add $s p/$s $s a/$s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+            String.format("add %s p/%s %s a/%s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
             // no address prefix
-            String.format("add $s p/$s e/$s $s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
+            String.format("add %s p/%s e/%s %s", Name.EXAMPLE, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
         };
         final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
@@ -229,7 +230,7 @@ public class ParserTest {
         final String invalidTagArg = "t/invalid_-[.tag";
 
         // address can be any string, so no invalid address
-        final String addCommandFormatString = "add $s $s $s a/" + Address.EXAMPLE;
+        final String addCommandFormatString = "add %s %s %s a/" + Address.EXAMPLE;
 
         // test each incorrect person data field argument individually
         final String[] inputs = {
@@ -292,6 +293,69 @@ public class ParserTest {
             addCommand += " t/" + tag.tagName;
         }
         return addCommand;
+    }
+
+    /*
+     * Tests for update person command ==============================================================================
+     */
+
+    @Test
+    public void parse_updateCommandInvalidArgs_errorMessage() {
+        final String index = "1";
+        final String[] inputs = {
+                "update",
+                "update ",
+                "update wrong args format",
+                // no phone prefix
+                String.format("update %s %s e/%s a/%s", index, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+                // no email prefix
+                String.format("update %s p/%s %s a/%s", index, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE),
+                // no address prefix
+                String.format("update %s p/%s e/%s %s", index, Phone.EXAMPLE, Email.EXAMPLE, Address.EXAMPLE)
+        };
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_updateCommandInvalidPersonDataInArgs_errorMessge() {
+        final String validIndex = "2";
+        final String invalidIndex = "ab";
+        final String invalidPhoneArg = "p/not__numbers";
+        final String validPhoneArg = "p/" + Phone.EXAMPLE;
+        final String invalidEmailArg = "e/notAnEmail123";
+        final String validEmailArg = "e/" + Email.EXAMPLE;
+        final String invalidTagArg = "t/invalid_-[.tag";
+
+        // address can be any string, so no invalid address
+        final String updateCommandFormatString = "update %s %s %s a/" + Address.EXAMPLE;
+
+        // test each incorrect person data field argument individually
+        final String[] inputs = {
+                // invalid index
+                String.format(updateCommandFormatString, invalidIndex, validPhoneArg, validEmailArg),
+                // invalid phone
+                String.format(updateCommandFormatString, validIndex, invalidPhoneArg, validEmailArg),
+                // invalid email
+                String.format(updateCommandFormatString, validIndex, validPhoneArg, invalidEmailArg),
+                // invalid tag
+                String.format(updateCommandFormatString, validIndex, validPhoneArg, validEmailArg) + " " + invalidTagArg
+        };
+        for (String input : inputs) {
+            parseAndAssertCommandType(input, IncorrectCommand.class);
+        }
+    }
+
+    @Test
+    public void parse_updateCommandValidPersonData_parsedCorrectly() {
+        final String validIndex = "1";
+        final String validPhoneArg = "p/" + Phone.EXAMPLE;
+        final String validEmailArg = "e/" + Email.EXAMPLE;
+        final String updateCommandFormatString = "update %s %s %s a/" + Address.EXAMPLE;
+        String input = String.format(updateCommandFormatString, validIndex, validPhoneArg, validEmailArg)
+                + " t/hello" + " t/world";
+        final UpdateCommand result = parseAndAssertCommandType(input, UpdateCommand.class);
+        assertEquals(result.getTargetIndex(), Integer.parseInt(validIndex));
     }
 
     /*
