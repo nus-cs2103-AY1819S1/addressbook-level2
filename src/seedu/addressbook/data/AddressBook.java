@@ -72,7 +72,8 @@ public class AddressBook {
      * Returns a new UniquePersonList of all persons in the address book at the time of the call sorted in alphabetical order.
      */
     public UniquePersonList getSortedAllPersons() {
-        return new UniquePersonList(allPersons).sort();
+        UniquePersonList toSort = new UniquePersonList(allPersons);
+        return toSort.sort();
     }
 
     @Override
