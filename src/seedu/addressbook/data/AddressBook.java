@@ -12,6 +12,7 @@ import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 public class AddressBook {
 
     private final UniquePersonList allPersons;
+
     private int sumPersons = 0;
 
     /**
@@ -27,8 +28,23 @@ public class AddressBook {
      * @param persons external changes to this will not affect this address book
      */
     public AddressBook(UniquePersonList persons) {
+        sumPersons = getSize(persons);
         this.allPersons = new UniquePersonList(persons);
     }
+
+    /**
+     * Returns the number of elements in the container behind an iterable.
+     *
+     *
+     */
+    public static <T> int getSize(Iterable<T> persons) {
+        int sumElements = 0;
+        for (T elem : persons) {
+            sumElements++;
+        }
+        return sumElements;
+    }
+
 
     /**
      * Adds a person to the address book.
