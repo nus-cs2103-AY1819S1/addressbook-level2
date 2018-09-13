@@ -123,6 +123,11 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Gets total number of persons in list.
+     */
+    public int getTotal()  { return internalList.size(); }
+
+    /**
      * Clears all persons in list.
      */
     public void clear() {
