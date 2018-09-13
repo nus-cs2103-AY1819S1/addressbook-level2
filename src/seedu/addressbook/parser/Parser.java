@@ -85,7 +85,7 @@ public class Parser {
             return new ExitCommand();
 
         case RandomCommand.COMMAND_WORD:
-             return new RandomCommand();
+            return new RandomCommand();
 
         case HelpCommand.COMMAND_WORD: // Fallthrough
         default:

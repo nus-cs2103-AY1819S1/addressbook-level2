@@ -1,7 +1,5 @@
 package seedu.addressbook.commands;
 
-
-
 /**
  * Shows help instructions.
  */
