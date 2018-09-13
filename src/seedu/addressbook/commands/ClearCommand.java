@@ -7,9 +7,7 @@ public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
     public static final String MESSAGE_USAGE = Command.getMessageUsage(COMMAND_WORD,
-        "Clears address book permanently.",
-        "none",
-        "");
+        "Clears address book permanently.");
 
     public static final String MESSAGE_SUCCESS = "Address book has been cleared!";
 

@@ -42,7 +42,20 @@ public class Command {
 
         return commandWord + ": " + commandDesc + "\n"
             + "    Parameters: " + commandParams + "\n"
-            + "    Example: " + commandWord + " " + commandEgParams;
+            + "    Example: " + commandWord + (commandEgParams.equals("") ? "" : " " + commandEgParams);
+    }
+
+    /**
+     * Overloaded getMessageUsage() for commands that take in no parameters
+     * @param commandWord The command's COMMAND_WORD
+     * @param commandDesc A brief description of what the command does
+     * @return the MESSAGE_USAGE for a command.
+     */
+    protected static String getMessageUsage(
+        String commandWord,
+        String commandDesc) {
+
+        return getMessageUsage(commandWord, commandDesc, "none", "");
     }
 
     /**

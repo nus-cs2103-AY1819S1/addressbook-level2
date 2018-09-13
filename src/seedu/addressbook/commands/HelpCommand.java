@@ -9,9 +9,7 @@ public class HelpCommand extends Command {
     public static final String COMMAND_WORD = "help";
 
     public static final String MESSAGE_USAGE = Command.getMessageUsage(COMMAND_WORD,
-        "Shows program usage instructions.",
-        "none",
-        "");
+        "Shows program usage instructions.");
 
     @Override
     public CommandResult execute() {
