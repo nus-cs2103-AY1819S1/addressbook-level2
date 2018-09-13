@@ -233,6 +233,48 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: tag
+|| [Command entered:tag]
+|| Invalid command format!
+|| tag: Finds all persons whose tags contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+|| Parameters: KEYWORD [MORE_KEYWORDS]...
+|| Example: tag classmates friends family
+|| ===================================================
+|| Enter command: tag fri
+|| [Command entered:tag fri]
+||
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: tag 23912039120
+|| [Command entered:tag 23912039120]
+||
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: tag Secretive
+|| [Command entered:tag Secretive]
+||
+|| 0 persons listed!
+|| ===================================================
+|| Enter command: tag secretive
+|| [Command entered:tag secretive]
+|| 	1. Betsy Choo Tags: [secretive]
+||
+|| 1 persons listed!
+|| ===================================================
+|| Enter command: tag friends
+|| [Command entered:tag friends]
+|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street Tags: [friends]
+||
+|| 2 persons listed!
+|| ===================================================
+|| Enter command: tag starchy school
+|| [Command entered:tag starchy school]
+|| 	1. Charlie Dickson Email: charlie.d@nus.edu.sg Address: 333, gamma street Tags: [school][friends]
+|| 	2. Esther Potato Phone: 555555 Email: esther@not.a.real.potato Tags: [tubers][starchy]
+||
+|| 2 persons listed!
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
 || delete: Deletes the person identified by the index number used in the last person listing.
