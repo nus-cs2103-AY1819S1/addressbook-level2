@@ -93,8 +93,6 @@ public class Parser {
         }
     }
 
-
-
     /**
      * Parses arguments in the context of the add person command.
      *

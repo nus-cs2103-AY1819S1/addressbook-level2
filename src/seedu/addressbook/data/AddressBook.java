@@ -6,7 +6,6 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
-import java.util.Random;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
