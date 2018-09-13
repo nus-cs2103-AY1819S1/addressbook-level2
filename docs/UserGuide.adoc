@@ -151,6 +151,14 @@ Views all details of the 2nd person in the address book.
 `viewall 1` +
 Views all details of the 1st person in the results of the `find` command.
 
+== Counts number of entries: `total`
+
+Counts and returns the number of entries in the address book. +
+Format: `total`
+
+* For example, if there are currently 0 entries in the address book, `total` gives a value of `0`.
+* If there are currently 5 entries in the address book, `total` gives a value of `5`.
+
 == Clearing all entries : `clear`
 
 Clears all entries from the address book. +
