@@ -99,8 +99,8 @@ public class ParserTest {
     }
 
     @Test
-    public void parse_deleteCommandArgsIsNotSingleNumber_errorMessage() {
-        final String[] inputs = { "delete notAnumber ", "delete 8*wh12", "delete 1 2 3 4 5" };
+    public void parse_deleteCommandArgsAreNotSpacedNumbers_errorMessage() {
+        final String[] inputs = { "delete notAnumber ", "delete 8*wh12", "delete 1, 2, 3, 4, 5" };
         final String resultMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
         parseAndAssertIncorrectWithMessage(resultMessage, inputs);
     }
@@ -110,7 +110,7 @@ public class ParserTest {
         final int testIndex = 1;
         final String input = "delete " + testIndex;
         final DeleteCommand result = parseAndAssertCommandType(input, DeleteCommand.class);
-        assertEquals(result.getTargetIndex(), testIndex);
+        assertEquals(result.targetVisibleIndices.get(0).intValue(), testIndex);
     }
 
     @Test
