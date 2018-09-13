@@ -16,7 +16,7 @@ import seedu.addressbook.data.tag.Tag;
  */
 public class TypicalPersons {
 
-    public Person amy, bill, candy, dan;
+    public Person amy, bill, candy, dan, elle, felicia;
 
     public TypicalPersons() {
         try {
@@ -28,6 +28,10 @@ public class TypicalPersons {
                     new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), Collections.emptySet());
             dan = new Person(new Name("Dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
                     new Address("NUS", true), Collections.singleton(new Tag("test")));
+            elle = new Person(new Name("Elle Magic"), new Phone("32145678", false), new Email("ss@tt.com", false),
+                    new Address("SMU", false), Collections.singleton(new Tag("classmates")));
+            felicia = new Person(new Name("Felicia Buck"), new Phone("21346587", true), new Email("ss@tt.com", true),
+                    new Address("NTU", true), Collections.singleton(new Tag("classmates")));
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
@@ -45,7 +49,7 @@ public class TypicalPersons {
     }
 
     public Person[] getTypicalPersons() {
-        return new Person[]{amy, bill, candy, dan};
+        return new Person[]{amy, bill, candy, dan, elle, felicia};
     }
 
     public AddressBook getTypicalAddressBook() {
