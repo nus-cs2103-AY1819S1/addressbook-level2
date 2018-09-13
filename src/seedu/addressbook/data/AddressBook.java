@@ -55,6 +55,11 @@ public class AddressBook {
     }
 
     /**
+     * Gets total number of persons in list.
+     */
+    public int getTotal()  { return allPersons.getSize(); }
+
+    /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
