@@ -15,7 +15,7 @@ public class TotalCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(String.format(MESSAGE_TOTAL_IN_ADDRESSBOOK, addressBook.getTotal());
+        return new CommandResult(String.format(MESSAGE_TOTAL_IN_ADDRESSBOOK, addressBook.getTotal()));
     }
 
 }
