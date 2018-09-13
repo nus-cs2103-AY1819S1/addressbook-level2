@@ -41,8 +41,8 @@ public class Command {
         String commandEgParams) {
 
         return commandWord + ": " + commandDesc + "\n"
-            + "Parameters: " + commandParams + "\n"
-            + "Example: " + commandWord + " " + commandEgParams + "\n";
+            + "    Parameters: " + commandParams + "\n"
+            + "    Example: " + commandWord + " " + commandEgParams;
     }
 
     /**
