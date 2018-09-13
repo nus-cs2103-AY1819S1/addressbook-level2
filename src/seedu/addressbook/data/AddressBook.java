@@ -55,6 +55,15 @@ public class AddressBook {
     }
 
     /**
+     * Checks the size of the current list.
+     *
+     * @return size of current list.
+     */
+    public int returnSize() {
+        return allPersons.getSize();
+    }
+
+    /**
      * Clears all persons and tags from the address book.
      */
     public void clear() {
