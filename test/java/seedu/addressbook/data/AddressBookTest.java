@@ -135,4 +135,11 @@ public class AddressBookTest {
 
         assertTrue(isIdentical(allPersons, personsToCheck));
     }
+
+    @Test
+    public void count() {
+        assertTrue(defaultAddressBook.getSumPersons() == 2);
+        defaultAddressBook.clear();
+        assertTrue(defaultAddressBook.getSumPersons()) == 0;
+    }
 }
