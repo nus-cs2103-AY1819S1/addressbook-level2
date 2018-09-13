@@ -39,6 +39,35 @@ public class AddressBook {
     }
 
     /**
+     * Adds a person to the address book.
+     * This method is mean to be used with {@code editPerson(Person toEdit)}.
+     * It silences {@code DuplicatePersonException} since this method is
+     * called after {@code PersonNotFoundException} is thrown.
+     * Both exceptions are mutually exclusive.
+     *
+     */
+    private void addPersonSafe(Person toAdd) {
+        try {
+            addPerson(toAdd);
+        } catch(DuplicatePersonException dpe) {
+            // Will not be run
+        }
+    }
+
+    /**
+     * Edits a person to the address book.
+     */
+    public void editPerson(Person toEdit) {
+        try {
+            // Remove the person with the same name and phone number
+            removePersonShallow(toEdit);
+            addPersonSafe(toEdit);
+        } catch (PersonNotFoundException pnfe) {
+            addPersonSafe(toEdit);
+        }
+    }
+
+    /**
      * Returns true if an equivalent person exists in the address book.
      */
     public boolean containsPerson(ReadOnlyPerson key) {
@@ -52,6 +81,26 @@ public class AddressBook {
      */
     public void removePerson(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         allPersons.remove(toRemove);
+    }
+
+    /**
+     * Removes the equivalent person from the address book.
+     * This method differs from {@code removePerson(ReadOnlyPerson toRemove)} in that
+     * the person is only compared based on their name and phone number.
+     *
+     * @throws PersonNotFoundException if no such Person could be found.
+     */
+    public void removePersonShallow(ReadOnlyPerson toRemove) throws PersonNotFoundException {
+        allPersons.removeShallow(toRemove);
+    }
+
+    /**
+     * Returns the number of persons in the address book.
+     *
+     * @return number of persons in the address book.
+     */
+    public int size() {
+        return allPersons.size();
     }
 
     /**
