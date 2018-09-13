@@ -68,6 +68,9 @@ public class AddressBook {
         return new UniquePersonList(allPersons);
     }
 
+    /**
+     * Returns the total number of entries in the address book at the time of the call.
+     */
     public int getSize() {
         return allPersons.getSize();
     }

@@ -18,6 +18,11 @@ public class TotalCommand extends Command {
         return getCommandResult(size);
     }
 
+    /**
+     *
+     * @param size integer value specified
+     * @return the result of the command in a string format
+     */
     private CommandResult getCommandResult(int size) {
         if (size == 1) {
             return new CommandResult(size + MESSAGE_SINGULAR);

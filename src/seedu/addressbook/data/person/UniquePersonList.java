@@ -129,6 +129,9 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
+    /**
+     * Returns the total number of entries in list.
+     */
     public int getSize() {
         return internalList.size();
     }
