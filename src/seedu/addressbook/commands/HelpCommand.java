@@ -1,8 +1,5 @@
 package seedu.addressbook.commands;
 
-
-import java.util.Random;
-
 /**
  * Shows help instructions.
  */
