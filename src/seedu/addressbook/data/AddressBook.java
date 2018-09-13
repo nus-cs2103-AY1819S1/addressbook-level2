@@ -1,5 +1,7 @@
 package seedu.addressbook.data;
 
+import java.util.Comparator;
+
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -66,6 +68,10 @@ public class AddressBook {
      */
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
+    }
+    
+    public void sort(Comparator<? super Person> comparator) {
+        allPersons.sort(comparator);
     }
 
     @Override
