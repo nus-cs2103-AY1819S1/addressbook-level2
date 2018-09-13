@@ -97,6 +97,13 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns the size of the address book
+     */
+    public int size() {
+        return internalList.size();
+    }
+
+    /**
      * Adds a person to the list.
      *
      * @throws DuplicatePersonException if the person to add is a duplicate of an existing person in the list.
