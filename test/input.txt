@@ -147,6 +147,34 @@
   # clears all
   clear
   list
+  
+##########################################################
+# test sort command
+##########################################################
+
+  # add some users first
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
+  add Charlie Dickson pp/333333 e/charlie.d@nus.edu.sg a/333, gamma street t/friends t/school
+  add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
+  add Esther Potato p/155555 e/aesther@not.a.real.potato pa/355, epsilon street t/tubers t/starchy
+  list
+  
+  # test sorting by phone
+  sort phone
+  
+  # test sorting by email
+  sort email
+  
+  # test sorting by address
+  sort address
+  
+  # test sorting by name
+  sort name
+  
+  # clears all
+  clear
+  list
 
 ##########################################################
 # test exit command
