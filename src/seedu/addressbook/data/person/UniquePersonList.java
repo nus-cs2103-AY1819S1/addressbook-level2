@@ -122,6 +122,14 @@ public class UniquePersonList implements Iterable<Person> {
         }
     }
 
+    public void swapIndex(int target1Index, int target2Index) throws PersonNotFoundException {
+        try {
+            Collections.swap(internalList,target1Index,target2Index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new PersonNotFoundException();
+        }
+    }
+
     /**
      * Clears all persons in list.
      */

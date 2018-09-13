@@ -20,6 +20,7 @@ import seedu.addressbook.commands.FindCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
+import seedu.addressbook.commands.SwapCommand;
 import seedu.addressbook.commands.ViewAllCommand;
 import seedu.addressbook.commands.ViewCommand;
 import seedu.addressbook.data.exception.IllegalValueException;
@@ -87,6 +88,9 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case SwapCommand.COMMAND_WORD:
+            return prepareSwap(arguments);
 
         case ViewCommand.COMMAND_WORD:
             return prepareView(arguments);
@@ -246,6 +250,45 @@ public class Parser {
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
+    }
+
+    /**
+     * Parses arguments in the context of swap index command
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareSwap(String args) {
+        try {
+            int[] targetsArray = parseArgsAsTwoDisplayedIndex(args);
+            return new SwapCommand(targetsArray[0], targetsArray[1]);
+        } catch (ParseException pe) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    SwapCommand.MESSAGE_USAGE));
+        } catch (NumberFormatException nfe) {
+            return new IncorrectCommand(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+    }
+
+    /**
+     * Parses the given arguments string to 2 index number.
+     *
+     * @param args arguments string to parse as index number
+     * @return the parsed index numbers in an int array
+     * @throws ParseException if no region of the args string could be found for the index
+     * @throws NumberFormatException the args string region is not a valid number
+     */
+    private int[] parseArgsAsTwoDisplayedIndex(String args) throws ParseException, NumberFormatException {
+        final Matcher matcher = PERSON_INDEX_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            throw new ParseException("Could not find index number to parse");
+        }
+        String[] stringArgs = matcher.group("targetIndex").split(" ");
+        if( stringArgs.length == 2) {
+            int[] intArray = {Integer.parseInt(stringArgs[0]), Integer.parseInt(stringArgs[1])};
+            return intArray;
+        }
+        throw new ParseException("Could not find index number to parse");
     }
 
 
