@@ -14,7 +14,7 @@ public class TotalCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        int size = addressBook.getSize();
+        int size = addressBook.getTotal();
         return getCommandResult(size);
     }
 

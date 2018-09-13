@@ -71,7 +71,7 @@ public class AddressBook {
     /**
      * Returns the total number of entries in the address book at the time of the call.
      */
-    public int getSize() {
+    public int getTotal() {
         return allPersons.getSize();
     }
 
