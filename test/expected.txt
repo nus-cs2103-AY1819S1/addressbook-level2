@@ -233,6 +233,9 @@
 || 
 || 2 persons listed!
 || ===================================================
+|| Enter command: || [Command entered:  size]
+|| Number of contacts: 2
+|| ===================================================
 || Enter command: || [Command entered:  delete]
 || Invalid command format! 
 || delete: Deletes the person identified by the index number used in the last person listing.

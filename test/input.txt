@@ -105,6 +105,14 @@
   find Dickson
   # find multiple with some keywords
   find Charlie Betsy
+  
+##########################################################
+# test size command
+##########################################################
+
+  # returns size of current list
+  size
+
 
 ##########################################################
 # test delete person command

@@ -54,6 +54,14 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Checks the size of the current list.
+     * @return size of list.
+     */
+    public int getSize() {
+        return this.internalList.size();
+    }
+
+    /**
      * Constructs a list from the items in the given collection.
      * @param persons a collection of persons
      * @throws DuplicatePersonException if the {@code persons} contains duplicate persons
