@@ -1,9 +1,13 @@
 package seedu.addressbook.commands;
 
+/**
+ * Lets the user know the current total number of entries in the address book.
+ */
 public class TotalCommand extends Command {
 
     public static final String COMMAND_WORD = "total";
-    public static final String MESSAGE_USAGE = "Returns the total number of entries in the address book.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Returns the total number of entries in the address book.\n"
             + "Example: " + COMMAND_WORD;
     public static final String MESSAGE_SINGULAR = " entry found!";
     public static final String MESSAGE_PLURAL = " entries found!";
