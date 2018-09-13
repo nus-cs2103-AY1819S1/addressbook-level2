@@ -23,7 +23,7 @@ public class DeleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 2 3";
 
     public static final String MESSAGE_DELETE_PEOPLE_SUCCESS = "Deleted Person(s): ";
-    private final List<Integer> targetVisibleIndices;
+    public final List<Integer> targetVisibleIndices;
 
 
     public DeleteCommand(Set<Integer> targetVisibleIndices) {
@@ -38,13 +38,15 @@ public class DeleteCommand extends Command {
     public CommandResult execute() {
         try {
             List<ReadOnlyPerson> people = new ArrayList<ReadOnlyPerson>();
+            String peopleString = "";
             for (Integer targetIndex : targetVisibleIndices) {
               setTargetIndex(targetIndex);
               final ReadOnlyPerson target = getTargetPerson();
               people.add(target);
+              peopleString = peopleString.concat(target.toString()).concat("\n");
             }
             addressBook.removePeople(people);
-            String commandResultString = MESSAGE_DELETE_PEOPLE_SUCCESS + Arrays.toString(targetVisibleIndices.toArray());
+            String commandResultString = MESSAGE_DELETE_PEOPLE_SUCCESS + peopleString.trim();
             commandResultString = commandResultString.replaceAll("[\\[\\]]","");
             return new CommandResult(commandResultString);
         } catch (IndexOutOfBoundsException ie) {
