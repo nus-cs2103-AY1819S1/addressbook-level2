@@ -42,10 +42,13 @@ public class Parser {
                     + " (?<isAddressPrivate>p?)a/(?<address>[^/]+)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
+    /*
+     * matches update command with or without p/ field, e/ field, a/field, t/field to support partial update
+     */
     public static final Pattern UPDATE_PERSON_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
-            Pattern.compile("(?<targetIndex>[0-9]+) "
-                    + "(?<isUpdatingPhone>((?<isPhonePrivate>p?)p/(?<phone>[^/]+)\\s?)?)"
-                    + "(?<isUpdatingEmail>((?<isEmailPrivate>p?)e/(?<email>[^/]+)\\s?)?)"
+            Pattern.compile("(?<targetIndex>[1-9][0-9]*) "
+                    + "(?<isUpdatingPhone>((?<isPhonePrivate>p?)p/(?<phone>[^(/\\s)]+)\\s?)?)"
+                    + "(?<isUpdatingEmail>((?<isEmailPrivate>p?)e/(?<email>[^(/\\s)]+)\\s?)?)"
                     + "(?<isUpdatingAddress>((?<isAddressPrivate>p?)a/(?<address>[^/]+)\\s?)?)"
                     + "(?<tagArguments>(?:t/[^/]+\\s?)*)"); // variable number of tags
 
@@ -159,7 +162,7 @@ public class Parser {
      */
     private static Set<String> getTagsFromArgs(String tagArguments) throws IllegalValueException {
         // no tags
-        if (tagArguments.isEmpty()) {
+        if (tagArguments.isEmpty() || tagArguments.trim().isEmpty()) {
             return Collections.emptySet();
         }
         // replace first delimiter prefix, then split
