@@ -19,6 +19,8 @@
 || Example: find alice bob charlie
 || list: Displays all persons in the address book as a list with index numbers.
 || Example: list
+|| sort: Sorts the address book by name in alphabetical order.
+|| Example: sort
 || view: Views the non-private details of the person identified by the index number in the last shown person listing.
 || Parameters: INDEX
 || Example: view 1
@@ -296,6 +298,33 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons listed!
+|| ===================================================
+|| Enter command: || [Command entered:  add Esmond p/55555555 e/esmond@u.nus.edu a/pasir ris, singapore t/student t/drives]
+|| New person added: Esmond Phone: 55555555 Email: esmond@u.nus.edu Address: pasir ris, singapore Tags: [student][drives]
+|| ===================================================
+|| Enter command: || [Command entered:  add Zhi Kai p/66666666 e/zhikai@u.nus.edu a/sengkang, singapore t/malaysian]
+|| New person added: Zhi Kai Phone: 66666666 Email: zhikai@u.nus.edu Address: sengkang, singapore Tags: [malaysian]
+|| ===================================================
+|| Enter command: || [Command entered:  add Zul p/00000000 e/zul@u.nus.edu a/tampines, singapore t/centpai]
+|| New person added: Zul Phone: 00000000 Email: zul@u.nus.edu Address: tampines, singapore Tags: [centpai]
+|| ===================================================
+|| Enter command: || [Command entered:  add Darren Ong p/33333333 e/darren@u.nus.edu a/bishan, singapore t/malaysian]
+|| New person added: Darren Ong Phone: 33333333 Email: darren@u.nus.edu Address: bishan, singapore Tags: [malaysian]
+|| ===================================================
+|| Enter command: || [Command entered:  add Eng Soon p/87878787 e/engsoon@u.nus.edu a/tahi street, singapore t/arsenal t/tahi]
+|| New person added: Eng Soon Phone: 87878787 Email: engsoon@u.nus.edu Address: tahi street, singapore Tags: [tahi][arsenal]
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| Address book has been sorted!
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Darren Ong Phone: 33333333 Email: darren@u.nus.edu Address: bishan, singapore Tags: [malaysian]
+|| 	2. Eng Soon Phone: 87878787 Email: engsoon@u.nus.edu Address: tahi street, singapore Tags: [tahi][arsenal]
+|| 	3. Esmond Phone: 55555555 Email: esmond@u.nus.edu Address: pasir ris, singapore Tags: [student][drives]
+|| 	4. Zhi Kai Phone: 66666666 Email: zhikai@u.nus.edu Address: sengkang, singapore Tags: [malaysian]
+|| 	5. Zul Phone: 00000000 Email: zul@u.nus.edu Address: tampines, singapore Tags: [centpai]
+|| 
+|| 5 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book as requested ...
