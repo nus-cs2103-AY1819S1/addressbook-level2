@@ -46,6 +46,7 @@ public class ContainCommandTest {
     public void execute_validAddressBook_personNotContained() throws IllegalValueException {
         assertContainSuccessful("Lili Pan", addressbook, false);
     }
+
     private void assertContainSuccessful(String name, AddressBook addressbook, boolean contained) throws IllegalValueException {
         String expectedMessage = ContainCommand.MESSAGE_UNIQUE;
         if (contained) {
