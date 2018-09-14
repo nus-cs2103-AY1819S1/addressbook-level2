@@ -12,9 +12,8 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays all persons in the address book as a list with index numbers.\n"
-            + "Example: " + COMMAND_WORD;
+    public static final String MESSAGE_USAGE = Command.getMessageUsage(COMMAND_WORD,
+        "Displays all persons in the address book as a list with index numbers.");
 
 
     @Override
