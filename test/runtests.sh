@@ -23,7 +23,9 @@ fi
 java -classpath ../bin seedu.addressbook.Main < input.txt > actual.txt
 
 # compare the output to the expected output
-diff actual.txt expected.txt
+
+diff -w -B actual.txt expected.txt
+
 if [ $? -eq 0 ]
 then
     echo "Test result: PASSED"

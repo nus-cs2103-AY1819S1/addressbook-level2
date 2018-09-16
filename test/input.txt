@@ -117,11 +117,11 @@
   # no person with provided email
   searchEmail noone@gmail.com
   # show result(s) if there is a match
-  searchEmail ab@gmail.com
+  searchEmail adam@gmail.com
   # search multiple emails
-  searchEmail ab@gmail.com bc@gmail.com
+  searchEmail adam@gmail.com johnd@gmail.com
   # ignore duplicate input parameters
-  searchEmail ab@gmail.com ab@gmail.com
+  searchEmail adam@gmail.com adam@gmail.com
   
 ##########################################################
 # test delete person command
