@@ -8,6 +8,7 @@ package seedu.addressbook.commands;
  import java.util.List;
  import java.util.Set;
 
+ import org.junit.Before;
  import org.junit.Test;
 
  import seedu.addressbook.data.AddressBook;
@@ -16,8 +17,14 @@ package seedu.addressbook.commands;
  import seedu.addressbook.util.TypicalPersons;
 
 public class SearchEmailCommandTest {
-	private final AddressBook addressBook = new TypicalPersons().getTypicalAddressBook();
-    private final TypicalPersons td = new TypicalPersons();
+	private AddressBook addressBook;
+	private TypicalPersons td;
+
+	@Before
+	public void setUp() throws Exception {
+		addressBook = new TypicalPersons().getTypicalAddressBook();
+		td = new TypicalPersons();
+	}
 
 	@Test
 	public void execute() throws IllegalValueException {
