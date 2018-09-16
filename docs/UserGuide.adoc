@@ -176,6 +176,19 @@ Example:
 
 * `java seedu.addressbook.Main mydata.txt`
 
+== Search by email: `searchEmail`
+
+Finds all persons with email matching the specified email(s) +
+Format: `searchEmail EMAIL [ADDITIONAL_EMAILS]`
+
+Examples:
+
+* `searchEmail johnd@gmail.com` +
+Returns `John Doe`.
+
+* `searchEmail adam@gmail.com johnd@gmail.com` +
+Returns persons having the emails `adam@gmail.com` or `johnd@gmail.com`.
+
 [NOTE]
 ====
 The file name must end in `.txt` for it to be acceptable to the program.

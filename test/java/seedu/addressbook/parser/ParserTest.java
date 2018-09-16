@@ -18,6 +18,7 @@ import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.commands.FindCommand;
+import seedu.addressbook.commands.SearchEmailCommand;
 import seedu.addressbook.commands.HelpCommand;
 import seedu.addressbook.commands.IncorrectCommand;
 import seedu.addressbook.commands.ListCommand;
@@ -292,6 +293,41 @@ public class ParserTest {
             addCommand += " t/" + tag.tagName;
         }
         return addCommand;
+    }
+
+    /*
+    * Tests for find persons by search email command ===================================================
+    */
+
+    @Test
+    public void parse_searchEmailCommandInvalidArgs_errorMessage() {
+        // no search email
+        final String[] inputs = {
+            "searchEmail",
+            "searchEmail "
+        };
+
+        final String resultMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SearchEmailCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+
+    @Test
+    public void parse_searchEmailCommandValidArgs_parsedCorrectly() {
+        final String[] searchEmails = { "81234567", "87654321" };
+        final Set<String> emailSet = new HashSet<>(Arrays.asList(searchEmails));
+        final String input = "searchEmail " + String.join(" ", emailSet);
+        final SearchEmailCommand result = parseAndAssertCommandType(input, SearchEmailCommand.class);
+        assertEquals(emailSet, result.getEmails());
+    }
+
+    @Test
+    public void parse_findCommandDuplicateEmails_parsedCorrectly() {
+        final String[] searchEmails = { "81234567", "87654321" };
+        final Set<String> emailSet = new HashSet<>(Arrays.asList(searchEmails));
+
+        final String input = "searchEmail " + String.join(" ", emailSet) + " " + String.join(" ", emailSet);
+        final SearchEmailCommand result = parseAndAssertCommandType(input, SearchEmailCommand.class);
+        assertEquals(emailSet, result.getEmails());
     }
 
     /*
