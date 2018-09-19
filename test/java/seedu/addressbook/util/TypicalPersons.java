@@ -16,7 +16,7 @@ import seedu.addressbook.data.tag.Tag;
  */
 public class TypicalPersons {
 
-    public Person amy, bill, candy, dan;
+    public Person amy, bill, candy, dan, emily;
 
     public TypicalPersons() {
         try {
@@ -27,7 +27,7 @@ public class TypicalPersons {
             candy = new Person(new Name("Candy Destiny"), new Phone("93339333", true),
                     new Email("cd@gmail.com", false), new Address("3 Clementi Road", true), Collections.emptySet());
             dan = new Person(new Name("Dan Smith"), new Phone("1234556", true), new Email("ss@tt.com", true),
-                    new Address("NUS", true), Collections.singleton(new Tag("test")));
+                    new Address("2 Ang Mo Kio", true), Collections.singleton(new Tag("test")));
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
