@@ -46,7 +46,6 @@ public class SortCommandTest {
     private void assertSortCommandBehavior(String keyword, String errorMessage) {
         SortCommand command = createSortCommand(keyword);
         CommandResult result = command.execute();
-        System.out.println(result.feedbackToUser);
 
         assertEquals(errorMessage, result.feedbackToUser);
     }
