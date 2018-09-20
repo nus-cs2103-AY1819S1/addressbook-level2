@@ -87,7 +87,7 @@ public class Parser {
             return prepareFind(arguments);
 
         case WelcomeCommand.COMMAND_WORD:
-            return prepareWelcome();
+            return new WelcomeCommand();
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -251,10 +251,5 @@ public class Parser {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         return new FindCommand(keywordSet);
     }
-
-    private Command prepareWelcome() {
-        return new WelcomeCommand();
-    }
-
 
 }
