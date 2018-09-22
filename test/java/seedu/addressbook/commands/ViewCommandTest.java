@@ -13,6 +13,10 @@ import org.junit.Test;
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.address.Address;
+import seedu.addressbook.data.address.Block;
+import seedu.addressbook.data.address.PostalCode;
+import seedu.addressbook.data.address.Street;
+import seedu.addressbook.data.address.Unit;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
@@ -48,7 +52,12 @@ public class ViewCommandTest {
         ReadOnlyPerson stranger = new Person(new Name("me"),
                                              new Phone("123", true),
                                              new Email("some@hey.go", true),
-                                             new Address("nus", false),
+                                             new Address(
+                                                 new Block("nus"),
+                                                 new Street("Kent Ridge road"),
+                                                 new Unit("02-01"),
+                                                 new PostalCode("213845"),
+                                                 false),
                                              Collections.emptySet());
         List<ReadOnlyPerson> listWithExtraPerson
                 = new ArrayList<ReadOnlyPerson>(listWithAllTypicalPersons);
@@ -143,7 +152,7 @@ public class ViewCommandTest {
         CommandResult result = viewCommand.execute();
 
         // feedback message is as expected and there are no relevant persons returned.
-        assertEquals(expectedMessage, result.feedbackToUser);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(Optional.empty(), result.getRelevantPersons());
 
         // addressbook was not modified.
