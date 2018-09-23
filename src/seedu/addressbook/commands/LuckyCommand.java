@@ -19,8 +19,6 @@ public class LuckyCommand extends Command{
     public static final String MESSAGE_SUCCESS = "Feeling lucky today? Why not give this person a call!\n"
             + "Lucky Person: %1$s";
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
-
     /**
      * An empty constructor for LuckyCommand
      */
