@@ -1,5 +1,9 @@
 package seedu.addressbook.storage;
 
+import seedu.addressbook.data.address.Block;
+import seedu.addressbook.data.address.PostalCode;
+import seedu.addressbook.data.address.Street;
+import seedu.addressbook.data.address.Unit;
 import static seedu.addressbook.parser.Parser.PERSON_DATA_ARGS_FORMAT;
 
 import java.util.ArrayList;
@@ -11,7 +15,7 @@ import java.util.regex.Matcher;
 
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
-import seedu.addressbook.data.person.Address;
+import seedu.addressbook.data.address.Address;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
@@ -57,7 +61,12 @@ public class AddressBookDecoder {
                 new Name(matcher.group("name")),
                 new Phone(matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate"))),
                 new Email(matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate"))),
-                new Address(matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
+                new Address(
+                        new Block(matcher.group("block")),
+                        new Street(matcher.group("street")),
+                        new Unit(matcher.group("unit")),
+                        new PostalCode(matcher.group("postalCode")),
+                        isPrivatePrefixPresent(matcher.group("isAddressPrivate"))),
                 getTagsFromEncodedPerson(matcher.group("tagArguments"))
         );
     }

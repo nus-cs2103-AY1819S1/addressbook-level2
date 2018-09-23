@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.addressbook.data.address.Address;
 import seedu.addressbook.data.tag.Tag;
 
 /**
@@ -19,6 +20,12 @@ public class Person implements ReadOnlyPerson {
 
     private final Set<Tag> tags = new HashSet<>();
 
+    // an instance variable for sequence number
+    private int sequenceNumber;
+
+    // a class variable for the number of Person objects instantiated
+    private static int nextSequenceNumber = 0;
+
     /**
      * Assumption: Every field must be present and not null.
      */
@@ -28,6 +35,8 @@ public class Person implements ReadOnlyPerson {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        nextSequenceNumber++;
+        sequenceNumber = nextSequenceNumber;
     }
 
     /**
@@ -87,5 +96,4 @@ public class Person implements ReadOnlyPerson {
     public String toString() {
         return getAsTextShowAll();
     }
-
 }
