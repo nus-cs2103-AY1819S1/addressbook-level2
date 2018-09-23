@@ -39,6 +39,7 @@ public class AddressBookTest {
     private Person bobChaplin;
     private Person charlieDouglas;
     private Person davidElliot;
+    private Person davidElliotSimilar;
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
@@ -90,6 +91,16 @@ public class AddressBookTest {
     public void addPerson_personAlreadyInList_throwsDuplicatePersonException() throws Exception {
         thrown.expect(DuplicatePersonException.class);
         defaultAddressBook.addPerson(aliceBetsy);
+    }
+
+    @Test
+    public void isSimilar() throws Exception {
+        thrown.expect(NullPointerException.class);
+        assertFalse(new Name("John Smith").isSimilar(null));
+
+        assertTrue(new Name("John K Smith").isSimilar(new Name("John K SMith")));
+        assertTrue(new Name("John K Smith").isSimilar(new Name("Smith John K")));
+        assertTrue(new Name("John Smith").isSimilar(new Name("John")));
     }
 
     @Test
