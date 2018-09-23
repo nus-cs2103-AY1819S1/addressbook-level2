@@ -6,6 +6,7 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.data.tag.Tagging;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -40,7 +41,7 @@ public class AddressBook {
         return getPrintableString(toAdd.getName(), toAdd.getEmail(), toAdd.getPhone());
     }
 
-    public String getPrintableString(Printable... printables) {
+    private String getPrintableString(Printable... printables) {
         StringBuilder sb = new StringBuilder();
         for (Printable printable : printables) {
             sb.append(printable.getPrintableString()).append(", ");
