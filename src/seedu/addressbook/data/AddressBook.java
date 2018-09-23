@@ -1,10 +1,12 @@
 package seedu.addressbook.data;
 
 import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.Printable;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
+import seedu.addressbook.data.tag.Tagging;
 
 /**
  * Represents the entire address book. Contains the data of the address book.
@@ -34,8 +36,17 @@ public class AddressBook {
      *
      * @throws DuplicatePersonException if an equivalent person already exists.
      */
-    public void addPerson(Person toAdd) throws DuplicatePersonException {
+    public String addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
+        return getPrintableString(toAdd.getName(), toAdd.getEmail(), toAdd.getPhone());
+    }
+
+    private String getPrintableString(Printable... printables) {
+        StringBuilder sb = new StringBuilder();
+        for (Printable printable : printables) {
+            sb.append(printable.getPrintableString()).append(", ");
+        }
+        return sb.deleteCharAt(sb.length() - 2).toString().trim();
     }
 
     /**

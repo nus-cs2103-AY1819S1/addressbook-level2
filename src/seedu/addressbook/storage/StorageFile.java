@@ -9,6 +9,8 @@ import java.util.List;
 
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.IllegalValueException;
+import seedu.addressbook.data.person.Person;
+import seedu.addressbook.data.person.Printable;
 
 /**
  * Represents the file used to store address book data.

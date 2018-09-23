@@ -2,6 +2,10 @@ package seedu.addressbook.data;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import seedu.addressbook.data.address.Block;
+import seedu.addressbook.data.address.PostalCode;
+import seedu.addressbook.data.address.Street;
+import seedu.addressbook.data.address.Unit;
 import static seedu.addressbook.util.TestUtil.getSize;
 import static seedu.addressbook.util.TestUtil.isEmpty;
 import static seedu.addressbook.util.TestUtil.isIdentical;
@@ -15,7 +19,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.addressbook.data.person.Address;
+import seedu.addressbook.data.address.Address;
 import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
@@ -35,6 +39,7 @@ public class AddressBookTest {
     private Person bobChaplin;
     private Person charlieDouglas;
     private Person davidElliot;
+    private Person davidElliotSimilar;
 
     private AddressBook defaultAddressBook;
     private AddressBook emptyAddressBook;
@@ -50,25 +55,29 @@ public class AddressBookTest {
         aliceBetsy     = new Person(new Name("Alice Betsy"),
                                     new Phone("91235468", false),
                                     new Email("alice@nushackers.org", false),
-                                    new Address("8 Computing Drive, Singapore", false),
+                                    new Address(new Block("8"), new Street("Computing Drive"),
+                                            new Unit("01"), new PostalCode("411395"), false),
                                     Collections.singleton(tagMathematician));
 
         bobChaplin     = new Person(new Name("Bob Chaplin"),
                                     new Phone("94321500", false),
                                     new Email("bob@nusgreyhats.org", false),
-                                    new Address("9 Computing Drive", false),
+                                    new Address(new Block("9"), new Street("Computing Drive"),
+                                            new Unit("01"), new PostalCode("411395"), false),
                                     Collections.singleton(tagMathematician));
 
         charlieDouglas = new Person(new Name("Charlie Douglas"),
                                     new Phone("98751365", false),
                                     new Email("charlie@nusgdg.org", false),
-                                    new Address("10 Science Drive", false),
+                                    new Address(new Block("10"), new Street("Computing Drive"),
+                                            new Unit("01"), new PostalCode("411395"), false),
                                     Collections.singleton(tagScientist));
 
         davidElliot    = new Person(new Name("David Elliot"),
                                     new Phone("84512575", false),
                                     new Email("douglas@nuscomputing.com", false),
-                                    new Address("11 Arts Link", false),
+                                    new Address(new Block("11"), new Street("Arts Link"),
+                                            new Unit("01"), new PostalCode("411395"), false),
                                     new HashSet<>(Arrays.asList(tagEconomist, tagPrizeWinner)));
 
         emptyAddressBook = new AddressBook();
@@ -82,6 +91,16 @@ public class AddressBookTest {
     public void addPerson_personAlreadyInList_throwsDuplicatePersonException() throws Exception {
         thrown.expect(DuplicatePersonException.class);
         defaultAddressBook.addPerson(aliceBetsy);
+    }
+
+    @Test
+    public void isSimilar() throws Exception {
+        thrown.expect(NullPointerException.class);
+        assertFalse(new Name("John Smith").isSimilar(null));
+
+        assertTrue(new Name("John K Smith").isSimilar(new Name("John K SMith")));
+        assertTrue(new Name("John K Smith").isSimilar(new Name("Smith John K")));
+        assertTrue(new Name("John Smith").isSimilar(new Name("John")));
     }
 
     @Test
