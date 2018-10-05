@@ -30,6 +30,8 @@ public class Formatter {
      */
     public static final int DISPLAYED_INDEX_OFFSET = 1;
 
+    public static final String DIVIDER = "===================================================";
+
     public Formatter() { }
 
     public static String appendPrefixTo(String message) {
